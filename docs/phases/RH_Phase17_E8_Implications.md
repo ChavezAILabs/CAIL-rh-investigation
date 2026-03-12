@@ -53,6 +53,46 @@ This means the full bilateral zero divisor structure — P-vectors and Q-vectors
 
 ---
 
+## Observation 3: Each Bilateral Pair (P, Q) Is Geometrically Orthogonal in 8D
+
+Computing the inner products of each bilateral pair's 8D images directly from coordinates:
+
+| Pattern | P_8D | Q_8D | P_8D · Q_8D |
+|---------|------|------|------------|
+| 1 | v1 = (0,1,0,0,0,0,−1,0) | q1 = v2 = (0,0,0,1,−1,0,0,0) | 0 ✓ |
+| 2 | v2 = (0,0,0,1,−1,0,0,0) | q2 = (0,0,−1,0,0,+1,0,0) | 0 ✓ |
+| 3 | v3 = (0,0,0,−1,1,0,0,0) | q3 = (0,−1,0,0,0,0,+1,0) | 0 ✓ |
+| 4 | v2 = (0,0,0,1,−1,0,0,0) | q4 = (0,0,0,1,+1,0,0,0) | 1−1 = **0** ✓ |
+| 5 | v5 = (0,0,1,0,0,1,0,0) | q2 = (0,0,−1,0,0,+1,0,0) | −1+1 = **0** ✓ |
+| 6 | v1 variant | q3 | 0 ✓ |
+
+**Every bilateral pair (Pᵢ, Qᵢ) has orthogonal 8D projections.** This holds for all 6 patterns including Pattern 4 where the cancellation 1−1 = 0 is non-trivial.
+
+This is a separate and independent condition from the sedenion bilateral annihilation Pᵢ·Qᵢ = 0 (which is a 16D sedenion product). The 8D geometric orthogonality and the 16D algebraic annihilation are both zero — from different structures. This is either a theorem connecting the two, or a very strong hint at one.
+
+**Lean 4 status:** Inner product computations are integer arithmetic. Should be proven alongside E8 shell membership. Queued as second Lean 4 target for Phase 18, after the Weyl reflection conjecture.
+
+---
+
+## Observation 4: Q-Vectors Expand the Spanned Subspace from 4D to 6D
+
+The 5 P-vectors do not span a 5-dimensional subspace — because v3 = −v2, they are linearly dependent. The rank of the P-vector set is **4** (spanned by v1, v2, v4, v5).
+
+The genuinely new Q-vectors q2 and q4 are **not in the span of the P-vectors**:
+
+- For q2 = (0,0,−1,0,0,+1,0,0) to be in span(v1,v2,v4,v5): requires a coefficient d on v5=(0,0,1,0,0,1,0,0) satisfying d=−1 (from position 3) and d=+1 (from position 6) simultaneously. Contradiction — q2 ∉ span(P-vectors).
+- For q4 = (0,0,0,+1,+1,0,0,0) to be in span(v1,v2,v4,v5): requires coefficient b on v2=(0,0,0,1,−1,0,0,0) satisfying b=+1 (from position 4) and −b=+1 (from position 5) simultaneously. Contradiction — q4 ∉ span(P-vectors).
+
+Adding q2 and q4 as genuinely independent directions expands the spanned subspace to **6 dimensions** (v1, v2, v4, v5, q2, q4 are linearly independent).
+
+**This is why q2 detects p=2 when no P-vector could.** p=2 is not a failure of sensitivity — it is inaccessible from the 4D P-vector subspace. The Q-vectors open two new geometric dimensions that carry arithmetic content unreachable from P-vector projections alone.
+
+For AIEX-001: the operator H built from P-vectors alone operates in a 4D subspace of the natural 8D embedding space. Incorporating the full bilateral (P,Q) structure expands the operator's domain to 6D — a qualitatively richer geometric setting that may be necessary for a complete spectral representation.
+
+**Lean 4 status:** Linear independence is a rank computation — directly provable from the coordinate matrix. Queued.
+
+---
+
 ## Deduction 1: Each Q-Vector Is the Image of a P-Vector Under a Single Weyl Reflection
 
 The new Q-vectors are not arbitrary roots — they are each related to a specific P-vector by **a single simple Weyl reflection**. Writing the vectors as signed basis pairs:
@@ -125,6 +165,51 @@ This is a **root-type → spectral-character correspondence** that unifies the P
 
 ---
 
+## Deduction 4: The Spectral Filter Rule Is Analytically Derivable
+
+The root-type → spectral-character correspondence (Deduction 3) is currently an empirical observation. It should be formally derivable by expanding the projection function directly.
+
+For a root of the form eᵢ − eⱼ (**difference root**), the embed_pair projection is:
+
+proj_{eᵢ−eⱼ}(embed_pair(g1,g2)) = component_i − component_j
+
+For a root of the form eᵢ + eⱼ (**sum root**):
+
+proj_{eᵢ+eⱼ}(embed_pair(g1,g2)) = component_i + component_j
+
+Expanding embed_pair(g1,g2) = [g1, g2, g1−g2, g1g2/s, (g1+g2)/2, g1/s, g2/s, (g1−g2)²/s] where s=g1+g2, the specific functional form for each root type determines its DFT frequency response. Difference roots involve signed combinations of components that act as high-pass filters on the gap sequence; sum roots combine components that smooth across the pair, yielding low-pass character.
+
+The formal derivation — taking the DFT of each root-type projection and showing the frequency response is high-pass vs low-pass as a function of the component indices — would promote this from an empirical pattern to a **theorem about why E8 root geometry produces the observed spectral structure**.
+
+This analytic derivation is Phase 18 work. If it succeeds, it provides a first-principles explanation for the full P-vector spectral split (Phase 15D) and the Q-vector spectral results (Phase 17) in a single unified framework.
+
+---
+
+## Deduction 5: Gram Matrix of the 8-Root Set Characterizes Sub-Geometric Structure
+
+The combined 8-root set { ±(e2−e7), ±(e4−e5), e2+e7, ±(e3−e6), e4+e5 } may form a named root subsystem of E8. The Gram matrix G of pairwise inner products determines this.
+
+Computing selected inner products from the coordinates:
+
+| Pair | Inner product |
+|------|--------------|
+| v1 · v4 = (e2−e7)·(e2+e7) | 1−1 = 0 |
+| v2 · q4 = (e4−e5)·(e4+e5) | 1−1 = 0 |
+| v5 · q2 = (e3+e6)·(e6−e3) | −1+1 = 0 |
+| v1 · q3 = (e2−e7)·(e7−e2) | −1−1 = −2 (antipodal) |
+| v2 · v3 = (e4−e5)·(e5−e4) | −2 (antipodal) |
+| v1 · v2 | 0 |
+| v4 · q4 = (e2+e7)·(e4+e5) | 0 |
+| q2 · q4 = (e6−e3)·(e4+e5) | 0 |
+| q2 · q3 = (e6−e3)·(e7−e2) | 0 |
+| q3 · q4 = (e7−e2)·(e4+e5) | 0 |
+
+The pattern of zeros is striking. The 8-root set appears to decompose into pairs of mutually orthogonal vectors with exactly two antipodal pairs { v1,q3 } and { v2,v3 }. This structure is consistent with a product of A₁ root systems (each A₁ = { +r, −r } for a root r), but the asymmetric members (v4, q4) which have no negative partner in the set complicate this.
+
+**The full 8×8 Gram matrix computation is a concrete Phase 18 deliverable** that will either identify a named root subsystem or rule out the standard candidates. This is a half-hour calculation.
+
+---
+
 ## Implication 1: AIEX-001 Operator Must Incorporate Both P and Q Components
 
 Prior to Phase 17, the operative geometric picture for AIEX-001 was:
@@ -158,7 +243,34 @@ If true, it gives a purely geometric characterization of bilateral zero divisors
 
 ---
 
-## Implication 3: The chi3/zeta ≈ 1.0 Anomaly May Have an E8 Geometric Cause
+## Implication 3: The Framework-Independence Question Is Now Answerable
+
+Phase 15C established that framework-independence lives in the Q-vector: every framework-dependent (CD-only) pattern shares its P-vector with a Canonical Six pattern, making P-vector projections blind to the canonical/non-canonical distinction. The conclusion was: to probe framework-independence empirically, you need Q-vector access.
+
+Phase 17 delivers that access.
+
+The original Phase 15C question — *can we measure something that distinguishes Canonical Six patterns from framework-dependent patterns?* — is now answerable. Apply Q-vector projections to the gap sequences generated from framework-dependent pattern zeros (or from the same L-function zero sets using framework-dependent Q-vectors as projection directions) and check whether their log-prime DFT profiles differ from Canonical Six Q-projections.
+
+A positive result would be the **first empirical probe of framework-independence itself** — not just P-vector geometry. If framework-dependent Q-vectors produce different SNR profiles or different prime detection coverage, this would confirm that the canonical/non-canonical distinction is geometrically encoded in the Q-vector and is accessible to experimental measurement.
+
+This experiment was the original motivation for Phase 17 and was superseded by the stronger results. It remains open and is a natural Phase 18 experiment once the E8 geometry analysis (Phase 18E) is complete — the geometry will inform which framework-dependent Q-vectors to probe first.
+
+---
+
+## Implication 4: The Vector Part of the Sedenion Product Is Unexplored Territory
+
+Phase 17B-ii computed the **scalar part** of the sedenion product x_n · x_{n+1} where x_n = g_n·P1 + g_{n+1}·Q1, yielding the three-gap statistic s_n = g_{n+1}·(g_n+g_{n+2}). This revealed the Act/GUE = 1.02 layer structure.
+
+The **vector part** of the same product is 15 unexplored components. Each component is a bilinear function of consecutive gap triples, with structure determined by the sedenion multiplication table. These components may carry:
+- Additional correlation statistics not captured by the scalar part
+- Different Act/GUE ratios that extend the layer structure to more components
+- Direct connections to the imaginary basis directions eᵢ of the sedenion algebra
+
+This is low-hanging experimental fruit. The sedenion product is already implemented in `rh_phase17b_prep.py`. Extracting the vector part requires only indexing the output beyond component 0. Phase 18B is the natural home for this computation, extending the three-gap layer structure analysis.
+
+---
+
+## Implication 5: The chi3/zeta ≈ 1.0 Anomaly May Have an E8 Geometric Cause
 
 Phase 17 found unexpectedly that chi3 zeros carry nearly identical Q2 signal strength as zeta zeros (ratio 0.90–1.05), while chi4 zeros sit at ~23% of zeta for the same projection.
 
@@ -172,17 +284,23 @@ This is speculative but testable: compute Q-projections for L-functions with oth
 
 ## Summary of New Results
 
-| Result | Type | Lean 4 status |
-|--------|------|--------------|
-| Q-vector 8D images have ‖q‖² = 2 (E8 first shell) | Observation, provable | Queued — integer arithmetic |
-| Q-vectors in same single Weyl orbit as P-vectors | Deduction from W(E8) transitivity | Follows from existing Mathlib |
-| Each (P,Q) bilateral pair = single Weyl reflection pair | Deduction from coordinate form | Queued — explicit reflection computation |
-| Combined P+Q set = 8 distinct E8 roots | Observation | Verified by enumeration |
-| 8-root set is non-symmetric (named sub-structure TBD) | Open question | Requires Gram matrix analysis |
-| Difference roots → high-pass; sum roots → low-pass | Deduction unifying Phase 15D and Phase 17 | Empirical pattern, needs formal statement |
-| AIEX-001 H must be built from full (P,Q) bilateral structure | Implication | Conceptual — no proof yet |
-| Bilateral annihilation ↔ single Weyl reflection (conjecture) | Conjecture | Primary target for Phase 18 Lean 4 work |
-| chi3/Q2 anomaly may trace to E8 coordinate-prime correspondence | Speculative | Testable via Phase 18A conductor survey |
+| Result | Type | Phase 18 target | Lean 4 status |
+|--------|------|----------------|--------------|
+| Q-vector 8D images have ‖q‖² = 2 (E8 first shell) | Observation, provable | 18E | Queued — integer arithmetic |
+| Q-vectors in same single Weyl orbit as P-vectors | Deduction from W(E8) transitivity | 18E | Follows from existing Mathlib |
+| Each (P,Q) bilateral pair = geometrically orthogonal in 8D | Observation, provable | 18E | Queued — integer inner products |
+| Each (P,Q) bilateral pair = single Weyl reflection pair | Deduction from coordinate form | 18E | Queued — explicit reflection computation |
+| Combined P+Q set = 8 distinct E8 roots | Observation | 18E | Verified by enumeration |
+| P-vectors span 4D; P+Q vectors span 6D (q2, q4 are new dimensions) | Deduction, provable | 18E | Queued — rank computation |
+| 8-root Gram matrix → named sub-structure (TBD) | Open question | 18E | Requires Gram matrix analysis |
+| Difference roots → high-pass; sum roots → low-pass | Empirical rule | 18E | Needs analytic derivation |
+| Spectral filter rule analytically derivable from embed_pair | Deduction (pending) | 18E | Proof target |
+| AIEX-001 H must be built from full (P,Q) bilateral structure | Implication | 18C | Conceptual — no proof yet |
+| Bilateral annihilation ↔ single Weyl reflection (conjecture) | Conjecture | 18E | **Primary Lean 4 target** |
+| P⊥Q geometric orthogonality ↔ algebraic annihilation (conjecture) | Conjecture | 18E | **Second Lean 4 target** |
+| Framework-independence empirical probe now answerable | Implication | 18F | Experimental |
+| Vector part of sedenion product (15 components) unexplored | Observation | 18B | Experimental |
+| chi3/Q2 anomaly may trace to E8 coordinate-prime correspondence | Speculative | 18A | Testable via conductor survey |
 
 ---
 

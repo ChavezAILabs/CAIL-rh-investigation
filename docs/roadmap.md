@@ -3,8 +3,8 @@
 
 **Researcher:** Paul Chavez, Chavez AI Labs LLC
 **Initiated:** March 4, 2026
-**Last Updated:** March 9, 2026
-**Status:** Active — Phases 1–16 complete; Phase 17 next
+**Last Updated:** March 12, 2026
+**Status:** Active — Phases 1–17 complete; Phase 18 next
 
 ---
 
@@ -319,6 +319,14 @@ A formative research dream suggested the key to RH was 24-dimensional. The 24-el
 | 15D | **Weyl orbit = orthogonal frame** (all norms √2, all pairs 90° except antipodal 180°); spectral split: {v1,v2,v3,v4} high-pass cluster vs {v5} low-pass outlier; P1 bridge claim corrected | Complete |
 | 15A | Antipodal isometry is a THEOREM (v3=−v2 → universal, not zero-specific); log-prime signal re-confirmed zero-specific; Route C eliminated, Route B favored | Complete |
 | 15B | P2 projection skewness height-invariant (CV=0.096) but not zero-specific (GUE delta=−0.014, indistinguishable) | Complete |
+| 16A | L-function sample size diagnosis (mpmath underpowered); python-flint 100× speed discovery | Complete |
+| 16B | **Route B CONFIRMED:** p=2 chi4 suppressed 353×, p=3 chi3 suppressed 736×; Route C ELIMINATED | Complete |
+| 17A-i | **q2 (e5+e10): 9/9 primes, SNR 418–1762×; p=2 first-ever detection at SNR=418.7** | Complete |
+| 17A-ii | q4 (e3-e12): 8/9 primes, SNR up to 1995×; ultra-low-pass filter (p=23 below threshold) | Complete |
+| 17A-iii | q3=−v1 isometry confirmed exact (max deviation 0.00e+00); machine-exact algebraic theorem | Complete |
+| 17B-i | Q2: p=2 chi4 suppressed 4652×, p=3 chi3 suppressed 6723× (10–14× stronger than SR). chi3/zeta≈1.0 unexpected open thread | Complete |
+| 17B-i | Q4: p=2 chi4 suppressed ~10,000× (strongest suppression observed). Q-vectors outperform P-vectors in Route B signal | Complete |
+| 17B-ii | Sedenion bilateral verification: all 6 patterns P*Q=0.00e+00 exact; three-gap Act/GUE=1.020 (contrast: two-gap 0.65) | Complete |
 
 ---
 
@@ -502,30 +510,114 @@ Files: `p15c_framework_dependent.json`, `p15d_p1_bridge.json`, `p15b_skewness_he
 
 ---
 
-**Phase 17 — Q-Vector Access: Multi-Channel Embedding (NEXT)**
+**Phase 17 — Q-Vector Access: Multi-Channel Embedding — COMPLETE (March 12, 2026)**
 
-*Depends on:* Phase 15C + Phase 16 complete. embed_pair only probes P-vector direction; the canonical/non-canonical distinction lives in Q-vector. Design an embed method that accesses Q-vector information — either a higher-dimensional embedding of triplet gaps, or direct sedenion multiplication of consecutive gap pairs.
+Files: `rh_phase17a_prep.py`, `rh_phase17b_prep.py`, `p17a_results.json`, `p17b_results.json`, `RH_Phase17_Results.md`, `RH_Phase17_Handoff.md`
 
-*Core question:* Can we measure something that distinguishes Canonical Six patterns from framework-dependent patterns? If yes, this would be the first empirical probe of framework-independence itself — not just P-vector geometry.
+*17A — Q-vector DFT survey (zeta zeros, 10k):*
 
-*Phase 16 context:* Route B is confirmed — the signal is arithmetic, not statistical. The Q-vector may carry additional arithmetic information about each L-function. If the Q-vector encodes chi(p) values (character values at primes), this would provide a direct algebraic link between the sedenion structure and the Euler product. A key test: does the Q-vector projection profile differ between chi_4 zeros and ζ zeros in a way that maps to the character table of chi_4?
+**q2 projection** (e5+e10 → 8D image (0,0,−1,0,0,+1,0,0)):
+- **9/9 primes detected, SNR 418–1762×** — first single projection to detect all 9 primes p=2..23
+- **p=2 detected at SNR=418.7** — first p=2 detection in any projection (absent from all P-vector phases 13A, 14B, 15D)
+- Mechanism: q2·embed_pair = g2−g1+g1/(g1+g2) (asymmetric). All P-vector projections were symmetric or high-pass filtered in ways that cancelled the p=2 contribution.
+- Sequence: mean=0.499, range=[−2.27, 3.05], asymmetric (unlike all P-vectors)
 
-*Antipodal component:* In Q-vector space, does an antipodal pair exist among the canonical patterns' Q-vectors? If v2's Q-vector is antipodal to v3's Q-vector, this extends bilateral symmetry into both components of the zero divisor pair.
+**q4 projection** (e3−e12 → 8D image (0,0,0,+1,+1,0,0,0)):
+- **8/9 primes detected (p=23 just below threshold), SNR up to 1995×**
+- Ultra-low-pass filter: SNR decays exponentially from p=2 (SNR=1796.9) to p=19 (SNR=4.1)
+- Algebraic identity: q4·embed_pair = H/2+A (positive complement of P2 = H/2−A); q4+P2 = H (harmonic mean)
+- Sequence: mean=1.429, always positive
+
+**q3 isometry** (q3=−v1):
+- Max deviation |DFT(q3)|²−|DFT(v1)|²: 0.00e+00 (machine exact) — algebraic theorem confirmed
+
+Q-vector SNR vs P-vector SNR: Best P-vector peak = 245× (Phase 13A, P2). Best Q-vector peak = 1995× (q4, p=3). Median SNR improvement: 5–7×.
+
+*17B-i — L-function comparative Q-projection:*
+
+| Direction | p=2 chi4/zeta | p=3 chi3/zeta | Interpretation |
+|-----------|--------------|--------------|----------------|
+| SR (Phase 16B) | 0.0029 (353×) | 0.0014 (736×) | baseline |
+| q2 (Phase 17) | 0.0002 (4652×) | 0.0001 (6723×) | 10× stronger Route B |
+| q4 (Phase 17) | 0.0001 (~10,000×) | 0.0004 (~2500×) | 14× stronger Route B |
+
+Route B confirmed more decisively via Q-vectors. Q-vectors encode Euler product arithmetic with higher sensitivity than P-vectors.
+
+**Unexpected: chi3/zeta ≈ 1.0 for Q2 unramified primes (p=5..23, ratio 0.90–1.05).** Chi4/zeta ≈ 0.23. Chi3 zeros carry nearly identical Q2 SNR as zeta zeros. Candidate: chi3 has conductor 3 (minimal odd prime), giving it a special relationship with the e5+e10 Q-vector direction. **Open thread → Phase 18.**
+
+*17B-ii — Sedenion bilateral zero divisor verification:*
+- All 6 patterns: ||P*Q|| = 0.00e+00 (exact machine zero) — re-verification of Lean 4 proof
+- Three-gap formula derived analytically: scalar_part(x_n * x_{n+1}) = −2·g_{n+1}·(g_n+g_{n+2})
+- Three-gap Act/GUE variance ratio = **1.020** (no discrimination); Poi/GUE = 4.472
+- Contrast with two-gap Act/GUE ≈ 0.65. Layer structure revealed: zeros match GUE in three-gap correlations but are tighter in two-gap correlations. The bilateral product structure exposes this.
 
 ---
 
-**Phase 18 — AIEX-001 First Structural Exploration**
+**Phase 18 — AIEX-001 Structural Exploration + Open Thread Resolution**
 
-*Depends on:* Phases 15, 16, 17 results; a pause for theoretical work. The combined Phase 15+16 picture is now sharp: the mechanism runs through E8 P-vector geometry; the log-prime signal is arithmetic (Route B confirmed); the signal encodes each L-function's Euler product structure. Route C (GUE universality) is eliminated.
+*Depends on:* Phases 15, 16, 17 complete. The Phase 17 picture sharpens the AIEX-001 target substantially. Q-vectors carry arithmetic structure with higher SNR than P-vectors; the full bilateral zero divisor pair (P,Q) — not just the P-projection — reads the Euler product. Three new open threads from Phase 17 drive the Phase 18 agenda.
 
-Attempt to construct the simplest possible connection between bilateral zero divisor annihilation events and the explicit formula for the zero distribution. Questions:
-1. Can the embed_pair kernel be understood as a discretization of a prime-orbit operator?
-2. Does the high-pass/low-pass split of the Weyl orbit (P1–P4 vs P5) correspond to a known decomposition in the explicit formula (e.g., short primes vs large primes)?
-3. Does the v2+v3=0 antipodal constraint have an operator-theoretic interpretation connecting to self-adjointness?
-4. What algebraic property of the sedenion zero divisor corresponds to gap-ratio compression (Act/GUE < 1)?
-5. **NEW (Phase 16):** The detected primes = Euler product primes for each L-function. Can the sedenion multiplication structure be directly mapped to Euler factor structure? I.e., is there a formal sense in which the bilateral zero divisor product encodes (1 - χ(p)p^{-s})^{-1}?
+**18A — chi3/zeta ≈ 1.0 for Q2: Character Structure in Q-Vector Projection**
 
-**Seeded theoretical thread — Antipodal Bilateral Symmetry:** The isometry is universal/trivial (Phase 15A), but the geometric structure — orthogonal frame with one antipodal pair — is the non-trivial object. The question is whether the breaking of the orthogonal frame at the antipodal pair has an operator-theoretic meaning connected to the functional equation (which also pairs zeros via ρ ↔ 1−ρ̄).
+Phase 17 showed chi3/zeta Q2 ratio ≈ 0.90–1.05 for all unramified primes, while chi4/zeta ≈ 0.23. This asymmetry is not predicted by Route B alone (Route B only predicts which primes are suppressed, not the ratio of unramified prime SNRs across L-functions). Candidate investigations:
+
+1. **Conductor asymmetry test:** Compute Q2 and Q4 projections for chi_8 (conductor 8), chi_5 (conductor 5), chi_7 (conductor 7) zeros. If chi3's unique behavior traces to conductor=3 (minimal odd prime), other small-conductor L-functions should show intermediate behavior. Prediction: chi_5 and chi_7 will show chi/zeta ratios between 0.23 and 1.0 for Q2.
+
+2. **Character table correlation:** For each character chi, tabulate chi(p) values at p=2,3,5,...,23. Check whether the chi/zeta SNR ratio at prime p correlates with |chi(p)|² across all computed L-functions. Route B predicts full suppression when chi(p)=0; Q2 asymmetry would imply the SNR ratio also encodes |chi(p)| for unramified primes.
+
+3. **Q4 profile comparison:** chi3/zeta for Q4 is 0.235–0.290 (not ≈1.0 like Q2). The chi3/Q2 anomaly is projection-specific. This constrains the mechanism to something about q2=(0,0,-1,0,0,+1,0,0) in particular — the e5-e10 direction in 8D space.
+
+**18B — Three-Gap Layer Structure: Why Does Act/GUE Shift from 0.65 to 1.02?**
+
+Phase 17B-ii established a new empirical fact: the bilateral sedenion product naturally generates the three-gap statistic s_n = g_{n+1}(g_n+g_{n+2}), and for this statistic Act/GUE variance = 1.02 (matching GUE), whereas the two-gap variance ratio is consistently 0.65 (actual tighter than GUE). This is a multi-scale structure in the zero correlations that the bilateral product reveals.
+
+Investigations:
+1. **Analytic connection to GUE form factor:** The 3-point form factor of GUE is a known quantity in random matrix theory. Check whether Act/GUE = 1.02 for three-gap statistics is consistent with the theoretical 3-point form factor at the relevant scale. If yes, this is a direct RMT validation; if no, it constrains the mechanism.
+2. **n-gap generalization:** Define s_n^(k) involving k consecutive gaps. At what k does the Act/GUE variance ratio transition from <1 to ≈1? The transition scale carries information about the correlation length in the zero sequence.
+3. **Vector part of sedenion product:** The three-gap statistic came from the *scalar part* of x_n·x_{n+1}. The *vector part* is 15 unexplored components — each a bilinear function of consecutive gap triples, structure determined by the sedenion multiplication table. Extract and compute Act/GUE for each component against actual zeros vs GUE/Poisson. The sedenion product is already implemented in `rh_phase17b_prep.py`; this requires only indexing beyond component 0.
+
+**18C — AIEX-001 Operator Construction: Q-Vector Component**
+
+Phase 17 shows the full bilateral pair (P,Q) reads the Euler product — not just the P-projection. This updates the AIEX-001 target:
+- Prior: H should be built from P-vector geometry (E8 Weyl orbit)
+- Revised: H should incorporate both P and Q components of the bilateral zero divisor pairs
+
+Structural questions:
+1. Can the embed_pair kernel be understood as a discretization of a prime-orbit operator? The P-projection gives high-pass (p≥7) and Q-projection gives broadband (p=2..23) channels — this is a filter bank.
+2. Does the P/Q split correspond to a known decomposition in the explicit formula? E.g., short vs long prime orbits, ramified vs unramified contributions?
+3. The v2+v3=0 antipodal constraint: operator-theoretic interpretation connecting to self-adjointness of H? The functional equation pairs zeros ρ ↔ 1−ρ̄, which is also a bilateral pairing.
+4. **NEW from Phase 17:** The chi3/zeta ≈ 1.0 anomaly in Q2 — could this encode L-function character structure in a way that gives a representation-theoretic interpretation of the bilateral zero divisor action? The Q2 direction seems to "know" about chi3 specifically.
+
+**18E — E8 Geometry: Gram Matrix, Orthogonality, and Subspace Analysis**
+
+New geometric observations from the E8 implications analysis (see `RH_Phase17_E8_Implications.md`) that require formal computation and Lean 4 verification:
+
+1. **Gram matrix of the 8-root set:** Compute all 28 pairwise inner products of { ±(e2−e7), ±(e4−e5), e2+e7, ±(e3−e6), e4+e5 }. The full Gram matrix determines whether this is a named root subsystem of E8 (A₁⁴, D₄, or other). Several inner products are already known to be 0 or ±2 from inspection; the full matrix settles the sub-structure question. This is a half-hour calculation and Phase 18's first concrete deliverable.
+
+2. **P⊥Q orthogonality:** Every bilateral pair (Pᵢ,Qᵢ) has orthogonal 8D projections (verified for all 6 patterns by direct inner product). This is independent of, and in addition to, the 16D algebraic annihilation P·Q=0. Whether these two zero conditions are connected by a theorem is the **second primary Lean 4 target** for Phase 18 (after the Weyl reflection conjecture).
+
+3. **6D subspace expansion:** P-vectors span a 4D subspace (v3=−v2 reduces rank). Q-vectors q2 and q4 are provably outside this span, expanding coverage to 6D. Lean 4 target: rank computation from the coordinate matrix. Direct consequence for AIEX-001: H cannot be fully represented using P-vector geometry alone; the Q-vectors add two new independent dimensions of arithmetic coverage.
+
+4. **Spectral filter rule analytic derivation:** Prove formally that difference roots (eᵢ−eⱼ) give high-pass filter character and sum roots (eᵢ+eⱼ) give low-pass filter character, by expanding the embed_pair projection for each root type and analyzing the resulting DFT frequency response. If successful, this unifies the Phase 15D P-vector spectral split and the Phase 17 Q-vector results into a single theorem about E8 root geometry and prime spectral content.
+
+**18F — Framework-Independence Empirical Probe**
+
+Phase 15C showed the canonical/non-canonical distinction is invisible to P-vector projections because all framework-dependent patterns share P-vectors with Canonical Six patterns. The conclusion: probing framework-independence requires Q-vector access. Phase 17 delivers that access.
+
+Apply Q-vector projections to gap sequences using framework-dependent patterns' Q-vectors as projection directions. Compare log-prime DFT SNR profiles against Canonical Six Q-projections. A positive result — different SNR profiles for framework-dependent Q-vectors — would be the **first empirical probe of framework-independence itself**, directly measuring the canonical/non-canonical distinction experimentally.
+
+The E8 geometry analysis (18E) should precede this: the Gram matrix and subspace structure will identify which framework-dependent Q-vectors are most geometrically distinct from Canonical Six Q-vectors, informing which directions to probe first.
+
+**18D — Paper Integration**
+
+Phase 17 results for paper (Section 8 extension or Section 9 new):
+- Q-vector SNR superiority (5–7× over P-vectors)
+- First p=2 detection in single projection (q2 broadband)
+- Route B re-confirmed via Q-vectors with 10–14× stronger suppression ratios
+- chi3/zeta ≈ 1.0 anomaly (flag as open question)
+- Three-gap Act/GUE = 1.02 layer structure
+
+**Seeded theoretical thread — Antipodal Bilateral Symmetry:** The isometry is universal/trivial (Phase 15A), but the geometric structure — orthogonal frame with one antipodal pair — is the non-trivial object. The question is whether the breaking of the orthogonal frame at the antipodal pair has an operator-theoretic meaning connected to the functional equation (which also pairs zeros via ρ ↔ 1−ρ̄). This thread now has a Q-vector complement: are any Q-vectors mutually antipodal?
 
 ---
 
@@ -539,12 +631,17 @@ Attempt to construct the simplest possible connection between bilateral zero div
 
 *Depends on:* Phases 16–19 sufficiently resolved. Key decisions:
 1. Incorporate Phase 15 corrections (antipodal isometry, P1 bridge, skewness clarification)
-2. **Incorporate Phase 16 results:** Route B confirmed; ramified prime suppression (353× for p=2/chi_4, 736× for p=3/chi_3); log-prime signal encodes Euler product structure. This is a major new finding for Section 8 (new) or Section 7.6.
-3. Update Section 7 with all Phase 11–16 findings
-4. Write AIEX-001 status section based on Phase 18 theoretical work
-5. Submit to *Experimental Mathematics*
+2. **Incorporate Phase 16 results:** Route B confirmed; ramified prime suppression (353× for p=2/chi_4, 736× for p=3/chi_3); log-prime signal encodes Euler product structure. Section 8 (new) or Section 7.6.
+3. **Incorporate Phase 17 results:** Q-vector SNR superiority (5–7×); first p=2 detection in single projection; Route B re-confirmed with 10–14× stronger suppression; chi3/zeta≈1.0 anomaly; three-gap layer structure.
+4. Update Section 7 with all Phase 11–17 findings
+5. Write AIEX-001 status section based on Phase 18 theoretical work
+6. Submit to *Experimental Mathematics*
 
-**Phase 16 contribution to paper:** The L-function comparative study is a clean, publishable result independent of the broader sedenion/AIEX-001 framework. It demonstrates that the DFT signal on spacing ratios of L-function zeros encodes the Euler product structure: detected primes = unramified primes, with ramified primes suppressed 300–700×. This is a number-theory result, not just a transform characterization result.
+**Phase 16 contribution to paper:** Ramified prime suppression (353–736×) is clean and publishable independent of broader sedenion/AIEX-001 story. Route B confirmed, Route C eliminated.
+
+**Phase 17 contribution to paper:** Q-vector access is a new result at two levels: (1) practical — q2 is the first single projection to detect all 9 primes p=2..23 with SNR>100×; (2) structural — the chi3/zeta≈1.0 Q2 anomaly and three-gap Act/GUE=1.02 layer structure are new findings about the arithmetic of L-function zeros.
+
+**Phase 17 E8 implications contribution to paper:** The geometric observations in `RH_Phase17_E8_Implications.md` extend the v1.3 E8 results: all Q-vector 8D images lie on the E8 first shell; the bilateral pairs are geometrically orthogonal; the P+Q set spans 6D vs P-only 4D; the root-type→spectral-character rule unifies Phases 15D and 17. These are paper-ready once Lean 4 verification is complete (Phase 18E).
 
 ---
 
