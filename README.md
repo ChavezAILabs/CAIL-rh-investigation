@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–16 complete. Formally verified in Lean 4.
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -17,15 +17,23 @@ The investigation is grounded in two novel tools:
 
 The algebraic foundation is the **Canonical Six** — six framework-independent bilateral zero divisor patterns in 16D sedenion space, formally established in the companion paper (v1.3, Feb 26, 2026).
 
-### Key Result: Route B Confirmed (Phase 16)
+### Key Results
 
-The log-prime spectral signal detected in Riemann zero gaps is **arithmetic** in origin (tracks the Euler product of the specific L-function), not statistical (not a universal GUE property). Decisive evidence:
+**Route B Confirmed (Phase 16):** The log-prime spectral signal in Riemann zero gaps is **arithmetic** in origin — it tracks the Euler product of the specific L-function, not a universal GUE property. Decisive evidence:
 
 - p=2 suppressed 353× in χ₄ zeros (χ₄(2)=0, ramified prime)
 - p=3 suppressed 736× in χ₃ zeros (χ₃(3)=0, ramified prime)
 - All other primes present in both — exactly matching Euler product structure
 
 This eliminates Route C (GUE universality) and strongly supports AIEX-001: a Hilbert-Pólya operator in sedenion space.
+
+**Q-Vector Access (Phase 17):** First probe of the Q-vector component of the Canonical Six bilateral zero divisors. Results:
+
+- **p=2 detected for the first time** — SNR=418× via the q2 projection (all P-vector projections missed p=2 due to high-pass filter symmetry)
+- **9/9 primes p=2..23 detected in a single projection** — q2 is the first broadband channel covering the full prime spectrum
+- Q-vectors outperform P-vectors by **5–7× in SNR** (peak 1995× vs 245×)
+- Route B re-confirmed with **10–14× stronger suppression** than Phase 16 (p=2 in χ₄: ~10,000×)
+- **Layer structure discovered**: actual zeros match GUE in three-gap correlations (Act/GUE = 1.02) but are tighter in two-gap correlations (0.65) — the bilateral product structure reveals this distinction
 
 ---
 
@@ -38,7 +46,7 @@ CAIL-rh-investigation/
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄)
-├── results/                         # All phase result JSON files (Phases 1–16)
+├── results/                         # All phase result JSON files (Phases 1–17)
 ├── scripts/                         # Python analysis scripts
 ├── docs/
 │   ├── findings_summary.md          # Cumulative results summary
@@ -67,6 +75,7 @@ CAIL-rh-investigation/
 | 14 | Per-band analysis | Actual > GUE all 20 bands (t=8.18, p≪0.001); SR/P2 filter complementarity |
 | 15 | Geometry & corrections | Antipodal isometry = theorem; Weyl orbit spectral split confirmed |
 | **16** | **L-function comparison** | **Route B CONFIRMED; Route C ELIMINATED** |
+| **17** | **Q-vector access** | **First p=2 detection; 9/9 primes in single projection; Route B re-confirmed 10–14× stronger** |
 
 ---
 
