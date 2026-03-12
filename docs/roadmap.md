@@ -10,9 +10,9 @@
 
 ## Overview
 
-This roadmap documents the systematic application of the Chavez Transform and ZDTP to the nontrivial zeros of the Riemann zeta function. The investigation began March 4, 2026 and has produced six completed experimental phases. Each phase refined the research question — from broad structural detection toward precise GUE discrimination and now toward the algebraic mechanism underlying the Montgomery-Dyson coincidence.
+This roadmap documents the systematic application of the Chavez Transform and ZDTP to the nontrivial zeros of the Riemann zeta function. The investigation began March 4, 2026 and has produced seventeen completed experimental phases. Each phase has refined the research question — from broad structural detection through precise GUE discrimination, L-function arithmetic comparison, and now into the E8 geometric structure underlying the bilateral zero divisor mechanism.
 
-The long-range objective is a contribution at the level of the Riemann Hypothesis itself: not merely empirical confirmation of GUE statistics, but a proposed algebraic mechanism — grounded in the 24-element bilateral zero divisor family of sedenion space — that may explain *why* the zeros are constrained to the critical line Re(s) = ½.
+The long-range objective is a contribution at the level of the Riemann Hypothesis itself: not merely empirical confirmation of GUE statistics, but a proposed algebraic mechanism — grounded in the Canonical Six bilateral zero divisors of sedenion space — that may explain *why* the zeros are constrained to the critical line Re(s) = ½.
 
 **Foundational algebraic asset**: The Canonical Six and their 24-element bilateral zero divisor family (Lean 4 verified, zero sorry stubs). The Canonical Six are framework-independent across Cayley-Dickson and Clifford algebras. Their P-vector images lie on the E8 lattice first shell and form a single Weyl orbit — formally proven.
 
@@ -627,7 +627,9 @@ Phase 17 results for paper (Section 8 extension or Section 9 new):
 
 ---
 
-**Phase 20 — Paper Finalization Sprint**
+**Phase 20+ — Paper Finalization and Beyond**
+
+*Note: This roadmap is open-ended. Given the trajectory of the investigation — each phase consistently opening new threads — additional phases beyond 20 are expected. Phase 20 marks a natural paper consolidation point, not a terminus.*
 
 *Depends on:* Phases 16–19 sufficiently resolved. Key decisions:
 1. Incorporate Phase 15 corrections (antipodal isometry, P1 bridge, skewness clarification)
