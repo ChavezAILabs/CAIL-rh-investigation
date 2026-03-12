@@ -1,0 +1,57 @@
+{
+  "experiment": "15C",
+  "question": "Do CD-specific patterns produce different variance ratios than Canonical Six?",
+  "date": "2026-03-09",
+  "n_pairs": 97,
+  "zero_range": "t~14-237 (first 99 zeros)",
+
+  "key_finding": "CD-specific P-vectors are IDENTICAL to Canonical Six P-vectors. The framework distinction (CD vs Clifford) resides entirely in the Q-element (second factor), not the P-element. Poi/GUE and Act/GUE variance ratios are therefore identical between canonical and CD-specific patterns sharing the same P-vector.",
+
+  "antipodal_finding": "CD-specific patterns CONTAIN an antipodal pair: CD2_pat58_P (v2) + CD3_pat81_P (v3) = 0. This is the same antipodal pair as the Canonical Six (v2+v3=0). The antipodal structure is shared between canonical and CD-specific patterns.",
+
+  "p_vector_overlap": {
+    "CD1_pat19": "shares P-vector v1 with Canonical Pat18",
+    "CD2_pat58": "shares P-vector v2 with Canonical Pat59",
+    "CD3_pat81": "shares P-vector v3 with Canonical Pat84",
+    "CD4_pat101": "shares P-vector v4 with Canonical Pat102",
+    "CD5_pat103": "shares P-vector v4 with Canonical Pat102 (identical to CD4)",
+    "CD6_pat121": "shares P-vector v5 with Canonical Pat124"
+  },
+
+  "canonical_six_results": {
+    "P1_pat18":  {"actual_sym": -3.5,  "gue_sym": -13.64, "poi_sym": -87.83, "actual_var": 0.7269, "gue_var": 1.161,  "poi_var": 4.3134,  "poi_gue_ratio": 3.715, "act_gue_ratio": 0.626, "actual_skew": 1.1156},
+    "P2_pat59":  {"actual_sym": 47.81, "gue_sym": 47.12,  "poi_sym": -14.13, "actual_var": 0.1584, "gue_var": 0.2391, "poi_var": 1.2984,  "poi_gue_ratio": 5.43,  "act_gue_ratio": 0.662, "actual_skew": -1.3995},
+    "P3_pat84":  {"actual_sym": 47.81, "gue_sym": 47.12,  "poi_sym": -14.13, "actual_var": 0.1584, "gue_var": 0.2391, "poi_var": 1.2984,  "poi_gue_ratio": 5.43,  "act_gue_ratio": 0.662, "actual_skew": 1.3995},
+    "P4_pat102": {"actual_sym": -28.61,"gue_sym": -44.03, "poi_sym": -134.27,"actual_var": 1.1046, "gue_var": 1.7594, "poi_var": 5.7505,  "poi_gue_ratio": 3.268, "act_gue_ratio": 0.628, "actual_skew": 0.6855},
+    "P5_pat124": {"actual_sym": -99.04,"gue_sym": -108.56,"poi_sym": -251.62,"actual_var": 2.3285, "gue_var": 3.385,  "poi_var": 11.0402, "poi_gue_ratio": 3.262, "act_gue_ratio": 0.688, "actual_skew": 0.0573}
+  },
+
+  "cd_specific_results": {
+    "CD1_pat19":  {"actual_sym": -3.5,  "gue_sym": -13.64, "poi_sym": -87.83, "actual_var": 0.7269, "gue_var": 1.161,  "poi_var": 4.3134,  "poi_gue_ratio": 3.715, "act_gue_ratio": 0.626, "actual_skew": 1.1156, "same_pvec_as": "P1(v1)"},
+    "CD2_pat58":  {"actual_sym": 47.81, "gue_sym": 47.12,  "poi_sym": -14.13, "actual_var": 0.1584, "gue_var": 0.2391, "poi_var": 1.2984,  "poi_gue_ratio": 5.43,  "act_gue_ratio": 0.662, "actual_skew": -1.3995,"same_pvec_as": "P2(v2)"},
+    "CD3_pat81":  {"actual_sym": 47.81, "gue_sym": 47.12,  "poi_sym": -14.13, "actual_var": 0.1584, "gue_var": 0.2391, "poi_var": 1.2984,  "poi_gue_ratio": 5.43,  "act_gue_ratio": 0.662, "actual_skew": 1.3995, "same_pvec_as": "P3(v3)"},
+    "CD4_pat101": {"actual_sym": -28.61,"gue_sym": -44.03, "poi_sym": -134.27,"actual_var": 1.1046, "gue_var": 1.7594, "poi_var": 5.7505,  "poi_gue_ratio": 3.268, "act_gue_ratio": 0.628, "actual_skew": 0.6855, "same_pvec_as": "P4(v4)"},
+    "CD5_pat103": {"actual_sym": -28.61,"gue_sym": -44.03, "poi_sym": -134.27,"actual_var": 1.1046, "gue_var": 1.7594, "poi_var": 5.7505,  "poi_gue_ratio": 3.268, "act_gue_ratio": 0.628, "actual_skew": 0.6855, "same_pvec_as": "P4(v4)"},
+    "CD6_pat121": {"actual_sym": -99.04,"gue_sym": -108.56,"poi_sym": -251.62,"actual_var": 2.3285, "gue_var": 3.385,  "poi_var": 11.0402, "poi_gue_ratio": 3.262, "act_gue_ratio": 0.688, "actual_skew": 0.0573, "same_pvec_as": "P5(v5)"}
+  },
+
+  "summary": {
+    "canonical_poi_gue_range": [3.262, 5.430],
+    "canonical_poi_gue_mean": 4.221,
+    "cd_specific_poi_gue_range": [3.262, 5.430],
+    "cd_specific_poi_gue_mean": 4.062,
+    "canonical_act_gue_range": [0.626, 0.688],
+    "canonical_act_gue_mean": 0.653,
+    "cd_specific_act_gue_range": [0.626, 0.688],
+    "cd_specific_act_gue_mean": 0.649,
+    "framework_independence_load_bearing": false,
+    "p_vector_determines_measurement": true,
+    "q_vector_irrelevant_to_embed_pair": true
+  },
+
+  "verdict": "Framework-independence is NOT the operative algebraic property for embed_pair projection measurements. The P-vector (first factor of the zero divisor pair) entirely determines the embed_pair projection result. CD-specific and canonical patterns sharing a P-vector produce identical results. The Clifford vs CD-only distinction resides in the Q-element, which embed_pair does not access. Implication: the measurement operates on the E8 Weyl orbit geometry of the P-vectors, not the full bilateral zero divisor structure.",
+
+  "structural_note_antipodal": "The antipodal pair v2+v3=0 appears in BOTH canonical (Pat59/Pat84) and CD-specific (Pat58/Pat81) patterns. The antipodal structure is a property of the P-vector geometry (E8 Weyl orbit), not of framework-independence. This strengthens the E8 Weyl orbit geometry as the operative algebraic structure underlying all measurements.",
+
+  "implication_for_mechanism": "The mechanism connecting the sedenion kernel to zero spectral structure operates through the E8 P-vector geometry, not through the full bilateral zero divisor product. The Clifford vs CD distinction (framework-independence) does not affect embed_pair projections. To probe the full bilateral structure, a measurement that accesses Q-vector information is needed — multi-channel embed or direct sedenion multiplication."
+}

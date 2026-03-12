@@ -1,0 +1,39 @@
+{
+  "actual": {
+    "mean": -1.2088,
+    "skewness": -1.4215,
+    "kurtosis": 3.0157
+  },
+  "gue_s1": {
+    "mean": -1.2595,
+    "skewness": -0.8081,
+    "kurtosis": 0.0477
+  },
+  "gue_s2": {
+    "mean": -1.1526,
+    "skewness": -0.2914,
+    "kurtosis": -0.0708
+  },
+  "gue_s3": {
+    "mean": -1.2088,
+    "skewness": -0.2359,
+    "kurtosis": -0.6858
+  },
+  "poi_s1": {
+    "mean": -1.5392,
+    "skewness": -1.6874,
+    "kurtosis": 2.502
+  },
+  "poi_s2": {
+    "mean": -1.2422,
+    "skewness": -1.0356,
+    "kurtosis": 0.5203
+  },
+  "poi_s3": {
+    "mean": -1.4083,
+    "skewness": -0.9241,
+    "kurtosis": 0.0068
+  },
+  "gue_mean_skewness": -0.4451,
+  "poi_mean_skewness": -1.2157
+}

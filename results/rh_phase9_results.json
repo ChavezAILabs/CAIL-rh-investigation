@@ -1,0 +1,170 @@
+{
+  "experiment_id": "RH_UF_2026_001",
+  "date": "2026-03-08",
+  "phases": {
+    "9A_p5_anomaly": {
+      "actual_riemann": {
+        "bilateral_zeros": 758,
+        "confidence": 0.95,
+        "conjugation_sym": 0.52
+      },
+      "gue_seeds": [
+        {
+          "seed": 1,
+          "bilateral_zeros": 715,
+          "confidence": 0.95
+        },
+        {
+          "seed": 2,
+          "bilateral_zeros": 649,
+          "confidence": 0.95,
+          "conjugation_sym": 0.519
+        },
+        {
+          "seed": 3,
+          "bilateral_zeros": 757,
+          "confidence": 0.95,
+          "conjugation_sym": 0.549
+        }
+      ],
+      "gue_mean_bilateral_zeros": 707.0,
+      "poisson_seed1": {
+        "bilateral_zeros": 697,
+        "confidence": 0.95,
+        "conjugation_sym": 0.776
+      },
+      "verdict": "P5 anomaly is NOT Riemann-specific. GUE and Poisson produce similar bilateral zero counts. Conjugation symmetry discriminates: GUE+actual ~52% vs Poisson ~78%.",
+      "riemann_specific": "false",
+      "gue_vs_poisson_discriminant": "conjugation_symmetry_52pct_vs_78pct"
+    },
+    "9B_ultra_fine_r_alpha": {
+      "grids": {
+        "delta_alpha_005_n300": {
+          "gue_theoretical": {
+            "chavez_sym": 92.7
+          },
+          "poisson_flat": {
+            "chavez_sym": 100.0
+          },
+          "empirical_zeros": {
+            "chavez_sym": 85.3,
+            "min_bin_pair_count": 0,
+            "low_confidence_bins": 6
+          },
+          "separation_poisson_minus_emp": 14.7,
+          "separation_gue_minus_emp": 7.4
+        },
+        "delta_alpha_002_n750": {
+          "gue_theoretical": {
+            "chavez_sym": 92.5
+          },
+          "poisson_flat": {
+            "chavez_sym": 100.0
+          },
+          "empirical_zeros": {
+            "chavez_sym": 66.1,
+            "min_bin_pair_count": 0,
+            "low_confidence_bins": 27
+          },
+          "separation_poisson_minus_emp": 33.9,
+          "separation_gue_minus_emp": 26.4,
+          "warning": "27 low-confidence bins at Deltaalpha=0.02 with n=1000 zeros"
+        }
+      }
+    },
+    "9C_height_band_berry_keating": {
+      "bands": [
+        {
+          "band": 1,
+          "t_mid": 125.32947740377544,
+          "rc": 0.4599828908181706,
+          "actual_sym": 0.3469387755102041,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.020408163265306145
+        },
+        {
+          "band": 2,
+          "t_mid": 317.0758373517587,
+          "rc": 0.9913973661823771,
+          "actual_sym": 0.3877551020408163,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.06122448979591838
+        },
+        {
+          "band": 3,
+          "t_mid": 469.88308666540775,
+          "rc": 0.5169611162129386,
+          "actual_sym": 0.5306122448979592,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.20408163265306128
+        },
+        {
+          "band": 4,
+          "t_mid": 612.0330439917668,
+          "rc": -0.993512376178528,
+          "actual_sym": 0.46938775510204084,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.1428571428571429
+        },
+        {
+          "band": 5,
+          "t_mid": 746.539675189829,
+          "rc": -0.6208915464776343,
+          "actual_sym": 0.3673469387755102,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.04081632653061229
+        },
+        {
+          "band": 6,
+          "t_mid": 875.8977046441639,
+          "rc": -0.6976800282967011,
+          "actual_sym": 0.3673469387755102,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.04081632653061229
+        },
+        {
+          "band": 7,
+          "t_mid": 1001.2881610612044,
+          "rc": -0.9684379446658604,
+          "actual_sym": 0.40816326530612246,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.08163265306122452
+        },
+        {
+          "band": 8,
+          "t_mid": 1123.8921631838464,
+          "rc": 0.9957439380564006,
+          "actual_sym": 0.6326530612244898,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.3061224489795919
+        },
+        {
+          "band": 9,
+          "t_mid": 1243.7512926133563,
+          "rc": 0.26140894607560256,
+          "actual_sym": 0.3673469387755102,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.04081632653061229
+        },
+        {
+          "band": 10,
+          "t_mid": 1361.3478405873948,
+          "rc": 0.4206620351059996,
+          "actual_sym": 0.42857142857142855,
+          "gue_sym": 0.32653061224489793,
+          "delta": 0.10204081632653061
+        }
+      ],
+      "pearson_r_delta_vs_rc": 0.34794982719990053,
+      "pearson_p_value": 0.3245093141751298,
+      "berry_keating_confirmed": "partial_r0.35"
+    }
+  },
+  "separation_record_history": {
+    "phase_5": 7.2,
+    "phase_7a": 6.9,
+    "phase_8b": 12.5,
+    "phase_9b_n300_robust": 14.7,
+    "phase_9b_n750_with_caveat": 33.9
+  }
+}

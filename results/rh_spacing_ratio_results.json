@@ -1,0 +1,82 @@
+{
+  "experiment_id": "RH_SR_2026_001",
+  "date": "2026-03-04",
+  "researcher": "Paul Chavez, Chavez AI Labs",
+  "objective": "Test whether Chavez symmetry on spacing ratios r_n = min(g_n, g_{n+1}) / max(g_n, g_{n+1}) produces directionally correct GUE > actual > Poisson ordering",
+  "parameters": {
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "chavez_dimensions": [1, 2, 3, 4, 5],
+    "n_gaps": 99,
+    "n_ratios": 98,
+    "gap_mean_actual_n99": 2.25,
+    "synthetic_mean": 2.25,
+    "seeds": [1, 2, 3]
+  },
+  "analyses": {
+    "actual_zeros": {
+      "source": "rh_gaps.json, first 99 gaps",
+      "mean_ratio": 0.610,
+      "chavez_symmetry": 75.0,
+      "note": "Low-height regime (zeros 1-99, imaginary parts 14-237) — not fully asymptotic GUE"
+    },
+    "poisson_exp_mean225": {
+      "distribution": "Exponential(mean=2.25)",
+      "trials": [
+        {"seed": 1, "mean_ratio": 0.342, "chavez_symmetry": 72.7, "delta": -2.3},
+        {"seed": 2, "mean_ratio": 0.388, "chavez_symmetry": 69.9, "delta": -5.1},
+        {"seed": 3, "mean_ratio": 0.463, "chavez_symmetry": 72.2, "delta": -2.8}
+      ],
+      "mean_ratio": 0.397,
+      "mean_symmetry": 71.6,
+      "mean_delta": -3.4
+    },
+    "gue_wigner_mean225": {
+      "distribution": "P(s) = (32/pi^2) * s^2 * exp(-4s^2/pi), scaled to mean=2.25",
+      "trials": [
+        {"seed": 1, "mean_ratio": 0.653, "chavez_symmetry": 76.5, "delta": +1.5},
+        {"seed": 2, "mean_ratio": 0.632, "chavez_symmetry": 76.3, "delta": +1.4},
+        {"seed": 3, "mean_ratio": 0.636, "chavez_symmetry": 77.7, "delta": +2.8}
+      ],
+      "mean_ratio": 0.640,
+      "mean_symmetry": 76.9,
+      "mean_delta": +1.9
+    }
+  },
+  "decision_matrix": {
+    "gue_vs_poisson_chavez": {"delta": 5.3, "threshold": 5.0, "result": "PASSED — just exceeded"},
+    "actual_vs_poisson_chavez": {"delta": 3.4, "threshold": 5.0, "result": "Sub-threshold but directionally correct"},
+    "actual_vs_gue_chavez": {"delta": -1.9, "result": "Actual below GUE — expected for low-height regime"}
+  },
+  "ordering": {
+    "mean_ratio": "GUE (0.640) > actual (0.610) > Poisson (0.397) — correct theoretical order",
+    "chavez_symmetry": "GUE (76.9%) > actual (75.0%) > Poisson (71.6%) — correct theoretical order",
+    "note": "First experiment in series where Chavez produces directionally correct theoretically ordered ranking across all three sequence types"
+  },
+  "key_findings": {
+    "F1_mean_ratio_gue_fingerprint": {
+      "answer": "Mean ratio 0.610 = GUE fingerprint confirmed",
+      "significance": "Actual zeros (0.610) essentially match GUE theoretical expectation (~0.60) and are far above Poisson (~0.39). This confirms Montgomery-Dyson: actual zero gaps have GUE-consistent consecutive regularity. This result requires no Chavez — arithmetic alone suffices."
+    },
+    "F2_chavez_directionally_correct": {
+      "answer": "Chavez + spacing ratio pipeline produces correct GUE > actual > Poisson ordering",
+      "significance": "First experiment where Chavez achieves directionally correct ranking. GUE/Poisson separation = 5.3 pts (just clears 5-pt threshold). Chavez has a sensitivity window for GUE statistics when applied to ordering-dependent derived statistics, not raw gap values."
+    },
+    "F3_actual_below_gue_expected": {
+      "answer": "Actual zeros (75.0%) score below GUE synthetic (76.9%) on Chavez",
+      "significance": "Physically expected: zeros 1-99 are in the low-height regime, not the asymptotic GUE regime. Phase 5b will test zeros 500-599 where asymptotic GUE behavior is better established."
+    }
+  },
+  "new_contribution": "Chavez conjugation symmetry on spacing ratios achieves GUE/Poisson separation and directionally correct ordering. Not previously documented in literature. Complements the known Montgomery-Dyson result using a novel algebraic tool.",
+  "phase5_priorities": [
+    "Scale test: spacing ratio analysis at n=249, 499, 999 gaps — does GUE/Poisson Chavez separation widen?",
+    "Higher zeros: repeat at zeros 500-599 (asymptotic GUE regime) — actual zeros should score closer to GUE synthetic",
+    "AT-1 annihilation topology: independent, can run in parallel"
+  ],
+  "files": {
+    "results_json": "rh_spacing_ratio_results.json",
+    "results_summary": "RH_Phase4_SpacingRatio_Results.md",
+    "handoff": "RH_Phase4_SpacingRatio_Handoff.md"
+  }
+}

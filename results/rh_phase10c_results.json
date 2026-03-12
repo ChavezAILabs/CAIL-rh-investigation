@@ -1,0 +1,117 @@
+{
+  "phase": "10C",
+  "date": "2026-03-09",
+  "methodology": "embed_pair 8D projection + P-vector dot product + IQR conjugation_symmetry proxy",
+  "n_pairs": 97,
+  "mean_gap": 2.240395,
+  "actual_values_source": "Phase 9A CAILculator detect_patterns (canonical values)",
+  "baseline_method": "IQR proxy \u2014 reproduces P1/P2/P4 but NOT P5 (see caveat)",
+  "actual": {
+    "P1": 79.6,
+    "P2": 82.7,
+    "P4": 80.7,
+    "P5": 64.6
+  },
+  "gue": {
+    "P1": {
+      "s1": 84.5,
+      "s2": 88.7,
+      "s3": 82.5,
+      "mean": 85.2
+    },
+    "P2": {
+      "s1": 77.3,
+      "s2": 80.4,
+      "s3": 77.3,
+      "mean": 78.3
+    },
+    "P4": {
+      "s1": 80.4,
+      "s2": 86.6,
+      "s3": 85.6,
+      "mean": 84.2
+    },
+    "P5": {
+      "s1": 79.4,
+      "s2": 80.4,
+      "s3": 77.3,
+      "mean": 79.0
+    }
+  },
+  "poisson": {
+    "P1": {
+      "s1": 84.5,
+      "s2": 81.4,
+      "s3": 78.4,
+      "mean": 81.4
+    },
+    "P2": {
+      "s1": 78.4,
+      "s2": 85.6,
+      "s3": 77.3,
+      "mean": 80.4
+    },
+    "P4": {
+      "s1": 84.5,
+      "s2": 85.6,
+      "s3": 82.5,
+      "mean": 84.2
+    },
+    "P5": {
+      "s1": 78.4,
+      "s2": 76.3,
+      "s3": 76.3,
+      "mean": 77.0
+    }
+  },
+  "discrimination_table": [
+    {
+      "pvector": "P1",
+      "actual": 79.6,
+      "gue_mean": 85.2,
+      "poisson_mean": 81.4,
+      "delta_act_gue": -5.6,
+      "delta_gue_poi": 3.8,
+      "variance_ratio_poi_gue": 3.715,
+      "actual_variance_vs_gue": 0.626
+    },
+    {
+      "pvector": "P2",
+      "actual": 82.7,
+      "gue_mean": 78.3,
+      "poisson_mean": 80.4,
+      "delta_act_gue": 4.4,
+      "delta_gue_poi": -2.1,
+      "variance_ratio_poi_gue": 5.43,
+      "actual_variance_vs_gue": 0.662
+    },
+    {
+      "pvector": "P4",
+      "actual": 80.7,
+      "gue_mean": 84.2,
+      "poisson_mean": 84.2,
+      "delta_act_gue": -3.5,
+      "delta_gue_poi": 0.0,
+      "variance_ratio_poi_gue": 3.268,
+      "actual_variance_vs_gue": 0.628
+    },
+    {
+      "pvector": "P5",
+      "actual": 64.6,
+      "gue_mean": 79.0,
+      "poisson_mean": 77.0,
+      "delta_act_gue": -14.4,
+      "delta_gue_poi": 2.0,
+      "variance_ratio_poi_gue": 3.262,
+      "actual_variance_vs_gue": 0.688
+    }
+  ],
+  "key_findings": {
+    "P5_anomaly_confirmed": "64.6% actual (Phase 9A) is ~15-20 pt below P1/P2/P4",
+    "P5_proxy_caveat": "IQR proxy gives 89.7% for P5 vs known 64.6% \u2014 proxy fails for zero-straddling sequences",
+    "variance_discrimination": "All P-vectors show Poi/GUE variance ratio 3-5x \u2014 consistent level-repulsion signal",
+    "actual_zeros_tighter_than_GUE": "Act/GUE variance \u2248 0.63 across all P-vectors \u2014 actual RH zeros tighter than Wigner",
+    "P5_GUE_Poi_discrimination_proxy": "Only 2 pt separation (GUE-Poi) on P5 using proxy \u2014 weak via IQR metric",
+    "conclusion": "Variance ratio (3-5x) confirms GUE/Poisson discrimination. P5 anomaly in Phase 9A actual values needs CAILculator replication with same 98-gap dataset to confirm GUE ~52%, Poisson ~78% baselines."
+  }
+}

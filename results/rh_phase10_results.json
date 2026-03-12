@@ -1,0 +1,140 @@
+{
+  "experiment_series": "RH_MP_2026_001",
+  "phase": "10",
+  "status": "PARTIAL \u2014 10A complete, 10B deferred, 10C actual complete / GUE-Poisson pending",
+  "date": "2026-03-09",
+  "phase_10A": {
+    "status": "COMPLETE",
+    "description": "Multi-prime Berry-Keating correlation \u2014 10 height bands, spacing ratios",
+    "methodology": "spacing_ratios_min_over_max \u2208 (0,1], 100 zeros per band, 98 ratios per band",
+    "input_metric": "detect_patterns conjugation_symmetry (NOT Chavez Transform)",
+    "t_mids": [
+      125,
+      317,
+      470,
+      612,
+      747,
+      875,
+      1002,
+      1124,
+      1244,
+      1361
+    ],
+    "actual_sr_symmetry_pct": [
+      74.02,
+      77.05,
+      73.1,
+      74.75,
+      73.62,
+      75.17,
+      71.4,
+      78.15,
+      77.9,
+      73.68
+    ],
+    "gue_reference": {
+      "seeds": {
+        "1": 68.39,
+        "2": 68.27,
+        "3": 74.2,
+        "4": 73.8,
+        "5": 72.08
+      },
+      "ensemble_mean_pct": 71.35,
+      "ensemble_std_pct": 2.56,
+      "note": "Seed variance range 68.3%\u201374.2%; detect_patterns baseline NOT comparable to Phase 9C Chavez Transform (32.65%)"
+    },
+    "band_deltas_pct": [
+      2.67,
+      5.7,
+      1.76,
+      3.41,
+      2.27,
+      3.82,
+      0.05,
+      6.8,
+      6.56,
+      2.33
+    ],
+    "all_deltas_positive": true,
+    "mean_delta_pct": 3.54,
+    "std_delta_pct": 2.09,
+    "band_anomalies": {
+      "band_7_t1002": "lowest delta +0.05% (z=-1.67)",
+      "band_8_t1124": "highest delta +6.80% (z=+1.56)",
+      "band_9_t1244": "second highest +6.56% (z=+1.44)"
+    },
+    "pearson_correlation": {
+      "model_A_p2_only": {
+        "r": 0.4773,
+        "p": 0.163,
+        "r2": 0.2278
+      },
+      "model_B_5prime_sq": {
+        "r": 0.5428,
+        "p": 0.1049,
+        "r2": 0.2947
+      },
+      "delta_r_improvement": 0.0656,
+      "significance_threshold_n10": 0.632,
+      "berry_keating_confirmed": false
+    },
+    "verdict": "Sub-threshold r=+0.543 (Model B). Positive direction established. Extend to p=13,17 in Phase 11.",
+    "gue_diagnostic": {
+      "discrepancy_resolved": true,
+      "explanation": "Phase 9C used Chavez Transform (32.65% baseline); Phase 10A used detect_patterns conjugation_symmetry (~71% baseline). Different algorithms, different scale. Both show positive delta (actual>GUE). No contradiction.",
+      "seed_variance_confirmed": "5-seed range 68.3\u201374.2%; single-seed reference valid within \u00b12.6pp std"
+    }
+  },
+  "phase_10B": {
+    "status": "DEFERRED",
+    "reason": "10,000 zeros required; mpmath compute time ~40 min. No synthetic approximation.",
+    "options": [
+      "Run rh_zeros_10k script unattended in terminal tonight",
+      "Download Odlyzko pre-computed tables (100k+ zeros)"
+    ],
+    "predicted_result": ">20pt GUE/Poisson separation at \u0394\u03b1=0.02 (n=750 bins)"
+  },
+  "phase_10C": {
+    "status": "PARTIAL \u2014 actual zeros complete, GUE/Poisson pending",
+    "description": "Color Group P-vector direction survey \u2014 which projections discriminate GUE from Poisson",
+    "methodology": "97 consecutive gap pairs from first 99 zeros, projected onto 8D P-vectors via embed_pair()",
+    "n_pairs": 97,
+    "actual_zeros_results": {
+      "P1": {
+        "actual_pct": 79.63,
+        "note": "g2\u2212g7 direction"
+      },
+      "P2": {
+        "actual_pct": 82.74,
+        "note": "g4\u2212g5 direction"
+      },
+      "P4": {
+        "actual_pct": 80.74,
+        "note": "g2+g7 direction"
+      },
+      "P5": {
+        "actual_pct": 64.6,
+        "note": "g3+g6 direction \u2014 LOW SYMMETRY ANOMALY"
+      }
+    },
+    "p5_anomaly_note": "P5 at 64.6% is ~15pp below P1/P2/P4. Matches Phase 8/9 finding. Level-repulsion sensitive direction confirmed.",
+    "gue_seeds_completed": {},
+    "poisson_seeds_completed": {},
+    "completion_status": {
+      "actual": "DONE \u2014 P1=79.6%, P2=82.7%, P4=80.7%, P5=64.6%",
+      "GUE_s1_P1": "PENDING \u2014 array at /home/claude/p10c_gue_s1_P1.npy",
+      "GUE_s1_P2": "PENDING \u2014 array at /home/claude/p10c_gue_s1_P2.npy",
+      "GUE_s1_P4": "PENDING \u2014 array at /home/claude/p10c_gue_s1_P4.npy",
+      "GUE_s1_P5": "PENDING \u2014 array at /home/claude/p10c_gue_s1_P5.npy",
+      "GUE_s2_s3_all_P": "PENDING \u2014 arrays at /home/claude/p10c_gue_s{2,3}_{P}.npy",
+      "POI_s1_s3_all_P": "PENDING \u2014 arrays at /home/claude/p10c_poi_s{1,2,3}_{P}.npy"
+    },
+    "next_session_instructions": "1. Load all p10c_gue_s{1,2,3}_{P}.npy and p10c_poi_s{1,2,3}_{P}.npy \u2014 already computed.\n2. Run detect_patterns(conjugation_symmetry) on each (12 GUE + 12 Poisson = 24 calls).\n3. Compute per-P mean GUE baseline and per-P mean Poisson baseline.\n4. Build discrimination table: actual vs GUE vs Poisson for P1, P2, P4, P5.\n5. Key hypothesis: P5 GUE ~52%, P5 Poisson ~78% (from Phase 9A) \u2014 P5 is the primary level-repulsion discriminant.\n6. Secondary hypothesis: P1/P2/P4 GUE ~same as actual (no discrimination power)."
+  },
+  "cumulative_records_after_phase10": {
+    "GUE_Poisson_separation": "14.7 pts (Phase 9B, R(\u03b1) ultra-fine n=300 \u0394\u03b1=0.05)",
+    "P5_discriminant": "GUE+actual ~52% vs Poisson ~78% (Phase 9A \u2014 awaiting Phase 10C confirmation)",
+    "BerryKeating_r": "+0.543 (Phase 10A, Model B 5-prime+sq, p=0.105, sub-threshold)"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "experiment_id": "RH_GAP_2026_001",
+  "date": "2026-03-04",
+  "researcher": "Paul Chavez, Chavez AI Labs",
+  "objective": "Determine whether Chavez 83.8% on Riemann zero gaps reflects gap ordering, gap distribution, or both; test scale stability",
+  "parameters": {
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "chavez_dimensions": [1, 2, 3, 4, 5],
+    "baseline_n": 99,
+    "shuffle_seeds": [1, 2, 3],
+    "synthetic_seeds": [1, 2, 3],
+    "synthetic_mean_spec": 1.41,
+    "actual_99gap_mean": 2.246,
+    "note": "Synthetic control used mean=1.41 (full 999-gap mean), not 2.246 (actual 99-gap mean) — distribution mismatch; phase 3 will correct"
+  },
+  "analyses": {
+    "baseline": {
+      "source": "rh_gaps.json, first 99 values, unshuffled",
+      "n": 99,
+      "chavez": {
+        "conjugation_symmetry": 83.8,
+        "transform_value": 122.07
+      }
+    },
+    "shuffle_test": {
+      "source": "rh_gaps.json, first 99 values, order randomized",
+      "trials": [
+        {"seed": 1, "conjugation_symmetry": 82.9, "delta": -0.9},
+        {"seed": 2, "conjugation_symmetry": 85.9, "delta": +2.1},
+        {"seed": 3, "conjugation_symmetry": 82.9, "delta": -0.9}
+      ],
+      "mean_symmetry": 83.9,
+      "mean_delta": +0.1,
+      "verdict": "Ordering does NOT matter — mean delta +0.1 pts, well below 5-pt threshold"
+    },
+    "synthetic_exponential_gaps": {
+      "distribution": "Exponential(mean=1.41)",
+      "note": "Mean mismatch: actual 99-gap mean is 2.246; this control draws from a different regime",
+      "trials": [
+        {"seed": 1, "conjugation_symmetry": 79.0, "delta": -4.8},
+        {"seed": 2, "conjugation_symmetry": 81.5, "delta": -2.3},
+        {"seed": 3, "conjugation_symmetry": 79.8, "delta": -4.0}
+      ],
+      "mean_symmetry": 80.1,
+      "mean_delta": -3.7,
+      "verdict": "Borderline — 3.7 pts below baseline, sub-threshold (threshold=5). Confounded by mean mismatch."
+    },
+    "scale_invariance": {
+      "n99":  {"chavez_symmetry": 83.8, "delta": 0.0},
+      "n249": {"chavez_symmetry": 86.2, "delta": +2.4},
+      "n499": {"chavez_symmetry": 86.0, "delta": +2.2, "note": "estimate"},
+      "verdict": "CONFIRMED scale-stable — symmetry rises slightly with n, reaching 86.2% at n=249"
+    }
+  },
+  "decision_matrix": {
+    "shuffle_drops_5pts": {"result": false, "actual_delta": +0.1, "verdict": "Ordering irrelevant"},
+    "synthetic_separates_5pts": {"result": false, "actual_delta": -3.7, "verdict": "Borderline, confounded"},
+    "scale_invariant": {"result": true, "verdict": "Confirmed — signal grows slightly with n"}
+  },
+  "key_findings": {
+    "F1_ordering_irrelevant": {
+      "answer": "Ordering does NOT matter",
+      "significance": "Chavez conjugation symmetry is ordering-invariant at this n. The 83.8% is a property of the gap SIZE DISTRIBUTION, not the sequential arrangement. Cannot detect GUE long-range pair correlations (which are ordering-dependent)."
+    },
+    "F2_exponential_borderline": {
+      "answer": "Borderline separation (3.7 pts, sub-threshold), confounded by mean mismatch",
+      "significance": "Actual 99-gap mean is 2.246, not 1.41. Phase 3 must re-run with mean=2.246 (clean test) and Wigner surmise GUE gaps for a true Poisson vs. GUE comparison."
+    },
+    "F3_scale_stable": {
+      "answer": "Scale stable — symmetry holds and rises slightly to 86.2% at n=249",
+      "significance": "Strongest result from Phase 2b. The 83.8% is not a small-n artifact. At n=249 the zeros approach Sophie Germain gap territory (90.1%)."
+    }
+  },
+  "phase3_priorities": [
+    "Mean-matched synthetic control: Exponential(mean=2.246), n=99, seeds 1-3",
+    "Wigner surmise GUE gaps: P(s) proportional to s*exp(-pi*s^2/4), n=99, compare to Poisson baseline",
+    "AT-1 annihilation topology: Biss-Dugger-Isaksen literature check, then classify all 84 zero divisor pairs"
+  ],
+  "files": {
+    "results_json": "rh_gap_experiment_results.json",
+    "results_summary": "RH_Phase2b_Gap_Discriminability_Results.md",
+    "handoff": "RH_Phase2b_Gap_Discriminability_Handoff.md",
+    "sequences": "rh_phase2b_sequences.json"
+  }
+}

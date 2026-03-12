@@ -1,0 +1,75 @@
+{
+  "experiment": "15B",
+  "question": "Does P2 projection skewness persist at all heights? Is it height-invariant or BK-oscillating? Is it zero-specific vs GUE?",
+  "date": "2026-03-09",
+  "n_projection_pairs": 9997,
+  "height_range": [25.0, 9876.5],
+  "bands": 10,
+  "band_size": 999,
+
+  "method_reconciliation": {
+    "phase11_reported_skew": -1.42,
+    "phase11_measurement": "Gap ratio g_i/g_{i+1} skewness = 5.20 (raw, heavy tail). Phase 11 measurement method differs from 1D embed_pair projection.",
+    "phase15b_measurement": "embed_pair dot v2 = ep[3] - ep[4] = g1*g2/(g1+g2) - (g1+g2)/2. This is bounded in (-inf, 0) for positive g1,g2 since harmonic mean < arithmetic mean always.",
+    "sign_of_1d_projection": "The 1D P2 projection (ep[3]-ep[4]) is ALWAYS NEGATIVE for positive gaps, so mean is negative (~-0.322) but the distribution has a right-skewed tail (positive skewness ~+0.56). The Phase 11 -1.42 skewness was measuring a different quantity.",
+    "2d_axis_skewness": 0.011,
+    "1d_projection_skewness_full": 0.5586
+  },
+
+  "height_band_results": {
+    "bands": [
+      {"band": 1,  "t_min": 25.0,    "t_max": 1420.4,  "t_mid": 722.7,  "n": 999,  "skewness": 0.5163, "kurtosis": -0.3162, "mean": -0.32259, "std": 0.08541},
+      {"band": 2,  "t_min": 1421.9,  "t_max": 2515.3,  "t_mid": 1968.6, "n": 999,  "skewness": 0.5294, "kurtosis": -0.3914, "mean": -0.32353, "std": 0.08760},
+      {"band": 3,  "t_min": 2516.6,  "t_max": 3532.0,  "t_mid": 3024.3, "n": 999,  "skewness": 0.4992, "kurtosis": -0.4490, "mean": -0.32275, "std": 0.08795},
+      {"band": 4,  "t_min": 3533.3,  "t_max": 4503.7,  "t_mid": 4018.5, "n": 999,  "skewness": 0.5911, "kurtosis": -0.1496, "mean": -0.32299, "std": 0.08996},
+      {"band": 5,  "t_min": 4505.5,  "t_max": 5445.0,  "t_mid": 4975.2, "n": 999,  "skewness": 0.6301, "kurtosis": -0.0762, "mean": -0.32196, "std": 0.08895},
+      {"band": 6,  "t_min": 5445.9,  "t_max": 6362.1,  "t_mid": 5904.0, "n": 999,  "skewness": 0.5557, "kurtosis": -0.3831, "mean": -0.32229, "std": 0.08915},
+      {"band": 7,  "t_min": 6362.7,  "t_max": 7260.0,  "t_mid": 6811.3, "n": 999,  "skewness": 0.5538, "kurtosis": -0.3195, "mean": -0.32141, "std": 0.08881},
+      {"band": 8,  "t_min": 7261.3,  "t_max": 8142.8,  "t_mid": 7702.1, "n": 999,  "skewness": 0.5375, "kurtosis": -0.4511, "mean": -0.32340, "std": 0.09100},
+      {"band": 9,  "t_min": 8144.4,  "t_max": 9012.6,  "t_mid": 8578.5, "n": 999,  "skewness": 0.4916, "kurtosis": -0.4275, "mean": -0.32093, "std": 0.08670},
+      {"band": 10, "t_min": 9013.6,  "t_max": 9876.5,  "t_mid": 9445.0, "n": 1006, "skewness": 0.6650, "kurtosis": -0.1910, "mean": -0.32235, "std": 0.08982}
+    ],
+    "grand_mean_skewness": 0.5570,
+    "std_across_bands": 0.0535,
+    "cv": 0.096,
+    "bk_correlation_r": 0.3702,
+    "all_positive": true
+  },
+
+  "gue_comparison": {
+    "gue_grand_mean_skewness": 0.5712,
+    "actual_grand_mean_skewness": 0.5570,
+    "delta": -0.0142,
+    "gue_band_std": 0.0201,
+    "individually_significant_bands": [3, 10],
+    "overall_distinguishable": false
+  },
+
+  "verdicts": {
+    "height_invariance": "CONFIRMED — CV=0.096, well below threshold of 0.20. The positive skewness of the P2 projection is stable across the full height range t=25 to t=9877.",
+    "sign_consistency": "CONFIRMED — all 10 bands show positive skewness (+0.49 to +0.67). The distribution is consistently right-skewed.",
+    "bk_oscillation": "NOT DETECTED — r=0.370, sub-threshold (need |r|>0.55 for significance at n=10). No systematic BK oscillation pattern in skewness.",
+    "zero_specific": "NOT CONFIRMED — actual and GUE skewness are indistinguishable at grand mean level (delta=-0.014, within 1 GUE std). The 1D P2 projection skewness is NOT a zero-specific property.",
+    "phase11_reconciliation": "Phase 11's skewness=-1.42 on the P2/P3 axis used a different measurement (likely gap ratios or 2D projection). The 1D embed_pair P2 projection skewness is +0.56, positive and height-invariant. The measurements are not directly comparable."
+  },
+
+  "structural_findings": {
+    "mean_height_invariance": "The mean of the P2 projection is extraordinarily stable: -0.3214 to -0.3235 across all 10 bands (range=0.0021). The arithmetic-minus-harmonic-mean combination is a height-independent property of the zero spacing distribution.",
+    "std_mild_increase": "std grows slightly from 0.085 (low t) to 0.091 (high t) — consistent with level repulsion strengthening at higher zeros.",
+    "kurtosis_pattern": "Excess kurtosis is uniformly negative (-0.1 to -0.45) across all bands — platykurtic distribution. No heavy tails. This is consistent and stable.",
+    "embed_pair_geometry": "The P2 projection (harmonic - arithmetic mean of gap pairs) is always negative (harmonic < arithmetic). The distribution has a floor near zero but a right tail from near-equal gap pairs, hence positive skewness."
+  },
+
+  "implications_for_routes": {
+    "route_a": "Not supported by this result — skewness is not zero-specific.",
+    "route_b": "Not directly tested by skewness; the log-prime signal (Phase 13A) remains the primary Route B evidence.",
+    "route_c": "Partially consistent — GUE and actual zeros have similar P2 projection skewness, suggesting this distributional feature is a GUE-level property, not zero-specific.",
+    "primary_evidence": "The zero-specific signal remains the Phase 13A log-prime DFT, confirmed in Phase 15A reanalysis. Skewness is a distributional property shared with GUE, not a discriminator."
+  },
+
+  "corrections_required": {
+    "phase11_skewness_claim": "Phase 11 skewness=-1.42 needs method clarification — the 1D P2 projection gives +0.56. If Phase 11 used a different projection or raw gap ratios, the results are not contradictory but must be distinguished in the paper.",
+    "phase14b_antipodal_isometry": "Confirmed from Phase 15A: the |DFT(P3)|^2=|DFT(P2)|^2 isometry is a theorem (v3=-v2), not an empirical finding about Riemann zeros. Paper Section must be corrected.",
+    "phase14c_p1_bridge": "Confirmed from Phase 15D: P1 is not the unique spectral bridge. P1/P2/P3/P5 all detect 9/9 primes. Paper must be updated."
+  }
+}

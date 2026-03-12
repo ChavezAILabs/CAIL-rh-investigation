@@ -1,0 +1,306 @@
+{
+  "experiment": "RH Height Band Survey",
+  "objective": "Track actual - GUE Chavez delta as function of zero height",
+  "chavez_parameters": {
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "dimensions": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "known_anchor_points": {
+    "band_1": {
+      "height_approx": "14-237",
+      "delta": -1.9,
+      "source": "Phase 4"
+    },
+    "band_6": {
+      "height_approx": "811-937",
+      "delta": 1.5,
+      "source": "Phase 5B"
+    }
+  },
+  "batch_a_files": [
+    "rh_hb2_actual_ratios.json",
+    "rh_hb2_gue_seed1_ratios.json",
+    "rh_hb2_gue_seed2_ratios.json",
+    "rh_hb2_gue_seed3_ratios.json",
+    "rh_hb3_actual_ratios.json",
+    "rh_hb3_gue_seed1_ratios.json",
+    "rh_hb3_gue_seed2_ratios.json",
+    "rh_hb3_gue_seed3_ratios.json",
+    "rh_hb4_actual_ratios.json",
+    "rh_hb4_gue_seed1_ratios.json",
+    "rh_hb4_gue_seed2_ratios.json",
+    "rh_hb4_gue_seed3_ratios.json",
+    "rh_hb5_actual_ratios.json",
+    "rh_hb5_gue_seed1_ratios.json",
+    "rh_hb5_gue_seed2_ratios.json",
+    "rh_hb5_gue_seed3_ratios.json"
+  ],
+  "batch_b_files": [
+    "rh_hb7_actual_ratios.json",
+    "rh_hb7_gue_seed1_ratios.json",
+    "rh_hb7_gue_seed2_ratios.json",
+    "rh_hb7_gue_seed3_ratios.json",
+    "rh_hb8_actual_ratios.json",
+    "rh_hb8_gue_seed1_ratios.json",
+    "rh_hb8_gue_seed2_ratios.json",
+    "rh_hb8_gue_seed3_ratios.json",
+    "rh_hb9_actual_ratios.json",
+    "rh_hb9_gue_seed1_ratios.json",
+    "rh_hb9_gue_seed2_ratios.json",
+    "rh_hb9_gue_seed3_ratios.json",
+    "rh_hb10_actual_ratios.json",
+    "rh_hb10_gue_seed1_ratios.json",
+    "rh_hb10_gue_seed2_ratios.json",
+    "rh_hb10_gue_seed3_ratios.json"
+  ],
+  "bands": {
+    "1": {
+      "zero_indices": "0-99",
+      "chavez_symmetry_actual": 75.0,
+      "gue_mean_symmetry": 76.9,
+      "delta_actual_minus_gue": -1.9,
+      "mean_ratio_actual": 0.61,
+      "source": "Phase 4 (RH_SR_2026_001)",
+      "height_range": [
+        14.13,
+        236.52
+      ],
+      "mean_gap": 2.246359,
+      "n_ratios": 98,
+      "status": "COMPLETE \u2014 existing result",
+      "files": "existing"
+    },
+    "2": {
+      "zero_indices": "100-199",
+      "height_range": [
+        237.77,
+        396.38
+      ],
+      "mean_gap": 1.602142,
+      "mean_ratio_actual_precomputed": 0.6212,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "A",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb2_actual_ratios.json",
+      "gue_files": [
+        "rh_hb2_gue_seed1_ratios.json",
+        "rh_hb2_gue_seed2_ratios.json",
+        "rh_hb2_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "3": {
+      "zero_indices": "200-299",
+      "height_range": [
+        397.92,
+        541.85
+      ],
+      "mean_gap": 1.453825,
+      "mean_ratio_actual_precomputed": 0.6192,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "A",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb3_actual_ratios.json",
+      "gue_files": [
+        "rh_hb3_gue_seed1_ratios.json",
+        "rh_hb3_gue_seed2_ratios.json",
+        "rh_hb3_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "4": {
+      "zero_indices": "300-399",
+      "height_range": [
+        544.32,
+        679.74
+      ],
+      "mean_gap": 1.367862,
+      "mean_ratio_actual_precomputed": 0.6189,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "A",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb4_actual_ratios.json",
+      "gue_files": [
+        "rh_hb4_gue_seed1_ratios.json",
+        "rh_hb4_gue_seed2_ratios.json",
+        "rh_hb4_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "5": {
+      "zero_indices": "400-499",
+      "height_range": [
+        681.89,
+        811.18
+      ],
+      "mean_gap": 1.305953,
+      "mean_ratio_actual_precomputed": 0.6146,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "A",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb5_actual_ratios.json",
+      "gue_files": [
+        "rh_hb5_gue_seed1_ratios.json",
+        "rh_hb5_gue_seed2_ratios.json",
+        "rh_hb5_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "6": {
+      "zero_indices": "499-598",
+      "chavez_symmetry_actual": 78.3,
+      "gue_mean_symmetry": 76.8,
+      "delta_actual_minus_gue": 1.5,
+      "mean_ratio_actual": 0.6153,
+      "source": "Phase 5B (RH_SCALE_2026_001)",
+      "height_range": [
+        812.77,
+        939.02
+      ],
+      "mean_gap": 1.275285,
+      "n_ratios": 98,
+      "status": "COMPLETE \u2014 existing result",
+      "files": "existing"
+    },
+    "7": {
+      "zero_indices": "600-699",
+      "height_range": [
+        939.66,
+        1062.92
+      ],
+      "mean_gap": 1.244994,
+      "mean_ratio_actual_precomputed": 0.6146,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "B",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb7_actual_ratios.json",
+      "gue_files": [
+        "rh_hb7_gue_seed1_ratios.json",
+        "rh_hb7_gue_seed2_ratios.json",
+        "rh_hb7_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "8": {
+      "zero_indices": "700-799",
+      "height_range": [
+        1064.07,
+        1183.71
+      ],
+      "mean_gap": 1.208497,
+      "mean_ratio_actual_precomputed": 0.6276,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "B",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb8_actual_ratios.json",
+      "gue_files": [
+        "rh_hb8_gue_seed1_ratios.json",
+        "rh_hb8_gue_seed2_ratios.json",
+        "rh_hb8_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "9": {
+      "zero_indices": "800-899",
+      "height_range": [
+        1185.16,
+        1302.35
+      ],
+      "mean_gap": 1.183746,
+      "mean_ratio_actual_precomputed": 0.6189,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "B",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb9_actual_ratios.json",
+      "gue_files": [
+        "rh_hb9_gue_seed1_ratios.json",
+        "rh_hb9_gue_seed2_ratios.json",
+        "rh_hb9_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    },
+    "10": {
+      "zero_indices": "900-999",
+      "height_range": [
+        1303.27,
+        1419.42
+      ],
+      "mean_gap": 1.173225,
+      "mean_ratio_actual_precomputed": 0.607,
+      "gue_seed_mean_ratios_precomputed": [
+        0.6527,
+        0.6315,
+        0.6358
+      ],
+      "n_ratios": 98,
+      "batch": "B",
+      "status": "PENDING \u2014 needs CAILculator",
+      "actual_file": "rh_hb10_actual_ratios.json",
+      "gue_files": [
+        "rh_hb10_gue_seed1_ratios.json",
+        "rh_hb10_gue_seed2_ratios.json",
+        "rh_hb10_gue_seed3_ratios.json"
+      ],
+      "chavez_symmetry_actual": null,
+      "gue_mean_symmetry": null,
+      "delta_actual_minus_gue": null
+    }
+  }
+}

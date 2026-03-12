@@ -1,0 +1,100 @@
+{
+  "experiment": "15D",
+  "question": "Why does P1 detect all 9 primes across both filter regimes? What mathematical property enables this?",
+  "date": "2026-03-09",
+  "n_ratios": 9997,
+  "height_range": [21.02, 9877.78],
+
+  "step1_geometry": {
+    "all_norms": "sqrt(2) = 1.414214 — all five P-vectors have identical norm",
+    "pairwise_dot_products": {
+      "v1_v2": 0.0, "v1_v3": 0.0, "v1_v4": 0.0, "v1_v5": 0.0,
+      "v2_v3": -2.0, "v2_v4": 0.0, "v2_v5": 0.0,
+      "v3_v4": 0.0, "v3_v5": 0.0, "v4_v5": 0.0
+    },
+    "pairwise_angles_deg": {
+      "v1_v2": 90.0, "v1_v3": 90.0, "v1_v4": 90.0, "v1_v5": 90.0,
+      "v2_v3": 180.0, "v2_v4": 90.0, "v2_v5": 90.0,
+      "v3_v4": 90.0, "v3_v5": 90.0, "v4_v5": 90.0
+    },
+    "key_finding": "ALL P-vectors are mutually orthogonal EXCEPT the antipodal pair v2/v3 which are anti-parallel (180 deg). v1 is orthogonal to ALL other vectors including the antipodal pair. The five P-vectors form an almost-orthogonal frame in 8D — four mutually orthogonal vectors plus one antipodal pair.",
+    "v1_mean_angle_to_others": 90.0,
+    "v1_is_geometrically_central": true,
+    "note": "v1 AND v4 AND v5 all have mean angle 90 deg. v2 and v3 have mean angle 112.5 deg due to the 180-deg antipodal relationship. v1 is not uniquely central — v4 and v5 are also equidistant from all others."
+  },
+
+  "step2_3_snr_profiles": {
+    "primes": [2, 3, 5, 7, 11, 13, 17, 19, 23],
+    "log_freqs": [0.6931, 1.0986, 1.6094, 1.9459, 2.3979, 2.5649, 2.8332, 2.9444, 3.1355],
+    "snr_by_pvector": {
+      "v1_P1": {"2": 12.4, "3": 11.8, "5": 100.1, "7": 190.4, "11": 334.0, "13": 351.0, "17": 330.3, "19": 336.7, "23": 308.4},
+      "v2_P2": {"2": 7.4,  "3": 9.7,  "5": 89.6,  "7": 166.4, "11": 268.2, "13": 274.8, "17": 272.6, "19": 274.2, "23": 260.0},
+      "v3_P3": {"2": 7.4,  "3": 9.7,  "5": 89.6,  "7": 166.4, "11": 268.2, "13": 274.8, "17": 272.6, "19": 274.2, "23": 260.0},
+      "v4_P4": {"2": 1.2,  "3": 15.2, "5": 71.4,  "7": 114.1, "11": 162.3, "13": 170.0, "17": 130.8, "19": 134.4, "23": 114.0},
+      "v5_P5": {"2": 9.8,  "3": 41.1, "5": 81.8,  "7": 86.6,  "11": 67.4,  "13": 67.3,  "17": 30.0,  "19": 30.7,  "23": 22.0}
+    },
+    "max_snr_by_pvector": {
+      "v1_P1": {"prime": 13, "snr": 351.0},
+      "v2_P2": {"prime": 13, "snr": 274.8},
+      "v3_P3": {"prime": 13, "snr": 274.8},
+      "v4_P4": {"prime": 13, "snr": 170.0},
+      "v5_P5": {"prime": 7,  "snr": 86.6}
+    }
+  },
+
+  "step4_signal_detection": {
+    "threshold": "SNR > 2.0",
+    "primes_detected": {
+      "v1_P1": [2, 3, 5, 7, 11, 13, 17, 19, 23],
+      "v2_P2": [2, 3, 5, 7, 11, 13, 17, 19, 23],
+      "v3_P3": [2, 3, 5, 7, 11, 13, 17, 19, 23],
+      "v4_P4": [3, 5, 7, 11, 13, 17, 19, 23],
+      "v5_P5": [2, 3, 5, 7, 11, 13, 17, 19, 23]
+    },
+    "count_detected": {
+      "v1_P1": 9, "v2_P2": 9, "v3_P3": 9, "v4_P4": 8, "v5_P5": 9
+    },
+    "revision_of_phase14c": "Phase 14C reported P1 as the unique spectral bridge detecting all 9 primes. With embed_pair P-vector DFT on 9,998 ratios (vs Phase 14C method), P1/P2/P3/P5 ALL detect 9/9 primes. P4 detects 8/9 (misses p=2). The spectral bridge role is not unique to P1 — it is shared by P1/P2/P3/P5."
+  },
+
+  "step5_p1_profile": {
+    "p1_peak_prime": 13,
+    "p1_snr_ranking": [[13,351.0],[19,336.7],[11,334.0],[17,330.3],[23,308.4],[7,190.4],[5,100.1],[2,12.4],[3,11.8]],
+    "p1_filter_shape": "HIGH-PASS dominant — SNR rises monotonically from p=3 to p=13, peaks at p=13, then slight decline. p=2 and p=3 are weakest (SNR 12-12). This is NOT a flat profile.",
+    "p1_vs_p2_at_p11": {"P1": 334.0, "P2": 268.2, "SR_phase13A": 231.2},
+    "p1_amplification": "P1 has HIGHER SNR than P2 at EVERY frequency, not just p=11. P1 is a uniformly amplified version of P2's profile.",
+    "cross_correlations": {
+      "r_P1_P2": 0.9982,
+      "r_P1_P3": 0.9982,
+      "r_P1_P4": 0.9534,
+      "r_P1_P5": 0.0821,
+      "r_P2_P3": 1.0000,
+      "r_P2_P5": 0.0915
+    },
+    "key_finding": "r(P1,P2) = 0.9982 — nearly perfect correlation. r(P2,P3) = 1.0000 — exact (antipodal pair, algebraically required). r(P1,P5) = 0.082 — essentially uncorrelated. P5 is the outlier: low-frequency dominant, declines sharply above p=7."
+  },
+
+  "step6_geometric_centrality": {
+    "mean_angles": {
+      "v1_P1": 90.0, "v2_P2": 112.5, "v3_P3": 112.5, "v4_P4": 90.0, "v5_P5": 90.0
+    },
+    "finding": "v1, v4, v5 are all geometrically equidistant (90 deg mean) from all other vectors. v2 and v3 are the outliers geometrically due to their antipodal relationship (180 deg to each other). v1 is NOT uniquely central — it shares this property with v4 and v5.",
+    "why_p1_not_p4_p5": "P4 misses p=2. P5 is high-pass declining (v5 has different index structure: e2-e13, e6+e9 — contains non-adjacent index pairs). The spectral profile difference is NOT from geometric position (all three are at 90 deg mean) but from the specific index coordinates within the E8 shell."
+  },
+
+  "revised_phase14c_interpretation": {
+    "phase14c_claim": "P1 is the unique spectral bridge detecting all 9 primes including p=11 crossover",
+    "phase15d_revision": "With full 9,998-ratio DFT: P1/P2/P3/P5 all detect 9/9 primes. P4 detects 8/9. The Phase 14C result likely reflected method differences (embed_pair window size or normalization). The spectral bridge role is broadly shared across the Weyl orbit, not unique to P1.",
+    "what_is_unique_to_p1": "P1 has the HIGHEST absolute SNR at every frequency (351 at p=13 vs 275 for P2/P3). P1 is a uniformly amplified version of the P2/P3 profile (r=0.998). The amplification is ~1.28x across all frequencies.",
+    "p5_is_the_true_outlier": "P5 (v5) is spectrally distinct: high SNR at low primes (p=3: SNR=41, p=2: SNR=10) but declining sharply (p=23: SNR=22). This is the low-pass filter. P5 is uncorrelated with P1/P2/P3/P4 (r~0.08). The spectral complementarity is P5 (low-pass) vs {P1,P2,P3,P4} (high-pass dominant)."
+  },
+
+  "structural_roles_in_weyl_orbit": {
+    "P1_P2_P3_P4": "High-pass dominant cluster — strong at p>=7, weaker at p=2,3. r(P1,P2)=0.998, r(P1,P4)=0.953.",
+    "P5": "Low-pass outlier — strong at p=2,3,5,7, declining sharply above p=7. Uncorrelated with others (r~0.08).",
+    "antipodal_pair_P2_P3": "Exactly identical SNR profiles (r=1.000). The Weyl reflection alpha_4 preserves spectral power perfectly.",
+    "complementarity": "The SR/P2 high-pass vs P5 low-pass complementarity (Phase 14B) should be reframed as SR/{P1,P2,P3,P4} vs P5. p=11 is the crossover between the high-pass cluster and P5."
+  },
+
+  "verdict": "P1 is not the unique spectral bridge — it is the highest-SNR member of a high-pass dominant cluster {P1,P2,P3,P4} that is spectrally correlated (r=0.95-0.998). P5 is the true low-pass outlier and the spectral complement. The Phase 14B SR/P2 complementarity is better described as high-pass cluster vs P5. The spectral structure of the Weyl orbit splits into two families: the v5 outlier (low-pass, Color Group 2 paired with v2) and the coherent high-pass cluster (v1,v2,v3,v4). The antipodal pair v2/v3 belongs to the high-pass cluster and has perfectly correlated spectra (r=1.000) as required by Weyl reflection symmetry."
+}

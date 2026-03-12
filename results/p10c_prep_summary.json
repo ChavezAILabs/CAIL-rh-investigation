@@ -1,0 +1,88 @@
+{
+  "phase": "10C",
+  "n_gaps": 98,
+  "n_pairs": 97,
+  "mean_gap_actual": 2.240394684052792,
+  "p_vectors": {
+    "P1": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    "P2": [
+      0,
+      0,
+      0,
+      1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    "P4": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "P5": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "distributions": {
+    "gue": "Wigner surmise Rayleigh(sqrt(2/pi)), scaled to mean_gap, seeds 1-3",
+    "poisson": "Exponential(mean_gap), seeds 1-3"
+  },
+  "files": {
+    "actual": [
+      "p10c_actual_P1.json",
+      "p10c_actual_P2.json",
+      "p10c_actual_P4.json",
+      "p10c_actual_P5.json"
+    ],
+    "gue": [
+      "p10c_gue_s1_P1.json",
+      "p10c_gue_s1_P2.json",
+      "p10c_gue_s1_P4.json",
+      "p10c_gue_s1_P5.json",
+      "p10c_gue_s2_P1.json",
+      "p10c_gue_s2_P2.json",
+      "p10c_gue_s2_P4.json",
+      "p10c_gue_s2_P5.json",
+      "p10c_gue_s3_P1.json",
+      "p10c_gue_s3_P2.json",
+      "p10c_gue_s3_P4.json",
+      "p10c_gue_s3_P5.json"
+    ],
+    "poisson": [
+      "p10c_poi_s1_P1.json",
+      "p10c_poi_s1_P2.json",
+      "p10c_poi_s1_P4.json",
+      "p10c_poi_s1_P5.json",
+      "p10c_poi_s2_P1.json",
+      "p10c_poi_s2_P2.json",
+      "p10c_poi_s2_P4.json",
+      "p10c_poi_s2_P5.json",
+      "p10c_poi_s3_P1.json",
+      "p10c_poi_s3_P2.json",
+      "p10c_poi_s3_P4.json",
+      "p10c_poi_s3_P5.json"
+    ]
+  }
+}

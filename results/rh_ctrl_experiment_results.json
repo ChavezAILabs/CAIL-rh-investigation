@@ -1,0 +1,129 @@
+{
+  "experiment_id": "RH_CTRL_2026_001",
+  "date": "2026-03-04",
+  "researcher": "Paul Chavez, Chavez AI Labs",
+  "objective": "Test whether Phase 1 ZDTP 98.7% on Riemann zero positions is discriminating vs. synthetic controls in same range",
+  "parameters": {
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "zdtp_dimensions": [16, 32, 64],
+    "chavez_dimensions": [1, 2, 3, 4, 5],
+    "n_elements": 16,
+    "range_full_dataset": [14.1347, 1419.4225],
+    "range_first_16_zeros": [14.1347, 67.0798],
+    "random_seed": 42
+  },
+  "analyses": {
+    "actual_zeros": {
+      "source": "rh_zeros.json, first 16 values",
+      "zdtp": {
+        "overall_convergence": 0.9869,
+        "gateway_scores": {
+          "S1": 629.6,
+          "S2": 623.8,
+          "S3A": null,
+          "S3B": null,
+          "S4": null,
+          "S5": null
+        },
+        "gateway_ordering": "S1 > S2 > S3A > S3B = S4 > S5 (monotone descent)",
+        "leading_gateway": "S1"
+      },
+      "chavez": {
+        "conjugation_symmetry": 60.1
+      }
+    },
+    "control_a_growth_noise": {
+      "formula": "2*pi*n/log(n) + N(0, 0.10 * 2*pi*n/log(n)), seed=42",
+      "note": "Sub-range artifact: sequence peaks at ~33, not ~67 — range mismatch with actual zeros",
+      "zdtp": {
+        "overall_convergence": 0.9752,
+        "gateway_scores": {
+          "S1": 315.2,
+          "S2": 322.2
+        },
+        "gateway_ordering": "S2 > S1 (S1 lead disrupted by noise)",
+        "leading_gateway": "S2"
+      },
+      "chavez": {
+        "conjugation_symmetry": 66.7
+      }
+    },
+    "control_b_poisson_gaps": {
+      "formula": "Exponential(mean=1.42), gaps accumulated from 14.13, seed=42",
+      "mean_gap_used": 1.42,
+      "note": "Compressed range, slow spread — different endpoint than actual zeros",
+      "zdtp": {
+        "overall_convergence": 0.9881,
+        "gateway_scores": {
+          "S3B": 358.0,
+          "S4": 358.0,
+          "S2": 357.6
+        },
+        "gateway_ordering": "S3B = S4 lead, flat top",
+        "leading_gateway": "S3B/S4 tied"
+      },
+      "chavez": {
+        "conjugation_symmetry": 68.1
+      }
+    },
+    "control_c_uniform": {
+      "formula": "14.13 + (67.08 - 14.13) * (n-1) / 15, n=1..16",
+      "note": "Perfectly deterministic, same range as actual first 16 zeros",
+      "zdtp": {
+        "overall_convergence": 0.9884,
+        "gateway_scores": {
+          "S1": 587.2,
+          "S2": 584.1
+        },
+        "gateway_ordering": "S1 > S2 monotone descent — same pattern as actual zeros",
+        "leading_gateway": "S1"
+      },
+      "chavez": {
+        "conjugation_symmetry": 57.9
+      }
+    }
+  },
+  "summary_table": {
+    "zdtp_range": "97.52% to 98.84% (spread: 1.32 percentage points)",
+    "zdtp_verdict": "NON-DISCRIMINATING — all four sequences score within noise band",
+    "chavez_range": "57.9% to 68.1%",
+    "chavez_verdict": "NON-DISCRIMINATING at n=16 — sample too small for meaningful bilateral analysis",
+    "gateway_ordering_verdict": "WEAKLY DISCRIMINATING — S1 monotone descent shared by actual zeros and uniform control only; noisy/Poisson controls show disrupted ordering"
+  },
+  "key_findings": {
+    "F1_zdtp_non_discriminating": {
+      "answer": "ZDTP convergence at n=16 is NOT discriminating for Riemann-specific structure",
+      "significance": "Any monotone sequence in this range scores ~97-99%. The Phase 1 98.7% result was a range/monotonicity artifact, not evidence of Riemann-specific algebraic structure. ZDTP is appropriate for regime detection, not 16-element sequence characterization."
+    },
+    "F2_gateway_ordering_weak_signal": {
+      "answer": "Gateway ordering (S1 monotone descent) distinguishes smooth from noisy sequences",
+      "significance": "Actual zeros and Control C (uniform) share S1-lead monotone descent. Controls A (noise) and B (Poisson) show disrupted ordering. This is a smoothness signal, not a Riemann-specific signal."
+    },
+    "F3_chavez_n16_insufficient": {
+      "answer": "Chavez symmetry at n=16 is insufficient — actual zeros score lowest of the group (60.1%)",
+      "significance": "The Phase 1 83.8% result was on 99 gap values. The n=16 position test is underpowered. Minimum useful n for Chavez analysis appears to be ~50-100 data points."
+    },
+    "F4_phase2_reframe_triggered": {
+      "answer": "Phase 2 reframe triggered per handoff document criterion",
+      "significance": "Controls B and C both exceeded 98.7%. The real discriminability test must operate on the gap sequence (n=99), not positions (n=16). Reframed Phase 2 tests: shuffle test on actual gaps, synthetic Poisson gap sequences at n=99, scale invariance check across gap sample sizes."
+    },
+    "F5_meaningful_phase1_result": {
+      "answer": "The meaningful Phase 1 result is Chavez conjugation symmetry 83.8% on 99 gaps",
+      "significance": "This measurement uses sufficient n, operates on gaps (removing monotone growth artifact), and placed Riemann zero gaps squarely in the GUE/structured-prime range (78-86%). That result stands. The ZDTP 98.7% on positions does not."
+    }
+  },
+  "reframed_phase2_next_steps": [
+    "Shuffle test: shuffle actual 99 zero gaps, re-run Chavez; if symmetry drops from 83.8%, gap ordering carries structure",
+    "Synthetic gap control: 99 Poisson gaps with mean 1.41, run Chavez; compare to actual 83.8%",
+    "Scale invariance: Chavez symmetry on first 100, 500, 999 gaps — does 83.8% hold?",
+    "AT-1 literature check: Biss-Dugger-Isaksen before annihilation topology Phase 1",
+    "ZDTP corrected application: run on gap sequence at n=99 (not positions at n=16)"
+  ],
+  "files": {
+    "results_json": "rh_ctrl_experiment_results.json",
+    "results_summary": "RH_Phase2_Control_Handoff.md",
+    "handoff": "RH_Phase2_Control_Handoff.md"
+  }
+}

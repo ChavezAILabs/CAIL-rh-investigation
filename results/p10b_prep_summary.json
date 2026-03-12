@@ -1,0 +1,21 @@
+{
+  "phase": "10B",
+  "n_zeros": 10000,
+  "zero_range": [
+    14.134725141734695,
+    9877.782654005501
+  ],
+  "delta_alpha": 0.02,
+  "n_bins": 750,
+  "alpha_range": [
+    0.01,
+    14.99
+  ],
+  "low_count_bins": 8,
+  "sample_values": {
+    "R_empirical_05": 0.61,
+    "R_empirical_10": 1.065,
+    "R_gue_05": 0.5784205891849641,
+    "R_gue_10": 0.9998980031571802
+  }
+}

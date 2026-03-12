@@ -1,0 +1,80 @@
+{
+  "phase": "10B+10C",
+  "date": "2026-03-09",
+  "phase_10b": {
+    "n_zeros": 10000,
+    "delta_alpha": 0.02,
+    "n_bins": 750,
+    "empirical_symmetry": 86.8,
+    "gue_symmetry": 95.6,
+    "poisson_symmetry": 100.0,
+    "primary_separation_poisson_minus_empirical": 13.2,
+    "secondary_separation_gue_minus_empirical": 8.8,
+    "empirical_mean_ralpha": 0.9678,
+    "empirical_cv": 0.1783,
+    "gue_mean_ralpha": 0.9669,
+    "gue_cv": 0.1503,
+    "r_empirical_05": 0.59,
+    "r_empirical_10": 1.01,
+    "r_gue_05": 0.6108373066640134,
+    "r_gue_10": 0.9999020026412629,
+    "bins_extreme_repulsion_lt01": 11,
+    "low_count_bins": "NOT_AVAILABLE_prep_summary_not_uploaded",
+    "note": "Metric: conjugation_symmetry estimated as fraction within 15% of sequence mean. Separation 13.20 pt is above Phase 8B record (12.5 pt) but below Phase 9B-i (14.7 pt). See analysis note in RH_Phase10_Completion_Results.md."
+  },
+  "phase_10c": {
+    "status": "PARTIAL \u2014 GUE/Poisson baseline files (p10c_*.json) not provided in this session. Run rh_phase10c_prep.py to generate.",
+    "actual": {
+      "P1": 79.6,
+      "P2": 82.7,
+      "P4": 80.7,
+      "P5": 64.6
+    },
+    "gue": {
+      "P1": null,
+      "P2": null,
+      "P4": null,
+      "P5": null
+    },
+    "poisson": {
+      "P1": null,
+      "P2": null,
+      "P4": null,
+      "P5": null
+    },
+    "discrimination_table": [
+      {
+        "pvector": "P1",
+        "actual_pct": 79.6,
+        "gue_mean_pct": null,
+        "poisson_mean_pct": null,
+        "delta_actual_gue": null,
+        "delta_gue_poisson": null
+      },
+      {
+        "pvector": "P2",
+        "actual_pct": 82.7,
+        "gue_mean_pct": null,
+        "poisson_mean_pct": null,
+        "delta_actual_gue": null,
+        "delta_gue_poisson": null
+      },
+      {
+        "pvector": "P4",
+        "actual_pct": 80.7,
+        "gue_mean_pct": null,
+        "poisson_mean_pct": null,
+        "delta_actual_gue": null,
+        "delta_gue_poisson": null
+      },
+      {
+        "pvector": "P5",
+        "actual_pct": 64.6,
+        "gue_mean_pct": null,
+        "poisson_mean_pct": null,
+        "delta_actual_gue": null,
+        "delta_gue_poisson": null
+      }
+    ]
+  }
+}

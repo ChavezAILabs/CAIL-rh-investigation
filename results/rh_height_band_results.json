@@ -1,0 +1,86 @@
+{
+  "experiment_id": "RH_HB_2026_001",
+  "experiment_name": "RH Height Band Survey",
+  "date": "2026-03-05",
+  "researcher": "Paul Chavez, Chavez AI Labs",
+  "status": "COMPLETE",
+  "objective": "Test whether actual Riemann zeros increasingly exceed GUE synthetic on Chavez conjugation symmetry as height grows. Hypothesis: monotone asymptotic convergence.",
+  "outcome": "Hypothesis REJECTED. Pattern is oscillatory, not monotonic. Actual zeros average 1.51 pts BELOW GUE synthetic across all bands. Local variation is real and large.",
+  "parameters": {
+    "statistic": "spacing ratio r_n = min(g_n, g_{n+1}) / max(g_n, g_{n+1})",
+    "band_size": "100 zeros per band, 99 gaps, 98 ratios",
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "chavez_dimensions": [1, 2, 3, 4, 5],
+    "gue_seeds": [1, 2, 3],
+    "gue_seed_symmetries": [76.5, 76.3, 77.7],
+    "gue_mean_symmetry_all_bands": 76.8,
+    "gue_stability_note": "Rock-stable at 76.8% across all 10 bands and all seeds. Synthetic control is clean."
+  },
+  "bands": {
+    "1":  {"height_range": [14,   237],  "actual": 75.0, "gue_mean": 76.9, "delta": -1.9, "source": "Phase 4"},
+    "2":  {"height_range": [238,  396],  "actual": 77.0, "gue_mean": 76.8, "delta": +0.2},
+    "3":  {"height_range": [398,  542],  "actual": 73.1, "gue_mean": 76.8, "delta": -3.7},
+    "4":  {"height_range": [544,  680],  "actual": 74.8, "gue_mean": 76.8, "delta": -2.0},
+    "5":  {"height_range": [682,  811],  "actual": 73.6, "gue_mean": 76.8, "delta": -3.2},
+    "6":  {"height_range": [812,  937],  "actual": 78.3, "gue_mean": 76.8, "delta": +1.5, "source": "Phase 5B"},
+    "7":  {"height_range": [940,  1063], "actual": 71.4, "gue_mean": 76.8, "delta": -5.4, "flag": "OUTLIER — lowest actual score in full dataset"},
+    "8":  {"height_range": [1064, 1184], "actual": 78.2, "gue_mean": 76.8, "delta": +1.4},
+    "9":  {"height_range": [1185, 1302], "actual": 77.9, "gue_mean": 76.8, "delta": +1.1},
+    "10": {"height_range": [1303, 1419], "actual": 73.7, "gue_mean": 76.8, "delta": -3.1}
+  },
+  "summary_statistics": {
+    "actual_range": [71.4, 78.3],
+    "actual_spread_pts": 6.9,
+    "gue_spread_pts": 1.2,
+    "variance_ratio_actual_vs_gue": "5.75x — actual variation is real, not tool noise",
+    "mean_delta_actual_minus_gue": -1.51,
+    "positive_delta_bands": [2, 6, 8, 9],
+    "negative_delta_bands": [1, 3, 4, 5, 7, 10],
+    "most_extreme_outlier": {"band": 7, "delta": -5.4, "height_range": [940, 1063]}
+  },
+  "pattern_analysis": {
+    "monotone_convergence_hypothesis": "REJECTED",
+    "oscillatory": true,
+    "positive_clusters": [[2], [6], [8, 9]],
+    "negative_clusters": [[1], [3, 4, 5], [7], [10]],
+    "band7_transition": "Band 6 peak (+1.5) immediately followed by band 7 extreme low (-5.4), then recovery in bands 8-9 — sharpest feature in the dataset",
+    "overall_bias": "Actual zeros score below GUE synthetic on average (mean delta -1.51). Positive excursions are real but do not dominate.",
+    "interpretation": "The Chavez transform is functioning as a local GUE-quality detector. The map it produces is not flat and is not a simple asymptotic trend. The oscillation is the signal."
+  },
+  "key_findings": {
+    "F1_monotone_rejected": {
+      "finding": "Asymptotic GUE convergence hypothesis rejected",
+      "evidence": "Delta ranges from -5.4 to +1.5 with no monotone trend across height 14-1419"
+    },
+    "F2_gue_synthetic_flat": {
+      "finding": "GUE synthetic immovably stable at 76.8% across all bands and seeds",
+      "significance": "All variance sits in actual zeros. The tool is not the source of the oscillation."
+    },
+    "F3_actual_below_gue_on_average": {
+      "finding": "Mean delta = -1.51 pts (actual below GUE)",
+      "significance": "Actual Riemann zeros are on average slightly less spacing-regular than ideal GUE Wigner surmise — consistent with finite-height deviations from asymptotic GUE"
+    },
+    "F4_band7_outlier": {
+      "finding": "Band 7 (heights 940-1063) scores 71.4% — lowest in dataset, delta = -5.4",
+      "significance": "Extreme drop immediately after band 6 peak, then sharp recovery in bands 8-9. Warrants targeted investigation: are there known features of zero distribution in this height range?"
+    },
+    "F5_local_regime_detection": {
+      "finding": "Chavez transform on spacing ratios functions as a local GUE-quality detector",
+      "significance": "The height-band map reveals non-uniform local spacing regularity across the critical strip. This is a new characterization not captured by global GUE statistics."
+    }
+  },
+  "open_questions": [
+    "Does band 7 correspond to a known feature of Riemann zero distribution (e.g., anomalous gap clustering) in height range 940-1063?",
+    "Is the oscillation period meaningful, or is the pattern aperiodic?",
+    "What is the theoretical account for actual zeros averaging below GUE synthetic?",
+    "Does this pattern persist with finer band resolution (e.g., 50-zero bands)?",
+    "Does the pattern repeat if the same height ranges are sampled with independent zero computations?"
+  ],
+  "files": {
+    "results_json": "rh_height_band_results.json",
+    "data_prep_script": "rh_height_band_prep.py",
+    "band_summary": "rh_height_band_summary.json"
+  }
+}

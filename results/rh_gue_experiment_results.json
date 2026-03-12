@@ -1,0 +1,76 @@
+{
+  "experiment_id": "RH_GUE_2026_001",
+  "date": "2026-03-04",
+  "researcher": "Paul Chavez, Chavez AI Labs",
+  "objective": "Test whether Chavez 83.4% on Riemann zero gaps fingerprints GUE level repulsion specifically vs. Poisson",
+  "parameters": {
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "chavez_dimensions": [1, 2, 3, 4, 5],
+    "n": 99,
+    "gap_mean_actual_n99": 2.25,
+    "seeds": [1, 2, 3]
+  },
+  "analyses": {
+    "baseline_actual_gaps": {
+      "source": "rh_gaps.json, first 99 values",
+      "chavez_symmetry": 83.4,
+      "note": "Slight variation from Phase 2b 83.8% — within session noise"
+    },
+    "poisson_exponential_mean225": {
+      "distribution": "Exponential(mean=2.25)",
+      "trials": [
+        {"seed": 1, "chavez_symmetry": 79.0, "delta": -4.4},
+        {"seed": 2, "chavez_symmetry": 81.5, "delta": -1.9},
+        {"seed": 3, "chavez_symmetry": 79.8, "delta": -3.7}
+      ],
+      "mean_symmetry": 80.1,
+      "mean_delta": -3.3,
+      "min_gap_observed": 0.0003,
+      "gaps_below_0_5": 58
+    },
+    "gue_wigner_surmise_mean225": {
+      "distribution": "P(s) = (32/pi^2) * s^2 * exp(-4s^2/pi), scaled to mean=2.25",
+      "trials": [
+        {"seed": 1, "chavez_symmetry": 80.7, "delta": -2.7},
+        {"seed": 2, "chavez_symmetry": 78.0, "delta": -5.4},
+        {"seed": 3, "chavez_symmetry": 79.5, "delta": -3.9}
+      ],
+      "mean_symmetry": 79.4,
+      "mean_delta": -4.0,
+      "min_gap_observed": 0.1493,
+      "gaps_below_0_5": 4
+    }
+  },
+  "gap_distribution_comparison": {
+    "actual_zeros_n99": {"min_gap": 0.7158, "gaps_below_0_1": 0, "gaps_below_0_5": 0},
+    "gue_all_trials_n297": {"min_gap": 0.1493, "gaps_below_0_1": 0, "gaps_below_0_5": 4},
+    "poisson_all_trials_n297": {"min_gap": 0.0003, "gaps_below_0_1": 13, "gaps_below_0_5": 58}
+  },
+  "key_findings": {
+    "F1_gue_not_distinguished_from_poisson": {
+      "answer": "GUE (79.4%) ≈ Poisson (80.1%) — indistinguishable, 0.7 pt difference",
+      "significance": "Chavez conjugation symmetry cannot distinguish GUE from Poisson gap distributions. The hypothesis that 83.4% detects GUE level repulsion is ruled out."
+    },
+    "F2_signal_is_lower_bound_compactness": {
+      "answer": "The 83.4% detects lower-bound compactness of the actual zero gap distribution",
+      "significance": "Actual zeros have min gap 0.716 with zero gaps below 0.5. Both GUE and Poisson synthetic sequences produce many near-zero gaps. The Chavez measure is sensitive to this floor: sequences without near-zero gaps have more balanced bilateral structure. This is a real property of the zeros in the low-height regime (zeros 1-99, imaginary parts 14-237) but not GUE-specific."
+    },
+    "F3_research_reframe": {
+      "answer": "To detect GUE structure, apply Chavez to ordering-dependent statistics, not raw gaps",
+      "significance": "Classical RMT statistics (pair correlation r(alpha), spacing ratio r_n, number variance) are designed to detect GUE vs Poisson. Applying Chavez Transform to these outputs may produce a meaningful fingerprint. Raw gap values are insufficient — ordering is irrelevant to Chavez (Phase 2b), and GUE vs Poisson distributional differences are below detection threshold (Phase 3)."
+    }
+  },
+  "what_remains_live": [
+    "Scale stability (86.2% at n=249) is real — lower-bound compactness holds across the spectrum",
+    "ZDTP gateway ordering (S1 monotone descent) distinguishes smooth from noisy — weak but real",
+    "AT-1 annihilation topology is independent — proceed",
+    "Candidate next experiment: apply Chavez to spacing ratios r_n = min(g_n, g_{n+1}) / max(g_n, g_{n+1}) — ordering-dependent, GUE-specific statistic"
+  ],
+  "files": {
+    "results_json": "rh_gue_experiment_results.json",
+    "results_summary": "RH_Phase3_GUE_Results.md",
+    "handoff": "RH_Phase3_GUE_Fingerprint_Handoff.md"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "experiment": "RH Phase 1 — Chavez Transform & ZDTP on Riemann Zeros",
+  "date": "2026-03-04",
+  "dataset": {
+    "zeros_count": 1000,
+    "range": [14.1347, 1419.4225],
+    "source": "mpmath.zetazero(), mp.dps=25"
+  },
+  "results": {
+    "RH1_chavez_transform": {
+      "raw_zeros_100": {
+        "conjugation_symmetry": 0.5595,
+        "transform_value": 8664.38,
+        "note": "Raw zero positions — lower symmetry expected due to monotone growth"
+      },
+      "gaps_99": {
+        "conjugation_symmetry": 0.8379,
+        "transform_value": 122.07,
+        "note": "Gap sequence — strong bilateral structure detected"
+      },
+      "normalized_gaps_99": {
+        "conjugation_symmetry": 0.7980,
+        "note": "Normalized gaps — after GUE density correction"
+      },
+      "random_baseline_100": {
+        "conjugation_symmetry": 0.0,
+        "note": "Zero patterns detected — clean separation from structured sequences"
+      }
+    },
+    "RH2_zdtp_gateways": {
+      "zeros_16d_vector": {
+        "convergence_score": 0.9869,
+        "classification": "high",
+        "all_gateways_verified": true,
+        "structural_shift": false,
+        "gateway_magnitudes": {
+          "S1": 629.61,
+          "S2": 623.76,
+          "S3A": 616.08,
+          "S3B": 609.35,
+          "S4": 609.35,
+          "S5": 608.49
+        },
+        "note": "S1 (Master) leads — consistent with long-range GUE structure prediction"
+      },
+      "gaps_16d_vector": {
+        "convergence_score": 0.9662,
+        "classification": "high",
+        "all_gateways_verified": true
+      }
+    }
+  },
+  "hierarchy_placement": {
+    "riemann_zero_gaps_chavez": "83.8% — between SG primes (88.5%) and general primes (~78%)",
+    "riemann_zero_gaps_zdtp": "96.6% — approaching deterministic sequence territory",
+    "riemann_zeros_zdtp": "98.7% — exceptional, comparable to Powers of 2 / Fibonacci range",
+    "random_baseline": "0% — clean null result"
+  },
+  "interpretation": {
+    "primary_finding": "Riemann zeros show strong ZDTP convergence (98.7%) — highest of any tested sequence except deterministic",
+    "gap_symmetry": "83.8% conjugation symmetry in gap sequence — consistent with GUE predictions",
+    "gateway_pattern": "S1 (Master Gateway) leads in zero transmission, consistent with long-range correlation hypothesis",
+    "random_separation": "Clean 0% baseline on random confirms the Riemann signal is structural, not artifactual"
+  },
+  "roadmap_prediction_check": {
+    "predicted_symmetry_range": "88-94% (GUE structure visible)",
+    "measured_gap_symmetry": "83.8%",
+    "verdict": "Just below prediction — falls in '78-88% / structured primes' range for gaps",
+    "predicted_zdtp": "High convergence — Diagonal or Master gateway leads",
+    "measured_zdtp": "98.7% — S1 Master Gateway leads",
+    "verdict_zdtp": "CONFIRMED — exceeds prediction, S1 dominance consistent with long-range structure"
+  }
+}

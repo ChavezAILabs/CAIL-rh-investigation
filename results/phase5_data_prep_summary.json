@@ -1,0 +1,99 @@
+{
+  "script": "rh_phase5_data_prep.py",
+  "purpose": "All missing sequences for RH Phase 5 completion \u2014 ready for CAILculator MCP",
+  "chavez_parameters": {
+    "alpha": 1.0,
+    "dimension_param": 2,
+    "pattern_id": 1,
+    "dimensions": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "part_a": {
+    "description": "GUE seed 3 at n=499 \u2014 completes Part A (seeds 1 and 2 already done)",
+    "mean_gap_n499": 1.597294,
+    "gue_seed3": {
+      "file": "phase5a_gue_seed3_ratios.json",
+      "n_ratios": 498,
+      "mean_ratio_precomputed": 0.6377
+    },
+    "previously_completed": {
+      "actual_zeros_n499": {
+        "chavez_symmetry": 75.7,
+        "mean_ratio": 0.616
+      },
+      "actual_zeros_n999": {
+        "chavez_symmetry": 76.3,
+        "mean_ratio": 0.617
+      },
+      "poisson_seed1": {
+        "chavez_symmetry": 68.8
+      },
+      "poisson_seed2": {
+        "chavez_symmetry": 69.4
+      },
+      "poisson_seed3": {
+        "chavez_symmetry": 68.6
+      },
+      "gue_seed1": {
+        "chavez_symmetry": 76.3
+      },
+      "gue_seed2": {
+        "chavez_symmetry": 75.5
+      }
+    }
+  },
+  "part_b": {
+    "description": "Higher zeros 500-599 controls \u2014 completes Part B",
+    "zero_index_range": "499-598 (0-indexed)",
+    "zero_range": [
+      811.1844,
+      937.5329
+    ],
+    "mean_gap": 1.276248,
+    "actual_zeros_500_599": {
+      "file": "phase5b_actual_ratios.json",
+      "n_ratios": 98,
+      "mean_ratio_precomputed": 0.6153,
+      "chavez_symmetry_previously_recorded": 78.3
+    },
+    "poisson_controls": [
+      {
+        "seed": 1,
+        "mean_ratio": 0.3411,
+        "file": "phase5b_poisson_seed1_ratios.json"
+      },
+      {
+        "seed": 2,
+        "mean_ratio": 0.3923,
+        "file": "phase5b_poisson_seed2_ratios.json"
+      },
+      {
+        "seed": 3,
+        "mean_ratio": 0.3711,
+        "file": "phase5b_poisson_seed3_ratios.json"
+      }
+    ],
+    "gue_controls": [
+      {
+        "seed": 1,
+        "mean_ratio": 0.6527,
+        "file": "phase5b_gue_seed1_ratios.json"
+      },
+      {
+        "seed": 2,
+        "mean_ratio": 0.6315,
+        "file": "phase5b_gue_seed2_ratios.json"
+      },
+      {
+        "seed": 3,
+        "mean_ratio": 0.6358,
+        "file": "phase5b_gue_seed3_ratios.json"
+      }
+    ]
+  }
+}

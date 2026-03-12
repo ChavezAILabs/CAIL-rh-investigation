@@ -1,0 +1,56 @@
+{
+  "experiment_id": "EXP_SG_2026_001",
+  "date": "2026-02-16",
+  "source_file": "Sophie Germain Primes from 1 to 100,000.xlsx",
+  "description": "Sophie Germain primes (p where both p and 2p+1 are prime)",
+  "datasets": {
+    "germain_primes": {
+      "label": "Sophie Germain primes (p)",
+      "count": 1171,
+      "min": 2,
+      "max": 99839,
+      "mean": 44453.4979,
+      "std": 29967.8249,
+      "cv": 0.674139
+    },
+    "safe_primes": {
+      "label": "Safe primes (2p+1)",
+      "count": 1171,
+      "min": 5,
+      "max": 199679,
+      "mean": 88907.9957,
+      "std": 59935.6497,
+      "cv": 0.674131
+    },
+    "germain_gaps": {
+      "label": "Gaps between consecutive Germain primes",
+      "count": 1170,
+      "min": 1,
+      "max": 798,
+      "mean": 85.3308,
+      "std": 79.1193,
+      "cv": 0.927207
+    },
+    "safe_gaps": {
+      "label": "Gaps between consecutive safe primes",
+      "count": 1170,
+      "min": 2,
+      "max": 1596,
+      "mean": 170.6615,
+      "std": 158.2386,
+      "cv": 0.927207
+    }
+  },
+  "germain_gap_distribution_top10": {
+    "30": 94,
+    "18": 87,
+    "12": 77,
+    "60": 76,
+    "42": 74,
+    "48": 50,
+    "24": 45,
+    "90": 45,
+    "6": 41,
+    "72": 40
+  }
+}

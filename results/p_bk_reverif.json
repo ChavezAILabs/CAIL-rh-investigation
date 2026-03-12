@@ -1,0 +1,21 @@
+{
+  "verdict": "BK_SUB_THRESHOLD",
+  "formula_tested": "exact_bk: sum_p[(1/sqrt(p))*cos(log(p)*t) + (1/p)*cos(2*log(p)*t)]",
+  "phase_10a_stored_r": 0.5428,
+  "phase_11b_claimed_r": 0.7338,
+  "phase_11b_formula": "unweighted_cos: sum_p[cos(log(p)*t)]",
+  "note": "Phase 11B significance was unweighted formula, not true BK. Retracted.",
+  "reverification": {
+    "base_exact_bk": 0.4844,
+    "plus_13_17": 0.5195,
+    "plus_13_17_19": 0.5686,
+    "plus_13_17_19_23": 0.5793,
+    "all_sub_threshold": true
+  },
+  "unweighted_for_reference": {
+    "base_with_squares": 0.6135,
+    "plus_13_17": 0.6793,
+    "plus_13_17_19": 0.7163,
+    "plus_13_17_19_23": 0.7338
+  }
+}

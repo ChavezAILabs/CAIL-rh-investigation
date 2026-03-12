@@ -1,0 +1,392 @@
+{
+  "phase": "12C",
+  "question": "Where does BK prime orbit correlation peak?",
+  "t_mids": [
+    125,
+    317,
+    470,
+    612,
+    747,
+    875,
+    1002,
+    1124,
+    1244,
+    1361
+  ],
+  "deltas": [
+    0.02672250724808245,
+    0.056996354885954004,
+    0.017574587444885048,
+    0.03407951902634121,
+    0.02269375216419356,
+    0.038191262248017055,
+    0.0005105922796799778,
+    0.0680442051654484,
+    0.06557527142816078,
+    0.023325154154661187
+  ],
+  "significance_threshold": 0.632,
+  "results": [
+    {
+      "prime_added": 2,
+      "all_primes": [
+        2
+      ],
+      "n_primes": 1,
+      "r": 0.4799298545298817,
+      "significant": false
+    },
+    {
+      "prime_added": 3,
+      "all_primes": [
+        2,
+        3
+      ],
+      "n_primes": 2,
+      "r": 0.22613626025685243,
+      "significant": false
+    },
+    {
+      "prime_added": 5,
+      "all_primes": [
+        2,
+        3,
+        5
+      ],
+      "n_primes": 3,
+      "r": 0.32113821354341643,
+      "significant": false
+    },
+    {
+      "prime_added": 7,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "n_primes": 4,
+      "r": 0.4037457880287129,
+      "significant": false
+    },
+    {
+      "prime_added": 11,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11
+      ],
+      "n_primes": 5,
+      "r": 0.4844299810077913,
+      "significant": false
+    },
+    {
+      "prime_added": 13,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13
+      ],
+      "n_primes": 6,
+      "r": 0.44610347540544637,
+      "significant": false
+    },
+    {
+      "prime_added": 17,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17
+      ],
+      "n_primes": 7,
+      "r": 0.5195151978315752,
+      "significant": false
+    },
+    {
+      "prime_added": 19,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "n_primes": 8,
+      "r": 0.5685541993382177,
+      "significant": false
+    },
+    {
+      "prime_added": 23,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23
+      ],
+      "n_primes": 9,
+      "r": 0.5792709146671917,
+      "significant": false
+    },
+    {
+      "prime_added": 29,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29
+      ],
+      "n_primes": 10,
+      "r": 0.5167979021058233,
+      "significant": false
+    },
+    {
+      "prime_added": 31,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31
+      ],
+      "n_primes": 11,
+      "r": 0.5476036909241084,
+      "significant": false
+    },
+    {
+      "prime_added": 37,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37
+      ],
+      "n_primes": 12,
+      "r": 0.5628204398424164,
+      "significant": false
+    },
+    {
+      "prime_added": 41,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41
+      ],
+      "n_primes": 13,
+      "r": 0.5401983666757428,
+      "significant": false
+    },
+    {
+      "prime_added": 43,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43
+      ],
+      "n_primes": 14,
+      "r": 0.527709220826525,
+      "significant": false
+    },
+    {
+      "prime_added": 47,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47
+      ],
+      "n_primes": 15,
+      "r": 0.4801127592136971,
+      "significant": false
+    },
+    {
+      "prime_added": 53,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53
+      ],
+      "n_primes": 16,
+      "r": 0.45961519720954463,
+      "significant": false
+    },
+    {
+      "prime_added": 59,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59
+      ],
+      "n_primes": 17,
+      "r": 0.4206998631992893,
+      "significant": false
+    },
+    {
+      "prime_added": 61,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59,
+        61
+      ],
+      "n_primes": 18,
+      "r": 0.46047515301625686,
+      "significant": false
+    },
+    {
+      "prime_added": 67,
+      "all_primes": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59,
+        61,
+        67
+      ],
+      "n_primes": 19,
+      "r": 0.4794672621208718,
+      "significant": false
+    }
+  ],
+  "peak": {
+    "prime_added": 23,
+    "all_primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23
+    ],
+    "n_primes": 9,
+    "r": 0.5792709146671917,
+    "significant": false
+  },
+  "phase_11b_first_crossing": null,
+  "n_significant": 0
+}

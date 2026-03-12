@@ -1,0 +1,112 @@
+{
+  "phase": "12A",
+  "question": "Does Act/GUE P2 variance ratio plateau at ~0.75 or continue drifting?",
+  "note_p2_only": "P2 direction only (prior phases showed all P-vectors track together)",
+  "prior_data": [
+    {
+      "n_pairs": 97,
+      "act_gue_P1": 0.626,
+      "act_gue_P2": 0.662,
+      "act_gue_P4": 0.628,
+      "act_gue_P5": 0.688,
+      "mean": 0.651,
+      "source": "Phase 10C"
+    },
+    {
+      "n_pairs": 498,
+      "act_gue_P1": 0.742,
+      "act_gue_P2": 0.789,
+      "act_gue_P4": 0.738,
+      "act_gue_P5": 0.768,
+      "mean": 0.759,
+      "source": "Phase 11A"
+    },
+    {
+      "n_pairs": 998,
+      "act_gue_P1": 0.734,
+      "act_gue_P2": 0.762,
+      "act_gue_P4": 0.743,
+      "act_gue_P5": 0.786,
+      "mean": 0.756,
+      "source": "Phase 11A"
+    }
+  ],
+  "new_data": [
+    {
+      "n_pairs": 2000,
+      "mean_gap": 1.2508806630378213,
+      "var_actual": 0.05126923629621528,
+      "var_gue_mean": 0.0690553793398732,
+      "var_gue_seeds": [
+        0.072060973986203,
+        0.06698477941040179,
+        0.06757416232935685,
+        0.06764647013891442,
+        0.07101051083448995
+      ],
+      "act_gue_ratio": 0.7424365311771151,
+      "source": "Phase 12A"
+    },
+    {
+      "n_pairs": 5000,
+      "mean_gap": 1.0868412127626188,
+      "var_actual": 0.03631016111152181,
+      "var_gue_mean": 0.05172971875076262,
+      "var_gue_seeds": [
+        0.05395775379221769,
+        0.052322553533846974,
+        0.05028348122064261,
+        0.051120433046768776,
+        0.05096437216033702
+      ],
+      "act_gue_ratio": 0.7019207138253871,
+      "source": "Phase 12A"
+    },
+    {
+      "n_pairs": 9998,
+      "mean_gap": 0.9864634392302996,
+      "var_actual": 0.028430833471263454,
+      "var_gue_mean": 0.042750738351216976,
+      "var_gue_seeds": [
+        0.04403730695040796,
+        0.043154220406668366,
+        0.04230697279081762,
+        0.042166419306715,
+        0.04208877230147595
+      ],
+      "act_gue_ratio": 0.6650372500631705,
+      "source": "Phase 12A"
+    }
+  ],
+  "gue_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "files": {
+    "actual": [
+      "p12a_actual_n2000_P2.json",
+      "p12a_actual_n5000_P2.json",
+      "p12a_actual_n9998_P2.json"
+    ],
+    "gue": [
+      "p12a_gue_s1_n2000_P2.json",
+      "p12a_gue_s1_n5000_P2.json",
+      "p12a_gue_s1_n9998_P2.json",
+      "p12a_gue_s2_n2000_P2.json",
+      "p12a_gue_s2_n5000_P2.json",
+      "p12a_gue_s2_n9998_P2.json",
+      "p12a_gue_s3_n2000_P2.json",
+      "p12a_gue_s3_n5000_P2.json",
+      "p12a_gue_s3_n9998_P2.json",
+      "p12a_gue_s4_n2000_P2.json",
+      "p12a_gue_s4_n5000_P2.json",
+      "p12a_gue_s4_n9998_P2.json",
+      "p12a_gue_s5_n2000_P2.json",
+      "p12a_gue_s5_n5000_P2.json",
+      "p12a_gue_s5_n9998_P2.json"
+    ]
+  }
+}
