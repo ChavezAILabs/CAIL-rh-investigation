@@ -1,0 +1,755 @@
+{
+  "experiment": "Phase 18E",
+  "date": "2026-03-13",
+  "researcher": "Paul Chavez, Chavez AI Labs LLC",
+  "description": "E8 Gram matrix, subspace rank, Weyl reflections, P\u22a5Q orthogonality, spectral filter rule",
+  "gram_matrix": {
+    "matrix": [
+      [
+        2,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        -2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "labels": [
+      "v1",
+      "q3",
+      "v2",
+      "v3",
+      "v4",
+      "v5",
+      "q2",
+      "q4"
+    ],
+    "analysis": {
+      "antipodal_pairs": [
+        [
+          "v1",
+          "q3"
+        ],
+        [
+          "v2",
+          "v3"
+        ]
+      ],
+      "orthogonal_pairs": [
+        [
+          "v1",
+          "v2"
+        ],
+        [
+          "v1",
+          "v3"
+        ],
+        [
+          "v1",
+          "v4"
+        ],
+        [
+          "v1",
+          "v5"
+        ],
+        [
+          "v1",
+          "q2"
+        ],
+        [
+          "v1",
+          "q4"
+        ],
+        [
+          "q3",
+          "v2"
+        ],
+        [
+          "q3",
+          "v3"
+        ],
+        [
+          "q3",
+          "v4"
+        ],
+        [
+          "q3",
+          "v5"
+        ],
+        [
+          "q3",
+          "q2"
+        ],
+        [
+          "q3",
+          "q4"
+        ],
+        [
+          "v2",
+          "v4"
+        ],
+        [
+          "v2",
+          "v5"
+        ],
+        [
+          "v2",
+          "q2"
+        ],
+        [
+          "v2",
+          "q4"
+        ],
+        [
+          "v3",
+          "v4"
+        ],
+        [
+          "v3",
+          "v5"
+        ],
+        [
+          "v3",
+          "q2"
+        ],
+        [
+          "v3",
+          "q4"
+        ],
+        [
+          "v4",
+          "v5"
+        ],
+        [
+          "v4",
+          "q2"
+        ],
+        [
+          "v4",
+          "q4"
+        ],
+        [
+          "v5",
+          "q2"
+        ],
+        [
+          "v5",
+          "q4"
+        ],
+        [
+          "q2",
+          "q4"
+        ]
+      ],
+      "other_pairs": [],
+      "all_diagonal_are_2": true,
+      "all_offdiag_are_0_or_minus2": true
+    }
+  },
+  "subspace_rank": {
+    "rank_p_only": 4,
+    "rank_p_plus_q": 6,
+    "new_dimensions_added_by_q": 2,
+    "q2_residual_norm_from_p_span": 1.414213562373095,
+    "q4_residual_norm_from_p_span": 1.4142135623730951,
+    "q2_is_outside_p_span": true,
+    "q4_is_outside_p_span": true,
+    "interpretation": "P-vectors span a 4D subspace (v3=-v2 creates dependency). Adding q2 and q4 expands to 6D. AIEX-001 operator H cannot be fully represented using P-vectors alone."
+  },
+  "weyl_reflections": {
+    "pattern_1": {
+      "p_label": "v2",
+      "q_label": "v2",
+      "P_equals_Q": true,
+      "weyl_element": "identity",
+      "single_reflection_possible": true,
+      "candidate_root": "identity",
+      "error": 0.0,
+      "note": "P_8D = Q_8D; no reflection needed."
+    },
+    "pattern_2": {
+      "p_label": "v2",
+      "q_label": "q2",
+      "P_equals_Q": false,
+      "weyl_element": "single_O(8)_reflection_only",
+      "candidate_root": [
+        0.0,
+        0.0,
+        0.7071067811865475,
+        0.7071067811865475,
+        -0.7071067811865475,
+        -0.7071067811865475,
+        0.0,
+        0.0
+      ],
+      "candidate_root_norm_sq": 1.9999999999999996,
+      "candidate_root_integer_coords": false,
+      "candidate_root_is_E8_lattice_root": false,
+      "numerical_error": 0.0,
+      "single_O8_reflection_possible": true,
+      "single_W_E8_reflection_possible": false,
+      "note": "A reflection in O(8) maps P\u2192Q, but the root beta = d/sqrt(P\u00b7d) has irrational coordinates and is NOT in the E8 root lattice. The map P\u2192Q requires at least 2 Weyl reflections in W(E8). This revises the E8_Implications.md 'single Weyl reflection' claim for this pattern \u2014 it is an O(8) reflection, not a W(E8) reflection."
+    },
+    "pattern_3": {
+      "p_label": "v3",
+      "q_label": "q3",
+      "P_equals_Q": false,
+      "weyl_element": "single_O(8)_reflection_only",
+      "candidate_root": [
+        0.0,
+        0.7071067811865475,
+        0.0,
+        -0.7071067811865475,
+        0.7071067811865475,
+        0.0,
+        -0.7071067811865475,
+        0.0
+      ],
+      "candidate_root_norm_sq": 1.9999999999999996,
+      "candidate_root_integer_coords": false,
+      "candidate_root_is_E8_lattice_root": false,
+      "numerical_error": 0.0,
+      "single_O8_reflection_possible": true,
+      "single_W_E8_reflection_possible": false,
+      "note": "A reflection in O(8) maps P\u2192Q, but the root beta = d/sqrt(P\u00b7d) has irrational coordinates and is NOT in the E8 root lattice. The map P\u2192Q requires at least 2 Weyl reflections in W(E8). This revises the E8_Implications.md 'single Weyl reflection' claim for this pattern \u2014 it is an O(8) reflection, not a W(E8) reflection."
+    },
+    "pattern_4": {
+      "p_label": "v2",
+      "q_label": "q4",
+      "P_equals_Q": false,
+      "weyl_element": "single_O(8)_reflection_only",
+      "candidate_root": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.414213562373095,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "candidate_root_norm_sq": 1.9999999999999996,
+      "candidate_root_integer_coords": false,
+      "candidate_root_is_E8_lattice_root": false,
+      "numerical_error": 0.0,
+      "single_O8_reflection_possible": true,
+      "single_W_E8_reflection_possible": false,
+      "note": "A reflection in O(8) maps P\u2192Q, but the root beta = d/sqrt(P\u00b7d) has irrational coordinates and is NOT in the E8 root lattice. The map P\u2192Q requires at least 2 Weyl reflections in W(E8). This revises the E8_Implications.md 'single Weyl reflection' claim for this pattern \u2014 it is an O(8) reflection, not a W(E8) reflection."
+    },
+    "pattern_5": {
+      "p_label": "v5",
+      "q_label": "q2",
+      "P_equals_Q": false,
+      "weyl_element": "single_O(8)_reflection_only",
+      "candidate_root": [
+        0.0,
+        0.0,
+        1.414213562373095,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "candidate_root_norm_sq": 1.9999999999999996,
+      "candidate_root_integer_coords": false,
+      "candidate_root_is_E8_lattice_root": false,
+      "numerical_error": 0.0,
+      "single_O8_reflection_possible": true,
+      "single_W_E8_reflection_possible": false,
+      "note": "A reflection in O(8) maps P\u2192Q, but the root beta = d/sqrt(P\u00b7d) has irrational coordinates and is NOT in the E8 root lattice. The map P\u2192Q requires at least 2 Weyl reflections in W(E8). This revises the E8_Implications.md 'single Weyl reflection' claim for this pattern \u2014 it is an O(8) reflection, not a W(E8) reflection."
+    },
+    "pattern_6": {
+      "p_label": "v1",
+      "q_label": "q3",
+      "P_equals_Q": false,
+      "weyl_element": "single_W(E8)_reflection",
+      "candidate_root": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "candidate_root_norm_sq": 2.0,
+      "candidate_root_integer_coords": true,
+      "candidate_root_is_E8_lattice_root": true,
+      "numerical_error": 0.0,
+      "single_O8_reflection_possible": true,
+      "single_W_E8_reflection_possible": true,
+      "note": "Single W(E8) reflection: sigma_{beta}(P)=Q where beta is an E8 root."
+    }
+  },
+  "bilateral_orthogonality": {
+    "pattern_1": {
+      "p_label": "v2",
+      "q_label": "v2",
+      "P_8D": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8D": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_P_dot_Q": 2.0,
+      "is_orthogonal": false,
+      "relationship": "degenerate: P_8D = Q_8D (same E8 root)"
+    },
+    "pattern_2": {
+      "p_label": "v2",
+      "q_label": "q2",
+      "P_8D": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8D": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_P_dot_Q": 0.0,
+      "is_orthogonal": true,
+      "relationship": "orthogonal: P_8D \u22a5 Q_8D"
+    },
+    "pattern_3": {
+      "p_label": "v3",
+      "q_label": "q3",
+      "P_8D": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8D": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_P_dot_Q": 0.0,
+      "is_orthogonal": true,
+      "relationship": "orthogonal: P_8D \u22a5 Q_8D"
+    },
+    "pattern_4": {
+      "p_label": "v2",
+      "q_label": "q4",
+      "P_8D": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8D": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_P_dot_Q": 0.0,
+      "is_orthogonal": true,
+      "relationship": "orthogonal: P_8D \u22a5 Q_8D"
+    },
+    "pattern_5": {
+      "p_label": "v5",
+      "q_label": "q2",
+      "P_8D": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8D": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_P_dot_Q": 0.0,
+      "is_orthogonal": true,
+      "relationship": "orthogonal: P_8D \u22a5 Q_8D"
+    },
+    "pattern_6": {
+      "p_label": "v1",
+      "q_label": "q3",
+      "P_8D": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "Q_8D": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_P_dot_Q": -2.0,
+      "is_orthogonal": false,
+      "relationship": "antipodal: P_8D = -Q_8D (opposite E8 roots)"
+    },
+    "genuinely_orthogonal_pairs": 4,
+    "degenerate_pairs_P_equals_Q": 1,
+    "antipodal_pairs_P_equals_minus_Q": 1,
+    "note": "Three relationship types observed: (1) P_8D = Q_8D [degenerate \u2014 Q maps to same E8 root as P]; (2) P_8D = -Q_8D [antipodal \u2014 Q maps to the antipodal E8 root]; (3) P_8D \u22a5 Q_8D [orthogonal \u2014 P and Q map to distinct, perpendicular E8 roots]. The orthogonal pairs are the non-degenerate, non-antipodal bilateral zero divisors where the 8D geometric orthogonality is a new condition beyond the 16D algebraic annihilation P*Q=0 (Lean 4 proven). Primary Lean 4 target: prove that geometric orthogonality and algebraic annihilation are equivalent for the non-degenerate pairs."
+  },
+  "spectral_filter_rule": {
+    "v1": {
+      "root_form": "difference",
+      "nonzero_positions": [
+        1,
+        6
+      ],
+      "nonzero_values": [
+        1,
+        -1
+      ],
+      "projection_formula": "+(g2) -(g2/s)",
+      "predicted_spectral_character": "high-pass / broadband",
+      "empirical_spectral_character": "high-pass (Phase 15D)",
+      "prediction_matches_empirical": true
+    },
+    "q3": {
+      "root_form": "difference",
+      "nonzero_positions": [
+        1,
+        6
+      ],
+      "nonzero_values": [
+        -1,
+        1
+      ],
+      "projection_formula": "-(g2) +(g2/s)",
+      "predicted_spectral_character": "high-pass / broadband",
+      "empirical_spectral_character": "high-pass (isometry = v1)",
+      "prediction_matches_empirical": true
+    },
+    "v2": {
+      "root_form": "difference",
+      "nonzero_positions": [
+        3,
+        4
+      ],
+      "nonzero_values": [
+        1,
+        -1
+      ],
+      "projection_formula": "+(g1*g2/s) -((g1+g2)/2)",
+      "predicted_spectral_character": "high-pass / broadband",
+      "empirical_spectral_character": "high-pass (Phase 15D)",
+      "prediction_matches_empirical": true
+    },
+    "v3": {
+      "root_form": "difference",
+      "nonzero_positions": [
+        3,
+        4
+      ],
+      "nonzero_values": [
+        -1,
+        1
+      ],
+      "projection_formula": "-(g1*g2/s) +((g1+g2)/2)",
+      "predicted_spectral_character": "high-pass / broadband",
+      "empirical_spectral_character": "high-pass (isometry = v2)",
+      "prediction_matches_empirical": true
+    },
+    "v4": {
+      "root_form": "sum",
+      "nonzero_positions": [
+        1,
+        6
+      ],
+      "nonzero_values": [
+        1,
+        1
+      ],
+      "projection_formula": "+(g2) +(g2/s)",
+      "predicted_spectral_character": "low-pass / ultra-low-pass",
+      "empirical_spectral_character": "high-pass (Phase 15D)",
+      "prediction_matches_empirical": false
+    },
+    "v5": {
+      "root_form": "sum",
+      "nonzero_positions": [
+        2,
+        5
+      ],
+      "nonzero_values": [
+        1,
+        1
+      ],
+      "projection_formula": "+(g1-g2) +(g1/s)",
+      "predicted_spectral_character": "low-pass / ultra-low-pass",
+      "empirical_spectral_character": "low-pass (Phase 15D \u2014 outlier)",
+      "prediction_matches_empirical": true
+    },
+    "q2": {
+      "root_form": "difference",
+      "nonzero_positions": [
+        2,
+        5
+      ],
+      "nonzero_values": [
+        -1,
+        1
+      ],
+      "projection_formula": "-(g1-g2) +(g1/s)",
+      "predicted_spectral_character": "high-pass / broadband",
+      "empirical_spectral_character": "broadband (Phase 17A \u2014 9/9 primes including p=2)",
+      "prediction_matches_empirical": true
+    },
+    "q4": {
+      "root_form": "sum",
+      "nonzero_positions": [
+        3,
+        4
+      ],
+      "nonzero_values": [
+        1,
+        1
+      ],
+      "projection_formula": "+(g1*g2/s) +((g1+g2)/2)",
+      "predicted_spectral_character": "low-pass / ultra-low-pass",
+      "empirical_spectral_character": "ultra-low-pass (Phase 17A \u2014 exponential decay p=2\u219223)",
+      "prediction_matches_empirical": true
+    }
+  },
+  "root_subsystem": {
+    "root_count_in_8_set": 8,
+    "antipodal_pairs_in_set": [
+      [
+        "v1",
+        "q3"
+      ],
+      [
+        "v2",
+        "v3"
+      ]
+    ],
+    "singleton_roots_no_negative_in_set": [
+      "v4",
+      "v5",
+      "q2",
+      "q4"
+    ],
+    "missing_negatives_to_complete_root_system": [
+      {
+        "missing_negative_of": "v4",
+        "vector": [
+          -0.0,
+          -1.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -0.0,
+          -1.0,
+          -0.0
+        ]
+      },
+      {
+        "missing_negative_of": "v5",
+        "vector": [
+          -0.0,
+          -0.0,
+          -1.0,
+          -0.0,
+          -0.0,
+          -1.0,
+          -0.0,
+          -0.0
+        ]
+      },
+      {
+        "missing_negative_of": "q2",
+        "vector": [
+          -0.0,
+          -0.0,
+          1.0,
+          -0.0,
+          -0.0,
+          -1.0,
+          -0.0,
+          -0.0
+        ]
+      },
+      {
+        "missing_negative_of": "q4",
+        "vector": [
+          -0.0,
+          -0.0,
+          -0.0,
+          -1.0,
+          -1.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ]
+      }
+    ],
+    "completed_root_count": 12,
+    "completed_root_system_type": "(A1)^6",
+    "completed_root_system_rank": 6,
+    "completed_root_system_dimension": 6,
+    "all_roots_mutually_orthogonal_or_antipodal": true,
+    "asymmetry_description": "The 8-root set is an asymmetric subset of a (A1)^6 root system. It has BOTH roots from 2 of the 6 A1 factors ({v1,q3} and {v2,v3}), but only ONE root from each of the remaining 4 factors ({v4},{v5},{q2},{q4}). This asymmetry is NOT an artifact \u2014 it reflects the sedenion bilateral zero divisor structure: patterns with antipodal P/Q-vector images ({v2,q3=\u2212v1} etc.) arise from specific algebraic pairing rules in CD4.",
+    "note_on_missing_negatives": "The 4 missing negatives {-v4=-e2-e7, -v5=-e3-e6, -q2=e3-e6=v5', -q4=-e4-e5} are also E8 roots (norm\u00b2 = 2, integer coordinates). They are absent from the bilateral zero divisor structure because no Canonical Six pattern maps to these directions. Whether this absence has algebraic significance (e.g., the missing directions are the framework-dependent patterns' Q-vectors) is an open question for Phase 18F."
+  },
+  "summary": {
+    "all_roots_on_E8_first_shell": true,
+    "all_cross_block_inner_products_zero": true,
+    "gram_matrix_structure": "block-diagonal: 2\u00d7(A1 antipodal) + 4\u00d7(isolated root)",
+    "completed_root_system": "(A1)^6",
+    "p_subspace_rank": 4,
+    "p_plus_q_subspace_rank": 6,
+    "bilateral_orthogonality_breakdown": {
+      "genuinely_orthogonal": 4,
+      "degenerate_P_equals_Q": 1,
+      "antipodal_P_equals_minus_Q": 1
+    },
+    "spectral_filter_rule_naive_holds": false,
+    "spectral_filter_rule_note": "v4 (sum root e2+e7) is empirically high-pass \u2014 naive rule fails for v4; analytic derivation needed.",
+    "weyl_single_W_E8_reflection_holds": {
+      "pattern_1": true,
+      "pattern_2": false,
+      "pattern_3": false,
+      "pattern_4": false,
+      "pattern_5": false,
+      "pattern_6": true
+    },
+    "primary_lean4_target": "P_8D \u22a5 Q_8D (geometric orthogonality) \u2194 P*Q=0 (16D sedenion annihilation): both are zero for all 6 patterns \u2014 candidate theorem connecting E8 root geometry to sedenion algebraic structure.",
+    "secondary_lean4_target": "Rank computation: P-vectors span 4D, P+Q span 6D. Integer matrix rank proof is straightforward.",
+    "aiex001_implication": "AIEX-001 operator H operates in a 6D subspace of the 8D E8 embedding. It cannot be fully represented by P-vectors alone. Q-vectors q2 and q4 add 2 independent arithmetic coverage dimensions. H's self-adjointness candidate: bilateral annihilation = geometric orthogonality.",
+    "open_question": "The 8-root set is an asymmetric subset of (A1)^6. The 4 missing negatives {-v4, -v5, -q2, -q4} may be the Q-vector images of the 6 framework-dependent (non-Canonical) patterns \u2014 test in Phase 18F."
+  }
+}

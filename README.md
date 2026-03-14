@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–18 (partial) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -34,6 +34,20 @@ This eliminates Route C (GUE universality) and strongly supports AIEX-001: a Hil
 - Q-vectors outperform P-vectors by **5–7× in SNR** (peak 1995× vs 245×)
 - Route B re-confirmed with **10–14× stronger suppression** than Phase 16 (p=2 in χ₄: ~10,000×)
 - **Layer structure discovered**: actual zeros match GUE in three-gap correlations (Act/GUE = 1.02) but are tighter in two-gap correlations (0.65) — the bilateral product structure reveals this distinction
+
+**E8 Root Geometry (Phase 18E):** Complete structural analysis of the 8-root bilateral zero divisor set {v1, q3, v2, v3, v4, v5, q2, q4}:
+
+- All 8 roots lie on the E8 first shell (norm² = 2); Gram matrix entries ∈ {−2, 0, +2}
+- The complete set spans a **6D subspace** of 8D E8 space (P-vectors alone span 4D; q2, q4 add 2 new independent dimensions)
+- Root system classification: **(A₁)⁶** — 6 mutually orthogonal A₁ factors, each a ±root pair
+- P⊥Q orthogonality has three types: degenerate (P=Q, Pattern 1), genuinely orthogonal (Patterns 2–5), antipodal (P=−Q, Pattern 6)
+- Only Pattern 6 corresponds to a genuine W(E8) Weyl reflection; Patterns 2–5 require ≥2 Weyl steps
+
+**chi3/Q2 Anomaly Resolved (Phase 18A):** Conductor survey across χ₃, χ₄, χ₅, χ₇, χ₈ (conductors 3, 4, 5, 7, 8):
+
+- The χ₃/ζ Q2 SNR ratio ≈ 1.0 (Phase 17) is **conductor-specific to conductor 3** — χ₄, χ₅, χ₇, χ₈ all return to the expected ~0.1–0.3 range
+- Route B ramified prime suppression confirmed for all 5 L-functions (ratio ≈ 0.000 at each ramified prime)
+- The q2 = e5+e10 sedenion direction has a structural alignment with conductor-3 L-functions not shared by other conductors tested
 
 ---
 
@@ -76,6 +90,8 @@ CAIL-rh-investigation/
 | 15 | Geometry & corrections | Antipodal isometry = theorem; Weyl orbit spectral split confirmed |
 | **16** | **L-function comparison** | **Route B CONFIRMED; Route C ELIMINATED** |
 | **17** | **Q-vector access** | **First p=2 detection; 9/9 primes in single projection; Route B re-confirmed 10–14× stronger** |
+| **18E** | **E8 root geometry** | **(A₁)⁶ root system; 6D subspace; three P⊥Q orthogonality types; only Pattern 6 is a genuine Weyl reflection** |
+| **18A** | **Conductor survey** | **χ₃/Q2 ≈ 1.0 anomaly confirmed conductor-specific to conductor 3; Route B suppression confirmed for χ₅, χ₇, χ₈** |
 
 ---
 
@@ -119,6 +135,9 @@ Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — `aristotle-harm
 - `rh_gaps.json`, `rh_gaps_10k.json` — gap sequences
 - `zeros_chi4_2k.json` — 2,092 χ₄ zeros to t=2000 (python-flint)
 - `zeros_chi3_2k.json` — 1,893 χ₃ zeros to t=2000 (python-flint)
+- `zeros_chi5_phase18a.json` — 1,500 χ₅ zeros to t≈1549 (python-flint, Phase 18A)
+- `zeros_chi7_phase18a.json` — 1,500 χ₇ zeros to t≈1480 (python-flint, Phase 18A)
+- `zeros_chi8_phase18a.json` — 1,500 χ₈ zeros to t≈1449 (python-flint, Phase 18A)
 
 ---
 
