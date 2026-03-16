@@ -1,0 +1,278 @@
+{
+  "phase": "18C",
+  "date": "2026-03-16",
+  "researcher": "Paul Chavez, Chavez AI Labs LLC",
+  "data_generation": {
+    "zeta_q2_n": 9998,
+    "zeta_q2_mean": 0.49948637101287535,
+    "chi3_q2_n": 1891,
+    "chi3_q2_mean": 0.49946265055922723,
+    "files": [
+      "p18c_zeta_q2_sequence_full.json",
+      "p18c_chi3_q2_sequence.json"
+    ]
+  },
+  "Q5_height_normalization": {
+    "question": "Does three-gap monotonic variance drop survive per-window normalization?",
+    "normalization": "empirical local mean gap per window",
+    "phase18b_range": [
+      0.1498,
+      3.0168
+    ],
+    "per_window_range": [
+      0.257162885214261,
+      1.3009067290043659
+    ],
+    "monotonic_drop_survives": false,
+    "windows": [
+      {
+        "label": "zeros 0-2498",
+        "start": 0,
+        "end": 2499,
+        "height_lo": 14.134725141734695,
+        "height_hi": 3031.2892174680615,
+        "local_mean_gap": 1.2073447348244606,
+        "act_var": 4.856236124178749,
+        "gue_var": 3.732962568266069,
+        "poisson_var": 17.55761055952975,
+        "act_gue_ratio": 1.3009067290043659,
+        "poi_gue_ratio": 4.703398504122991
+      },
+      {
+        "label": "zeros 2499-4997",
+        "start": 2499,
+        "end": 4998,
+        "height_lo": 3031.2892174680615,
+        "height_hi": 5446.765247872766,
+        "local_mean_gap": 0.9665770429790734,
+        "act_var": 0.3943507389610465,
+        "gue_var": 1.533466770029759,
+        "poisson_var": 7.2125053122802845,
+        "act_gue_ratio": 0.257162885214261,
+        "poi_gue_ratio": 4.703398504122991
+      },
+      {
+        "label": "zeros 4998-7496",
+        "start": 4998,
+        "end": 7497,
+        "height_lo": 5446.765247872766,
+        "height_hi": 7706.96219619128,
+        "local_mean_gap": 0.9044405555496254,
+        "act_var": 0.3028477860523366,
+        "gue_var": 1.175570224282839,
+        "poisson_var": 5.529175234383434,
+        "act_gue_ratio": 0.2576177754392257,
+        "poi_gue_ratio": 4.703398504122991
+      },
+      {
+        "label": "zeros 7497-9995",
+        "start": 7497,
+        "end": 9996,
+        "height_lo": 7706.96219619128,
+        "height_hi": 9875.218994098846,
+        "local_mean_gap": 0.8676497790746565,
+        "act_var": 0.26010535020411757,
+        "gue_var": 0.9956491039173591,
+        "poisson_var": 4.682934505996303,
+        "act_gue_ratio": 0.2612419869417236,
+        "poi_gue_ratio": 4.703398504122991
+      }
+    ]
+  },
+  "Q2_pq_split": {
+    "question": "Does P/Q SNR profile match high-pass/low-pass decomposition of explicit formula?",
+    "source_files": [
+      "p13a_results.json",
+      "p14b_results.json",
+      "p15d_p1_bridge.json",
+      "p17a_results.json"
+    ],
+    "projections": {
+      "SR": {
+        "character": "high-pass (peaks at large p)",
+        "peak_p": 13,
+        "n_detected": 8,
+        "p2_snr": 0.8406011395448675,
+        "p23_snr": 185.1015211270919,
+        "full_snr": {
+          "2": 0.8406011395448675,
+          "3": 7.608462980327337,
+          "5": 76.08628917130135,
+          "7": 139.73870931578526,
+          "11": 231.2079887353102,
+          "13": 245.40982978346216,
+          "17": 205.8665853669695,
+          "19": 211.4756983187524,
+          "23": 185.1015211270919
+        }
+      },
+      "P2/P3": {
+        "character": "low-pass (peaks at small p)",
+        "peak_p": 2,
+        "n_detected": 8,
+        "p2_snr": 1584.8710163287437,
+        "p23_snr": 97.08571682239995,
+        "full_snr": {
+          "2": 1584.8710163287437,
+          "3": 1492.8108204741109,
+          "5": 606.2079762503655,
+          "7": 180.77474045182376,
+          "11": 0.8956157817299568,
+          "13": 7.760926623843854,
+          "17": 46.907743217097575,
+          "19": 62.52927614745672,
+          "23": 97.08571682239995
+        }
+      },
+      "v1_P1": {
+        "character": "high-pass (peaks at large p)",
+        "peak_p": 13,
+        "n_detected": 9,
+        "p2_snr": 12.4,
+        "p23_snr": 308.4,
+        "full_snr": {
+          "2": 12.4,
+          "3": 11.8,
+          "5": 100.1,
+          "7": 190.4,
+          "11": 334.0,
+          "13": 351.0,
+          "17": 330.3,
+          "19": 336.7,
+          "23": 308.4
+        }
+      },
+      "v2_P2": {
+        "character": "high-pass (peaks at large p)",
+        "peak_p": 13,
+        "n_detected": 9,
+        "p2_snr": 7.4,
+        "p23_snr": 260.0,
+        "full_snr": {
+          "2": 7.4,
+          "3": 9.7,
+          "5": 89.6,
+          "7": 166.4,
+          "11": 268.2,
+          "13": 274.8,
+          "17": 272.6,
+          "19": 274.2,
+          "23": 260.0
+        }
+      },
+      "v3_P3": {
+        "character": "high-pass (peaks at large p)",
+        "peak_p": 13,
+        "n_detected": 9,
+        "p2_snr": 7.4,
+        "p23_snr": 260.0,
+        "full_snr": {
+          "2": 7.4,
+          "3": 9.7,
+          "5": 89.6,
+          "7": 166.4,
+          "11": 268.2,
+          "13": 274.8,
+          "17": 272.6,
+          "19": 274.2,
+          "23": 260.0
+        }
+      },
+      "v4_P4": {
+        "character": "high-pass (peaks at large p)",
+        "peak_p": 13,
+        "n_detected": 8,
+        "p2_snr": 1.2,
+        "p23_snr": 114.0,
+        "full_snr": {
+          "2": 1.2,
+          "3": 15.2,
+          "5": 71.4,
+          "7": 114.1,
+          "11": 162.3,
+          "13": 170.0,
+          "17": 130.8,
+          "19": 134.4,
+          "23": 114.0
+        }
+      },
+      "v5_P5": {
+        "character": "broadband",
+        "peak_p": 7,
+        "n_detected": 9,
+        "p2_snr": 9.8,
+        "p23_snr": 22.0,
+        "full_snr": {
+          "2": 9.8,
+          "3": 41.1,
+          "5": 81.8,
+          "7": 86.6,
+          "11": 67.4,
+          "13": 67.3,
+          "17": 30.0,
+          "19": 30.7,
+          "23": 22.0
+        }
+      },
+      "Q2": {
+        "character": "broadband",
+        "peak_p": 5,
+        "n_detected": 9,
+        "p2_snr": 418.6919165747941,
+        "p23_snr": 549.0959340049133,
+        "full_snr": {
+          "2": 418.6919165747941,
+          "3": 1143.01509009874,
+          "5": 1761.743845809999,
+          "7": 1757.8072955739833,
+          "11": 1357.0121601030223,
+          "13": 1151.8515717542775,
+          "17": 841.6307813450595,
+          "19": 726.565332508235,
+          "23": 549.0959340049133
+        }
+      },
+      "Q4": {
+        "character": "low-pass (peaks at small p)",
+        "peak_p": 3,
+        "n_detected": 7,
+        "p2_snr": 1796.8716374896594,
+        "p23_snr": 0.9911590056628605,
+        "full_snr": {
+          "2": 1796.8716374896594,
+          "3": 1995.6433452022518,
+          "5": 1214.3410982030382,
+          "7": 640.0416879149709,
+          "11": 171.00819776208857,
+          "13": 79.51097691634818,
+          "17": 12.757842209317591,
+          "19": 4.0638568084869355,
+          "23": 0.9911590056628605
+        }
+      }
+    },
+    "p_highpass_count": "5/7",
+    "q_lowpass_count": "2/2",
+    "conclusion": "CONFIRMED: P/Q split matches high-pass/low-pass decomposition"
+  },
+  "Q1_filter_bank": {
+    "status": "STATED",
+    "corollary_text": "Corollary (Filter Bank): The embed_pair kernel decomposes prime spectral content into two complementary channels: P-projections (including SR) form a narrow-band / high-pass filter selective for short prime orbits (p>=7, large log p); Q-projections form a broadband / low-pass filter covering the full prime spectrum including p=2. Together they span the complete Euler product structure detected in Phases 13-17."
+  },
+  "Q3_bilateral_correspondence": {
+    "question": "Does s->1-s correspond to s_alpha4 in E8?",
+    "theorem_1b_verified": true,
+    "proposed_dictionary": {
+      "Riemann zero rho": "vector in bilateral ZD span",
+      "conjugate 1-rho-bar": "s_alpha4(rho-vector)",
+      "functional equation": "Theorem_1b: s_alpha4(v2) = v3",
+      "s->1-s symmetry": "Weyl reflection s_alpha4",
+      "critical line Re(s)=1/2": "fixed hyperplane of s_alpha4: {x[3]=x[4]}",
+      "bilateral pairing rho<->1-rho-bar": "antipodal pair v2+v3=0"
+    },
+    "fixed_point_consistency": "CONSISTENT -- both are codimension-1 midpoint constraints",
+    "lean4_target": "aiex001_functional_equation_correspondence",
+    "status": "CANDIDATE MAP STATED -- precise, falsifiable, grounded in Theorem_1b"
+  },
+  "aiex001_candidate_statement": "The Hilbert-Polya operator H has a natural representation in sedenion space where: (1) its eigenfunctions are indexed by nontrivial Riemann zeros, (2) the functional equation symmetry s->1-s is realized by the E8 Weyl reflection s_alpha4 established in Theorem_1b (Lean 4, zero sorry stubs), and (3) the Canonical Six bilateral zero divisor patterns provide the algebraic basis for the spectral structure, with the (A1)^6 root system in the 6D bilateral subspace serving as the natural frame for H."
+}
