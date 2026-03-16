@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–18 (partial) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18E, 18A, 18B complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -33,7 +33,7 @@ This eliminates Route C (GUE universality) and strongly supports AIEX-001: a Hil
 - **9/9 primes p=2..23 detected in a single projection** — q2 is the first broadband channel covering the full prime spectrum
 - Q-vectors outperform P-vectors by **5–7× in SNR** (peak 1995× vs 245×)
 - Route B re-confirmed with **10–14× stronger suppression** than Phase 16 (p=2 in χ₄: ~10,000×)
-- **Layer structure discovered**: actual zeros match GUE in three-gap correlations (Act/GUE = 1.02) but are tighter in two-gap correlations (0.65) — the bilateral product structure reveals this distinction
+- **Layer structure discovered**: actual zeros match GUE in three-gap correlations (Act/GUE = 1.02) but are tighter in two-gap correlations (0.65) — the bilateral product structure reveals this distinction *(Phase 18B refinement: 1.02 is a global-average artifact; see Phase 18B)*
 
 **E8 Root Geometry (Phase 18E):** Complete structural analysis of the 8-root bilateral zero divisor set {v1, q3, v2, v3, v4, v5, q2, q4}:
 
@@ -49,6 +49,18 @@ This eliminates Route C (GUE universality) and strongly supports AIEX-001: a Hil
 - Route B ramified prime suppression confirmed for all 5 L-functions (ratio ≈ 0.000 at each ramified prime)
 - The q2 = e5+e10 sedenion direction has a structural alignment with conductor-3 L-functions not shared by other conductors tested
 
+**Bilateral Collapse Theorem (Phase 18B):** For Pattern 1 bilateral zero divisor pair (P1, Q1) and any scalars a, b, c ∈ ℝ:
+
+> **(a·P1 + b·Q1) · (b·P1 + c·Q1) = −2·b·(a+c)·e0**
+
+All 15 sedenion vector components are zero by algebra — a structural consequence of the bilateral ZD property, not a property of any specific input sequence. Numerically verified to machine precision (10⁻¹⁰). Lean 4 proof target: `bilateral_collapse` (3 lemmas; lemma 1 already proven).
+
+Additional Phase 18B findings:
+- The Phase 17 two-gap/three-gap "layer structure" (Act/GUE 0.65 → 1.02) was a formula-family contrast (embed_pair P2 harmonic mean vs. sedenion scalar), not a pure scale transition. Within the product family s_n^(k), the Act/GUE transition occurs at **k=2**, not k=3.
+- Three-gap statistic is strongly height-dependent; per-window normalization required for clean comparison (queued for Phase 18C).
+- CAILculator confirms actual Riemann three-gap sequence sits between Poisson and GUE on both transform magnitude and conjugation symmetry — consistent with Act/GUE = 1.065.
+- Log-prime DFT on three-gap scalar: p=2 SNR = 837× (exceeds q2 Phase 17 SNR of 418×).
+
 ---
 
 ## Repository Structure
@@ -60,7 +72,7 @@ CAIL-rh-investigation/
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄)
-├── results/                         # All phase result JSON files (Phases 1–17)
+├── results/                         # All phase result JSON files (Phases 1–17, 18E, 18A, 18B)
 ├── scripts/                         # Python analysis scripts
 ├── docs/
 │   ├── findings_summary.md          # Cumulative results summary
@@ -92,6 +104,7 @@ CAIL-rh-investigation/
 | **17** | **Q-vector access** | **First p=2 detection; 9/9 primes in single projection; Route B re-confirmed 10–14× stronger** |
 | **18E** | **E8 root geometry** | **(A₁)⁶ root system; 6D subspace; three P⊥Q orthogonality types; only Pattern 6 is a genuine Weyl reflection** |
 | **18A** | **Conductor survey** | **χ₃/Q2 ≈ 1.0 anomaly confirmed conductor-specific to conductor 3; Route B suppression confirmed for χ₅, χ₇, χ₈** |
+| **18B** | **Three-gap layer structure** | **Bilateral Collapse Theorem proven; n-gap transition at k=2; Phase 17 layer structure was formula-family contrast, not scale transition; Lean 4 target: `bilateral_collapse`** |
 
 ---
 
