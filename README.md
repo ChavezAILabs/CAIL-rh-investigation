@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18E, 18A, 18B complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18E, 18A, 18B, 18C complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -57,9 +57,16 @@ All 15 sedenion vector components are zero by algebra — a structural consequen
 
 Additional Phase 18B findings:
 - The Phase 17 two-gap/three-gap "layer structure" (Act/GUE 0.65 → 1.02) was a formula-family contrast (embed_pair P2 harmonic mean vs. sedenion scalar), not a pure scale transition. Within the product family s_n^(k), the Act/GUE transition occurs at **k=2**, not k=3.
-- Three-gap statistic is strongly height-dependent; per-window normalization required for clean comparison (queued for Phase 18C).
+- Three-gap statistic is strongly height-dependent; per-window normalization required for clean comparison (resolved in Phase 18C Q5).
 - CAILculator confirms actual Riemann three-gap sequence sits between Poisson and GUE on both transform magnitude and conjugation symmetry — consistent with Act/GUE = 1.065.
 - Log-prime DFT on three-gap scalar: p=2 SNR = 837× (exceeds q2 Phase 17 SNR of 418×).
+
+**AIEX-001 Candidate Statement (Phase 18C):** First formal statement of the operator construction target:
+
+- **Filter Bank Corollary:** The `embed_pair` kernel decomposes prime spectral content into two complementary channels: P-projections form a narrow-band high-pass filter (p≥7); Q-projections form a broadband/low-pass filter covering the full Euler product including p=2. Confirmed from synthesis of Phases 13A, 14B, 15D, 17A.
+- **Bilateral Constraint Correspondence (Q3):** The functional equation symmetry s→1−s is proposed to correspond to the E8 Weyl reflection s_α4 (Theorem_1b, Lean 4, zero sorry stubs). Structural parallel: both impose codimension-1 midpoint constraints — fixed hyperplane {x[4]=x[5]} in ℝ⁸ and critical line Re(s)=½ respectively. The 6D bilateral subspace decomposes under s_α4 as **5D fixed** (all bilateral roots except v2/v3) ⊕ **1D antisymmetric** (the v2/v3 antipodal direction). Lean 4 target: `aiex001_functional_equation_correspondence`.
+- **Q4 Layer 1:** CAILculator distinguishes χ₃ from ζ Q2 sequences via bilateral zero structure (122 vs 101 pairs, 21% excess in χ₃) — candidate conductor-3 fingerprint. Transform magnitude nearly identical (0.985 ratio).
+- **What remains for Phase 19:** An explicit equivariant embedding ρ ↦ v(ρ) and a self-adjointness argument for H that eliminates the 1D antisymmetric component — the proposed mechanism by which s_α4 would force zeros to Re(s)=½.
 
 ---
 
@@ -72,7 +79,7 @@ CAIL-rh-investigation/
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄)
-├── results/                         # All phase result JSON files (Phases 1–17, 18E, 18A, 18B)
+├── results/                         # All phase result JSON files (Phases 1–17, 18E, 18A, 18B, 18C)
 ├── scripts/                         # Python analysis scripts
 ├── docs/
 │   ├── findings_summary.md          # Cumulative results summary
@@ -105,6 +112,7 @@ CAIL-rh-investigation/
 | **18E** | **E8 root geometry** | **(A₁)⁶ root system; 6D subspace; three P⊥Q orthogonality types; only Pattern 6 is a genuine Weyl reflection** |
 | **18A** | **Conductor survey** | **χ₃/Q2 ≈ 1.0 anomaly confirmed conductor-specific to conductor 3; Route B suppression confirmed for χ₅, χ₇, χ₈** |
 | **18B** | **Three-gap layer structure** | **Bilateral Collapse Theorem proven; n-gap transition at k=2; Phase 17 layer structure was formula-family contrast, not scale transition; Lean 4 target: `bilateral_collapse`** |
+| **18C** | **AIEX-001 operator construction** | **Filter Bank Corollary stated; s→1−s ↔ s_α4 candidate map; 6D subspace decomposes as 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess (21%) as conductor-3 fingerprint** |
 
 ---
 
