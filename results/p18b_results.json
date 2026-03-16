@@ -1,0 +1,575 @@
+{
+  "phase": "18B",
+  "date": "2026-03-16",
+  "researcher": "Paul Chavez, Chavez AI Labs LLC",
+  "data": {
+    "n_zeros": 10000,
+    "n_gaps": 9999,
+    "mean_gap": 0.9864634392302996,
+    "seeds": [
+      42,
+      137,
+      271
+    ]
+  },
+  "18Bi_vector_part_survey": {
+    "question": "What do all 16 sedenion product components reveal about Act/GUE structure?",
+    "preflight": {
+      "P1_sq_nonzero_components": [
+        0
+      ],
+      "P1_Q1_nonzero_components": [],
+      "Q1_P1_nonzero_components": [],
+      "Q1_sq_nonzero_components": [
+        0
+      ],
+      "structurally_active_components": [
+        0
+      ],
+      "structurally_zero_components": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "bilateral_zd_forces_scalar_product": true,
+      "theorem": "If P*Q=Q*P=0 and P^2=Q^2=-2*e0, then x_n*x_{n+1} is purely scalar for all gap sequences. All 15 vector components are algebraically zero, not statistically zero."
+    },
+    "n_triplets": 9997,
+    "P1_pattern": {
+      "1": 1,
+      "14": 1
+    },
+    "Q1_pattern": {
+      "3": 1,
+      "12": 1
+    },
+    "components": [
+      {
+        "index": 0,
+        "basis_element": "e0",
+        "actual_mean": -3.8012906959833477,
+        "actual_var": 7.139430582757504,
+        "gue_var": 6.701955663066047,
+        "poisson_var": 30.183486965497906,
+        "act_gue_ratio": 1.065275710805183,
+        "poi_gue_ratio": 4.503683474338205,
+        "log_prime_snr": {
+          "2": 837.2193621328007,
+          "3": 682.8401479972869,
+          "5": 235.62859814982565,
+          "7": 91.64885628224172,
+          "11": 18.27525771352334,
+          "13": 8.730459971539936,
+          "17": 6.416055185159121,
+          "19": 6.251616298291654,
+          "23": 7.29494668004157
+        }
+      },
+      {
+        "index": 1,
+        "basis_element": "e1",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 2,
+        "basis_element": "e2",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 3,
+        "basis_element": "e3",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 4,
+        "basis_element": "e4",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 5,
+        "basis_element": "e5",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 6,
+        "basis_element": "e6",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 7,
+        "basis_element": "e7",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 8,
+        "basis_element": "e8",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 9,
+        "basis_element": "e9",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 10,
+        "basis_element": "e10",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 11,
+        "basis_element": "e11",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 12,
+        "basis_element": "e12",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 13,
+        "basis_element": "e13",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 14,
+        "basis_element": "e14",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      },
+      {
+        "index": 15,
+        "basis_element": "e15",
+        "actual_mean": 0.0,
+        "actual_var": 0.0,
+        "gue_var": 0.0,
+        "poisson_var": 0.0,
+        "act_gue_ratio": NaN,
+        "poi_gue_ratio": NaN,
+        "log_prime_snr": {
+          "2": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0,
+          "17": 0.0,
+          "19": 0.0,
+          "23": 0.0
+        }
+      }
+    ],
+    "summary": {
+      "n_components_act_lt_gue": 0,
+      "n_components_act_approx_gue": 1,
+      "n_components_act_gt_gue": 0,
+      "max_act_gue_ratio_component": 0,
+      "max_act_gue_ratio_value": 1.065275710805183,
+      "max_poi_gue_ratio_component": 0,
+      "max_poi_gue_ratio_value": 4.503683474338205,
+      "best_log_prime_snr_component": 0,
+      "best_log_prime_snr_value": 837.2193621328007
+    },
+    "octonion_sedenion_boundary": {
+      "note": "e0=scalar, e1-e7=octonion-inherited, e8-e15=sedenion-only (pathological). Only structurally active components included.",
+      "active_components_only": [
+        0
+      ],
+      "e0_scalar": {
+        "act_gue_ratio": 1.065275710805183,
+        "poi_gue_ratio": 4.503683474338205
+      },
+      "e1_e7_octonion": {
+        "active_components": [],
+        "act_gue_mean": null,
+        "poi_gue_mean": null,
+        "act_gue_values": {}
+      },
+      "e8_e15_sedenion": {
+        "active_components": [],
+        "act_gue_mean": null,
+        "poi_gue_mean": null,
+        "act_gue_values": {}
+      },
+      "boundary_split_detected": "N/A ? all vector components structurally zero for this P1/Q1 choice",
+      "boundary_testable": false
+    }
+  },
+  "18Bii_ngap_generalization": {
+    "question": "At what k does Act/GUE variance ratio transition from <1 to ~=1?",
+    "formula": "s_n^(k) = g_{n+floor(k/2)} * sum(other k-1 gaps in window)",
+    "note_k3": "k=3 formula g_{n+1}*(g_n+g_{n+2}) = Phase 17 sedenion scalar (sign drop for variance)",
+    "definitional_note": "k=2 product g_n*g_{n+1} is NOT embed_pair P2. Phase 10C 0.65 belongs to P2 = -(g1^2+g2^2)/(2*(g1+g2)). Not the same family.",
+    "phase10c_p2_reference": {
+      "formula": "-(g1^2+g2^2)/(2*(g1+g2))",
+      "actual_var": 0.028430833471263454,
+      "gue_var": 0.041962508676831455,
+      "poisson_var": 0.2487379271816672,
+      "act_gue_ratio": 0.6775294034543942,
+      "poi_gue_ratio": 5.92762289541096,
+      "note": "This is the Phase 10C two-gap result; expect Act/GUE ~0.65"
+    },
+    "k_results": [
+      {
+        "k": 1,
+        "n_values": 9999,
+        "actual_var": 0.19156665805176076,
+        "gue_var": 0.26305605485986994,
+        "poisson_var": 0.9687253646824093,
+        "act_gue_ratio": 0.7282351214223463,
+        "poi_gue_ratio": 3.68258151365666
+      },
+      {
+        "k": 2,
+        "n_values": 9998,
+        "actual_var": 0.5818180244615833,
+        "gue_var": 0.5792440757289158,
+        "poisson_var": 2.821063648708066,
+        "act_gue_ratio": 1.0044436341095564,
+        "poi_gue_ratio": 4.8702503260962375
+      },
+      {
+        "k": 3,
+        "n_values": 9997,
+        "actual_var": 1.784857645689376,
+        "gue_var": 1.6754889157665118,
+        "poisson_var": 7.545871741374476,
+        "act_gue_ratio": 1.065275710805183,
+        "poi_gue_ratio": 4.503683474338205
+      },
+      {
+        "k": 4,
+        "n_values": 9996,
+        "actual_var": 3.8456752423545932,
+        "gue_var": 3.2741571943330605,
+        "poisson_var": 14.30841675195525,
+        "act_gue_ratio": 1.1745542483454128,
+        "poi_gue_ratio": 4.37010684053911
+      },
+      {
+        "k": 5,
+        "n_values": 9995,
+        "actual_var": 6.79839332946726,
+        "gue_var": 5.386723883006346,
+        "poisson_var": 23.24297462444467,
+        "act_gue_ratio": 1.262064564124838,
+        "poi_gue_ratio": 4.31486282372296
+      },
+      {
+        "k": 6,
+        "n_values": 9994,
+        "actual_var": 9.811456663385249,
+        "gue_var": 7.975126235276683,
+        "poisson_var": 33.9320239941387,
+        "act_gue_ratio": 1.2302572240155716,
+        "poi_gue_ratio": 4.2547318992953205
+      },
+      {
+        "k": 7,
+        "n_values": 9993,
+        "actual_var": 14.251212353538333,
+        "gue_var": 11.068832585412101,
+        "poisson_var": 46.54362316303095,
+        "act_gue_ratio": 1.287508167060036,
+        "poi_gue_ratio": 4.204926111573138
+      },
+      {
+        "k": 8,
+        "n_values": 9992,
+        "actual_var": 19.82492744031801,
+        "gue_var": 14.657033250330452,
+        "poisson_var": 61.31759139779714,
+        "act_gue_ratio": 1.3525880102558303,
+        "poi_gue_ratio": 4.183492685766725
+      }
+    ],
+    "transition_k": 2
+  },
+  "18Biii_height_stability": {
+    "question": "Does k=3 Act/GUE ~= 1.02 hold across height windows?",
+    "phase12a_context": "Two-gap Act/GUE was HEIGHT-DEPENDENT (0.65 at low heights, 0.75 at high, always <1). If three-gap is stable, that is qualitatively stronger: GUE-matching at three-gap scale is universal.",
+    "window_size": 2499,
+    "windows": [
+      {
+        "label": "zeros 0?2498",
+        "start": 0,
+        "end": 2499,
+        "height_lo": 14.134725141734695,
+        "height_hi": 3031.2892174680615,
+        "act_var": 4.856236124178749,
+        "gue_var": 1.6097137380235353,
+        "act_gue_ratio": 3.0168321295073315
+      },
+      {
+        "label": "zeros 2499?4997",
+        "start": 2499,
+        "end": 4998,
+        "height_lo": 3031.2892174680615,
+        "height_hi": 5446.765247872766,
+        "act_var": 0.3943507389610465,
+        "gue_var": 1.5742245498777458,
+        "act_gue_ratio": 0.25050475740050665
+      },
+      {
+        "label": "zeros 4998?7496",
+        "start": 4998,
+        "end": 7497,
+        "height_lo": 5446.765247872766,
+        "height_hi": 7706.96219619128,
+        "act_var": 0.3028477860523366,
+        "gue_var": 1.7482745039850915,
+        "act_gue_ratio": 0.17322667885507248
+      },
+      {
+        "label": "zeros 7497?9995",
+        "start": 7497,
+        "end": 9996,
+        "height_lo": 7706.96219619128,
+        "height_hi": 9875.218994098846,
+        "act_var": 0.26010535020411757,
+        "gue_var": 1.7363616093889949,
+        "act_gue_ratio": 0.14979906765828896
+      }
+    ],
+    "act_gue_range": [
+      0.14979906765828896,
+      3.0168321295073315
+    ],
+    "stability_assessment": "height-dependent",
+    "qualitative_significance": "height-stable three-gap > height-dependent two-gap: universality vs window artifact"
+  }
+}
