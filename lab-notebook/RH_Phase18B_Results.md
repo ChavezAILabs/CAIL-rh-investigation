@@ -219,5 +219,39 @@ This ordering is **consistent with Act/GUE = 1.065** from 18B-i: actual zeros ha
 
 ---
 
+---
+
+## Lean 4 Verification Log — Bilateral Collapse Theorem
+
+| Event | Time | Notes |
+|---|---|---|
+| Phase 18C closed | March 16, 2026 | `bilateral_collapse` queued as Lean 4 target |
+| Aristotle begins proof | 6:13:30 PM, March 16, 2026 | Harmonic Math (aristotle-harmonic@harmonic.fun); uuid e3f3cdcd-bf73-4557-9cfe-de15475b1c01 |
+| Progress check | 7:07 PM, March 16, 2026 | 9% complete |
+| Budget reached | 10:29:06 PM, March 16, 2026 | 4 hours 16 minutes of compute; partial progress saved to `output.lean` |
+
+### Partial Progress (output.lean — March 16, 2026)
+
+Aristotle ran for 4h 16m before hitting budget. Substantial scaffolding proven with zero sorry stubs:
+
+**Proven:**
+- `Pattern1_CD4` — bilateral ZD property P1·Q1 = Q1·P1 = 0 at n=4 (**Lemma 1 complete**)
+- `p1_sq` — P1·P1 = −2·e0
+- `q1_sq` — Q1·Q1 = −2·e0
+- `scalar_comm` — scalars commute with all CD n elements (partial; budget reached mid-proof)
+- Supporting infrastructure: `scalar_mul_scalar`, `zero_mul_CD`, `mul_zero_CD`, `scalar_star`, `star_zero_CD`, `scalar_add`, `scalar_neg`, `scalar_sub`, `scalar_zero`
+
+**Remaining:**
+- Complete `scalar_comm` (interrupted by budget)
+- Assemble Bilateral Collapse Theorem from proven lemmas: expand (a·P1+b·Q1)·(b·P1+c·Q1) by bilinearity, substitute Pattern1_CD4 (cross terms = 0) and p1_sq/q1_sq (diagonal terms = −2), collect to −2·b·(a+c)·e0
+
+**Assessment:** The algebraically hard parts (bilateral ZD property, diagonal squares) are proven. The remaining work is assembly and one interrupted scaffolding lemma. One additional budget run with `output.lean` as context should complete the proof.
+
+**Resubmission:** Submit same prompt to Aristotle at https://aristotle.harmonic.fun with `output.lean` attached as context.
+
+*Note for the open science record: Aristotle ran 4h 16m on a same-day turnaround from Phase 18C close. The key lemma (bilateral ZD property) is proven. Full proof pending one resubmission.*
+
+---
+
 *Chavez AI Labs LLC · Applied Pathological Mathematics*
 *"Better math, less suffering"*
