@@ -586,16 +586,16 @@ Investigations:
 
 **18C — AIEX-001 Operator Construction: Q-Vector Component**
 
-Phase 17 shows the full bilateral pair (P,Q) reads the Euler product — not just the P-projection. This updates the AIEX-001 target:
-- Prior: H should be built from P-vector geometry (E8 Weyl orbit)
-- Revised: H should incorporate both P and Q components of the bilateral zero divisor pairs
+**Status: COMPLETE (March 16, 2026).** Files: `rh_phase18c_prep.py`, `p18c_results.json`, `RH_Phase18C_Results.md`, `RH_Phase18C_Chavez_Transform_Archive.md`
 
-Structural questions:
-1. Can the embed_pair kernel be understood as a discretization of a prime-orbit operator? The P-projection gives high-pass (p≥7) and Q-projection gives broadband (p=2..23) channels — this is a filter bank.
-2. Does the P/Q split correspond to a known decomposition in the explicit formula? E.g., short vs long prime orbits, ramified vs unramified contributions?
-3. The v2+v3=0 antipodal constraint: operator-theoretic interpretation connecting to self-adjointness of H? The functional equation pairs zeros ρ ↔ 1−ρ̄, which is also a bilateral pairing.
-4. **NEW from Phase 17:** The chi3/zeta ≈ 1.0 anomaly in Q2 — could this encode L-function character structure in a way that gives a representation-theoretic interpretation of the bilateral zero divisor action? The Q2 direction seems to "know" about chi3 specifically.
-5. **NEW from Phase 18B (primary question):** The three-gap scalar actual variance drops monotonically with height (4.856 → 0.394 → 0.303 → 0.260) while GUE reference variance stays flat (~1.6–1.7) under global normalization. After applying per-window GUE normalization correcting for the gap⁴ scaling (~log(t)/2π), does the actual variance still drop faster than GUE predicts? If yes, the Riemann zeros at large height become **more regular than GUE at the three-gap scale** — a strong and specific result. Requires rerunning 18B-iii with per-window mean gap normalization for synthetic sequences.
+Key results:
+- **Q5 (normalization fix):** Per-window normalization resolves Phase 18B height artifact. Act/GUE range narrows from 0.15–3.02 → 0.26–1.30. Low-height window (t=14–3031) Act/GUE=1.30 is a genuine anomaly; higher windows stable at ~0.26. Monotonic drop was gap⁴ scaling artifact with global normalization.
+- **Q2 (P/Q split): CONFIRMED.** 5/7 P-projections high-pass (peak p=7..23); both Q-projections low-pass or broadband. Systematic alignment with explicit formula prime sum decomposition.
+- **Q1 (Filter Bank Corollary): STATED.** P-channel = narrow-band high-pass (short prime orbits, p≥7); Q-channel = broadband/low-pass (full Euler product including p=2). Confirmed by synthesis of Phases 13A, 14B, 15D, 17A.
+- **Q3 (bilateral correspondence): Candidate map stated.** s→1−s ↔ s_α4 (Weyl reflection). Both impose codimension-1 midpoint constraints. The 6D bilateral subspace decomposes under s_α4 as **5D fixed** (all bilateral roots except v2/v3) ⊕ **1D antisymmetric** (e4−e5 direction, where v2 and v3 live). The proposed dictionary is falsifiable. What is missing: an explicit equivariant embedding ρ ↦ v(ρ) and a self-adjointness argument eliminating the 1D antisymmetric component — Phase 19 targets.
+- **Q4 Layer 1 (CAILculator):** chi3 Q2 vs zeta Q2 distinguished by bilateral zero structure (122 vs 101 pairs, 21% excess in chi3). Transform magnitude nearly identical (0.985 ratio). Bilateral zero excess is the conductor-3 fingerprint in Q2.
+- **Q4 Layer 2:** Deferred to Phase 18D.
+- **Lean 4 next targets:** `aiex001_functional_equation_correspondence` (formal definition of dictionary); `bilateral_collapse` lemmas 2–3.
 
 **18E — E8 Geometry: Gram Matrix, Orthogonality, and Subspace Analysis**
 
@@ -609,24 +609,31 @@ New geometric observations from the E8 implications analysis (see `RH_Phase17_E8
 
 4. **Spectral filter rule analytic derivation:** Prove formally that difference roots (eᵢ−eⱼ) give high-pass filter character and sum roots (eᵢ+eⱼ) give low-pass filter character, by expanding the embed_pair projection for each root type and analyzing the resulting DFT frequency response. If successful, this unifies the Phase 15D P-vector spectral split and the Phase 17 Q-vector results into a single theorem about E8 root geometry and prime spectral content.
 
-**18F — Framework-Independence Empirical Probe**
+**18F — see 18D** *(renumbered March 16, 2026)*
+
+**18D — Framework-Independence Empirical Probe** *(renumbered from 18F, March 16, 2026; paper integration moved to Phase 20)*
 
 Phase 15C showed the canonical/non-canonical distinction is invisible to P-vector projections because all framework-dependent patterns share P-vectors with Canonical Six patterns. The conclusion: probing framework-independence requires Q-vector access. Phase 17 delivers that access.
 
 Apply Q-vector projections to gap sequences using framework-dependent patterns' Q-vectors as projection directions. Compare log-prime DFT SNR profiles against Canonical Six Q-projections. A positive result — different SNR profiles for framework-dependent Q-vectors — would be the **first empirical probe of framework-independence itself**, directly measuring the canonical/non-canonical distinction experimentally.
 
-The E8 geometry analysis (18E) should precede this: the Gram matrix and subspace structure will identify which framework-dependent Q-vectors are most geometrically distinct from Canonical Six Q-vectors, informing which directions to probe first.
+The E8 geometry analysis (18E) should precede this: the Gram matrix and subspace structure will identify which framework-dependent Q-vectors are most geometrically distinct from Canonical Six Q-vectors, informing which directions to probe first. **18E is complete — 18D is unblocked.**
 
-**18D — Paper Integration**
+---
 
-Phase 17 results for paper (Section 8 extension or Section 9 new):
+**[DEFERRED — Paper Integration]** *(was 18D; moved to Phase 20)*
+
+Phase 17–18C results for paper (Section 8 extension or Section 9 new):
 - Q-vector SNR superiority (5–7× over P-vectors)
 - First p=2 detection in single projection (q2 broadband)
 - Route B re-confirmed via Q-vectors with 10–14× stronger suppression ratios
-- chi3/zeta ≈ 1.0 anomaly (flag as open question)
-- Three-gap Act/GUE = 1.02 layer structure
+- chi3/Q2 anomaly: conductor-specific (Phase 18A); bilateral zero excess 21% (Phase 18C Q4 Layer 1)
+- Three-gap Bilateral Collapse Theorem (Phase 18B) — named result, citable
+- Filter Bank Corollary (Phase 18C) — named result, citable
+- Q4 Layer 2: representation-theoretic interpretation of chi3/Q2 bilateral zero excess (gated on Q3 maturation)
+- AIEX-001 candidate map (Phase 18C Q3): state as a conjecture with precise dictionary and open sub-problems
 
-**Seeded theoretical thread — Antipodal Bilateral Symmetry:** The isometry is universal/trivial (Phase 15A), but the geometric structure — orthogonal frame with one antipodal pair — is the non-trivial object. The question is whether the breaking of the orthogonal frame at the antipodal pair has an operator-theoretic meaning connected to the functional equation (which also pairs zeros via ρ ↔ 1−ρ̄). This thread now has a Q-vector complement: are any Q-vectors mutually antipodal?
+**Seeded theoretical thread — Antipodal Bilateral Symmetry:** The isometry is universal/trivial (Phase 15A), but the geometric structure — orthogonal frame with one antipodal pair — is the non-trivial object. Phase 18C sharpens this: the v2/v3 antipodal direction is precisely the 1D antisymmetric part of the 6D bilateral subspace under s_α4. The question is whether a self-adjointness argument for H eliminates this component — which would be the mechanism forcing zeros to Re(s)=½.
 
 ---
 
@@ -698,11 +705,13 @@ s_α4 acts on the 6D space by fixing the 5D part and negating the v2/v3 directio
 
 ---
 
-**Phase 20+ — Paper Finalization and Beyond**
+**Phase 20 — Paper Pause**
+
+*Target: April 1, 2026 — Sophie Germain's 250th birthday.*
 
 *Note: This roadmap is open-ended. Given the trajectory of the investigation — each phase consistently opening new threads — additional phases beyond 20 are expected. Phase 20 marks a natural paper consolidation point, not a terminus.*
 
-*Depends on:* Phases 16–19 sufficiently resolved. Key decisions:
+*Depends on:* Phases 16–19 (18D, 19) sufficiently resolved. Key decisions:
 1. Incorporate Phase 15 corrections (antipodal isometry, P1 bridge, skewness clarification)
 2. **Incorporate Phase 16 results:** Route B confirmed; ramified prime suppression (353× for p=2/chi_4, 736× for p=3/chi_3); log-prime signal encodes Euler product structure. Section 8 (new) or Section 7.6.
 3. **Incorporate Phase 17 results:** Q-vector SNR superiority (5–7×); first p=2 detection in single projection; Route B re-confirmed with 10–14× stronger suppression; chi3/zeta≈1.0 anomaly; three-gap layer structure.
