@@ -49,11 +49,11 @@ This eliminates Route C (GUE universality) and strongly supports AIEX-001: a Hil
 - Route B ramified prime suppression confirmed for all 5 L-functions (ratio ≈ 0.000 at each ramified prime)
 - The q2 = e5+e10 sedenion direction has a structural alignment with conductor-3 L-functions not shared by other conductors tested
 
-**Bilateral Collapse Theorem (Phase 18B):** For Pattern 1 bilateral zero divisor pair (P1, Q1) and any scalars a, b, c ∈ ℝ:
+**Bilateral Collapse Theorem (Phase 18B) — Lean 4 Proven:** For Pattern 1 bilateral zero divisor pair (P1, Q1) and any scalars a, b, c ∈ ℚ:
 
 > **(a·P1 + b·Q1) · (b·P1 + c·Q1) = −2·b·(a+c)·e0**
 
-All 15 sedenion vector components are zero by algebra — a structural consequence of the bilateral ZD property, not a property of any specific input sequence. Numerically verified to machine precision (10⁻¹⁰). Lean 4 proof target: `bilateral_collapse` (3 lemmas; lemma 1 already proven).
+All 15 sedenion vector components are zero by algebra — a structural consequence of the bilateral ZD property, not a property of any specific input sequence. **Formally verified in Lean 4 with zero sorry stubs** by Aristotle (@Aristotle-Harmonic, Harmonic Math). See [`lean/BilateralCollapse.lean`](lean/BilateralCollapse.lean).
 
 Additional Phase 18B findings:
 - The Phase 17 two-gap/three-gap "layer structure" (Act/GUE 0.65 → 1.02) was a formula-family contrast (embed_pair P2 harmonic mean vs. sedenion scalar), not a pure scale transition. Within the product family s_n^(k), the Act/GUE transition occurs at **k=2**, not k=3.
@@ -111,7 +111,7 @@ CAIL-rh-investigation/
 | **17** | **Q-vector access** | **First p=2 detection; 9/9 primes in single projection; Route B re-confirmed 10–14× stronger** |
 | **18E** | **E8 root geometry** | **(A₁)⁶ root system; 6D subspace; three P⊥Q orthogonality types; only Pattern 6 is a genuine Weyl reflection** |
 | **18A** | **Conductor survey** | **χ₃/Q2 ≈ 1.0 anomaly confirmed conductor-specific to conductor 3; Route B suppression confirmed for χ₅, χ₇, χ₈** |
-| **18B** | **Three-gap layer structure** | **Bilateral Collapse Theorem proven; n-gap transition at k=2; Phase 17 layer structure was formula-family contrast, not scale transition; Lean 4 target: `bilateral_collapse`** |
+| **18B** | **Three-gap layer structure** | **Bilateral Collapse Theorem — Lean 4 proven, zero sorry stubs (@Aristotle-Harmonic); n-gap transition at k=2; Phase 17 layer structure was formula-family contrast, not scale transition** |
 | **18C** | **AIEX-001 operator construction** | **Filter Bank Corollary stated; s→1−s ↔ s_α4 candidate map; 6D subspace decomposes as 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess (21%) as conductor-3 fingerprint** |
 
 ---
@@ -134,11 +134,16 @@ DOI: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)
 
 See [`lean/README.md`](lean/README.md) for full details.
 
-**Fully verified (zero sorry stubs):** bilateral zero divisors, vanishing commutators, E8 first shell membership, Weyl orbit unification, 24-element family generation, framework independence, Chavez Transform convergence and stability.
+All Lean 4 proofs in this repository are co-authored with **Aristotle (@Aristotle-Harmonic, Harmonic Math)** — https://harmonic.fun/
+
+**Fully verified (zero sorry stubs):**
+- Bilateral zero divisors and vanishing commutators (all 6 Canonical Six patterns, CD4–CD6)
+- E8 first shell membership, Weyl orbit unification (dominant weight ω₁)
+- 24-element family generation, framework independence classification
+- Chavez Transform convergence and stability theorems
+- **Bilateral Collapse Theorem** (`bilateral_collapse`): (a·P1 + b·Q1)·(b·P1 + c·Q1) = −2·b·(a+c)·e0 — proven by Aristotle, independently verified (`lake build`, exit 0)
 
 **Open stubs (pending Mathlib):** G₂ Lie-theoretic invariance, E₆×A₂ confinement, Viazovska sphere-packing connection.
-
-Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — `aristotle-harmonic@harmonic.fun` — https://harmonic.fun/
 
 ---
 

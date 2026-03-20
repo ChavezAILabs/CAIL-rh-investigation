@@ -62,6 +62,30 @@ All Lean 4 files are included flat in the Zenodo repository.
 
 ---
 
+### RH Investigation Files
+
+#### BilateralCollapse.lean
+- **Status:** Complete — zero sorry stubs, builds successfully (`lake build`, exit 0)
+- **Verified by:** Aristotle (Harmonic Math) — full build confirmed independently
+- **Build time:** ~1487s (due to `exact?` search tactics; all goals closed)
+- **Contents:**
+  - **`bilateral_collapse`** (main theorem): For any scalars a, b, c ∈ ℚ,
+    `(a • P1 4 + b • Q1 4) * (b • P1 4 + c • Q1 4) = scalar 4 ((-2) * b * (a + c))`
+    All 15 vector components of the product vanish by algebra; result is pure scalar.
+  - **`scalar_channel`**: Existence corollary — the product lies in the scalar channel.
+  - **`Pattern1_CD4`**: P1 4 and Q1 4 are bilateral zero divisors (P1·Q1 = Q1·P1 = 0).
+  - **`p1_sq` / `q1_sq`**: P1 4 * P1 4 = Q1 4 * Q1 4 = −2 (sedenion imaginary unit property).
+  - Full algebraic infrastructure: distributivity (`distrib_CD`), scalar associativity (`scalar_mul_assoc`, `mul_smul_left`), and CD arithmetic helpers.
+- **Proof strategy:**
+  - Component proofs use `mul_cd`/`add_cd`/... simp lemmas + nested `Prod.ext` (4 levels) + `show (_ : ℚ) = _; norm_num`
+  - Distributivity proved jointly via `distrib_CD` mutual induction
+  - `bilateral_collapse` expands algebraically: 4 terms → 2 vanish (zero divisors) + 2 simplify via squared norms → combine via `scalar_add`
+- **Arithmetic foundation:** Rational-based (ℚ)
+- **Context:** From the open-science RH investigation (Phase 18B). Establishes that the bilateral sedenion product collapses to a pure scalar channel — the algebraic foundation for the self-adjointness argument in the AIEX-001 Hilbert-Pólya conjecture.
+- **Use this file if:** Verifying the Bilateral Collapse Theorem or building toward the AIEX-001 operator construction.
+
+---
+
 ### Chavez Transform Files
 
 #### ChavezTransform_Specification_aristotle.lean
