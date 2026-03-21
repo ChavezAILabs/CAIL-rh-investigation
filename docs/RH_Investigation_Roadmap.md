@@ -4,7 +4,7 @@
 **Researcher:** Paul Chavez, Chavez AI Labs LLC
 **Initiated:** March 4, 2026
 **Last Updated:** March 21, 2026
-**Status:** Active — Phases 1–17, 18A, 18B, 18C, 18E complete; Phase 18D (framework-independence probe) next
+**Status:** Active — Phases 1–17, 18A, 18B, 18C, 18D, 18E complete; Phase 18F next
 
 ---
 
@@ -331,6 +331,7 @@ A formative research dream suggested the key to RH was 24-dimensional. The 24-el
 | 18A | **χ₃/Q2 ≈ 1.0 confirmed conductor-specific to conductor 3; χ₄/₅/₇/₈ all 0.11–0.30; Route B suppression (ratio ≈ 0.000) confirmed for all 5 L-functions; chi8 moderate elevation (0.298)** | Complete |
 | 18B | **Bilateral Collapse Theorem (Lean 4, zero sorry stubs): (a·P1+b·Q1)·(b·P1+c·Q1) = −2·b·(a+c)·e0; n-gap Act/GUE transition at k=2; three-gap strongly height-dependent; Phase 17 "layer structure" was formula-family contrast, not scale transition** | Complete |
 | 18C | **Filter Bank Corollary (P=high-pass p≥7, Q=broadband/low-pass); s→1−s ↔ s_α4 candidate map; 6D bilateral subspace = 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess 21% as conductor-3 fingerprint** | Complete |
+| 18D | **E8 First-Shell Universality**: full 48-member bilateral family spans 45 distinct E8 first-shell directions (norm²=2); (A₁)⁶ geometry is Canonical Six P-vector subspace within larger bilateral E8 footprint, not its boundary; Clifford test deferred (composition law); `rh_phase18d_prep.py` GitHub | Complete |
 
 ---
 
@@ -351,6 +352,8 @@ A formative research dream suggested the key to RH was 24-dimensional. The 24-el
 5. **Optimal R(α) density**: Good Data Paradox shows separation peaks at intermediate density. What is the optimal (N_zeros, n_bins) pair?
 6. **AIEX-001 mechanism**: Candidate map stated (Phase 18C): s→1−s ↔ s_α4 Weyl reflection; both impose codimension-1 midpoint constraints. 6D bilateral subspace decomposes under s_α4 as **5D fixed** (v1,v4,v5,q2,q4) ⊕ **1D antisymmetric** (the v2/v3 = e4−e5 direction). Phase 19 target: explicit equivariant embedding ρ ↦ v(ρ) and a self-adjointness argument for H that eliminates the 1D antisymmetric component — the proposed forcing mechanism for Re(s)=½.
 7. **Annihilation topology AT-1**: Type I/II classification of all 84 zero divisor pairs. Required before ZDTP Chess Version B experiment (Experiment 2.3).
+8. **45-direction bilateral E8 substructure**: The full bilateral family spans 45 distinct E8 root directions in 8D (P∪Q). What root system do these form? Known E8 sub-root system? Weyl group interpretation? → Phase 19 Thread 1 target.
+9. **Clifford sedenion construction**: The v1.3 paper reports CD-specific patterns give norm ≈ √8 in "Clifford algebras." The standard Cl(0,16) composition law gives norm=2 for all grade-1 pairs. What exact Clifford-sedenion construction is used? Likely Cl(8). → Required for Task 3 completion and v1.4.
 
 ---
 
@@ -749,15 +752,23 @@ s_α4 acts on the 6D space by fixing the 5D part and negating the v2/v3 directio
 
 ---
 
-**Phase 19 — Annihilation Topology AT-1**
+**Phase 19 — Three Threads converging on AIEX-001**
 
-*Depends on:* Review of Biss-Dugger-Isaksen. Classify all 84 sedenion zero divisor pairs as Type I (instant) or Type II (delayed). Test: Type I → 6 Canonical Six parents; Type II → 18 children.
+*Confirmed sequencing (March 21, 2026):* 18F → Thread 1 → Thread 2 → Thread 3
+
+**18F** — chi16 quick computation (2-adic tower test). Does Q2 chi/zeta ratio increase monotonically in the tower chi4(0.158) → chi8(0.298) → chi16(pending)? Short targeted computation via python-flint.
+
+**Thread 1** — 45-direction E8 root system classification. Compute Gram matrix of all 45 bilateral P∪Q directions from Phase 18D. Classify against known E8 sub-root systems. Clean computational geometry question — no Riemann zeros required. Lean 4 path via native_decide. V1.4 material if complete before April 1.
+
+**Thread 2** — Annihilation Topology AT-1. Classify all 84 sedenion zero divisor pairs as Type I (instant annihilation) or Type II (delayed). Test: Type I → 6 Canonical Six parents; Type II → 18 children. Depends on Biss-Dugger-Isaksen review.
+
+**Thread 3** — AIEX-001 operator construction (no known shortcut). Explicit equivariant embedding ρ ↦ v(ρ) mapping each Riemann zero to a bilateral root vector. Self-adjointness argument showing H's restriction to the 5D fixed subspace of s_α4 forces eigenvalues to Re(s) = ½. Either comes together cleanly or reveals exactly what is still missing — either outcome is valuable.
 
 ---
 
-**Phase 20 — Paper Pause**
+**Phase 20 — Paper Consolidation**
 
-*Target: April 1, 2026 — Sophie Germain's 250th birthday.*
+*Target: Flexible — April 1 deadline released March 21, 2026. April 1 (Sophie Germain's 250th birthday) = Canonical Six v1.4 Zenodo upload, not journal submission. Journal submission follows when Phase 19 settles.*
 
 *Note: This roadmap is open-ended. Given the trajectory of the investigation — each phase consistently opening new threads — additional phases beyond 20 are expected. Phase 20 marks a natural paper consolidation point, not a terminus.*
 
@@ -780,6 +791,8 @@ s_α4 acts on the 6D space by fixing the 5D part and negating the v2/v3 directio
 **Phase 18B contribution to paper:** Bilateral Collapse Theorem — named, citable, Lean 4-proven (zero sorry stubs, co-authored with Aristotle, Harmonic Math). The n-gap transition at k=2 and height-dependence of three-gap statistics are supporting findings.
 
 **Phase 18C contribution to paper:** Filter Bank Corollary (named, citable) and AIEX-001 candidate map (s→1−s ↔ s_α4) as a formally stated conjecture with precise dictionary and falsifiable sub-problems. The χ₃ bilateral zero excess (21%) is the conductor-3 fingerprint result from CAILculator.
+
+**Phase 18D contribution to paper (v1.4):** E8 First-Shell Universality — all 48 bilateral zero divisors embed as E8 first-shell roots (norm²=2); full family spans 45 distinct 8D directions; (A₁)⁶ is Canonical Six P-vector subspace within larger bilateral footprint. Sharpens AIEX-001: H operates on (A₁)⁶ for a precise geometric reason, not merely E8 membership. `rh_phase18d_prep.py` (GitHub, open science).
 
 ---
 
