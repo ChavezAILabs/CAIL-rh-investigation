@@ -3,8 +3,8 @@
 
 **Researcher:** Paul Chavez, Chavez AI Labs LLC
 **Initiated:** March 4, 2026
-**Last Updated:** March 16, 2026
-**Status:** Active — Phases 1–17, 18E, 18A, 18B, 18C complete; Phase 18D next
+**Last Updated:** March 21, 2026
+**Status:** Active — Phases 1–17, 18A, 18B, 18C, 18E complete; Phase 18D (framework-independence probe) next
 
 ---
 
@@ -327,6 +327,10 @@ A formative research dream suggested the key to RH was 24-dimensional. The 24-el
 | 17B-i | Q2: p=2 chi4 suppressed 4652×, p=3 chi3 suppressed 6723× (10–14× stronger than SR). chi3/zeta≈1.0 unexpected open thread | Complete |
 | 17B-i | Q4: p=2 chi4 suppressed ~10,000× (strongest suppression observed). Q-vectors outperform P-vectors in Route B signal | Complete |
 | 17B-ii | Sedenion bilateral verification: all 6 patterns P*Q=0.00e+00 exact; three-gap Act/GUE=1.020 (contrast: two-gap 0.65) | Complete |
+| 18E | **(A₁)⁶ root system; 8-root bilateral set spans 6D subspace of E8; Gram matrix entries ∈ {−2,0,+2}; three P⊥Q types (degenerate/orthogonal/antipodal); only Pattern 6 = genuine W(E8) Weyl reflection** | Complete |
+| 18A | **χ₃/Q2 ≈ 1.0 confirmed conductor-specific to conductor 3; χ₄/₅/₇/₈ all 0.11–0.30; Route B suppression (ratio ≈ 0.000) confirmed for all 5 L-functions; chi8 moderate elevation (0.298)** | Complete |
+| 18B | **Bilateral Collapse Theorem (Lean 4, zero sorry stubs): (a·P1+b·Q1)·(b·P1+c·Q1) = −2·b·(a+c)·e0; n-gap Act/GUE transition at k=2; three-gap strongly height-dependent; Phase 17 "layer structure" was formula-family contrast, not scale transition** | Complete |
+| 18C | **Filter Bank Corollary (P=high-pass p≥7, Q=broadband/low-pass); s→1−s ↔ s_α4 candidate map; 6D bilateral subspace = 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess 21% as conductor-3 fingerprint** | Complete |
 
 ---
 
@@ -345,7 +349,7 @@ A formative research dream suggested the key to RH was 24-dimensional. The 24-el
 3. **Berry-Keating significance threshold**: r=+0.543 at n=10 bands with 7-term model. Adding p=13,17 — can we reach r>0.632?
 4. **P3 direction (antipodal to P2)**: v3 = (0,0,0,−1,1,0,0,0) untested. As the antipodal of P2, does it mirror P2's results exactly, or does the Weyl reflection produce a different discrimination geometry?
 5. **Optimal R(α) density**: Good Data Paradox shows separation peaks at intermediate density. What is the optimal (N_zeros, n_bins) pair?
-6. **AIEX-001 mechanism**: No constructive path established yet. 1D invariance is a hard constraint — scalar projection is insufficient. Vector-valued sedenion representation required. Is there a first concrete step?
+6. **AIEX-001 mechanism**: Candidate map stated (Phase 18C): s→1−s ↔ s_α4 Weyl reflection; both impose codimension-1 midpoint constraints. 6D bilateral subspace decomposes under s_α4 as **5D fixed** (v1,v4,v5,q2,q4) ⊕ **1D antisymmetric** (the v2/v3 = e4−e5 direction). Phase 19 target: explicit equivariant embedding ρ ↦ v(ρ) and a self-adjointness argument for H that eliminates the 1D antisymmetric component — the proposed forcing mechanism for Re(s)=½.
 7. **Annihilation topology AT-1**: Type I/II classification of all 84 zero divisor pairs. Required before ZDTP Chess Version B experiment (Experiment 2.3).
 
 ---
@@ -557,15 +561,27 @@ Route B confirmed more decisively via Q-vectors. Q-vectors encode Euler product 
 
 *Depends on:* Phases 15, 16, 17 complete. The Phase 17 picture sharpens the AIEX-001 target substantially. Q-vectors carry arithmetic structure with higher SNR than P-vectors; the full bilateral zero divisor pair (P,Q) — not just the P-projection — reads the Euler product. Three new open threads from Phase 17 drive the Phase 18 agenda.
 
-**18A — chi3/zeta ≈ 1.0 for Q2: Character Structure in Q-Vector Projection**
+**18A — chi3/Q2 Anomaly: Conductor Survey**
 
-Phase 17 showed chi3/zeta Q2 ratio ≈ 0.90–1.05 for all unramified primes, while chi4/zeta ≈ 0.23. This asymmetry is not predicted by Route B alone (Route B only predicts which primes are suppressed, not the ratio of unramified prime SNRs across L-functions). Candidate investigations:
+**Status: COMPLETE (March 14, 2026).** Files: `rh_phase18a_conductor_survey.py`, `p18a_conductor_results.json`, `RH_Phase18A_Results.md`
 
-1. **Conductor asymmetry test:** Compute Q2 and Q4 projections for chi_8 (conductor 8), chi_5 (conductor 5), chi_7 (conductor 7) zeros. If chi3's unique behavior traces to conductor=3 (minimal odd prime), other small-conductor L-functions should show intermediate behavior. Prediction: chi_5 and chi_7 will show chi/zeta ratios between 0.23 and 1.0 for Q2.
+Q2 chi/zeta SNR ratios (unramified primes, mean) across 5 L-functions:
 
-2. **Character table correlation:** For each character chi, tabulate chi(p) values at p=2,3,5,...,23. Check whether the chi/zeta SNR ratio at prime p correlates with |chi(p)|² across all computed L-functions. Route B predicts full suppression when chi(p)=0; Q2 asymmetry would imply the SNR ratio also encodes |chi(p)| for unramified primes.
+| L-function | Conductor | Mean Q2 ratio | Anomaly? |
+|---|---|---|---|
+| chi3 | 3 | **1.165** | YES — unique to conductor 3 |
+| chi4 | 4 | 0.158 | No |
+| chi5 | 5 | 0.114 | No |
+| chi7 | 7 | 0.156 | No |
+| chi8 | 8 | 0.298 | Moderate — worth follow-up |
 
-3. **Q4 profile comparison:** chi3/zeta for Q4 is 0.235–0.290 (not ≈1.0 like Q2). The chi3/Q2 anomaly is projection-specific. This constrains the mechanism to something about q2=(0,0,-1,0,0,+1,0,0) in particular — the e5-e10 direction in 8D space.
+Key results:
+- χ₃/Q2 ≈ 1.0 is **conductor-specific to conductor 3** — no other tested conductor shows this behavior
+- Route B ramified prime suppression confirmed for all 5 L-functions (ratio ≈ 0.000 at each ramified prime)
+- chi8 (conductor 8) shows moderate Q2 elevation (0.298) — candidate 2-adic structure effect; follow-up with chi16 pending
+- New zero caches: `zeros_chi5_phase18a.json`, `zeros_chi7_phase18a.json`, `zeros_chi8_phase18a.json` (1,500 zeros each, python-flint)
+
+**Open question:** What arithmetic rule maps Q-vector basis indices (specifically e5+e10 for q2) to conductor relationships? Does the q2/conductor-3 alignment generalize to other prime-indexed conductors?
 
 **18B — Three-Gap Layer Structure: Why Does Act/GUE Shift from 0.65 to 1.02?**
 
@@ -597,19 +613,44 @@ Key results:
 - **Q4 Layer 2:** Deferred to Phase 18D.
 - **Lean 4 next targets:** `aiex001_functional_equation_correspondence` (formal definition of dictionary); `bilateral_collapse` lemmas 2–3.
 
-**18E — E8 Geometry: Gram Matrix, Orthogonality, and Subspace Analysis**
+**18E — E8 Root Geometry: Gram Matrix and Bilateral Zero Divisor Subspace**
 
-New geometric observations from the E8 implications analysis (see `RH_Phase17_E8_Implications.md`) that require formal computation and Lean 4 verification:
+**Status: COMPLETE (March 14, 2026).** Files: `rh_phase18e_gram_matrix.py`, `p18e_gram_matrix_results.json`, `RH_Phase18E_Results.md`
 
-1. **Gram matrix of the 8-root set:** Compute all 28 pairwise inner products of { ±(e2−e7), ±(e4−e5), e2+e7, ±(e3−e6), e4+e5 }. The full Gram matrix determines whether this is a named root subsystem of E8 (A₁⁴, D₄, or other). Several inner products are already known to be 0 or ±2 from inspection; the full matrix settles the sub-structure question. This is a half-hour calculation and Phase 18's first concrete deliverable.
+Complete structural analysis of the 8-root bilateral zero divisor set {v1, q3, v2, v3, v4, v5, q2, q4}:
 
-2. **P⊥Q orthogonality:** Every bilateral pair (Pᵢ,Qᵢ) has orthogonal 8D projections (verified for all 6 patterns by direct inner product). This is independent of, and in addition to, the 16D algebraic annihilation P·Q=0. Whether these two zero conditions are connected by a theorem is the **second primary Lean 4 target** for Phase 18 (after the Weyl reflection conjecture).
+| Root | 8D Coordinates | Pattern role |
+|------|---------------|--------------|
+| v1 | (0,+1,0,0,0,0,−1,0) | P of Pat.6 |
+| q3 | (0,−1,0,0,0,0,+1,0) | Q of Pat.3,6 |
+| v2 | (0,0,0,+1,−1,0,0,0) | P of Pat.1,2,4 |
+| v3 | (0,0,0,−1,+1,0,0,0) | P of Pat.3; antipodal to v2 |
+| v4 | (0,+1,0,0,0,0,+1,0) | P of Pat.4 |
+| v5 | (0,0,+1,0,0,+1,0,0) | P of Pat.5 |
+| q2 | (0,0,−1,0,0,+1,0,0) | Q of Pat.2,5 |
+| q4 | (0,0,0,+1,+1,0,0,0) | Q of Pat.4 |
 
-3. **6D subspace expansion:** P-vectors span a 4D subspace (v3=−v2 reduces rank). Q-vectors q2 and q4 are provably outside this span, expanding coverage to 6D. Lean 4 target: rank computation from the coordinate matrix. Direct consequence for AIEX-001: H cannot be fully represented using P-vector geometry alone; the Q-vectors add two new independent dimensions of arithmetic coverage.
+Key results:
+- **Gram matrix:** All 28 pairwise inner products ∈ {−2, 0, +2}; block-structured with 6 orthogonal ±pairs
+- **Root system: (A₁)⁶** — 6 mutually orthogonal A₁ factors in a **6D subspace** of E8 (P-vectors alone span 4D; q2 and q4 add 2 new independent dimensions)
+- **Three P⊥Q orthogonality types:** degenerate (Pat.1, P=Q, inner product +2), genuinely orthogonal (Pat.2–5, P·Q=0), antipodal (Pat.6, P=−Q, inner product −2)
+- **Only Pattern 6 is a genuine W(E8) Weyl reflection** (beta = v1 has integer E8 coordinates); Patterns 2–5 require ≥2 Weyl steps (irrational beta)
+- **AIEX-001 implication:** H operates in the 6D bilateral subspace with (A₁)⁶ frame, not the full 8D E8 space
+- **Spectral filter rule** (empirical): difference roots → high-pass; sum roots → low-pass. Holds 7/8 roots; v4=(e2+e7) anomalous (sum root, high-pass due to asymmetric embed_pair projection)
 
-4. **Spectral filter rule analytic derivation:** Prove formally that difference roots (eᵢ−eⱼ) give high-pass filter character and sum roots (eᵢ+eⱼ) give low-pass filter character, by expanding the embed_pair projection for each root type and analyzing the resulting DFT frequency response. If successful, this unifies the Phase 15D P-vector spectral split and the Phase 17 Q-vector results into a single theorem about E8 root geometry and prime spectral content.
+**18F — Cayley-Dickson 2-Adic Tower (chi16)**
 
-**18F — see 18D** *(renumbered March 16, 2026)*
+*Depends on:* Phase 18A complete. Quick targeted computation to test whether the Q2 chi/zeta ratio increases monotonically in the 2-adic conductor tower:
+
+| L-function | Conductor | Q2 ratio (Phase 18A) |
+|---|---|---|
+| chi4 | 2² | 0.158 |
+| chi8 | 2³ | 0.298 |
+| chi16 | 2⁴ | **pending** |
+
+Prediction: chi16 > 0.298 if 2-adic structure drives the moderate chi8 elevation. Requires ~1,500 chi16 zeros to t≈1400 via python-flint. If confirmed, extend to chi32 to map the tower. If flat, the chi8 elevation (0.298) is conductor-8-specific, not a 2-adic progression.
+
+*(18D was formerly 18F — renumbered March 16, 2026)*
 
 **18D — Framework-Independence Empirical Probe** *(renumbered from 18F, March 16, 2026; paper integration moved to Phase 20)*
 
@@ -721,9 +762,15 @@ s_α4 acts on the 6D space by fixing the 5D part and negating the v2/v3 directio
 
 **Phase 16 contribution to paper:** Ramified prime suppression (353–736×) is clean and publishable independent of broader sedenion/AIEX-001 story. Route B confirmed, Route C eliminated.
 
-**Phase 17 contribution to paper:** Q-vector access is a new result at two levels: (1) practical — q2 is the first single projection to detect all 9 primes p=2..23 with SNR>100×; (2) structural — the chi3/zeta≈1.0 Q2 anomaly and three-gap Act/GUE=1.02 layer structure are new findings about the arithmetic of L-function zeros.
+**Phase 17 contribution to paper:** Q-vector access is a new result at two levels: (1) practical — q2 is the first single projection to detect all 9 primes p=2..23 with SNR>100×; (2) structural — the chi3/zeta≈1.0 Q2 anomaly resolved in Phase 18A and three-gap layer structure refined in Phase 18B.
 
-**Phase 17 E8 implications contribution to paper:** The geometric observations in `RH_Phase17_E8_Implications.md` extend the v1.3 E8 results: all Q-vector 8D images lie on the E8 first shell; the bilateral pairs are geometrically orthogonal; the P+Q set spans 6D vs P-only 4D; the root-type→spectral-character rule unifies Phases 15D and 17. These are paper-ready once Lean 4 verification is complete (Phase 18E).
+**Phase 18E contribution to paper:** E8 root geometry analysis establishes (A₁)⁶ root system, 6D bilateral subspace, and three P⊥Q orthogonality types. Only Pattern 6 corresponds to a genuine W(E8) Weyl reflection — directly relevant to AIEX-001. Paper-ready; Lean 4 target pending.
+
+**Phase 18A contribution to paper:** Conductor survey (χ₃, χ₄, χ₅, χ₇, χ₈) confirms χ₃/Q2 ≈ 1.0 is conductor-specific. Route B suppression confirmed for all 5 L-functions. Clean standalone result: conductor arithmetic is encoded in Q-vector projection geometry.
+
+**Phase 18B contribution to paper:** Bilateral Collapse Theorem — named, citable, Lean 4-proven (zero sorry stubs, co-authored with Aristotle, Harmonic Math). The n-gap transition at k=2 and height-dependence of three-gap statistics are supporting findings.
+
+**Phase 18C contribution to paper:** Filter Bank Corollary (named, citable) and AIEX-001 candidate map (s→1−s ↔ s_α4) as a formally stated conjecture with precise dictionary and falsifiable sub-problems. The χ₃ bilateral zero excess (21%) is the conductor-3 fingerprint result from CAILculator.
 
 ---
 
