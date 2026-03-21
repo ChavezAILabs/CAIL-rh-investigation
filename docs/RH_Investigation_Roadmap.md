@@ -652,13 +652,22 @@ Prediction: chi16 > 0.298 if 2-adic structure drives the moderate chi8 elevation
 
 *(18D was formerly 18F — renumbered March 16, 2026)*
 
-**18D — Framework-Independence Empirical Probe** *(renumbered from 18F, March 16, 2026; paper integration moved to Phase 20)*
+**18D — Framework-Independence Structural Probe** *(renumbered from 18F, March 16, 2026)*
 
-Phase 15C showed the canonical/non-canonical distinction is invisible to P-vector projections because all framework-dependent patterns share P-vectors with Canonical Six patterns. The conclusion: probing framework-independence requires Q-vector access. Phase 17 delivers that access.
+**Status: COMPLETE (March 21, 2026).** Files: `rh_phase18d_prep.py`, `p18d_enumeration.json`, `p18d_results_final.json`, `RH_Phase18D_Results.md`
 
-Apply Q-vector projections to gap sequences using framework-dependent patterns' Q-vectors as projection directions. Compare log-prime DFT SNR profiles against Canonical Six Q-projections. A positive result — different SNR profiles for framework-dependent Q-vectors — would be the **first empirical probe of framework-independence itself**, directly measuring the canonical/non-canonical distinction experimentally.
+Phase 18D was redesigned from a log-prime DFT experiment to a structural theorem after pre-handoff analysis showed all 12 paper-named CD-specific Q-vectors map to Phase 18E root-set directions. The full 48-pair enumeration produced a richer, corrected result.
 
-The E8 geometry analysis (18E) should precede this: the Gram matrix and subspace structure will identify which framework-dependent Q-vectors are most geometrically distinct from Canonical Six Q-vectors, informing which directions to probe first. **18E is complete — 18D is unblocked.**
+Key results:
+- **Task 1 — Enumeration confirmed:** 48 signed bilateral pairs, 24 unique quadruplets; 6 canonical, 42 CD-specific; matches Lean `Count_Unique_ZDs_Is_24`
+- **Task 2 — 8D image map (revised):** Full family spans **45 distinct E8 first-shell directions** (P∪Q). 26 distinct Q-directions: 8 in Phase 18E root set, 18 new. All 45 have norm² = 2. The Phase 18E (A₁)⁶ 8-root set describes the **Canonical Six P-vector subspace** within the larger 45-direction E8 bilateral footprint.
+- **Task 3 — Clifford norm (deferred):** Grade-1 Clifford product gives norm 2.0 for all 48 pairs; the paper's Clifford test uses a different algebra (Clifford-based sedenion construction). Deferred pending construction identification; does not affect theorem.
+
+**Revised theorem:** Every bilateral zero divisor vector (P or Q) in the 48-member family embeds as an E8 first-shell root (norm² = 2). E8 first-shell membership is the universal bilateral property. The (A₁)⁶ geometry is Canonical-Six-P-vector-specific.
+
+**AIEX-001 implication (sharpened):** The Canonical Six are geometrically special — their P-vectors form the (A₁)⁶ subspace; the full bilateral family does not. H's (A₁)⁶ geometric domain is tied specifically to the Canonical Six.
+
+**New open question (Phase 19 candidate):** What root system or sub-lattice do the 45 distinct E8 directions form?
 
 ---
 

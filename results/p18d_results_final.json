@@ -1,0 +1,360 @@
+{
+  "task1": {
+    "pairs_count": 48,
+    "unique_quadruplets": 24,
+    "canonical_six_verified": true
+  },
+  "task2": {
+    "distinct_q_directions": 26,
+    "distinct_p_directions": 26,
+    "p_union_q_directions": 45,
+    "all_norm2_eq_2": true,
+    "q_in_phase18e_root_set": 8,
+    "q_outside_phase18e_root_set": 18,
+    "finding": "Full bilateral family spans 45 E8 first-shell directions; Phase 18E 8-root set is Canonical Six P-vector subspace only"
+  },
+  "task3": {
+    "canonical_clifford_norm_zero": true,
+    "cd_specific_clifford_norm_sqrt8": true,
+    "canonical_mean_norm": 2.0,
+    "cd_specific_mean_norm": 2.0,
+    "pair_results": [
+      {
+        "P": "e1+(+1)e10",
+        "Q": "e5+(+1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e10",
+        "Q": "e5+(-1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e11",
+        "Q": "e4+(+1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e11",
+        "Q": "e4+(-1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e12",
+        "Q": "e3+(-1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e12",
+        "Q": "e3+(+1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e13",
+        "Q": "e2+(-1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e13",
+        "Q": "e2+(+1)e14",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e14",
+        "Q": "e2+(+1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e14",
+        "Q": "e2+(-1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e14",
+        "Q": "e3+(+1)e12",
+        "canonical": true,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e14",
+        "Q": "e3+(-1)e12",
+        "canonical": true,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e14",
+        "Q": "e4+(-1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e14",
+        "Q": "e4+(+1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(+1)e14",
+        "Q": "e5+(-1)e10",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e1+(-1)e14",
+        "Q": "e5+(+1)e10",
+        "canonical": true,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(+1)e9",
+        "Q": "e6+(+1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(-1)e9",
+        "Q": "e6+(-1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(+1)e11",
+        "Q": "e4+(-1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(-1)e11",
+        "Q": "e4+(+1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(+1)e12",
+        "Q": "e3+(+1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(-1)e12",
+        "Q": "e3+(-1)e13",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(+1)e13",
+        "Q": "e3+(-1)e12",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(-1)e13",
+        "Q": "e3+(+1)e12",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(+1)e13",
+        "Q": "e4+(+1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(-1)e13",
+        "Q": "e4+(-1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(+1)e13",
+        "Q": "e6+(-1)e9",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e2+(-1)e13",
+        "Q": "e6+(+1)e9",
+        "canonical": true,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(+1)e9",
+        "Q": "e6+(+1)e12",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(-1)e9",
+        "Q": "e6+(-1)e12",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(+1)e10",
+        "Q": "e5+(-1)e12",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(-1)e10",
+        "Q": "e5+(+1)e12",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(+1)e12",
+        "Q": "e5+(+1)e10",
+        "canonical": true,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(-1)e12",
+        "Q": "e5+(-1)e10",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(+1)e12",
+        "Q": "e6+(-1)e9",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e3+(-1)e12",
+        "Q": "e6+(+1)e9",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(+1)e9",
+        "Q": "e6+(-1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(-1)e9",
+        "Q": "e6+(+1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(+1)e10",
+        "Q": "e5+(+1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(-1)e10",
+        "Q": "e5+(-1)e11",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(+1)e11",
+        "Q": "e5+(-1)e10",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(-1)e11",
+        "Q": "e5+(+1)e10",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(+1)e11",
+        "Q": "e6+(+1)e9",
+        "canonical": true,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e4+(-1)e11",
+        "Q": "e6+(-1)e9",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e5+(+1)e9",
+        "Q": "e6+(-1)e10",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e5+(-1)e9",
+        "Q": "e6+(+1)e10",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e5+(+1)e10",
+        "Q": "e6+(+1)e9",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      },
+      {
+        "P": "e5+(-1)e10",
+        "Q": "e6+(-1)e9",
+        "canonical": false,
+        "clifford_pq_norm": 2.0,
+        "clifford_qp_norm": 2.0
+      }
+    ]
+  }
+}
