@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18E, 18A, 18B, 18C complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18A, 18B, 18C, 18D, 18E complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -61,6 +61,15 @@ Additional Phase 18B findings:
 - CAILculator confirms actual Riemann three-gap sequence sits between Poisson and GUE on both transform magnitude and conjugation symmetry — consistent with Act/GUE = 1.065.
 - Log-prime DFT on three-gap scalar: p=2 SNR = 837× (exceeds q2 Phase 17 SNR of 418×).
 
+**E8 First-Shell Universality (Phase 18D):** Framework-independence structural probe — full 48-member bilateral zero divisor family mapped into E8 space:
+
+- **All 48 bilateral pairs** (6 canonical, 42 CD-specific) embed as E8 first-shell roots (norm² = 2) — universal property of the bilateral condition
+- Full family spans **45 distinct E8 root directions** (P∪Q); 26 distinct Q-directions (8 known from Phase 18E, 18 new)
+- The Phase 18E **(A₁)⁶ root set is Canonical-Six-P-vector-specific** — it does not extend to the full bilateral family; framework-independence has a geometric consequence
+- **AIEX-001 sharpened:** H's (A₁)⁶ geometric domain is tied specifically to the Canonical Six — they are not merely algebraically special within the bilateral family, but geometrically special
+- Enumeration confirmed against Lean ground truth (`Count_Unique_ZDs_Is_24`, `native_decide`)
+- **Open question:** What root system or sub-lattice do the 45 E8 directions form?
+
 **AIEX-001 Candidate Statement (Phase 18C):** First formal statement of the operator construction target:
 
 - **Filter Bank Corollary:** The `embed_pair` kernel decomposes prime spectral content into two complementary channels: P-projections form a narrow-band high-pass filter (p≥7); Q-projections form a broadband/low-pass filter covering the full Euler product including p=2. Confirmed from synthesis of Phases 13A, 14B, 15D, 17A.
@@ -79,7 +88,7 @@ CAIL-rh-investigation/
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄)
-├── results/                         # All phase result JSON files (Phases 1–17, 18E, 18A, 18B, 18C)
+├── results/                         # All phase result JSON files (Phases 1–17, 18A, 18B, 18C, 18D, 18E)
 ├── scripts/                         # Python analysis scripts
 ├── docs/
 │   ├── findings_summary.md          # Cumulative results summary
@@ -113,6 +122,7 @@ CAIL-rh-investigation/
 | **18A** | **Conductor survey** | **χ₃/Q2 ≈ 1.0 anomaly confirmed conductor-specific to conductor 3; Route B suppression confirmed for χ₅, χ₇, χ₈** |
 | **18B** | **Three-gap layer structure** | **Bilateral Collapse Theorem — Lean 4 proven, zero sorry stubs (@Aristotle-Harmonic); n-gap transition at k=2; Phase 17 layer structure was formula-family contrast, not scale transition** |
 | **18C** | **AIEX-001 operator construction** | **Filter Bank Corollary stated; s→1−s ↔ s_α4 candidate map; 6D subspace decomposes as 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess (21%) as conductor-3 fingerprint** |
+| **18D** | **Framework-independence structural probe** | **E8 first-shell universality: all 48 bilateral pairs on first shell; full family spans 45 E8 directions; (A₁)⁶ is Canonical-Six-specific — Canonical Six are geometrically special within bilateral family** |
 
 ---
 
