@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, and Phase 19 Thread 1 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, and Phase 19 Threads 1–2 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -144,6 +144,7 @@ CAIL-rh-investigation/
 | **18D** | **Framework-independence structural probe** | **E8 first-shell universality: all 48 bilateral pairs on first shell; full family spans 45 E8 directions; (A₁)⁶ is Canonical-Six-specific — Canonical Six are geometrically special within bilateral family** |
 | **18F** | **2-adic tower: chi8 companion test** | **Tower-termination theorem: no real primitive character of conductor 16 exists. Heegner selectivity: q2 elevates exactly ℚ(√−3) and ℚ(√−2) among tested fields; ℚ(i) not elevated despite also being Heegner class-number-1. CHARACTER-SPECIFIC result.** |
 | **19 Thread 1** | **45-direction E8 root system classification** | **Bilateral set = D₆ minus 15 "both-negative" roots. Lives in 6D (pos. 1..6 only; pos. 7 excluded). Every index pair has exactly 3 of 4 sign combos; missing = always (−,−). Clifford Cl(7,0): 100% mixed grade products; 60 A₂ sub-systems (Eisenstein/ℚ(√−3) connection); 0 D₄ sub-systems; Canonical Six have pure grade structure.** |
+| **19 Thread 2** | **Annihilation Topology AT-1** | **Universal Bilateral Orthogonality theorem: ⟨P_8D, Q_8D⟩ = 0 for all 48 bilateral pairs. All give pure grade-2 in Cl(7,0). No direct basis annihilation (0/240 basis pairs). (A₁)⁶ membership necessary but not sufficient for canonical status (20 pairs satisfy it; only 6 are canonical). Canonical/CD-specific split requires Clifford sedenion construction (Cl(8)).** |
 
 ---
 
