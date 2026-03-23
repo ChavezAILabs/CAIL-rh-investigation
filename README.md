@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18A, 18B, 18C, 18D, 18E complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18A, 18B, 18C, 18D, 18E, 18F complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -70,6 +70,13 @@ Additional Phase 18B findings:
 - Enumeration confirmed against Lean ground truth (`Count_Unique_ZDs_Is_24`, `native_decide`)
 - **Open question:** What root system or sub-lattice do the 45 E8 directions form?
 
+**Heegner Selectivity of q2 (Phase 18F):** The 2-adic tower of real primitive Dirichlet characters terminates at chi8 — no real primitive character of conductor 2^k (k ≥ 4) exists (theorem, confirmed computationally). The companion test between the two real primitive characters of conductor 8 reveals:
+
+- **chi8a** = Kronecker(−8/·), field ℚ(√−2): Q2 mean ratio **0.298** — **elevated**
+- **chi8b** = Kronecker(+8/·), field ℚ(√2): Q2 mean ratio **0.148** ≈ chi4 — not elevated
+
+Combined with Phase 18A (chi3, field ℚ(√−3), Q2≈1.0), the Q2 projection selects exactly the L-functions of **ℚ(√−3) and ℚ(√−2)** — both Heegner-number imaginary quadratic fields of class number 1 with known deep connections to E8/E6 Lie algebra structure. ℚ(i) (D=−4, also Heegner, class number 1) is **not** elevated, ruling out class number alone as the discriminating property. The elevation is character-specific, not conductor-level. Route B (p=2 suppression) confirmed for chi8b independently.
+
 **AIEX-001 Candidate Statement (Phase 18C):** First formal statement of the operator construction target:
 
 - **Filter Bank Corollary:** The `embed_pair` kernel decomposes prime spectral content into two complementary channels: P-projections form a narrow-band high-pass filter (p≥7); Q-projections form a broadband/low-pass filter covering the full Euler product including p=2. Confirmed from synthesis of Phases 13A, 14B, 15D, 17A.
@@ -123,6 +130,7 @@ CAIL-rh-investigation/
 | **18B** | **Three-gap layer structure** | **Bilateral Collapse Theorem — Lean 4 proven, zero sorry stubs (@Aristotle-Harmonic); n-gap transition at k=2; Phase 17 layer structure was formula-family contrast, not scale transition** |
 | **18C** | **AIEX-001 operator construction** | **Filter Bank Corollary stated; s→1−s ↔ s_α4 candidate map; 6D subspace decomposes as 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess (21%) as conductor-3 fingerprint** |
 | **18D** | **Framework-independence structural probe** | **E8 first-shell universality: all 48 bilateral pairs on first shell; full family spans 45 E8 directions; (A₁)⁶ is Canonical-Six-specific — Canonical Six are geometrically special within bilateral family** |
+| **18F** | **2-adic tower: chi8 companion test** | **Tower-termination theorem: no real primitive character of conductor 16 exists. Heegner selectivity: q2 elevates exactly ℚ(√−3) and ℚ(√−2) among tested fields; ℚ(i) not elevated despite also being Heegner class-number-1. CHARACTER-SPECIFIC result.** |
 
 ---
 
@@ -174,6 +182,7 @@ All Lean 4 proofs in this repository are co-authored with **Aristotle (@Aristotl
 - `zeros_chi5_phase18a.json` — 1,500 χ₅ zeros to t≈1549 (python-flint, Phase 18A)
 - `zeros_chi7_phase18a.json` — 1,500 χ₇ zeros to t≈1480 (python-flint, Phase 18A)
 - `zeros_chi8_phase18a.json` — 1,500 χ₈ zeros to t≈1449 (python-flint, Phase 18A)
+- `zeros_chi8b_3_phase18f.json` — 1,500 Kronecker(+8/·) zeros to t≈1456 [dirichlet_char(8,3), Phase 18F]
 
 ---
 

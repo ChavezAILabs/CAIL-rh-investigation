@@ -1,0 +1,479 @@
+{
+  "experiment": "Phase 18F",
+  "date": "2026-03-23",
+  "researcher": "Paul Chavez, Chavez AI Labs LLC",
+  "question": "Is the chi8 Q2 chi/zeta elevation (0.298) a conductor-8 property (shared by both real primitive characters of conductor 8), or is it specific to dirichlet_char(8,5)?",
+  "redesign_reason": "No real primitive Dirichlet characters of conductor 16 exist. Proof: every real (order-2) character mod 16 satisfies chi(9)=chi(3)^2=1, so it is induced from mod 8 (kernel of (Z/16Z)*\u2192(Z/8Z)* is {1,9}). The 2-adic tower for real primitive characters terminates at chi8.",
+  "phase18a_prior": {
+    "chi4": {
+      "conductor": 4,
+      "mean_Q2_ratio": 0.158
+    },
+    "chi8a": {
+      "conductor": 8,
+      "mean_Q2_ratio": 0.298,
+      "conrey_index": 5,
+      "note": "dirichlet_char(8,5)"
+    }
+  },
+  "tower_termination_verification": {
+    "modulus": 16,
+    "candidates_found": [
+      {
+        "conrey_index": 1,
+        "conductor": 1,
+        "is_real": true,
+        "is_primitive": false
+      },
+      {
+        "conrey_index": 3,
+        "conductor": 16,
+        "is_real": false,
+        "is_primitive": true
+      },
+      {
+        "conrey_index": 5,
+        "conductor": 16,
+        "is_real": false,
+        "is_primitive": true
+      },
+      {
+        "conrey_index": 7,
+        "conductor": 8,
+        "is_real": true,
+        "is_primitive": false
+      },
+      {
+        "conrey_index": 9,
+        "conductor": 8,
+        "is_real": true,
+        "is_primitive": false
+      },
+      {
+        "conrey_index": 11,
+        "conductor": 16,
+        "is_real": false,
+        "is_primitive": true
+      },
+      {
+        "conrey_index": 13,
+        "conductor": 16,
+        "is_real": false,
+        "is_primitive": true
+      },
+      {
+        "conrey_index": 15,
+        "conductor": 4,
+        "is_real": true,
+        "is_primitive": false
+      }
+    ],
+    "conductor_16_real_primitive": [],
+    "theorem_confirmed": true
+  },
+  "character_properties": {
+    "chi4": {
+      "name": "chi4",
+      "modulus": 4,
+      "conductor": 4,
+      "order": 2,
+      "is_real": true,
+      "is_primitive": true,
+      "chi_at_primes": {
+        "2": 0,
+        "3": -1,
+        "5": 1,
+        "7": -1,
+        "11": -1,
+        "13": 1,
+        "17": 1,
+        "19": -1,
+        "23": -1
+      },
+      "ramified_primes_in_survey": [
+        2
+      ]
+    },
+    "chi8a": {
+      "name": "chi8a",
+      "modulus": 8,
+      "conductor": 8,
+      "order": 2,
+      "is_real": true,
+      "is_primitive": true,
+      "chi_at_primes": {
+        "2": 0,
+        "3": -1,
+        "5": -1,
+        "7": 1,
+        "11": -1,
+        "13": -1,
+        "17": 1,
+        "19": -1,
+        "23": 1
+      },
+      "ramified_primes_in_survey": [
+        2
+      ]
+    },
+    "chi8b_3": {
+      "name": "chi8b_3",
+      "modulus": 8,
+      "conductor": 8,
+      "order": 2,
+      "is_real": true,
+      "is_primitive": true,
+      "chi_at_primes": {
+        "2": 0,
+        "3": 1,
+        "5": -1,
+        "7": -1,
+        "11": 1,
+        "13": -1,
+        "17": 1,
+        "19": 1,
+        "23": -1
+      },
+      "ramified_primes_in_survey": [
+        2
+      ]
+    }
+  },
+  "snr_profiles": {
+    "Q2": {
+      "zeta": {
+        "2": 418.69,
+        "3": 1143.02,
+        "5": 1761.74,
+        "7": 1757.81,
+        "11": 1357.01,
+        "13": 1151.85,
+        "17": 841.63,
+        "19": 726.57,
+        "23": 549.1
+      },
+      "chi4": {
+        "2": 0.11,
+        "3": 193.95,
+        "5": 283.67,
+        "7": 288.33,
+        "11": 230.87,
+        "13": 178.46,
+        "17": 123.57,
+        "19": 107.21,
+        "23": 81.92
+      },
+      "chi8a": {
+        "2": 0.08,
+        "3": 275.1,
+        "5": 468.01,
+        "7": 498.49,
+        "11": 401.87,
+        "13": 348.84,
+        "17": 273.08,
+        "19": 242.24,
+        "23": 186.08
+      },
+      "chi8b_3": {
+        "2": 0.18,
+        "3": 133.82,
+        "5": 226.1,
+        "7": 236.44,
+        "11": 198.27,
+        "13": 194.21,
+        "17": 131.46,
+        "19": 114.51,
+        "23": 96.46
+      }
+    },
+    "Q4": {
+      "zeta": {
+        "2": 1796.87,
+        "3": 1995.64,
+        "5": 1214.34,
+        "7": 640.04,
+        "11": 171.01,
+        "13": 79.51,
+        "17": 12.76,
+        "19": 4.06,
+        "23": 0.99
+      },
+      "chi4": {
+        "2": 0.05,
+        "3": 84.42,
+        "5": 47.23,
+        "7": 27.99,
+        "11": 8.05,
+        "13": 0.93,
+        "17": 0.15,
+        "19": 0.53,
+        "23": 1.82
+      },
+      "chi8a": {
+        "2": 0.12,
+        "3": 351.81,
+        "5": 231.7,
+        "7": 137.15,
+        "11": 45.06,
+        "13": 29.7,
+        "17": 7.96,
+        "19": 3.26,
+        "23": 0.85
+      },
+      "chi8b_3": {
+        "2": 0.06,
+        "3": 237.57,
+        "5": 160.6,
+        "7": 94.03,
+        "11": 34.2,
+        "13": 15.06,
+        "17": 3.41,
+        "19": 1.23,
+        "23": 0.12
+      }
+    },
+    "P2": {
+      "zeta": {
+        "2": 1584.87,
+        "3": 1492.81,
+        "5": 606.21,
+        "7": 180.77,
+        "11": 0.9,
+        "13": 7.76,
+        "17": 46.91,
+        "19": 62.53,
+        "23": 97.09
+      },
+      "chi4": {
+        "2": 0.01,
+        "3": 168.06,
+        "5": 58.97,
+        "7": 20.64,
+        "11": 0.23,
+        "13": 2.81,
+        "17": 11.43,
+        "19": 14.27,
+        "23": 22.36
+      },
+      "chi8a": {
+        "2": 0.06,
+        "3": 419.14,
+        "5": 206.16,
+        "7": 88.49,
+        "11": 4.39,
+        "13": 0.61,
+        "17": 5.03,
+        "19": 8.32,
+        "23": 11.81
+      },
+      "chi8b_3": {
+        "2": 0.01,
+        "3": 141.11,
+        "5": 68.13,
+        "7": 25.82,
+        "11": 3.79,
+        "13": 0.77,
+        "17": 1.64,
+        "19": 2.36,
+        "23": 3.57
+      }
+    }
+  },
+  "chi_zeta_ratios": {
+    "Q2": {
+      "chi4": {
+        "2": 0.0,
+        "3": 0.17,
+        "5": 0.161,
+        "7": 0.164,
+        "11": 0.17,
+        "13": 0.155,
+        "17": 0.147,
+        "19": 0.148,
+        "23": 0.149
+      },
+      "chi8a": {
+        "2": 0.0,
+        "3": 0.241,
+        "5": 0.266,
+        "7": 0.284,
+        "11": 0.296,
+        "13": 0.303,
+        "17": 0.324,
+        "19": 0.333,
+        "23": 0.339
+      },
+      "chi8b_3": {
+        "2": 0.0,
+        "3": 0.117,
+        "5": 0.128,
+        "7": 0.135,
+        "11": 0.146,
+        "13": 0.169,
+        "17": 0.156,
+        "19": 0.158,
+        "23": 0.176
+      }
+    },
+    "Q4": {
+      "chi4": {
+        "2": 0.0,
+        "3": 0.042,
+        "5": 0.039,
+        "7": 0.044,
+        "11": 0.047,
+        "13": 0.012,
+        "17": 0.012,
+        "19": 0.13,
+        "23": 1.836
+      },
+      "chi8a": {
+        "2": 0.0,
+        "3": 0.176,
+        "5": 0.191,
+        "7": 0.214,
+        "11": 0.263,
+        "13": 0.374,
+        "17": 0.624,
+        "19": 0.802,
+        "23": 0.858
+      },
+      "chi8b_3": {
+        "2": 0.0,
+        "3": 0.119,
+        "5": 0.132,
+        "7": 0.147,
+        "11": 0.2,
+        "13": 0.189,
+        "17": 0.267,
+        "19": 0.303,
+        "23": 0.121
+      }
+    },
+    "P2": {
+      "chi4": {
+        "2": 0.0,
+        "3": 0.113,
+        "5": 0.097,
+        "7": 0.114,
+        "11": 0.257,
+        "13": 0.362,
+        "17": 0.244,
+        "19": 0.228,
+        "23": 0.23
+      },
+      "chi8a": {
+        "2": 0.0,
+        "3": 0.281,
+        "5": 0.34,
+        "7": 0.49,
+        "11": 4.902,
+        "13": 0.079,
+        "17": 0.107,
+        "19": 0.133,
+        "23": 0.122
+      },
+      "chi8b_3": {
+        "2": 0.0,
+        "3": 0.095,
+        "5": 0.112,
+        "7": 0.143,
+        "11": 4.232,
+        "13": 0.099,
+        "17": 0.035,
+        "19": 0.038,
+        "23": 0.037
+      }
+    }
+  },
+  "companion_summary": {
+    "chi4": {
+      "conductor": 4,
+      "conrey_index": 4,
+      "mean_Q2_ratio_unramified": 0.158,
+      "mean_Q4_ratio_unramified": 0.27,
+      "unramified_primes": [
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23
+      ],
+      "Q2_ratios_by_prime": {
+        "3": 0.17,
+        "5": 0.161,
+        "7": 0.164,
+        "11": 0.17,
+        "13": 0.155,
+        "17": 0.147,
+        "19": 0.148,
+        "23": 0.149
+      },
+      "suppressed_prime": 2,
+      "suppression_Q2_ratio": 0.0,
+      "suppression_factor_Q2": null
+    },
+    "chi8a": {
+      "conductor": 8,
+      "conrey_index": 8,
+      "mean_Q2_ratio_unramified": 0.298,
+      "mean_Q4_ratio_unramified": 0.438,
+      "unramified_primes": [
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23
+      ],
+      "Q2_ratios_by_prime": {
+        "3": 0.241,
+        "5": 0.266,
+        "7": 0.284,
+        "11": 0.296,
+        "13": 0.303,
+        "17": 0.324,
+        "19": 0.333,
+        "23": 0.339
+      },
+      "suppressed_prime": 2,
+      "suppression_Q2_ratio": 0.0,
+      "suppression_factor_Q2": null
+    },
+    "chi8b_3": {
+      "conductor": 8,
+      "conrey_index": 8,
+      "mean_Q2_ratio_unramified": 0.148,
+      "mean_Q4_ratio_unramified": 0.185,
+      "unramified_primes": [
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23
+      ],
+      "Q2_ratios_by_prime": {
+        "3": 0.117,
+        "5": 0.128,
+        "7": 0.135,
+        "11": 0.146,
+        "13": 0.169,
+        "17": 0.156,
+        "19": 0.158,
+        "23": 0.176
+      },
+      "suppressed_prime": 2,
+      "suppression_Q2_ratio": 0.0,
+      "suppression_factor_Q2": null
+    },
+    "conclusion": "CHARACTER-SPECIFIC: The two real primitive characters of conductor 8 show different Q2 ratios (chi8a=0.298, chi8b=0.148, delta=0.150). The Q2 elevation is not a conductor-8 property \u2014 it depends on the specific chi-value pattern at primes."
+  }
+}
