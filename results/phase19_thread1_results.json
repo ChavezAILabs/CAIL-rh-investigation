@@ -1,0 +1,430 @@
+{
+  "phase": "19",
+  "thread": "1",
+  "date": "2026-03-23",
+  "researcher": "Paul Chavez, Chavez AI Labs LLC",
+  "input_file": "p18d_enumeration.json",
+  "summary": {
+    "total_bilateral_pairs": 48,
+    "distinct_8d_directions": 45,
+    "all_on_e8_first_shell": true,
+    "span_dimension": 6,
+    "d7_root_system_total": 84,
+    "bilateral_in_d7": 45,
+    "d7_roots_absent": 39,
+    "root_system_closure_failures": 120,
+    "forms_root_system": false,
+    "antipodal_pairs": 15,
+    "unpaired_directions": 15,
+    "gram_entry_values": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "pairs_with_60_120_angle": 540,
+    "d7_index_pairs_total": 21,
+    "d7_index_pairs_in_bilateral": 15,
+    "d7_index_pairs_absent": 6,
+    "index_pairs_complete_4_signs": 0,
+    "index_pairs_partial_signs": 15
+  },
+  "absent_d7_index_pairs": [
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "bilateral_by_index_pair": {
+    "(1,2)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(1,3)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(1,4)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(1,5)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(1,6)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(2,3)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(2,4)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(2,5)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(2,6)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(3,4)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(3,5)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(3,6)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(4,5)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(4,6)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "(5,6)": [
+      [
+        -1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  },
+  "absent_from_bilateral_sample": [
+    [
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "gram_entry_histogram": {
+    "-2": 30,
+    "-1": 480,
+    "0": 870,
+    "1": 600,
+    "2": 45
+  },
+  "off_diagonal_gram_histogram": {
+    "-2": 15,
+    "-1": 240,
+    "0": 435,
+    "1": 300
+  },
+  "angle_classification": {
+    "-2": 15,
+    "-1": 240,
+    "0": 435,
+    "1": 300,
+    "2": 0
+  },
+  "closure_missing_in_d7": 15,
+  "closure_missing_not_in_d7": 0,
+  "clifford_verification": {
+    "algebra": "Cl(7,0)",
+    "n": 7,
+    "multivector_dim": 128,
+    "implementation": "CAILculator CliffordElement (clifford_verified.py, Beta v7+)",
+    "all_elements_pure_grade1": true,
+    "closure_failure_pairs_analyzed": 1080,
+    "closure_failure_grade_structure": {
+      "0": 0,
+      "2": 0,
+      "mixed": 1080
+    },
+    "distinct_grade2_blades_in_products": 15,
+    "top_grade2_blades": {
+      "e12": 216,
+      "e13": 216,
+      "e23": 216,
+      "e14": 216,
+      "e24": 216,
+      "e15": 216,
+      "e25": 216,
+      "e16": 216,
+      "e26": 216,
+      "e45": 216
+    },
+    "a2_generating_triples": 240,
+    "a2_distinct_subsystems": 60,
+    "d4_complete_subsystems": 0,
+    "d4_subsystem_index_sets": [],
+    "canonical_six_roots_in_bilateral": 8,
+    "canonical_six_grade_structure_pairs": {
+      "[0]": 2,
+      "[2]": 26
+    }
+  }
+}

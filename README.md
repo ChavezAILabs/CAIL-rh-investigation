@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17 and 18A, 18B, 18C, 18D, 18E, 18F complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, and Phase 19 Thread 1 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -77,6 +77,18 @@ Additional Phase 18B findings:
 
 Combined with Phase 18A (chi3, field ℚ(√−3), Q2≈1.0), the Q2 projection selects exactly the L-functions of **ℚ(√−3) and ℚ(√−2)** — both Heegner-number imaginary quadratic fields of class number 1 with known deep connections to E8/E6 Lie algebra structure. ℚ(i) (D=−4, also Heegner, class number 1) is **not** elevated, ruling out class number alone as the discriminating property. The elevation is character-specific, not conductor-level. Route B (p=2 suppression) confirmed for chi8b independently.
 
+**45-Direction Classification (Phase 19 Thread 1):** The full bilateral P∪Q direction set has an exact characterization:
+
+- The 45 bilateral directions = **D₆ minus its 15 "both-negative" roots** — a clean, minimal description
+- The set lives entirely in 6D (8D positions 1..6 only; position 7 is completely excluded)
+- Every index pair (i,j) with i<j in {1..6} has exactly 3 of 4 sign combos; the missing one is always (−eᵢ, −eⱼ)
+- **Clifford Cl(7,0) pass** (via CAILculator `CliffordElement`, Beta v7+): all 1080 closure-failure pair products are 100% mixed grade-0+grade-2; all 15 Cl(6,0) bivectors appear equally → bilateral set is bivector-saturating
+- **60 distinct A₂ sub-systems** within the bilateral set → the Eisenstein integer / ℚ(√−3) Heegner connection has a direct geometric expression (A₂ = root system of Eisenstein integers)
+- **0 complete D₄ sub-systems** → the ℚ(√−2)/D₄ connection requires a different geometric mechanism
+- **Canonical Six (A₁)⁶ have pure Clifford grade structure** (only grade-0 or grade-2, never mixed) — cleanly distinguishing them from the 42 CD-specific bilateral directions within D₆
+
+**Open question generated:** Why does the sedenion Cayley-Dickson construction systematically forbid "both-negative" roots? This is the algebraic question underlying the exact D₆-minus-15 characterization, and may be the key to understanding the full bilateral zero divisor structure.
+
 **AIEX-001 Candidate Statement (Phase 18C):** First formal statement of the operator construction target:
 
 - **Filter Bank Corollary:** The `embed_pair` kernel decomposes prime spectral content into two complementary channels: P-projections form a narrow-band high-pass filter (p≥7); Q-projections form a broadband/low-pass filter covering the full Euler product including p=2. Confirmed from synthesis of Phases 13A, 14B, 15D, 17A.
@@ -131,6 +143,7 @@ CAIL-rh-investigation/
 | **18C** | **AIEX-001 operator construction** | **Filter Bank Corollary stated; s→1−s ↔ s_α4 candidate map; 6D subspace decomposes as 5D fixed ⊕ 1D antisymmetric under s_α4; χ₃ bilateral zero excess (21%) as conductor-3 fingerprint** |
 | **18D** | **Framework-independence structural probe** | **E8 first-shell universality: all 48 bilateral pairs on first shell; full family spans 45 E8 directions; (A₁)⁶ is Canonical-Six-specific — Canonical Six are geometrically special within bilateral family** |
 | **18F** | **2-adic tower: chi8 companion test** | **Tower-termination theorem: no real primitive character of conductor 16 exists. Heegner selectivity: q2 elevates exactly ℚ(√−3) and ℚ(√−2) among tested fields; ℚ(i) not elevated despite also being Heegner class-number-1. CHARACTER-SPECIFIC result.** |
+| **19 Thread 1** | **45-direction E8 root system classification** | **Bilateral set = D₆ minus 15 "both-negative" roots. Lives in 6D (pos. 1..6 only; pos. 7 excluded). Every index pair has exactly 3 of 4 sign combos; missing = always (−,−). Clifford Cl(7,0): 100% mixed grade products; 60 A₂ sub-systems (Eisenstein/ℚ(√−3) connection); 0 D₄ sub-systems; Canonical Six have pure grade structure.** |
 
 ---
 
