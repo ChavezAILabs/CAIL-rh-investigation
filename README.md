@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, and Phase 19 Threads 1–2 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, and Phase 19 Threads 1–3 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -94,7 +94,7 @@ Combined with Phase 18A (chi3, field ℚ(√−3), Q2≈1.0), the Q2 projection 
 - **Filter Bank Corollary:** The `embed_pair` kernel decomposes prime spectral content into two complementary channels: P-projections form a narrow-band high-pass filter (p≥7); Q-projections form a broadband/low-pass filter covering the full Euler product including p=2. Confirmed from synthesis of Phases 13A, 14B, 15D, 17A.
 - **Bilateral Constraint Correspondence (Q3):** The functional equation symmetry s→1−s is proposed to correspond to the E8 Weyl reflection s_α4 (Theorem_1b, Lean 4, zero sorry stubs). Structural parallel: both impose codimension-1 midpoint constraints — fixed hyperplane {x[4]=x[5]} in ℝ⁸ and critical line Re(s)=½ respectively. The 6D bilateral subspace decomposes under s_α4 as **5D fixed** (all bilateral roots except v2/v3) ⊕ **1D antisymmetric** (the v2/v3 antipodal direction). Lean 4 target: `aiex001_functional_equation_correspondence`.
 - **Q4 Layer 1:** CAILculator distinguishes χ₃ from ζ Q2 sequences via bilateral zero structure (122 vs 101 pairs, 21% excess in χ₃) — candidate conductor-3 fingerprint. Transform magnitude nearly identical (0.985 ratio).
-- **What remains for Phase 19:** An explicit equivariant embedding ρ ↦ v(ρ) and a self-adjointness argument for H that eliminates the 1D antisymmetric component — the proposed mechanism by which s_α4 would force zeros to Re(s)=½.
+- **Phase 19 Thread 3 (AIEX-001 operator construction, March 23):** H₅ ⊕ H₁ block structure confirmed by equivariance. Theorem: critical-line zeros embed purely in 5D (no assumptions). Consistency constraint proves at most ONE zero can be off the critical line. H₅ = H_A ⊕ H_B ⊕ H_C block structure from (A₁)⁶ Gram matrix; Block B = Heegner channel (Q2 selectivity for ℚ(√−3) and ℚ(√−2)). Missing step named: `aiex001_critical_line_forcing` (simple spectrum conjecture). Lean 4 status: 6 verified, 2 partial, 1 open.
 
 ---
 
@@ -145,6 +145,7 @@ CAIL-rh-investigation/
 | **18F** | **2-adic tower: chi8 companion test** | **Tower-termination theorem: no real primitive character of conductor 16 exists. Heegner selectivity: q2 elevates exactly ℚ(√−3) and ℚ(√−2) among tested fields; ℚ(i) not elevated despite also being Heegner class-number-1. CHARACTER-SPECIFIC result.** |
 | **19 Thread 1** | **45-direction E8 root system classification** | **Bilateral set = D₆ minus 15 "both-negative" roots. Lives in 6D (pos. 1..6 only; pos. 7 excluded). Every index pair has exactly 3 of 4 sign combos; missing = always (−,−). Clifford Cl(7,0): 100% mixed grade products; 60 A₂ sub-systems (Eisenstein/ℚ(√−3) connection); 0 D₄ sub-systems; Canonical Six have pure grade structure.** |
 | **19 Thread 2** | **Annihilation Topology AT-1** | **Universal Bilateral Orthogonality theorem: ⟨P_8D, Q_8D⟩ = 0 for all 48 bilateral pairs. All give pure grade-2 in Cl(7,0). No direct basis annihilation (0/240 basis pairs). (A₁)⁶ membership necessary but not sufficient for canonical status (20 pairs satisfy it; only 6 are canonical). Canonical/CD-specific split requires Clifford sedenion construction (Cl(8)).** |
+| **19 Thread 3** | **AIEX-001 operator construction** | **H₅ ⊕ H₁ block structure; equivariance forces critical-line zeros into 5D (theorem, no assumptions); consistency constraint: at most ONE off-critical-line zero; H₅ = H_A ⊕ H_B ⊕ H_C (Heegner channel = Block B); missing step named: `aiex001_critical_line_forcing` (publishable conjecture). Lean 4: 6 verified, 2 partial, 1 open.** |
 
 ---
 
