@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, and Phase 19 Threads 1–3 complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–17, 18A–18F, Phase 19 Threads 1–3, Phases 20B–20D, and Phase 21A–21C complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence).
 
 ---
 
@@ -148,6 +148,10 @@ CAIL-rh-investigation/
 | **19 Thread 3** | **AIEX-001 operator construction** | **H₅ ⊕ H₁ block structure; equivariance forces critical-line zeros into 5D (theorem, no assumptions); consistency constraint: at most ONE off-critical-line zero; H₅ = H_A ⊕ H_B ⊕ H_C (Heegner channel = Block B); missing step named: `aiex001_critical_line_forcing` (publishable conjecture). Lean 4: 6 verified, 2 partial, 1 open.** |
 | **20B** | **Explicit v(ρ) embedding** | **Formula: v(ρ)=f₅D(t)+(σ−½)·u_antisym; f₅D=Σ_p(log p/√p)·cos(t·log p)·r_p. ALL 4 TESTS PASS (n=1..15): v⁻=0, non-degeneracy, strong injectivity (105 pairs, 0 proportional), equivariance. Reduction complete: aiex001_critical_line_forcing ⟺ Linear Independence of {tₙ·log p} over ℚ (Schanuel + Grand Simplicity Hypothesis).** |
 | **20C** | **Scale to n=100 + 9-prime** | **4,950 pairs, 0 proportional — strong injectivity holds. Max |cos θ|=0.993 (6-prime)/0.996 (9-prime), still growing slowly (decelerating). Near-prop alert: ρ₅₄&ρ₉₈ (0.9928). Structural theorem: v₂=u_antisym is RESERVED for functional equation; (A₁)⁶ natural prime capacity = 6 primes (p=2..13). 9-prime cross-block extension does not strengthen injectivity.** |
+| **20D** | **Near-miss Diophantine analysis** | **Closest pair (ρ₅₄,ρ₉₈), |cos θ|=0.9928. Ratio spread 125× tighter than generic (2.711 vs 339.6) but NOT near 0 — not a Diophantine resonance. Block A (p=7,11,13) is the failure mode. No prime has |frac(Δt/log p)| < 5%. Consistent with Linear Independence Conjecture; near-proportionality is pure multi-prime amplitude coincidence.** |
+| **21A** | **Simple spectrum investigation** | **NULL RESULT — simple spectrum is NOT forced by the AIEX-001 algebra. H₅=I₅ satisfies all constraints (self-adjoint, block-diagonal, equivariant). Gram eigenvalues {0,1,1,1,1,2}; 4D unconstrained eigenspace. [H₅,G]=0 cannot derive simple spectrum. Surprise: two inter-block zero divisor pairs (q₃×q₂=0, q₃×q₄=0) discovered, leading to Phase 21B.** |
+| **21B** | **q₃ multi-partner bilateral hub** | **q₃ (p=13) is the unique bilateral hub in the 6-root set: q₃×q₂=0 AND q₃×q₄=0 (both bilateral, both in Phase 18D family). Triple product identity: q₂×q₄ = 2×sign_partner(q₃) — explains anomalous norm²=8. Primes {2,3,13} are algebraically entangled via q₃. v₁ (p=7), v₄ (p=11), v₅ (p=5) have no bilateral partners within the 6-root set.** |
+| **21C** | **Target 2 formal closure** | **Target 2 FORMALLY CLOSED. Two independent mechanisms: (1) Interpretation A (module map) ILL-DEFINED — 32/36 root×basis products escape the 5D fixed subspace; (2) bilateral structure does NOT propagate to embeddings (0/105 zero products among f₅D(tᵢ)·f₅D(tⱼ)). No algebraic path constrains H₅ eigenvalues. Remaining route to unconditional RH via AIEX-001: Grand Simplicity Hypothesis or Schanuel's Conjecture.** |
 
 ---
 

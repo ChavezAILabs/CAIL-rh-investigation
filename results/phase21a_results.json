@@ -1,0 +1,282 @@
+{
+  "experiment": "Phase21A_SimpleSpectrum_Investigation",
+  "date": "2026-03-24",
+  "results": {
+    "target1_gram_spectrum": {
+      "eigenvalues": [
+        0.0,
+        0.9999999999999998,
+        0.9999999999999998,
+        0.9999999999999998,
+        0.9999999999999998,
+        1.9999999999999996
+      ],
+      "eigenvalue_multiplicities": {
+        "0.0": 1,
+        "1.0": 4,
+        "2.0": 1
+      },
+      "null_space_dim": 1,
+      "gram_matrix": [
+        [
+          0.9999999999999998,
+          0.0,
+          -0.9999999999999998,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.9999999999999998,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -0.9999999999999998,
+          0.0,
+          0.9999999999999998,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.9999999999999998,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9999999999999998,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9999999999999998
+        ]
+      ],
+      "note": "v1 = -q3 (antipodal) causes null eigenvalue; rank(G6) = 5 not 6"
+    },
+    "target2_commutator": {
+      "conclusion": "NOT_FORCED",
+      "reason": "G6 has eigenvalue 1 with multiplicity 4; [H,G]=0 allows any symmetric H on that 4D subspace",
+      "eigenvalue_1_multiplicity": 4,
+      "gram5x5_eigenvalues": [
+        0.9999999999999996,
+        0.9999999999999996,
+        0.9999999999999998,
+        0.9999999999999998,
+        1.9999999999999996
+      ]
+    },
+    "target3_interblock_products": {
+      "products": {
+        "AxA": [
+          {
+            "r1": "v1",
+            "r2": "v4",
+            "p1": 7,
+            "p2": 11,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "q3",
+            "r2": "v1",
+            "p1": 13,
+            "p2": 7,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "q3",
+            "r2": "v4",
+            "p1": 13,
+            "p2": 11,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          }
+        ],
+        "BxB": [
+          {
+            "r1": "q2",
+            "r2": "v5",
+            "p1": 3,
+            "p2": 5,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          }
+        ],
+        "CxC": [],
+        "AxB": [
+          {
+            "r1": "v1",
+            "r2": "q2",
+            "p1": 7,
+            "p2": 3,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "v1",
+            "r2": "v5",
+            "p1": 7,
+            "p2": 5,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "v4",
+            "r2": "q2",
+            "p1": 11,
+            "p2": 3,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "v4",
+            "r2": "v5",
+            "p1": 11,
+            "p2": 5,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "q3",
+            "r2": "q2",
+            "p1": 13,
+            "p2": 3,
+            "scalar_part": 0.0,
+            "product_norm_sq": 0.0
+          },
+          {
+            "r1": "q3",
+            "r2": "v5",
+            "p1": 13,
+            "p2": 5,
+            "scalar_part": -1.0,
+            "product_norm_sq": 4.0
+          }
+        ],
+        "AxC": [
+          {
+            "r1": "v1",
+            "r2": "q4",
+            "p1": 7,
+            "p2": 2,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "v4",
+            "r2": "q4",
+            "p1": 11,
+            "p2": 2,
+            "scalar_part": 0.0,
+            "product_norm_sq": 4.0
+          },
+          {
+            "r1": "q3",
+            "r2": "q4",
+            "p1": 13,
+            "p2": 2,
+            "scalar_part": 0.0,
+            "product_norm_sq": 0.0
+          }
+        ],
+        "BxC": [
+          {
+            "r1": "q2",
+            "r2": "q4",
+            "p1": 3,
+            "p2": 2,
+            "scalar_part": 0.0,
+            "product_norm_sq": 8.0
+          },
+          {
+            "r1": "v5",
+            "r2": "q4",
+            "p1": 5,
+            "p2": 2,
+            "scalar_part": -1.0,
+            "product_norm_sq": 4.0
+          }
+        ]
+      },
+      "max_interblock_scalar_abs": 1.0,
+      "all_interblock_scalar_zero": 0,
+      "conclusion": "Zero scalar parts for all inter-block products. No sedenion-algebraic coupling between block eigenvalues."
+    },
+    "target4_null_result": {
+      "degenerate_H5_exists": 1,
+      "test_cases": [
+        {
+          "label": "H5=I5",
+          "eigenvalues": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "degenerate": 1
+        },
+        {
+          "label": "H_A=H_B=1.5I, H_C=2.0",
+          "eigenvalues": [
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            2.0
+          ],
+          "degenerate": 1
+        },
+        {
+          "label": "H_A=H_B=2I, H_C=3.0",
+          "eigenvalues": [
+            2.0,
+            2.0,
+            2.0,
+            2.0,
+            3.0
+          ],
+          "degenerate": 1
+        },
+        {
+          "label": "H_A=H_C=3.0 (cross-block)",
+          "eigenvalues": [
+            3.0,
+            3.0,
+            3.0,
+            5.0,
+            5.0
+          ],
+          "degenerate": 1
+        }
+      ],
+      "conclusion": "Simple spectrum is NOT forced by (a) self-adjointness, (b) block-diagonal structure, or (c) equivariance. Degenerate H5 satisfying all three constraints exists explicitly. Simple spectrum must remain an independent assumption in AIEX-001."
+    },
+    "bonus_what_would_force": {
+      "options": [
+        "Additional sedenion algebraic constraint (not found in Target 3)",
+        "Grand Simplicity Hypothesis (analytic number theory conjecture)",
+        "Generic self-adjoint operator assumption (measure-theoretic)",
+        "Direct identification spectrum(H5) = {t_n} (Hilbert-Polya claim)"
+      ],
+      "recommendation": "State simple spectrum as a necessary assumption. Justification: standard Hilbert-Polya assumption; cannot be derived from (A1)^6 block structure, equivariance, or sedenion inter-block products."
+    }
+  }
+}

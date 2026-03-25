@@ -1,0 +1,393 @@
+{
+  "experiment": "Phase21B_q3_Anomaly",
+  "date": "2026-03-24",
+  "results": {
+    "section1_q3q2": {
+      "q3_x_q2_zero": 1,
+      "q2_x_q3_zero": 1,
+      "is_bilateral_pair": 1,
+      "in_bilateral_family": 1,
+      "family_direction": "swapped",
+      "q3_x_q2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q2_x_q3": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "section2_q3q4": {
+      "q3_x_q4_zero": 1,
+      "q4_x_q3_zero": 1,
+      "is_bilateral_pair": 1,
+      "in_bilateral_family": 1,
+      "family_direction": "swapped",
+      "q3_x_q4": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q4_x_q3": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "section3_q3_zero_map": {
+      "unique_zero_partners": [
+        {
+          "side": "Q",
+          "vector": [
+            [
+              2,
+              1
+            ],
+            [
+              13,
+              -1
+            ]
+          ],
+          "q3*v=0": 1,
+          "v*q3=0": 1,
+          "bilateral": 1
+        },
+        {
+          "side": "Q",
+          "vector": [
+            [
+              3,
+              1
+            ],
+            [
+              12,
+              -1
+            ]
+          ],
+          "q3*v=0": 1,
+          "v*q3=0": 1,
+          "bilateral": 1
+        },
+        {
+          "side": "Q",
+          "vector": [
+            [
+              4,
+              1
+            ],
+            [
+              11,
+              1
+            ]
+          ],
+          "q3*v=0": 1,
+          "v*q3=0": 1,
+          "bilateral": 1
+        },
+        {
+          "side": "Q",
+          "vector": [
+            [
+              5,
+              1
+            ],
+            [
+              10,
+              1
+            ]
+          ],
+          "q3*v=0": 1,
+          "v*q3=0": 1,
+          "bilateral": 1
+        }
+      ],
+      "bilateral_partner_count": 4
+    },
+    "section4_q2xq4": {
+      "q2_x_q4": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.0,
+        0.0,
+        0.0,
+        -2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q4_x_q2": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -2.0,
+        0.0,
+        0.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "norm_sq_q2xq4": 8.0,
+      "norm_sq_q4xq2": 8.0,
+      "lower_half_nonzero": [
+        [
+          6,
+          2
+        ]
+      ],
+      "upper_half_nonzero": [
+        [
+          1,
+          -2
+        ]
+      ],
+      "decompositions": [
+        [
+          [
+            1,
+            1
+          ],
+          [
+            [
+              6,
+              1
+            ],
+            [
+              9,
+              -1
+            ]
+          ],
+          [
+            [
+              6,
+              1
+            ],
+            [
+              9,
+              -1
+            ]
+          ]
+        ]
+      ]
+    },
+    "section5_v5_bridge": {
+      "v5_indices": [
+        [
+          3,
+          1
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "shared_with_q3": [
+        6
+      ],
+      "shared_with_q4": [
+        3
+      ],
+      "products": {
+        "v1": {
+          "scalar": 0.0,
+          "norm_sq": 4.0,
+          "inner_product_v5_v": 0.0
+        },
+        "v4": {
+          "scalar": 0.0,
+          "norm_sq": 4.0,
+          "inner_product_v5_v": 0.0
+        },
+        "q3": {
+          "scalar": -1.0,
+          "norm_sq": 4.0,
+          "inner_product_v5_v": 1.0
+        },
+        "q2": {
+          "scalar": 0.0,
+          "norm_sq": 4.0,
+          "inner_product_v5_v": 0.0
+        },
+        "q4": {
+          "scalar": -1.0,
+          "norm_sq": 4.0,
+          "inner_product_v5_v": 1.0
+        }
+      }
+    },
+    "section6_multipartner": {
+      "v1_v4": {
+        "block_pair": "AxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "v1_v5": {
+        "block_pair": "AxB",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "v4_v5": {
+        "block_pair": "AxB",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q3_v1": {
+        "block_pair": "AxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q3_v4": {
+        "block_pair": "AxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q3_v5": {
+        "block_pair": "AxB",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q3_q4": {
+        "block_pair": "AxC",
+        "PxQ_zero": 1,
+        "QxP_zero": 1,
+        "bilateral": 1,
+        "in_18d_family": 1
+      },
+      "q2_v1": {
+        "block_pair": "BxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q2_v4": {
+        "block_pair": "BxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q2_q3": {
+        "block_pair": "BxA",
+        "PxQ_zero": 1,
+        "QxP_zero": 1,
+        "bilateral": 1,
+        "in_18d_family": 1
+      },
+      "q2_v5": {
+        "block_pair": "BxB",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q2_q4": {
+        "block_pair": "BxC",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q4_v1": {
+        "block_pair": "CxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q4_v4": {
+        "block_pair": "CxA",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      },
+      "q4_v5": {
+        "block_pair": "CxB",
+        "PxQ_zero": 0,
+        "QxP_zero": 0,
+        "bilateral": 0,
+        "in_18d_family": 0
+      }
+    }
+  }
+}
