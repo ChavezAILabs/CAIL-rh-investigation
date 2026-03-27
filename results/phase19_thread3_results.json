@@ -1,0 +1,129 @@
+{
+  "experiment": "Phase19_Thread3_AIEX001",
+  "date": "2026-03-23",
+  "section1_decomposition": {
+    "eigenvalues_6d": [
+      -1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "fixed_dim": 5,
+    "antisym_dim": 1,
+    "antisym_direction": "(e4-e5)/sqrt(2) = v2/v3 direction",
+    "antisym_eigenvector_verified": true,
+    "fixed_roots": [
+      "v1",
+      "q3",
+      "v4",
+      "v5",
+      "q2",
+      "q4"
+    ],
+    "antisym_roots": [
+      "v2",
+      "v3"
+    ],
+    "rank_fixed": 5,
+    "rank_antisym": 1,
+    "rank_all": 6,
+    "decomposition_exact": true
+  },
+  "section2_bilateral_collapse": {
+    "theorem": "(a*P1 + b*Q1)*(b*P1 + c*Q1) = -2*b*(a+c)*e0",
+    "numerically_verified": true,
+    "bilinear_form": "B(u,v) = scalar_part(u*v_sed) = -2*(Euclidean dot product in coeff space)",
+    "gram_matrix_pattern": "[[P1*P1=-2, P1*Q1=0], [Q1*P1=0, Q1*Q1=-2]] = -2*I",
+    "p1_sq_scalar": -2.0,
+    "q1_sq_scalar": -2.0,
+    "p1_q1_scalar": 0.0,
+    "q1_p1_scalar": 0.0,
+    "h5_candidate_note": "H5 is any 5x5 real symmetric matrix in the fixed subspace. Natural block structure: H_A on {e2,e7}, H_B on {e3,e6} (encodes Heegner selectivity), H_C scalar on {(e4+e5)/sqrt2}."
+  },
+  "section3_equivariance": {
+    "critical_line_to_fixed_subspace": "THEOREM: rho = 1/2+it => v_minus(rho) = 0",
+    "consistency_constraint": "H1 = Im(rho) for any off-critical-line zero with v_minus != 0. H1 fixed scalar + distinct Im(rho) => at most ONE such zero.",
+    "missing_step": "aiex001_critical_line_forcing via simple spectrum argument"
+  },
+  "section4_q2_fixed_subspace": {
+    "q2_direction": [
+      0.0,
+      -1.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "q2_in_fixed_subspace": true,
+    "phase17a_primes_detected": "9/9",
+    "phase17a_p2_snr": 418.7,
+    "phase18a_chi3_ratio": 1.165,
+    "phase18f_chi8a_ratio": 0.298,
+    "phase18f_chi8b_ratio": 0.148,
+    "heegner_selectivity": "Q(sqrt(-3)) and Q(sqrt(-2)) only",
+    "thread1_connection": "60 A2 sub-systems in 45-direction set; A2 = Eisenstein = Q(sqrt(-3))",
+    "aiex001_prediction": "H_B eigenfunctions for chi3/chi8a zeros project more strongly onto q2 than zeta eigenfunctions. Falsifiable via L-function zero DFT comparison."
+  },
+  "section5_h5_candidate": {
+    "basis_5d": [
+      "e2",
+      "e7",
+      "e3",
+      "e6",
+      "(e4+e5)/sqrt2"
+    ],
+    "block_structure": {
+      "H_A": "{e2, e7} - v1/v4 axis - 2x2 symmetric",
+      "H_B": "{e3, e6} - v5/q2 axis - 2x2 symmetric (Heegner channel)",
+      "H_C": "{(e4+e5)/sqrt2} - q4 axis - scalar (1x1)"
+    },
+    "mutual_orthogonality_of_blocks": true,
+    "self_adjoint_constraint": "H5 = H5^T in 5D basis (standard)",
+    "spectrum_constraint": "Simple spectrum required for critical-line forcing argument"
+  },
+  "section6_lean4": {
+    "lemmas": [
+      {
+        "name": "bilateral_directions_are_D6_minus_both_negative",
+        "status": "VERIFIED Thread 1"
+      },
+      {
+        "name": "bilateral_8d_orthogonality",
+        "status": "VERIFIED Thread 2"
+      },
+      {
+        "name": "bilateral_collapse",
+        "status": "PARTIAL Lean 4 (Lemma 1 proven, Lemmas 2-3 pending)"
+      },
+      {
+        "name": "s_alpha4_is_weyl_reflection",
+        "status": "VERIFIED Phase 18E + Section 1"
+      },
+      {
+        "name": "s_alpha4_fixed_hyperplane",
+        "status": "VERIFIED Section 1"
+      },
+      {
+        "name": "bilateral_5d_plus_1d_decomposition",
+        "status": "VERIFIED Section 1"
+      },
+      {
+        "name": "self_adjoint_H5_real_eigenvalues",
+        "status": "PROVEN (standard linear algebra)"
+      },
+      {
+        "name": "aiex001_functional_equation_correspondence",
+        "status": "CANDIDATE MAP stated Phase 18C; explicit v(rho) pending"
+      },
+      {
+        "name": "aiex001_critical_line_forcing",
+        "status": "THE MISSING STEP: simple spectrum argument"
+      }
+    ],
+    "verified": 6,
+    "partial": 2,
+    "open": 1
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "experiment": "Phase 23 Thread 1 \u2014 Algebraic Closure of 6-Root Set",
+  "date": "2026-03-25",
+  "product_table_summary": {
+    "total_products": 36,
+    "zero_products": 4,
+    "in_6D_subspace_nonzero": 4,
+    "in_original_set": 0,
+    "exits_6D_subspace": 28
+  },
+  "product_table": {
+    "v1": {
+      "v1": {
+        "scalar_part": -2.0,
+        "vector_part_str": "0",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-2*e5",
+        "norm_sq": 4.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q3": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e1 - e4 + e11 - e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q2": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e2 + e7 - e8 + e13",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v5": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-2*e4",
+        "norm_sq": 4.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e1 - e4 + e11 + e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      }
+    },
+    "v4": {
+      "v1": {
+        "scalar_part": 0.0,
+        "vector_part_str": "+2*e5",
+        "norm_sq": 4.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v4": {
+        "scalar_part": -2.0,
+        "vector_part_str": "0",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q3": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e1 - e4 + e11 + e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q2": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e2 + e7 - e8 - e13",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v5": {
+        "scalar_part": 0.0,
+        "vector_part_str": "+2*e1",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e1 + e4 - e11 + e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      }
+    },
+    "q3": {
+      "v1": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e1 + e4 - e11 + e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e1 + e4 - e11 - e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q3": {
+        "scalar_part": -2.0,
+        "vector_part_str": "0",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q2": {
+        "scalar_part": 0.0,
+        "vector_part_str": "0",
+        "norm_sq": 0.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": true,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v5": {
+        "scalar_part": -1.0,
+        "vector_part_str": "-e5 + e10 + e15",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "0",
+        "norm_sq": 0.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": true,
+        "in_original_set": false,
+        "original_set_member": null
+      }
+    },
+    "q2": {
+      "v1": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e2 - e7 + e8 - e13",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e2 - e7 + e8 + e13",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q3": {
+        "scalar_part": 0.0,
+        "vector_part_str": "0",
+        "norm_sq": 0.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": true,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q2": {
+        "scalar_part": -2.0,
+        "vector_part_str": "0",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v5": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e3 + e6 - e9 + e12",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "+2*e6 - 2*e9",
+        "norm_sq": 8.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      }
+    },
+    "v5": {
+      "v1": {
+        "scalar_part": 0.0,
+        "vector_part_str": "+2*e4",
+        "norm_sq": 4.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-2*e1",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q3": {
+        "scalar_part": -1.0,
+        "vector_part_str": "e5 - e10 - e15",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q2": {
+        "scalar_part": 0.0,
+        "vector_part_str": "e3 - e6 + e9 - e12",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v5": {
+        "scalar_part": -2.0,
+        "vector_part_str": "0",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q4": {
+        "scalar_part": -1.0,
+        "vector_part_str": "-e5 - e10 + e15",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      }
+    },
+    "q4": {
+      "v1": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e1 + e4 - e11 - e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v4": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-e1 - e4 + e11 - e14",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q3": {
+        "scalar_part": 0.0,
+        "vector_part_str": "0",
+        "norm_sq": 0.0,
+        "in_6D_subspace": true,
+        "in_5D_subspace": true,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q2": {
+        "scalar_part": 0.0,
+        "vector_part_str": "-2*e6 + +2*e9",
+        "norm_sq": 8.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "v5": {
+        "scalar_part": -1.0,
+        "vector_part_str": "e5 + e10 - e15",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      },
+      "q4": {
+        "scalar_part": -2.0,
+        "vector_part_str": "0",
+        "norm_sq": 4.0,
+        "in_6D_subspace": false,
+        "in_5D_subspace": false,
+        "in_original_set": false,
+        "original_set_member": null
+      }
+    }
+  },
+  "in_6D_products": [
+    {
+      "left": "v1",
+      "right": "v4",
+      "result": "-2*e5",
+      "norm_sq": 4.0
+    },
+    {
+      "left": "v1",
+      "right": "v5",
+      "result": "-2*e4",
+      "norm_sq": 4.0
+    },
+    {
+      "left": "v4",
+      "right": "v1",
+      "result": "+2*e5",
+      "norm_sq": 4.0
+    },
+    {
+      "left": "v5",
+      "right": "v1",
+      "result": "+2*e4",
+      "norm_sq": 4.0
+    }
+  ],
+  "zero_products": [
+    {
+      "left": "q3",
+      "right": "q2"
+    },
+    {
+      "left": "q3",
+      "right": "q4"
+    },
+    {
+      "left": "q2",
+      "right": "q3"
+    },
+    {
+      "left": "q4",
+      "right": "q3"
+    }
+  ],
+  "closure_growth": {
+    "description": "Iterative closure growth \u2014 run terminated at iteration 3 due to exponential divergence",
+    "iterations_observed": [
+      {
+        "iteration": 0,
+        "set_size": 6,
+        "new_vectors": 0
+      },
+      {
+        "iteration": 1,
+        "set_size": 17,
+        "new_vectors": 11
+      },
+      {
+        "iteration": 2,
+        "set_size": 81,
+        "new_vectors": 64
+      },
+      {
+        "iteration": 3,
+        "set_size": 878,
+        "new_vectors": 797
+      }
+    ],
+    "growth_pattern": "6 -> 17 -> 81 -> 878+ (exponential, ~10x per iteration)",
+    "converged": false,
+    "conclusion": "No small multiplicative closure exists. The 6-root set generates an extremely large or infinite closure under sedenion multiplication."
+  },
+  "headline_results": {
+    "zero_products_out_of_36": 4,
+    "in_6D_products_out_of_36": 4,
+    "exits_6D_products_out_of_36": 28,
+    "closure_converged": false,
+    "closure_at_iter_3": 878,
+    "growth_pattern": "exponential (~10x per iteration)",
+    "interpretation": "The 6 prime roots have NO small multiplicative closure in sedenion space. The closed set is exponentially large \u2014 likely the full sedenion unit sphere or a large E8-family system."
+  }
+}

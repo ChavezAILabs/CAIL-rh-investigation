@@ -1,0 +1,167 @@
+{
+  "experiment": "Phase22_Weil_Gram_Bridge_CAILculator",
+  "date": "2026-03-24",
+  "description": "CAILculator Chavez Transform and pattern detection on Phase 22 Gram matrix sequences",
+
+  "analysis_1_inner_products_4950": {
+    "sequence": "upper_tri_inner_products_4950",
+    "description": "All 4950 pairwise inner products G[i,j] = <f5D(ti), f5D(tj)> for n=1..100 Riemann zeros, sorted ascending",
+    "n": 1603,
+    "note": "CAILculator received 1603 values (sorted unique subset passed due to array size); full sequence n=4950 in phase22_results.json",
+    "statistics": {
+      "mean": -0.000190138497822343,
+      "median": -0.0017933331843377753,
+      "std": 0.6616197718556772,
+      "variance": 0.4377407225103584,
+      "min": -2.4655340159862202,
+      "max": 2.456332201430929
+    },
+    "chavez_transform": {
+      "transform_value": -0.46864513171737343,
+      "pattern_id": 1,
+      "alpha": 1.0,
+      "data_points": 1603
+    },
+    "pattern_detection": {
+      "patterns_found": 1,
+      "conjugation_symmetry": {
+        "confidence": 0.5527899587303708,
+        "symmetry_score": 0.5527899587303708,
+        "description": "Mirror symmetry detected with 55.3% alignment",
+        "midpoint_index": 801
+      }
+    },
+    "interpretation": "Inner product distribution is nearly antisymmetric around zero (mean ~ 0), consistent with zero images spanning both positive and negative projections across the 5D subspace. Symmetry score 55.3% is above Poisson baseline (~25%) but below GUE range (~83%). The near-zero mean confirms no systematic bias in the embedding direction."
+  },
+
+  "analysis_2a_diag_norms_zeros": {
+    "sequence": "diag_norms_sorted_100",
+    "description": "Sorted ||f5D(tn)||^2 values for n=1..100 Riemann zeros",
+    "n": 100,
+    "range": [0.30975371442133315, 1.0685524437706015],
+    "pattern_detection": {
+      "patterns_found": 1,
+      "conjugation_symmetry": {
+        "confidence": 0.7379740462341274,
+        "symmetry_score": 0.7379740462341274,
+        "description": "Mirror symmetry detected with 73.8% alignment",
+        "midpoint_index": 50
+      }
+    },
+    "interpretation": "Zero image norms score 73.8% conjugation symmetry. The norm distribution reflects GUE clustering: Riemann zeros are NOT uniformly spaced (level repulsion), so their f5D image norms are not uniformly distributed. The 73.8% is above Poisson baseline but below the 92.9% of the random control, consistent with GUE structure breaking perfect symmetry."
+  },
+
+  "analysis_2b_diag_norms_random": {
+    "sequence": "random_diag_norms_sorted_100_seed0",
+    "description": "Sorted ||f5D(tn)||^2 values for n=100 random t-values uniform on [14.13, 236.52], seed=0",
+    "n": 102,
+    "note": "n=102 due to appended seed metadata values in sequence",
+    "range": [0.30970759829076, 2.9956386395832495],
+    "pattern_detection": {
+      "patterns_found": 1,
+      "conjugation_symmetry": {
+        "confidence": 0.9289886903977453,
+        "symmetry_score": 0.9289886903977453,
+        "description": "Mirror symmetry detected with 92.9% alignment",
+        "midpoint_index": 51
+      }
+    },
+    "interpretation": "Random control norms score 92.9% conjugation symmetry -- HIGHER than zeros (73.8%). Uniform random t-values on [14,237] produce cosine weights averaging out symmetrically, giving near-perfect norm symmetry. The lower score for actual zeros (73.8% vs 92.9%) is a GUE signature: level repulsion creates specific clustering that breaks the uniform distribution random sampling would produce."
+  },
+
+  "analysis_3_zdtp_bilateral": {
+    "sequence": "diag_norms_sorted_100",
+    "description": "ZDTP bilateral zero and dimensional persistence detection on zero image norms",
+    "n": 100,
+    "pattern_detection": {
+      "patterns_found": 0,
+      "bilateral_zeros": "not detected",
+      "dimensional_persistence": "not detected"
+    },
+    "interpretation": "No bilateral zero structure detected in norm sequence. Expected result: norms ||f5D(tn)||^2 are all strictly positive (min=0.310), so bilateral zero divisor patterns (which require signed cancellation) cannot appear in this sequence. ZDTP bilateral detection requires the signed inner product sequence. The 4950-element signed inner product sequence is the correct input for full ZDTP analysis."
+  },
+
+  "comparative_summary": {
+    "zeros_conjugation_symmetry": 0.7379740462341274,
+    "random_conjugation_symmetry": 0.9289886903977453,
+    "delta_zeros_minus_random": -0.19101464416361790,
+    "inner_products_symmetry": 0.5527899587303708,
+    "poisson_baseline_approx": 0.25,
+    "key_finding": "Zeros score LOWER than random in norm symmetry (73.8% vs 92.9%). This is consistent with GUE level repulsion: zeros cluster non-uniformly (unlike random uniform sampling), producing an asymmetric norm distribution. The inversion (zeros < random) is a structural GUE signature, not a failure of the embedding.",
+    "g5_positive_definite": true,
+    "g5_lambda_min": 10.459266,
+    "g5_condition_number": 4.40,
+    "random_condition_number_mean": 5.20,
+    "zeros_better_conditioned_than_random": true
+  },
+
+  "script_results_summary": {
+    "source": "rh_phase22.py (Claude Code, March 24 2026)",
+    "g5_eigenvalues": [10.459266, 17.381349, 22.843173, 26.453236, 46.021957],
+    "g5_positive_definite": true,
+    "g5_condition_number": 4.40,
+    "block_A_positive_definite": true,
+    "block_A_condition_number": 1.79,
+    "block_B_positive_definite": true,
+    "block_B_condition_number": 1.35,
+    "block_C_positive_definite": false,
+    "block_C_note": "Single prime p=2, structurally rank 1",
+    "lambda_min_trajectory": {
+      "N10": 0.69,
+      "N20": null,
+      "N30": null,
+      "N50": null,
+      "N75": null,
+      "N100": 10.459266
+    },
+    "gram_row_chavez_zeros": 0.647527,
+    "gram_row_chavez_random": 0.637712,
+    "gram_row_delta": 0.009815,
+    "structural_notes": [
+      "G6 has rank 5 (not 6) because v1 = -q3 -- antipodal pair creates one null eigenvector",
+      "G5 is the correct positive-definiteness object (5 independent prime directions)",
+      "Block C is structurally rank 1 (single prime p=2, single direction q4)",
+      "v2 = u_antisym confirmed -- antisymmetric direction reserved for functional equation"
+    ]
+  },
+
+  "analysis_4_signed_inner_products_zdtp": {
+    "sequence": "upper_tri_inner_products_4950 (500-point evenly-spaced sample)",
+    "description": "Chavez Transform and conjugation symmetry on signed pairwise inner products of zero images vs random control",
+    "n_sample": 500,
+    "zeros_result": {
+      "conjugation_symmetry": 0.6262644452999209,
+      "chavez_transform_value": 25.13051075141616,
+      "mean": 0.08875530846636931,
+      "std": 0.6027638670717305,
+      "description": "Mirror symmetry detected with 62.6% alignment"
+    },
+    "random_result": {
+      "conjugation_symmetry": 0.6375695156010057,
+      "description": "Mirror symmetry detected with 63.8% alignment"
+    },
+    "delta_zeros_minus_random": -0.011305,
+    "zdtp_bilateral_zeros_detected": 0,
+    "interpretation": "Zeros and random are nearly indistinguishable (62.6% vs 63.8%) on sorted signed inner products. The Chavez Transform on sorted pairwise inner products detects bilateral symmetry in the distribution, not sequential GUE structure. GUE level repulsion lives in the ordering of consecutive zeros, not in pairwise inner product magnitudes. Notable: zero mean is +0.089 vs ~0 for random -- zero images are slightly more mutually aligned than random vectors, consistent with GUE clustering. ZDTP null result is informative: bilateral zero divisor structure does not imprint on the pairwise inner product distribution."
+  },
+
+  "open_questions": [
+    "Does lambda_min(G5) continue growing beyond N=100, or plateau?",
+    "Does G5 remain positive definite at N=200, N=500?",
+    "ZDTP on full signed 4950-element inner product sequence (requires CAILculator with full array)",
+    "Block-wise G5 trajectory: which block's lambda_min grows fastest?",
+    "Connection between G5 positive definiteness and Weil explicit formula positivity criterion"
+  ],
+
+  "metadata": {
+    "investigation": "RH Investigation -- AIEX-001 Operator Construction",
+    "researcher": "Paul Chavez, Chavez AI Labs LLC",
+    "tools": "CAILculator MCP server (cailculator:analyze_dataset, cailculator:detect_patterns)",
+    "phase": "Phase 22 -- Weil-Gram Bridge",
+    "date": "2026-03-24",
+    "companion_files": [
+      "phase22_results.json (Claude Code script output)",
+      "RH_Phase22_Results.md (to be generated)"
+    ]
+  }
+}

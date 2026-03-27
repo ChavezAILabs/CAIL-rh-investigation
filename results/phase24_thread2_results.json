@@ -1,0 +1,387 @@
+{
+  "phase": "24",
+  "thread": 2,
+  "title": "Bilateral Triple Module Action",
+  "date": "2026-03-25",
+  "researcher": "Paul Chavez, Chavez AI Labs",
+  "closure_labels": [
+    "s",
+    "neg_q4",
+    "neg_q2",
+    "sp_q3_neg",
+    "neg_e15",
+    "pos_e15",
+    "sp_q3_pos",
+    "q3",
+    "sp_q2",
+    "q2",
+    "q4",
+    "new_dir"
+  ],
+  "n_closure_vectors": 12,
+  "multiplication_table_summary": {
+    "total_products": 144,
+    "zero_products": 28,
+    "in_closure_nonzero": 116,
+    "escape_products": 0,
+    "closure_is_closed": true
+  },
+  "L_q3_action": {
+    "kernel": [
+      "q2",
+      "q4"
+    ],
+    "kernel_size": 2,
+    "image": [
+      "q3",
+      "neg_q2",
+      "neg_q4",
+      "neg_e15",
+      "sp_q3_neg",
+      "s"
+    ],
+    "image_size": 6,
+    "per_vector": {
+      "s": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "q3",
+        "result_sign": -1,
+        "scale": 0.9999999999999999,
+        "desc": "-q3 (scale=1.0000)"
+      },
+      "neg_q4": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "neg_q2",
+        "result_sign": -1,
+        "scale": 1.4142135623730947,
+        "desc": "-neg_q2 (scale=1.4142)"
+      },
+      "neg_q2": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "neg_q4",
+        "result_sign": 1,
+        "scale": 1.4142135623730947,
+        "desc": "+neg_q4 (scale=1.4142)"
+      },
+      "sp_q3_neg": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "neg_e15",
+        "result_sign": 1,
+        "scale": 0.9999999999999998,
+        "desc": "+neg_e15 (scale=1.0000)"
+      },
+      "neg_e15": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "sp_q3_neg",
+        "result_sign": -1,
+        "scale": 0.9999999999999999,
+        "desc": "-sp_q3_neg (scale=1.0000)"
+      },
+      "pos_e15": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "sp_q3_neg",
+        "result_sign": 1,
+        "scale": 0.9999999999999999,
+        "desc": "+sp_q3_neg (scale=1.0000)"
+      },
+      "sp_q3_pos": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "neg_e15",
+        "result_sign": -1,
+        "scale": 0.9999999999999998,
+        "desc": "-neg_e15 (scale=1.0000)"
+      },
+      "q3": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "s",
+        "result_sign": 1,
+        "scale": 0.9999999999999998,
+        "desc": "+s (scale=1.0000)"
+      },
+      "sp_q2": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "neg_q4",
+        "result_sign": -1,
+        "scale": 1.4142135623730947,
+        "desc": "-neg_q4 (scale=1.4142)"
+      },
+      "q2": {
+        "is_zero": true,
+        "in_closure": true,
+        "result": "zero"
+      },
+      "q4": {
+        "is_zero": true,
+        "in_closure": true,
+        "result": "zero"
+      },
+      "new_dir": {
+        "is_zero": false,
+        "in_closure": true,
+        "result_label": "neg_q2",
+        "result_sign": 1,
+        "scale": 1.4142135623730947,
+        "desc": "+neg_q2 (scale=1.4142)"
+      }
+    }
+  },
+  "R_q3_action": {
+    "kernel": [
+      "q2",
+      "q4"
+    ],
+    "kernel_size": 2,
+    "L_kernel_eq_R_kernel": true
+  },
+  "gram_matrix_G12": {
+    "eigenvalues": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.9999999999999998,
+      0.9999999999999998,
+      0.9999999999999998,
+      1.0,
+      1.9999999999999996,
+      1.9999999999999996,
+      1.9999999999999996,
+      2.0
+    ],
+    "rank": 8,
+    "unique_eigenvalues": [
+      0.0,
+      1.0,
+      2.0
+    ],
+    "phase21a_G6_eigenvalues": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
+  },
+  "L_q3_matrix": {
+    "matrix": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999999999998,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.4142135623730947,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.4142135623730947,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.4142135623730947,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.4142135623730947
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.9999999999999998,
+        0.9999999999999998,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.9999999999999998,
+        0.0,
+        0.0,
+        -0.9999999999999998,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        -0.9999999999999998,
+        0.0,
+        0.0,
+        0.9999999999999998,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999999999998,
+        -0.9999999999999998,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.9999999999999998,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.4142135623730947,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.4142135623730947
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.4142135623730947,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.4142135623730947,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "eigenvalues": [
+      0.0,
+      0.0,
+      -0.0,
+      -0.0,
+      0.0,
+      0.0,
+      -0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rank": 6,
+    "kernel_dim": 6,
+    "eigenvalue_multiplicities": {
+      "0.0": 12
+    }
+  },
+  "commutator_constraint": {
+    "centralizer_dim": 144,
+    "sym_centralizer_dim": 78,
+    "full_sym_algebra_dim": 78,
+    "params_constrained": 0,
+    "constraint_is_nontrivial": false
+  },
+  "kernel_submodule": {
+    "is_closed_under_full_multiplication": true,
+    "bilateral_in_kernel": [
+      "q2",
+      "q4"
+    ]
+  },
+  "key_findings": {
+    "closure_closed": true,
+    "L_q3_kernel_size": 2,
+    "L_q3_image_size": 6,
+    "commutator_nontrivial": false,
+    "new_algebraic_path_opened": false
+  }
+}
