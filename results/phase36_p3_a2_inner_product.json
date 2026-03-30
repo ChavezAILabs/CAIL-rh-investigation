@@ -1,0 +1,73 @@
+{
+  "phase": 36,
+  "track": "P1",
+  "description": "A2 subsystem inner products at p=3 vs chi3 anomaly",
+  "c1": 0.11797805192095003,
+  "N_zeros": 100,
+  "chi3_q2_ratio_phase18a": 1.165,
+  "A2_vectors": [
+    "q2(p=3)",
+    "q3(p=13)",
+    "q4(p=2)"
+  ],
+  "q2_coeff_mean": -0.019218690927987597,
+  "q2_coeff_std": 0.1675746566208365,
+  "q3_coeff_mean": -0.03768726533630852,
+  "q3_coeff_std": 0.2160181705794991,
+  "q4_coeff_mean": -0.00509932316670701,
+  "q4_coeff_std": 0.12272849660822546,
+  "q2_q4_var_ratio": 1.8643431345367933,
+  "q2_q3_var_ratio": 0.6017777257823058,
+  "q2_B5_consistency_max": 0.0,
+  "cs_q2": 0.8065444943588217,
+  "cs_q3": 0.7651589789821922,
+  "cs_q4": 0.8722616337175361,
+  "sample_data": [
+    {
+      "n": 1,
+      "t": 14.134725141734695,
+      "q2_coeff": 0.01756400729448576,
+      "q3_coeff": 0.2138130264028293,
+      "q4_coeff": -0.04516252087866108,
+      "q2_B5_consistency": 0.0,
+      "a2_ip_norm": 0.09612831580778645
+    },
+    {
+      "n": 2,
+      "t": 21.022039638771556,
+      "q2_coeff": -0.6133275808545355,
+      "q3_coeff": -0.09772434666164381,
+      "q4_coeff": 0.11760053214860405,
+      "q2_B5_consistency": 0.0,
+      "a2_ip_norm": 0.7991013090579137
+    },
+    {
+      "n": 3,
+      "t": 25.01085758014569,
+      "q2_coeff": -0.001840078000182696,
+      "q3_coeff": 0.0011411169190981675,
+      "q4_coeff": -0.003191239705748472,
+      "q2_B5_consistency": 0.0,
+      "a2_ip_norm": 2.9744091458708078e-05
+    },
+    {
+      "n": 4,
+      "t": 30.424876125859512,
+      "q2_coeff": 0.24594987895707013,
+      "q3_coeff": 0.07676434949841537,
+      "q4_coeff": 0.2275256375987228,
+      "q2_B5_consistency": 0.0,
+      "a2_ip_norm": 0.2363040481552353
+    },
+    {
+      "n": 5,
+      "t": 32.93506158773919,
+      "q2_coeff": -0.06921205001393135,
+      "q3_coeff": 0.04612066100489312,
+      "q4_coeff": -0.030554518861636765,
+      "q2_B5_consistency": 0.0,
+      "a2_ip_norm": 0.015702003723050643
+    }
+  ],
+  "interpretation": "q2 direction (e5+e10, p=3) projects F(rho) onto the Heegner-selective component. Phase 18A: chi3/zeta Q2 ratio=1.165 (elevated; conductor-3 specific). q2 = B5 in (A1)^6 basis (max consistency diff=0.00e+00). q2 variance / q4 variance = 1.8643: elevated q2 (Heegner signal). The 60 A2 subsystems in the bilateral family are candidates for the p=3 local BK operator that Srednicki's framework leaves open."
+}

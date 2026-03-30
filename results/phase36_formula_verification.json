@@ -1,0 +1,31 @@
+{
+  "phase": 36,
+  "track": "V1",
+  "description": "Formula verification",
+  "c1": 0.11797805192095003,
+  "F_norm_sq_at_t1": 0.9117315094781661,
+  "F_scalar_at_t1": 0.06539793833698018,
+  "sigma_symmetry_diff": 0.011149103267291682,
+  "sigma_symmetry_ok": false,
+  "Tr_BK_at_t1": -2.611325032790869,
+  "Weil_RHS_6p": -4.01404217570038,
+  "gram_diagonal": [
+    -2.0,
+    -2.0,
+    -2.0,
+    -2.0,
+    -2.0,
+    -2.0
+  ],
+  "gram_max_offdiag": 0.0,
+  "gram_minus2I_confirmed": true,
+  "basis_labels": [
+    "e1+e14",
+    "e1-e14",
+    "e2-e13",
+    "e3+e12",
+    "e4+e11",
+    "e5+e10"
+  ],
+  "pass": false
+}

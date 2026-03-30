@@ -1,0 +1,28 @@
+{
+  "track": "A",
+  "diagnostic_only": true,
+  "reason": "At sigma=1/2: F(rho)=F(1-conj(rho)) by Universal Reality Theorem. M_antipodal=2*M_tilde. Gate G1 fails.",
+  "degeneracy_max_diff": 0.0,
+  "sigma_modification_indices": [
+    4,
+    5
+  ],
+  "N_zeros": 10,
+  "sigma_0p5": {
+    "rank": 12,
+    "eigenvalue_range": [
+      -68.12177812823343,
+      5696.297772899259
+    ],
+    "gate_G1_pass": false
+  },
+  "sigma_0p4": {
+    "rank": 12,
+    "eigenvalue_range": [
+      -67.59079895335205,
+      5744.035281649356
+    ],
+    "gate_G1_pass": false
+  },
+  "is_critical_line_sensitive": true
+}

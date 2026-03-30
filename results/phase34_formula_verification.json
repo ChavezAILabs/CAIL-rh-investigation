@@ -1,0 +1,62 @@
+{
+  "phase": 34,
+  "track": "V1",
+  "formula": "Tr_BK = sum_p (log p / sqrt(p)) * cos(t * log p)",
+  "c1": 0.11797805192095003,
+  "e0_dps_comparison": [
+    {
+      "N_zeros": 100,
+      "ratio_dps25": 0.2479314044223742,
+      "ratio_dps15": 0.2479314044223742,
+      "diff": 0.0,
+      "ok": true
+    },
+    {
+      "N_zeros": 500,
+      "ratio_dps25": 0.17334867629974177,
+      "ratio_dps15": 0.17334867629974177,
+      "diff": 0.0,
+      "ok": true
+    },
+    {
+      "N_zeros": 1000,
+      "ratio_dps25": 0.152656334923284,
+      "ratio_dps15": 0.152656334923284,
+      "diff": 0.0,
+      "ok": true
+    }
+  ],
+  "v1_checks": [
+    {
+      "check": "Weil_RHS: 6 primes",
+      "computed": -4.01404217570038,
+      "expected": -4.014042,
+      "pass": true
+    },
+    {
+      "check": "ratio: N=100, 6 primes",
+      "computed": 0.2479314044223742,
+      "expected": 0.247931,
+      "pass": true
+    },
+    {
+      "check": "ratio: N=500, 6 primes",
+      "computed": 0.17334867629974177,
+      "expected": 0.173349,
+      "pass": true
+    },
+    {
+      "check": "ratio: N=500, 36 primes",
+      "computed": 0.13635635552735936,
+      "expected": 0.136356,
+      "pass": true
+    },
+    {
+      "check": "ratio: N=500, 62 primes (~c1)",
+      "computed": 0.11809891952958154,
+      "expected": 0.118099,
+      "pass": true
+    }
+  ],
+  "all_pass": true
+}

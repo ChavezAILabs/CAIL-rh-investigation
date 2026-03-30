@@ -1,0 +1,64 @@
+{
+  "phase": 37,
+  "track": "R2",
+  "c1": 0.11797805192095003,
+  "gamma_1": 14.134725141734695,
+  "sigma_scan": [
+    {
+      "sigma": 0.1,
+      "max_imag": 0.0,
+      "norm_sq": 1.0494333260871453,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.2,
+      "max_imag": 0.0,
+      "norm_sq": 0.9850078650246976,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.3,
+      "max_imag": 0.0,
+      "norm_sq": 0.9405824039622496,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.4,
+      "max_imag": 0.0,
+      "norm_sq": 0.9161569428998017,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.5,
+      "max_imag": 0.0,
+      "norm_sq": 0.9117314818373538,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.6,
+      "max_imag": 0.0,
+      "norm_sq": 0.9273060207749059,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.7,
+      "max_imag": 0.0,
+      "norm_sq": 0.9628805597124579,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.8,
+      "max_imag": 0.0,
+      "norm_sq": 1.0184550986500098,
+      "F0": 0.06539749427393954
+    },
+    {
+      "sigma": 0.9,
+      "max_imag": 0.0,
+      "norm_sq": 1.0940296375875618,
+      "F0": 0.06539749427393954
+    }
+  ],
+  "reality_sigma_specific": false,
+  "finding": "Im(F(sigma+i*gamma_1)) = 0 for ALL sigma in {0.1,...,0.9}. F_16d() is a real-valued function of (t, sigma) for all real inputs. Reality is structural (float64 arithmetic), not a consequence of sigma=1/2. The handoff's proposed proof path: 'F real iff sigma=1/2 -> hermiticity iff sigma=1/2 -> zeros on critical line' does not hold because the first implication is false. Correction: hermiticity holds for all sigma (trivially), so it cannot serve as the distinguishing condition for the critical line."
+}

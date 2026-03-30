@@ -1,0 +1,1908 @@
+{
+  "experiment": "Phase19_Thread2_AnnihilationTopology",
+  "date": "2026-03-23",
+  "total_pairs": 48,
+  "canonical_pairs": 6,
+  "cd_specific_pairs": 42,
+  "section1_pq_annihilation": {
+    "all_48_verified": true,
+    "zero_count": 48,
+    "failures": []
+  },
+  "section2_direct_basis_annihilation": {
+    "ordered_basis_pairs_tested": 240,
+    "direct_zero_pairs": 0,
+    "ab_zero_count": 0,
+    "cd_zero_count": 0,
+    "result": "No direct basis-element annihilation in sedenions"
+  },
+  "section3_clifford_grade": {
+    "canonical_grade_distribution": {
+      "pure_0": 0,
+      "pure_2": 6,
+      "mixed_02": 0,
+      "other": 0
+    },
+    "cd_specific_grade_distribution": {
+      "pure_0": 0,
+      "pure_2": 42,
+      "mixed_02": 0,
+      "other": 0
+    },
+    "canonical_pure_count": 6,
+    "canonical_mixed_count": 0,
+    "cd_specific_pure_count": 42,
+    "cd_specific_mixed_count": 0,
+    "prediction_confirmed": false
+  },
+  "section4_canonical_inner_products": {
+    "1": {
+      "b": 14,
+      "s": -1,
+      "c": 5,
+      "d": 10,
+      "t": 1,
+      "inner_8d": 0.0,
+      "grade_type": "pure_2"
+    },
+    "2": {
+      "b": 13,
+      "s": -1,
+      "c": 6,
+      "d": 9,
+      "t": 1,
+      "inner_8d": 0.0,
+      "grade_type": "pure_2"
+    },
+    "3": {
+      "b": 12,
+      "s": 1,
+      "c": 5,
+      "d": 10,
+      "t": 1,
+      "inner_8d": 0.0,
+      "grade_type": "pure_2"
+    },
+    "4": {
+      "b": 11,
+      "s": 1,
+      "c": 6,
+      "d": 9,
+      "t": 1,
+      "inner_8d": 0.0,
+      "grade_type": "pure_2"
+    }
+  },
+  "section6_a16_membership": {
+    "both_P_Q_in_a16": 20,
+    "p_only": 1,
+    "q_only": 3,
+    "neither": 24
+  },
+  "pair_results": [
+    {
+      "index": 0,
+      "a": 1,
+      "b": 10,
+      "s": 1,
+      "c": 5,
+      "d": 14,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 1,
+      "a": 1,
+      "b": 10,
+      "s": -1,
+      "c": 5,
+      "d": 14,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 2,
+      "a": 1,
+      "b": 11,
+      "s": 1,
+      "c": 4,
+      "d": 14,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 3,
+      "a": 1,
+      "b": 11,
+      "s": -1,
+      "c": 4,
+      "d": 14,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 4,
+      "a": 1,
+      "b": 12,
+      "s": 1,
+      "c": 3,
+      "d": 14,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 5,
+      "a": 1,
+      "b": 12,
+      "s": -1,
+      "c": 3,
+      "d": 14,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 6,
+      "a": 1,
+      "b": 13,
+      "s": 1,
+      "c": 2,
+      "d": 14,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 7,
+      "a": 1,
+      "b": 13,
+      "s": -1,
+      "c": 2,
+      "d": 14,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 8,
+      "a": 1,
+      "b": 14,
+      "s": 1,
+      "c": 2,
+      "d": 13,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 9,
+      "a": 1,
+      "b": 14,
+      "s": -1,
+      "c": 2,
+      "d": 13,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 10,
+      "a": 1,
+      "b": 14,
+      "s": 1,
+      "c": 3,
+      "d": 12,
+      "t": 1,
+      "is_canonical": true,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 11,
+      "a": 1,
+      "b": 14,
+      "s": -1,
+      "c": 3,
+      "d": 12,
+      "t": -1,
+      "is_canonical": true,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 12,
+      "a": 1,
+      "b": 14,
+      "s": 1,
+      "c": 4,
+      "d": 11,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 13,
+      "a": 1,
+      "b": 14,
+      "s": -1,
+      "c": 4,
+      "d": 11,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 14,
+      "a": 1,
+      "b": 14,
+      "s": 1,
+      "c": 5,
+      "d": 10,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 15,
+      "a": 1,
+      "b": 14,
+      "s": -1,
+      "c": 5,
+      "d": 10,
+      "t": 1,
+      "is_canonical": true,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 16,
+      "a": 2,
+      "b": 9,
+      "s": 1,
+      "c": 6,
+      "d": 13,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 17,
+      "a": 2,
+      "b": 9,
+      "s": -1,
+      "c": 6,
+      "d": 13,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 18,
+      "a": 2,
+      "b": 11,
+      "s": 1,
+      "c": 4,
+      "d": 13,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 19,
+      "a": 2,
+      "b": 11,
+      "s": -1,
+      "c": 4,
+      "d": 13,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 20,
+      "a": 2,
+      "b": 12,
+      "s": 1,
+      "c": 3,
+      "d": 13,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 21,
+      "a": 2,
+      "b": 12,
+      "s": -1,
+      "c": 3,
+      "d": 13,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 22,
+      "a": 2,
+      "b": 13,
+      "s": 1,
+      "c": 3,
+      "d": 12,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 23,
+      "a": 2,
+      "b": 13,
+      "s": -1,
+      "c": 3,
+      "d": 12,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 24,
+      "a": 2,
+      "b": 13,
+      "s": 1,
+      "c": 4,
+      "d": 11,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 25,
+      "a": 2,
+      "b": 13,
+      "s": -1,
+      "c": 4,
+      "d": 11,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 26,
+      "a": 2,
+      "b": 13,
+      "s": 1,
+      "c": 6,
+      "d": 9,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 27,
+      "a": 2,
+      "b": 13,
+      "s": -1,
+      "c": 6,
+      "d": 9,
+      "t": 1,
+      "is_canonical": true,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 28,
+      "a": 3,
+      "b": 9,
+      "s": 1,
+      "c": 6,
+      "d": 12,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 29,
+      "a": 3,
+      "b": 9,
+      "s": -1,
+      "c": 6,
+      "d": 12,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 30,
+      "a": 3,
+      "b": 10,
+      "s": 1,
+      "c": 5,
+      "d": 12,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 31,
+      "a": 3,
+      "b": 10,
+      "s": -1,
+      "c": 5,
+      "d": 12,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 32,
+      "a": 3,
+      "b": 12,
+      "s": 1,
+      "c": 5,
+      "d": 10,
+      "t": 1,
+      "is_canonical": true,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 33,
+      "a": 3,
+      "b": 12,
+      "s": -1,
+      "c": 5,
+      "d": 10,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 34,
+      "a": 3,
+      "b": 12,
+      "s": 1,
+      "c": 6,
+      "d": 9,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 35,
+      "a": 3,
+      "b": 12,
+      "s": -1,
+      "c": 6,
+      "d": 9,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 36,
+      "a": 4,
+      "b": 9,
+      "s": 1,
+      "c": 6,
+      "d": 11,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 37,
+      "a": 4,
+      "b": 9,
+      "s": -1,
+      "c": 6,
+      "d": 11,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 38,
+      "a": 4,
+      "b": 10,
+      "s": 1,
+      "c": 5,
+      "d": 11,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 39,
+      "a": 4,
+      "b": 10,
+      "s": -1,
+      "c": 5,
+      "d": 11,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 40,
+      "a": 4,
+      "b": 11,
+      "s": 1,
+      "c": 5,
+      "d": 10,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 41,
+      "a": 4,
+      "b": 11,
+      "s": -1,
+      "c": 5,
+      "d": 10,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 42,
+      "a": 4,
+      "b": 11,
+      "s": 1,
+      "c": 6,
+      "d": 9,
+      "t": 1,
+      "is_canonical": true,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 43,
+      "a": 4,
+      "b": 11,
+      "s": -1,
+      "c": 6,
+      "d": 9,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 44,
+      "a": 5,
+      "b": 9,
+      "s": 1,
+      "c": 6,
+      "d": 10,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 45,
+      "a": 5,
+      "b": 9,
+      "s": -1,
+      "c": 6,
+      "d": 10,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 46,
+      "a": 5,
+      "b": 10,
+      "s": 1,
+      "c": 6,
+      "d": 9,
+      "t": 1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    },
+    {
+      "index": 47,
+      "a": 5,
+      "b": 10,
+      "s": -1,
+      "c": 6,
+      "d": 9,
+      "t": -1,
+      "is_canonical": false,
+      "P_8d": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "Q_8d": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "inner_product_8d": 0.0,
+      "grade_type": "pure_2",
+      "grade_0_norm": 0.0,
+      "grade_2_norm": 2.0,
+      "grades_present": [
+        2
+      ],
+      "is_pure_grade": true
+    }
+  ]
+}

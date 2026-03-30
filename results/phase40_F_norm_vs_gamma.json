@@ -1,0 +1,14 @@
+{
+  "track": "A1",
+  "n": 100,
+  "spearman_rho": -0.08406840684068406,
+  "p_value": 0.4056414970248752,
+  "F_norm_sq_range": [
+    0.480288594558979,
+    2.9580587633605977
+  ],
+  "F_norm_sq_mean": 1.338840017433994,
+  "F_norm_sq_std": 0.4344151939727168,
+  "gate_A1_pass": false,
+  "conclusion": "directional anti-correlation -- normalization is confirmatory only"
+}

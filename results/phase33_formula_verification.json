@@ -1,0 +1,48 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "Weil_RHS: 6 primes = -4.014042",
+      "computed": -4.01404217570038,
+      "expected": -4.014042,
+      "tolerance": 1e-05,
+      "passed": true
+    },
+    {
+      "check": "ratio: N=100, 6 primes = 0.247931",
+      "computed": 0.2479314044223742,
+      "expected": 0.247931,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "check": "ratio: N=500, 6 primes = 0.173349",
+      "computed": 0.17334867629974177,
+      "expected": 0.173349,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "check": "ratio: N=500, 36 primes (p_max=151) = 0.136356",
+      "computed": 0.13635635552735936,
+      "expected": 0.136356,
+      "tolerance": 5e-05,
+      "passed": true
+    },
+    {
+      "check": "ratio: N=500, 62 primes (p_max=300) approx c1",
+      "computed": 0.11809891952958154,
+      "expected": 0.11797805192095003,
+      "tolerance": 0.0005,
+      "passed": true
+    },
+    {
+      "check": "Tr_BK<0 fraction: 6 primes, N=500 = 76.6% (383/500)",
+      "computed": 0.766,
+      "expected": 0.766,
+      "tolerance": 0.02,
+      "passed": true
+    }
+  ],
+  "formula": "Tr_BK = sum_p (log p/sqrt(p)) * cos(t*log p)"
+}

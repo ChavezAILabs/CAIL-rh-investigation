@@ -1,0 +1,35 @@
+{
+  "track": "G2",
+  "rank_results": [
+    {
+      "N_zeros": 4,
+      "rank": 12,
+      "expected_rank": 60,
+      "ratio": 0.2
+    },
+    {
+      "N_zeros": 8,
+      "rank": 12,
+      "expected_rank": 60,
+      "ratio": 0.2
+    },
+    {
+      "N_zeros": 16,
+      "rank": 12,
+      "expected_rank": 60,
+      "ratio": 0.2
+    },
+    {
+      "N_zeros": 30,
+      "rank": 12,
+      "expected_rank": 60,
+      "ratio": 0.2
+    },
+    {
+      "N_zeros": 60,
+      "rank": 12,
+      "expected_rank": 60,
+      "ratio": 0.2
+    }
+  ]
+}

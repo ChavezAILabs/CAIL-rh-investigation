@@ -1,0 +1,14 @@
+{
+  "phase": 37,
+  "track": "C1",
+  "c1": 0.11797805192095003,
+  "cs_positive_eigenvalues": {
+    "k3_positive": 0.910729406905382,
+    "k4_positive": 0.7633092854129251,
+    "k5_positive": 0.7193228604079511
+  },
+  "cs_sum_sq_eigenvals": -0.24898283242376418,
+  "cs_frobenius_A": 0.5719253010336787,
+  "phase36_reference_6D_CS": 0.814,
+  "interpretation": "Chavez conjugation symmetry on eigenvalue time series. Compare to Phase 36 6D projection CS=81.4% (within RZ gap range). Eigenvalue sequences reflect the spectral structure of A(rho_n)."
+}

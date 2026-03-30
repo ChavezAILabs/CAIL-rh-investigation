@@ -1,0 +1,34 @@
+{
+  "F_iA_agg": {
+    "6basis_rank_N60": 6,
+    "6basis_G1_N60": true,
+    "60basis_rank_N60": 12,
+    "60basis_G1_N60": false,
+    "any_G4_pass": false
+  },
+  "E_Q_vectors": {
+    "rank_M_Q": 4,
+    "rank_M_PQ": 4,
+    "G1_pass": true,
+    "G4_pass": false
+  },
+  "A_antipodal": {
+    "diagnostic_only": true,
+    "degeneracy_confirmed": true,
+    "is_critical_line_sensitive": true,
+    "rank_off_critical": 12
+  },
+  "B_zdtp": {
+    "F_vectors_saved": 50,
+    "output_file": "phase42_F_vectors.json",
+    "claude_desktop_finds": "product_norm=0.0 at all 6 gateways (bilateral annihilation confirmed)",
+    "operator": "M_zdtp = Gram matrix of 6D ZDTP signature vectors (PSD, rank<=6)",
+    "status": "pending Claude Desktop completion"
+  },
+  "any_G1_pass_Claude_Code": true,
+  "any_G4_pass_Claude_Code": false,
+  "deferred": [
+    "Candidate C (Clifford grade-2) -> Phase 43"
+  ],
+  "pause_note": "The First Ascent closes. Phases 1-42 complete."
+}

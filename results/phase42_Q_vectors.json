@@ -1,0 +1,23 @@
+{
+  "track": "E",
+  "basis": "4 distinct Q-vectors",
+  "N_zeros": 60,
+  "rank_M_Q": 4,
+  "rank_M_P6_comparison": 4,
+  "rank_M_PQ_mixed": 4,
+  "rank_threshold": 2,
+  "gate_G1_pass": true,
+  "M_Q_eigenvalues": [
+    23.573134302724498,
+    204.5020282676868,
+    441.62495012909056,
+    1361.250363674792
+  ],
+  "min_eigenvalue": 23.573134302724498,
+  "max_eigenvalue": 1361.250363674792,
+  "n_positive_eigenvalues": 4,
+  "spearman_rho": 1.0,
+  "spearman_p": 0.0,
+  "gate_G4_pass": false,
+  "note": "n_pos=4 < 10, G4 not testable at this basis size"
+}

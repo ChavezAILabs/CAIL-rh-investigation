@@ -1,0 +1,109 @@
+{
+  "phase": 36,
+  "track": "F1",
+  "description": "Fourier analogue: bilateral annihilation + mutual annihilation matrix",
+  "c1": 0.11797805192095003,
+  "bilateral_annihilation_all_6": true,
+  "pair_results": [
+    {
+      "pair": 1,
+      "P_nz": "[(1, 1.0), (14, 1.0)]",
+      "Q_nz": "[(3, 1.0), (12, 1.0)]",
+      "PQ_norm_sq": 0.0,
+      "QP_norm_sq": 0.0,
+      "bilateral": true
+    },
+    {
+      "pair": 2,
+      "P_nz": "[(1, 1.0), (14, -1.0)]",
+      "Q_nz": "[(3, 1.0), (12, -1.0)]",
+      "PQ_norm_sq": 0.0,
+      "QP_norm_sq": 0.0,
+      "bilateral": true
+    },
+    {
+      "pair": 3,
+      "P_nz": "[(1, 1.0), (14, -1.0)]",
+      "Q_nz": "[(5, 1.0), (10, 1.0)]",
+      "PQ_norm_sq": 0.0,
+      "QP_norm_sq": 0.0,
+      "bilateral": true
+    },
+    {
+      "pair": 4,
+      "P_nz": "[(2, 1.0), (13, -1.0)]",
+      "Q_nz": "[(6, 1.0), (9, 1.0)]",
+      "PQ_norm_sq": 0.0,
+      "QP_norm_sq": 0.0,
+      "bilateral": true
+    },
+    {
+      "pair": 5,
+      "P_nz": "[(3, 1.0), (12, 1.0)]",
+      "Q_nz": "[(5, 1.0), (10, 1.0)]",
+      "PQ_norm_sq": 0.0,
+      "QP_norm_sq": 0.0,
+      "bilateral": true
+    },
+    {
+      "pair": 6,
+      "P_nz": "[(4, 1.0), (11, 1.0)]",
+      "Q_nz": "[(6, 1.0), (9, 1.0)]",
+      "PQ_norm_sq": 0.0,
+      "QP_norm_sq": 0.0,
+      "bilateral": true
+    }
+  ],
+  "mutual_annihilation_matrix": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "max_offdiag_abs": 2.0,
+  "interpretation": "Diagonal: all 0 (trivially P*Q diagonal terms are zero). Off-diagonal: M[4,0]=-2 because can_P[4]=e3+e12=can_Q[0] (degenerate: P5 equals Q1). This is the degenerate-type pattern where P and Q-image coincide. All 6 bilateral pairs pass P*Q=Q*P=0 (machine exact). Srednicki analogue: bilateral annihilation condition mirrors Fourier self-duality."
+}

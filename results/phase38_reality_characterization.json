@@ -1,0 +1,31 @@
+{
+  "phase": 38,
+  "track": "A1",
+  "n_trials": 20,
+  "random_max_imag_all_zero": true,
+  "random_max_imag_values": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "max_imag_nonint_real_rp": 0.0,
+  "conclusion": "Im(F)=0 is UNIVERSAL: holds for any real-valued r_p vectors, not just E8 roots. The Cayley-Dickson product of real-component sedenions is always real-component. Reality of F is an algebraic property of the construction (real inputs -> real output), completely independent of the E8/A1^6 geometry.",
+  "implication": "The Phase 36 hermiticity PASS is structurally trivial. The E8 geometry is NOT what makes F real. Any 6-prime AIEX-001a with real r_p vectors would give hermiticity PASS. This closes the reality-condition proof path definitively."
+}

@@ -1,0 +1,25 @@
+{
+  "track": "W1",
+  "N_zeros": 60,
+  "N_basis": 60,
+  "gamma_1": 14.134725141734695,
+  "gamma_60": 163.030709687182,
+  "eigenvalues_in_range": 4,
+  "positive_eigenvalues": 34,
+  "weyl_target": 60,
+  "gate_W1_pass": false,
+  "band_eigenvalue_counts": {
+    "14-50": 2,
+    "50-100": 1,
+    "100-150": 1,
+    "150-200": 0,
+    "200-236": 0
+  },
+  "band_zero_counts": {
+    "14-50": 10,
+    "50-100": 19,
+    "100-150": 23,
+    "150-200": 8,
+    "200-236": 0
+  }
+}

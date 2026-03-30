@@ -1,0 +1,158 @@
+{
+  "phase": 32,
+  "N_zeros": 500,
+  "c1": 0.11797805192095003,
+  "formula": "Tr_BK = sum_p (log p / sqrt(p)) * cos(t * log p)",
+  "description": "Full Weil ratio sequence (correct formula, 500 zeros). Phase 31 ratios EXCLUDED \u2014 formula bug (missing 1/sqrt(p)). No inversion occurs with the correct formula.",
+  "phase31_invalid_values": {
+    "200": 1.1132,
+    "300": 1.0786,
+    "500": 0.9928,
+    "700": 0.9549
+  },
+  "boundary_scan_151_to_200": [
+    {
+      "p_max": 155,
+      "N_primes": 36,
+      "ratio": 0.13635635552735936,
+      "Weil_RHS": -19.397143917363636,
+      "regime": "scan"
+    },
+    {
+      "p_max": 157,
+      "N_primes": 37,
+      "ratio": 0.13535089729395794,
+      "Weil_RHS": -19.800676263552926,
+      "regime": "scan"
+    },
+    {
+      "p_max": 160,
+      "N_primes": 37,
+      "ratio": 0.13535089729395794,
+      "Weil_RHS": -19.800676263552926,
+      "regime": "scan"
+    },
+    {
+      "p_max": 163,
+      "N_primes": 38,
+      "ratio": 0.13441049758972318,
+      "Weil_RHS": -20.19964957099394,
+      "regime": "scan"
+    },
+    {
+      "p_max": 165,
+      "N_primes": 38,
+      "ratio": 0.13441049758972318,
+      "Weil_RHS": -20.19964957099394,
+      "regime": "scan"
+    },
+    {
+      "p_max": 170,
+      "N_primes": 39,
+      "ratio": 0.1335690318819398,
+      "Weil_RHS": -20.595691822595345,
+      "regime": "scan"
+    },
+    {
+      "p_max": 175,
+      "N_primes": 40,
+      "ratio": 0.13264677228926816,
+      "Weil_RHS": -20.98748932734476,
+      "regime": "scan"
+    },
+    {
+      "p_max": 180,
+      "N_primes": 41,
+      "ratio": 0.13193986898803617,
+      "Weil_RHS": -21.375212746437626,
+      "regime": "scan"
+    },
+    {
+      "p_max": 190,
+      "N_primes": 42,
+      "ratio": 0.13119700692937655,
+      "Weil_RHS": -21.761613987699942,
+      "regime": "scan"
+    },
+    {
+      "p_max": 200,
+      "N_primes": 46,
+      "ratio": 0.12863122838690097,
+      "Weil_RHS": -23.272116994307467,
+      "regime": "scan"
+    }
+  ],
+  "extended_200_to_1000": [
+    {
+      "p_max": 200,
+      "N_primes": 46,
+      "ratio": 0.12863122838690097,
+      "Weil_RHS": -23.272116994307467,
+      "regime": "extended"
+    },
+    {
+      "p_max": 250,
+      "N_primes": 53,
+      "ratio": 0.12468820948667372,
+      "Weil_RHS": -25.78644135255642,
+      "regime": "extended"
+    },
+    {
+      "p_max": 300,
+      "N_primes": 62,
+      "ratio": 0.11809891952958154,
+      "Weil_RHS": -28.848057212838388,
+      "regime": "extended"
+    },
+    {
+      "p_max": 400,
+      "N_primes": 78,
+      "ratio": 0.10981069185703347,
+      "Weil_RHS": -33.86122996114528,
+      "regime": "extended"
+    },
+    {
+      "p_max": 500,
+      "N_primes": 95,
+      "ratio": 0.10272668510311175,
+      "Weil_RHS": -38.761426611557866,
+      "regime": "extended"
+    },
+    {
+      "p_max": 600,
+      "N_primes": 109,
+      "ratio": 0.09811720207202582,
+      "Weil_RHS": -42.5206617418964,
+      "regime": "extended"
+    },
+    {
+      "p_max": 700,
+      "N_primes": 125,
+      "ratio": 0.09384678294080528,
+      "Weil_RHS": -46.598449651486234,
+      "regime": "extended"
+    },
+    {
+      "p_max": 800,
+      "N_primes": 139,
+      "ratio": 0.08966817066900039,
+      "Weil_RHS": -49.987540485432234,
+      "regime": "extended"
+    },
+    {
+      "p_max": 900,
+      "N_primes": 154,
+      "ratio": 0.0862970115673228,
+      "Weil_RHS": -53.46165747246582,
+      "regime": "extended"
+    },
+    {
+      "p_max": 1000,
+      "N_primes": 168,
+      "ratio": 0.08250806301612244,
+      "Weil_RHS": -56.57415780333751,
+      "regime": "extended"
+    }
+  ],
+  "no_inversion_detected": true
+}

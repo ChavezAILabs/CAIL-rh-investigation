@@ -1,0 +1,17 @@
+{
+  "phase": 36,
+  "track": "I2",
+  "description": "Hermiticity test: |IP(n,m) - IP(m,n)*|",
+  "c1": 0.11797805192095003,
+  "N_zeros_tested": 100,
+  "results": {
+    "max_violation": 0.0,
+    "mean_violation": 0.0,
+    "hermiticity_confirmed": true,
+    "gate_threshold": 1e-10,
+    "pairs_exact_zero_1e15": 10000,
+    "pairs_near_zero_1e10": 10000,
+    "total_pairs": 10000,
+    "note": "F(rho) at critical line zeros is purely real-valued sedenion. All projection coefficients are real -> inner products are real -> IP(n,m) = IP(m,n) exactly (conjugate symmetry of reals)."
+  }
+}

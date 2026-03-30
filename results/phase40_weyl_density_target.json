@@ -1,0 +1,12 @@
+{
+  "track": "W1",
+  "T_target": 236.5242296658162,
+  "weyl_N_target": 136.57896765320476,
+  "phase39_growth_rate": 0.16666666666666666,
+  "phase39_N_required": 819.4738059192285,
+  "max_available_N_16D": 60,
+  "16D_sufficient": false,
+  "M_norm_growth_rate": 0.10533333333333333,
+  "M_norm_N_required": 1296.6357688595388,
+  "formula": "N_required = Weyl_N(T_target) / growth_rate_per_unit_N"
+}

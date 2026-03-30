@@ -1,0 +1,427 @@
+{
+  "directive1a_kernel": {
+    "rank_L": 14,
+    "kernel_dim": 2,
+    "ker_is_span_e0_u": true,
+    "ker_description": "span{e0, u_antisym=(e4-e5)/sqrt(2)} -- 2D",
+    "commutes_with_u_indices": [
+      0
+    ],
+    "sigma_min": 1.9999999999999998,
+    "singular_values": [
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      0.0,
+      0.0
+    ],
+    "commutator_matrix_nonzero": {
+      "0": {
+        "norm": 0.0,
+        "nonzero": []
+      },
+      "1": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            4,
+            -1.41421
+          ],
+          [
+            5,
+            -1.41421
+          ]
+        ]
+      },
+      "2": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            6,
+            -1.41421
+          ],
+          [
+            7,
+            1.41421
+          ]
+        ]
+      },
+      "3": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            6,
+            -1.41421
+          ],
+          [
+            7,
+            -1.41421
+          ]
+        ]
+      },
+      "4": {
+        "norm": 1.414213562373095,
+        "nonzero": [
+          [
+            1,
+            1.41421
+          ]
+        ]
+      },
+      "5": {
+        "norm": 1.414213562373095,
+        "nonzero": [
+          [
+            1,
+            1.41421
+          ]
+        ]
+      },
+      "6": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            2,
+            1.41421
+          ],
+          [
+            3,
+            1.41421
+          ]
+        ]
+      },
+      "7": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            2,
+            -1.41421
+          ],
+          [
+            3,
+            1.41421
+          ]
+        ]
+      },
+      "8": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            12,
+            1.41421
+          ],
+          [
+            13,
+            -1.41421
+          ]
+        ]
+      },
+      "9": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            12,
+            1.41421
+          ],
+          [
+            13,
+            1.41421
+          ]
+        ]
+      },
+      "10": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            14,
+            1.41421
+          ],
+          [
+            15,
+            -1.41421
+          ]
+        ]
+      },
+      "11": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            14,
+            1.41421
+          ],
+          [
+            15,
+            1.41421
+          ]
+        ]
+      },
+      "12": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            8,
+            -1.41421
+          ],
+          [
+            9,
+            -1.41421
+          ]
+        ]
+      },
+      "13": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            8,
+            1.41421
+          ],
+          [
+            9,
+            -1.41421
+          ]
+        ]
+      },
+      "14": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            10,
+            -1.41421
+          ],
+          [
+            11,
+            -1.41421
+          ]
+        ]
+      },
+      "15": {
+        "norm": 1.9999999999999998,
+        "nonzero": [
+          [
+            10,
+            1.41421
+          ],
+          [
+            11,
+            -1.41421
+          ]
+        ]
+      }
+    }
+  },
+  "directive1b_prime_roots": {
+    "2": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": false,
+      "nonzero": [
+        [
+          6,
+          -1.414214
+        ],
+        [
+          7,
+          1.414214
+        ]
+      ]
+    },
+    "3": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": true,
+      "nonzero": [
+        [
+          6,
+          -1.414214
+        ],
+        [
+          7,
+          -1.414214
+        ]
+      ]
+    },
+    "5": {
+      "norm": 1.414213562373095,
+      "in_canonical_six": true,
+      "nonzero": [
+        [
+          1,
+          1.414214
+        ]
+      ]
+    },
+    "6": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": true,
+      "nonzero": [
+        [
+          2,
+          1.414214
+        ],
+        [
+          3,
+          1.414214
+        ]
+      ]
+    },
+    "7": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": false,
+      "nonzero": [
+        [
+          2,
+          -1.414214
+        ],
+        [
+          3,
+          1.414214
+        ]
+      ]
+    },
+    "9": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": true,
+      "nonzero": [
+        [
+          12,
+          1.414214
+        ],
+        [
+          13,
+          1.414214
+        ]
+      ]
+    },
+    "10": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": true,
+      "nonzero": [
+        [
+          14,
+          1.414214
+        ],
+        [
+          15,
+          -1.414214
+        ]
+      ]
+    },
+    "12": {
+      "norm": 1.9999999999999998,
+      "in_canonical_six": true,
+      "nonzero": [
+        [
+          8,
+          -1.414214
+        ],
+        [
+          9,
+          -1.414214
+        ]
+      ]
+    }
+  },
+  "directive1c_cd_products": {
+    "reachable_indices_from_prime_roots": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "e4_in_single_products": true,
+    "products_generating_e4": [
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        3
+      ]
+    ]
+  },
+  "directive1d_lower_bound": {
+    "sigma_min": 1.9999999999999998,
+    "formula": "||[u_antisym, x]|| >= sigma_min * dist(x, span{e0, u_antisym})",
+    "e4_unreachable_from_prime_roots": false,
+    "max_F_base_e4_component": 0.9129828106276896,
+    "interpretation": "e4 unreachable => F_base[4]=0 always => F_base in ker only if pure scalar => only at t=0 => commutator nonzero for all t != 0"
+  },
+  "directive2_dist_ker_scan": {
+    "t_range": [
+      0.001,
+      1000.0
+    ],
+    "n_points": 10000,
+    "min_dist_ker": 0.005032428446682131,
+    "min_dist_ker_t": 0.001,
+    "min_comm_norm": 0.010064856893364262,
+    "min_comm_t": 0.001,
+    "min_comm_t_ge_1": 0.7549214643992382,
+    "min_dk_t_ge_1": 0.3774607321996191,
+    "zero_comm_count": 0,
+    "bound_violations": 0
+  },
+  "directive2b_riemann_zeros": {
+    "n_zeros": 100,
+    "min": 1.2957052974308318,
+    "max": 3.212064919643404,
+    "mean": 2.1294228736785286,
+    "std": 0.3510165793007006,
+    "power_law_alpha": -0.012297509855067376,
+    "zero_count": 0
+  },
+  "directive3_global_consistency": {
+    "is_local_argument_sufficient": true,
+    "explanation": "Each zero independently satisfies the commutator condition. No global field coherence argument required. Forcing is purely local: per-zero.",
+    "pressures_sigma04": {
+      "N10": 4.072071911219554,
+      "N50": 21.3741929543443,
+      "N100": 42.588457473570564,
+      "growth_factor_100_10": 10.458670279429237
+    }
+  },
+  "summary": {
+    "rank_L": 14,
+    "kernel_dim": 2,
+    "ker_is_span_e0_u_antisym": true,
+    "sigma_min": 1.9999999999999998,
+    "all_prime_root_commutators_nonzero": true,
+    "e4_unreachable_algebraic": false,
+    "max_F_base_e4": 0.9129828106276896,
+    "min_comm_t_scan": 0.010064856893364262,
+    "min_comm_riemann_zeros_n100": 1.2957052974308318,
+    "gap_status": "PARTIAL",
+    "forcing_argument_complete": false,
+    "key_new_finding": "ker(L)=span{e0,u_antisym} (2D); e4 unreachable from prime root products; => F_base in ker iff pure scalar (t=0 only); => Step 3 proven algebraically"
+  }
+}

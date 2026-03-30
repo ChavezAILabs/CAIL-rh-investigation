@@ -1,0 +1,10 @@
+{
+  "phase": 37,
+  "track": "R1",
+  "c1": 0.11797805192095003,
+  "N_zeros": 100,
+  "global_max_imag": 0.0,
+  "all_real": true,
+  "F_component_type": "float64",
+  "mechanism": "F_16d() returns a list of float64 values. All sedenion exponentials exp_sed(t*log(p)*r_p/||r_p||) = cos(theta)*e0 + sin(theta)*r_hat_p have real components. The sigma correction adds a real scalar to components 4 and 5. Therefore Im(F_k) = 0 identically for ALL sigma, not just sigma=1/2. The hermiticity PASS from Phase 36 holds for this structural reason, not as evidence that the critical line condition is encoded in the sedenion algebra."
+}

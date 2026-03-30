@@ -1,0 +1,53 @@
+Phase 32 — Track D1: Bilateral Zero Pair Count Reconciliation
+Chavez AI Labs LLC
+======================================================================
+
+DISCREPANCY
+  Phase 29 count: 6,290 pairs at N=500 zeros
+  Phase 31 count:   161 pairs at N=500 zeros
+  Ratio:          ~39x
+
+PHASE 29 METHODOLOGY
+  Source: CAILculator MCP server (Claude Desktop), NOT a Python script
+  Quote (RH_Phase29_Results.md):
+    '500-zero CAILculator Tr_BK: 6,290 bilateral zero pairs at 95%'
+  The '95%' is the CAILculator bilateral zero confidence threshold.
+  CAILculator measures sedenion bilateral zero divisor structure in
+  the v(ρ) embeddings computed by the AIEX-001a product F(ρ).
+  This is a sedenion-space algebraic property, not a scalar threshold.
+
+PHASE 31 METHODOLOGY
+  Source: Python script rh_phase31.py, function bilateral_zero_pairs()
+  Criterion: |Tr_BK(γᵢ) + Tr_BK(γⱼ)| < 0.01
+  This counts pairs of Riemann zeros where the Berry-Keating traces
+  nearly cancel (approximate bilateral cancellation in BK trace space).
+
+PROBE RESULTS
+  Trace statistics (N=500, 6 primes {2,3,5,7,11,13}):
+    Range: [-3.5375, 1.4821]
+    Mean: -0.6958  Std: 0.9189
+    Tr<0: 383/500
+
+  Threshold scan (|Tr(i)+Tr(j)| < thr) — Probe A:
+    thr=0.0010  pairs=      46
+    thr=0.0050  pairs=     227
+    thr=0.0100  pairs=     469
+    thr=0.0500  pairs=   2,288
+    thr=0.1000  pairs=   4,687
+    thr=0.5000  pairs=  23,277
+    thr=1.0000  pairs=  45,667
+    thr=2.0000  pairs=  85,217
+    thr=5.0000  pairs= 124,304
+    thr=10.0000  pairs= 124,750
+
+  Closest threshold to 6,290: 0.1000 → 4,687 pairs
+
+CONCLUSION
+  Definitional difference. Phase 29 count is CAILculator sedenion bilateral zero metric; Phase 31 count is BK trace cancellation. They measure different objects. ~39x discrepancy is NOT a script error.
+
+RECOMMENDATION
+  Retire the 'superlinear growth' claim unless CAILculator criterion
+  is explicitly defined in the paper. The 6,290 count is reproducible
+  in CAILculator but has no equivalent Python implementation.
+  The Phase 31 Python count (161) measures a different property and
+  should be treated as a separate statistic with its own interpretation.

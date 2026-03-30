@@ -1,0 +1,53 @@
+{
+  "phase": 36,
+  "track": "C1",
+  "description": "Chavez Transform on (A1)^6 projection time series",
+  "c1": 0.11797805192095003,
+  "N_zeros": 100,
+  "basis_labels": [
+    "e1+e14",
+    "e1-e14",
+    "e2-e13",
+    "e3+e12",
+    "e4+e11",
+    "e5+e10"
+  ],
+  "cs_per_dimension": [
+    {
+      "dim": 0,
+      "label": "e1+e14",
+      "cs": 0.7863395499154268
+    },
+    {
+      "dim": 1,
+      "label": "e1-e14",
+      "cs": 0.7990017576082972
+    },
+    {
+      "dim": 2,
+      "label": "e2-e13",
+      "cs": 0.8691203959845433
+    },
+    {
+      "dim": 3,
+      "label": "e3+e12",
+      "cs": 0.775439604651825
+    },
+    {
+      "dim": 4,
+      "label": "e4+e11",
+      "cs": 0.844751039942057
+    },
+    {
+      "dim": 5,
+      "label": "e5+e10",
+      "cs": 0.8065444943588217
+    }
+  ],
+  "cs_norm_sq_sequence": 0.7126081802410897,
+  "cs_TrBK_reference": 0.10342632530059659,
+  "cs_spectral_det_abs": -3347310104897.956,
+  "cs_mean_6d": 0.8135328070768285,
+  "cs_std_6d": 0.03295226679896419,
+  "interpretation": "Chavez conjugation symmetry applied to each coordinate of the 6D (A1)^6 projection as a function of zero index. CS values measure bilateral symmetry in the projection time series. Comparison to Tr_BK (reference) and spectral determinant establishes the bridge from January 2026 starting point to Phase 36 operator construction."
+}

@@ -1,0 +1,14 @@
+{
+  "phase": 36,
+  "track": "F2",
+  "description": "Self-duality: F|_{(A1)^6} * conj = ||F|||^2 * e0",
+  "c1": 0.11797805192095003,
+  "N_zeros": 100,
+  "selfdual_all": true,
+  "selfdual_count": 100,
+  "max_nonscalar_component": 0.0,
+  "proj_norm_sq_mean": 0.41384284636566,
+  "proj_norm_sq_min": 0.016525241075294874,
+  "proj_norm_sq_max": 1.6921615909317413,
+  "interpretation": "F|_{(A1)^6} * conj(F|_{(A1)^6}) = ||F|_{(A1)^6}||^2 * e0 confirmed. This is the sedenion alternative-law identity restricted to the subspace. Non-scalar parts vanish to machine precision \u2014 the (A1)^6 projection inherits the full-sedenion self-dual property. Srednicki analogue: norm preservation under the 'Fourier transform' (bilateral annihilation map)."
+}

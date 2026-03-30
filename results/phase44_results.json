@@ -1,0 +1,427 @@
+{
+  "directive1_mirror_wobble": {
+    "theorem": "F_mirror(t, sigma) = F_original(t, 1-sigma)",
+    "max_numerical_error": 0.0,
+    "N_controlled_N50": {
+      "s05": {
+        "rank": 6,
+        "mean_phase": 79.33494353482179,
+        "std_phase": 9.669911872437293,
+        "max_eval": 1740.2435098469768,
+        "min_pos_eval": 0.2992196066178809,
+        "spectral_gap": 0.2992196066178809
+      },
+      "s04": {
+        "rank": 6,
+        "mean_phase": 80.0937134656036,
+        "std_phase": 7.500640925127279,
+        "max_eval": 1735.8144578406989,
+        "min_pos_eval": 0.382059575074062,
+        "spectral_gap": 0.382059575074062
+      },
+      "s06": {
+        "rank": 6,
+        "mean_phase": 79.34771967074263,
+        "std_phase": 9.613067016905541,
+        "max_eval": 1747.5598214377299,
+        "min_pos_eval": 0.28995442218338413,
+        "spectral_gap": 0.28995442218338413
+      }
+    },
+    "phase43c_original_uncontrolled": {
+      "s04_N93": {
+        "rank": 17,
+        "mean_phase": 84.06152439960657,
+        "std_phase": 6.12211371465878,
+        "max_eval": 12514.794480670891,
+        "min_pos_eval": 1.119349258430759e-12,
+        "spectral_gap": 1.119349258430759e-12
+      }
+    },
+    "confound": "Phase 43c used N=93 for sigma_0.4 vs N=50 for sigma_0.5/0.6. rank>6 at N=93 is floating-point scaling artifact (eps * max_eval > 1e-12 threshold).",
+    "mirror_result_N50": {
+      "s05": {
+        "rank": 6,
+        "mean_phase": 79.33494353482179,
+        "std_phase": 9.669911872437293,
+        "max_eval": 1740.2435098469768,
+        "min_pos_eval": 0.2992196066178809,
+        "spectral_gap": 0.2992196066178809
+      },
+      "s04_mirror_is_orig06": {
+        "rank": 6,
+        "mean_phase": 79.34771967074263,
+        "std_phase": 9.613067016905541,
+        "max_eval": 1747.5598214377299,
+        "min_pos_eval": 0.28995442218338413,
+        "spectral_gap": 0.28995442218338413
+      },
+      "s06_mirror_is_orig04": {
+        "rank": 6,
+        "mean_phase": 80.0937134656036,
+        "std_phase": 7.500640925127279,
+        "max_eval": 1735.8144578406989,
+        "min_pos_eval": 0.382059575074062,
+        "spectral_gap": 0.382059575074062
+      }
+    },
+    "conclusion": "sigma=0.5 is the unique fixed point of the functional equation in sedenion embedding"
+  },
+  "directive3_penalty": {
+    "lambda_max": {
+      "s05": 1740.2435098469768,
+      "s04": 1735.8144578406989,
+      "s06": 1747.5598214377299
+    },
+    "P_raw": {
+      "s04": 0.002545076008740539,
+      "s05": 0.0,
+      "s06": 0.004204188407745501
+    },
+    "P_sym": {
+      "s04": 0.002545076008740539,
+      "s05": 0.0,
+      "s06": 0.002545076008740539
+    },
+    "power_law": {
+      "A": 0.9999999999999998,
+      "alpha": 2.594299242921068
+    },
+    "sigma_scan": [
+      {
+        "sigma": 0.3,
+        "mean_F_norm_sq": 1.3309405296777976,
+        "proxy": 0.02468686924623638
+      },
+      {
+        "sigma": 0.35,
+        "mean_F_norm_sq": 1.3154242381118577,
+        "proxy": 0.012740925853210567
+      },
+      {
+        "sigma": 0.4,
+        "mean_F_norm_sq": 1.3049079465459177,
+        "proxy": 0.004644466514495872
+      },
+      {
+        "sigma": 0.45,
+        "mean_F_norm_sq": 1.2993916549799776,
+        "proxy": 0.0003974912300922924
+      },
+      {
+        "sigma": 0.5,
+        "mean_F_norm_sq": 1.2988753634140375,
+        "proxy": 0.0
+      },
+      {
+        "sigma": 0.55,
+        "mean_F_norm_sq": 1.3033590718480972,
+        "proxy": 0.0034519928242186526
+      },
+      {
+        "sigma": 0.6,
+        "mean_F_norm_sq": 1.3128427802821574,
+        "proxy": 0.010753469702748934
+      },
+      {
+        "sigma": 0.65,
+        "mean_F_norm_sq": 1.3273264887162173,
+        "proxy": 0.02190443063559016
+      },
+      {
+        "sigma": 0.7,
+        "mean_F_norm_sq": 1.3468101971502773,
+        "proxy": 0.036904875622742674
+      }
+    ]
+  },
+  "directive2_scaleup_proxy": {
+    "method": "F-vector bivector-index proxy (no ZDTP)",
+    "N_values": [
+      10,
+      20,
+      30,
+      50,
+      100,
+      150,
+      200
+    ],
+    "results": [
+      {
+        "N": 10,
+        "rank": 7,
+        "mean_phase": 29.57677176818143,
+        "std_phase": 6.539522803339776,
+        "max_eval": 2.5076485429427815,
+        "min_pos_eval": 0.0006657595946847832,
+        "spectral_gap": 0.0006657595946847832
+      },
+      {
+        "N": 20,
+        "rank": 7,
+        "mean_phase": 32.23256540790577,
+        "std_phase": 9.54082144060338,
+        "max_eval": 5.0632444768349,
+        "min_pos_eval": 0.09911141420265447,
+        "spectral_gap": 0.09911141420265447
+      },
+      {
+        "N": 30,
+        "rank": 7,
+        "mean_phase": 37.31604412378237,
+        "std_phase": 9.086488239480325,
+        "max_eval": 7.648417235608017,
+        "min_pos_eval": 0.1641699691834547,
+        "spectral_gap": 0.1641699691834547
+      },
+      {
+        "N": 50,
+        "rank": 7,
+        "mean_phase": 40.06881128109205,
+        "std_phase": 8.887134076374947,
+        "max_eval": 12.5759666042349,
+        "min_pos_eval": 0.3302289463039061,
+        "spectral_gap": 0.3302289463039061
+      },
+      {
+        "N": 100,
+        "rank": 7,
+        "mean_phase": 44.06036275678526,
+        "std_phase": 9.224263786961547,
+        "max_eval": 25.61424302176701,
+        "min_pos_eval": 1.2521700922285546,
+        "spectral_gap": 1.2521700922285546
+      },
+      {
+        "N": 150,
+        "rank": 7,
+        "mean_phase": 46.77049400738643,
+        "std_phase": 9.28855457510342,
+        "max_eval": 37.857878727377575,
+        "min_pos_eval": 2.577621005769271,
+        "spectral_gap": 2.577621005769271
+      },
+      {
+        "N": 200,
+        "rank": 7,
+        "mean_phase": 47.99056106533992,
+        "std_phase": 9.246537129773122,
+        "max_eval": 50.79407385486839,
+        "min_pos_eval": 3.8805162636878,
+        "spectral_gap": 3.8805162636878
+      }
+    ],
+    "rank_stable": true
+  },
+  "directive4_spinor_density": {
+    "t_range": [
+      0.1,
+      300.0
+    ],
+    "n_t_points": 3000,
+    "n_peaks": 987,
+    "top_peaks": [
+      [
+        130.99999999999997,
+        498.8446608148989
+      ],
+      [
+        265.9,
+        333.9721084739916
+      ],
+      [
+        131.79999999999998,
+        331.4403248582275
+      ],
+      [
+        84.89999999999999,
+        314.558745977124
+      ],
+      [
+        157.2,
+        314.35123143487215
+      ],
+      [
+        129.89999999999998,
+        310.4276035355747
+      ],
+      [
+        7.899999999999999,
+        293.7132094724165
+      ],
+      [
+        100.29999999999998,
+        286.0521616591485
+      ],
+      [
+        103.99999999999999,
+        285.63584031731943
+      ],
+      [
+        2.4,
+        280.84689137513857
+      ]
+    ],
+    "zero_matches": [
+      {
+        "n": 1,
+        "gamma": 14.135,
+        "nearest_peak": 14.2,
+        "dist": 0.0649999999999995,
+        "height_ratio": 1.4170581159425772
+      },
+      {
+        "n": 2,
+        "gamma": 21.022,
+        "nearest_peak": 21.1,
+        "dist": 0.07800000000000296,
+        "height_ratio": 0.5812389900779777
+      },
+      {
+        "n": 3,
+        "gamma": 25.011,
+        "nearest_peak": 24.7,
+        "dist": 0.31099999999999994,
+        "height_ratio": 1.4453879973912216
+      },
+      {
+        "n": 4,
+        "gamma": 30.425,
+        "nearest_peak": 30.4,
+        "dist": 0.02500000000000213,
+        "height_ratio": 2.071162484317048
+      },
+      {
+        "n": 5,
+        "gamma": 32.935,
+        "nearest_peak": 33.1,
+        "dist": 0.16499999999999915,
+        "height_ratio": 3.61758797532215
+      },
+      {
+        "n": 6,
+        "gamma": 37.586,
+        "nearest_peak": 37.3,
+        "dist": 0.28600000000000136,
+        "height_ratio": 2.077222844925058
+      },
+      {
+        "n": 7,
+        "gamma": 40.919,
+        "nearest_peak": 41.0,
+        "dist": 0.08100000000000307,
+        "height_ratio": 0.9228664381662447
+      },
+      {
+        "n": 8,
+        "gamma": 43.327,
+        "nearest_peak": 43.3,
+        "dist": 0.027000000000001023,
+        "height_ratio": 0.978016003955892
+      },
+      {
+        "n": 9,
+        "gamma": 48.005,
+        "nearest_peak": 48.099999999999994,
+        "dist": 0.09499999999999176,
+        "height_ratio": 1.4962894104086522
+      },
+      {
+        "n": 10,
+        "gamma": 49.774,
+        "nearest_peak": 49.8,
+        "dist": 0.02599999999999625,
+        "height_ratio": 1.881121134057578
+      },
+      {
+        "n": 11,
+        "gamma": 52.97,
+        "nearest_peak": 52.9,
+        "dist": 0.07000000000000028,
+        "height_ratio": 1.869043227705755
+      },
+      {
+        "n": 12,
+        "gamma": 56.446,
+        "nearest_peak": 56.4,
+        "dist": 0.045999999999999375,
+        "height_ratio": 1.5806250386778151
+      },
+      {
+        "n": 13,
+        "gamma": 59.347,
+        "nearest_peak": 59.3,
+        "dist": 0.04700000000000415,
+        "height_ratio": 3.0263780126967528
+      },
+      {
+        "n": 14,
+        "gamma": 60.832,
+        "nearest_peak": 60.8,
+        "dist": 0.03200000000000358,
+        "height_ratio": 0.9808743455652607
+      },
+      {
+        "n": 15,
+        "gamma": 65.113,
+        "nearest_peak": 65.19999999999999,
+        "dist": 0.08699999999998909,
+        "height_ratio": 0.8404640969947289
+      },
+      {
+        "n": 16,
+        "gamma": 67.08,
+        "nearest_peak": 66.99999999999999,
+        "dist": 0.0800000000000125,
+        "height_ratio": 0.9220980350485042
+      },
+      {
+        "n": 17,
+        "gamma": 69.546,
+        "nearest_peak": 69.49999999999999,
+        "dist": 0.04600000000002069,
+        "height_ratio": 2.6543618555529886
+      },
+      {
+        "n": 18,
+        "gamma": 72.067,
+        "nearest_peak": 72.1,
+        "dist": 0.03300000000000125,
+        "height_ratio": 5.851003324485578
+      },
+      {
+        "n": 19,
+        "gamma": 75.705,
+        "nearest_peak": 75.6,
+        "dist": 0.10500000000000398,
+        "height_ratio": 2.45830833248938
+      },
+      {
+        "n": 20,
+        "gamma": 77.145,
+        "nearest_peak": 76.99999999999999,
+        "dist": 0.14500000000001023,
+        "height_ratio": 1.2553006869049295
+      }
+    ],
+    "mean_dist_to_zeros": 0.08590000000000156,
+    "mean_dist_to_random": 0.09530448113110093,
+    "dist_ratio_random_over_zeros": 1.1094817361012712
+  },
+  "summary": {
+    "d1_theorem_max_error": 0.0,
+    "d1_confound_documented": "Phase 43c used N=93 for sigma_0.4 vs N=50 for sigma_0.5/0.6. rank>6 at N=93 is floating-point scaling artifact (eps * max_eval > 1e-12 threshold).",
+    "d2_rank_stable": true,
+    "d2_ranks": [
+      7,
+      7,
+      7,
+      7,
+      7,
+      7,
+      7
+    ],
+    "d3_power_law_alpha": 2.594299242921068,
+    "d4_dist_ratio": 1.1094817361012712
+  }
+}
