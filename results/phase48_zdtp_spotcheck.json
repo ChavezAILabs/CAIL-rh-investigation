@@ -1,0 +1,69 @@
+{
+  "description": "Phase 48 CAILculator ZDTP spot-check results",
+  "source": "Claude Desktop + CAILculator MCP server, 2026-03-30",
+  "n_vectors": 12,
+  "S3B_S4_pairing": "EXACT at all 12 zeros (universal, zero violations)",
+  "Chavez_Transform_on_convergence_series": 5.0435,
+  "data": [
+    {
+      "n": 1,
+      "gamma": 14.13,
+      "convergence": 0.6978
+    },
+    {
+      "n": 5,
+      "gamma": 32.94,
+      "convergence": 0.8667
+    },
+    {
+      "n": 10,
+      "gamma": 49.77,
+      "convergence": 0.9528
+    },
+    {
+      "n": 25,
+      "gamma": 88.81,
+      "convergence": 0.8232
+    },
+    {
+      "n": 50,
+      "gamma": 143.11,
+      "convergence": 0.7715
+    },
+    {
+      "n": 100,
+      "gamma": 236.52,
+      "convergence": 0.776
+    },
+    {
+      "n": 250,
+      "gamma": 470.77,
+      "convergence": 0.6572
+    },
+    {
+      "n": 500,
+      "gamma": 811.18,
+      "convergence": 0.7582
+    },
+    {
+      "n": 1000,
+      "gamma": 1419.42,
+      "convergence": 0.8659
+    },
+    {
+      "n": 2000,
+      "gamma": 2515.29,
+      "convergence": 0.9577
+    },
+    {
+      "n": 3000,
+      "gamma": 3533.33,
+      "convergence": 0.9249
+    },
+    {
+      "n": 5000,
+      "gamma": 5447.86,
+      "convergence": 0.9577
+    }
+  ]
+}

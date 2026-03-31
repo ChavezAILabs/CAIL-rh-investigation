@@ -1,0 +1,72 @@
+{
+  "phase": 48,
+  "date": "2026-03-30",
+  "n_cailculator_points": 12,
+  "S3B_S4_universal": true,
+  "monotone": false,
+  "floor": 0.6572,
+  "floor_n": 250,
+  "ceiling": 0.9577,
+  "ceiling_n": 2000,
+  "mean": 0.8341333333333333,
+  "std": 0.09916632773051322,
+  "direction_reversals": 6,
+  "reversal_at_n": [
+    10,
+    50,
+    100,
+    250,
+    2000,
+    3000
+  ],
+  "high_gamma_asymptote": 0.92655,
+  "high_gamma_std": 0.03748929847303094,
+  "Chavez_Transform_convergence_series": 5.0435,
+  "fits": {
+    "power_law": {
+      "params": [
+        0.3166295433379178,
+        0.11463856190045572
+      ],
+      "r_squared": 0.15268688533917674,
+      "asymptote_1e6": 0.9350289234179212
+    },
+    "log_decay": {
+      "params": [
+        0.7992450873853991
+      ],
+      "r_squared": 0.05063338413226104,
+      "asymptote_1e6": 0.9421487114767064
+    },
+    "exp_approach": {
+      "params": [
+        0.8465273926135788,
+        694.8111132804314,
+        1.6723219422421456
+      ],
+      "r_squared": 0.1718229940933268,
+      "asymptote_1e6": 0.8465273926135788
+    },
+    "osc_log": {
+      "params": [
+        0.8036458736916126,
+        0.13122987661598556,
+        1.5456934230392214,
+        1.6667822988444663
+      ],
+      "r_squared": 0.8274564327945197,
+      "asymptote_1e6": 0.6911306410935837
+    },
+    "osc_decay": {
+      "params": [
+        0.8010436857099489,
+        -0.07740409623328616,
+        1.5624947852986513,
+        -0.08705077258090395
+      ],
+      "r_squared": 0.8464033866296403,
+      "asymptote_1e6": 0.5641637782016873
+    }
+  },
+  "key_finding": "ZDTP convergence is NOT monotone in gamma_n. Oscillatory structure with floor ~0.657 and ceiling ~0.958. High-gamma asymptote ~0.944 (not 1.0). S3B=S4 exact pairing holds universally. Dense scan required (CAILculator or Python-equivalent formula) to characterize oscillation period and structure."
+}
