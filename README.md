@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), and Phases 43–47 (Second Ascent: sedenionic forcing argument) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), and Phase 48 (γₙ-scaling of ZDTP convergence) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
 
 ---
 
@@ -110,8 +110,9 @@ CAIL-rh-investigation/
 │   └── phase47_results.json
 ├── scripts/                         # Python analysis scripts
 ├── docs/
-│   ├── CAILCULATOR_NUMERICAL_RECORD.md  # CAILculator run summaries (AIEX-086–207); KSJ source of truth
+│   ├── CAILCULATOR_NUMERICAL_RECORD.md  # CAILculator run summaries (AIEX-086–220); KSJ source of truth
 │   ├── CAILCULATOR_PHASE_43_47_OUTPUTS.md  # Full raw CAILculator outputs, Phases 43–47
+│   ├── phase48_cailculator_open_science.md  # Phase 48 verbatim CAILculator returns (12 zeros + CT)
 │   ├── findings_summary.md          # Cumulative results summary
 │   ├── roadmap.md                   # Research roadmap
 │   ├── aiex_001_hilbert_polya.md    # AIEX-001 conjecture writeup
@@ -172,6 +173,7 @@ CAIL-rh-investigation/
 | **45** | **Commutator Theorem** | **[F(t,σ),F(t,1−σ)]=2(σ−0.5)·[u_antisym,F_base(t)], error=1.46e-16. P_total diverges O(N)** |
 | **46** | **Kernel structure** | **ker(L)=span{e₀,u_antisym}; ‖[u,x]‖=2·dist(x,ker) exactly; all 14 singular values=2.0** |
 | **47** | **Gap closure** | **h″(0)=50.67>0 (local proof); 0/10,000 violations (numerical seal); derivative in Canonical Six directions** |
+| **48** | **γₙ-scaling of ZDTP convergence** | **Oscillatory in log(γ), C≈1.55, period≈4.05 log-units; asymptote ~0.927 (NOT 1.0); S3B=S4 universal; CT=5.0435** |
 
 ---
 
@@ -223,6 +225,9 @@ DOI: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)
 * `phase43c_zdtp_signatures_wobble.json` — Per-gateway ZDTP signatures
 * `phase46_results.json` — Kernel structure, singular values, commutator matrix
 * `phase47_results.json` — Local proof (h″(0)=50.67), fine-grid scan, gap closure
+* `phase48_zdtp_spotcheck.json` — 12 CAILculator ZDTP runs (n=1..5000); oscillatory convergence, S3B=S4 universal
+* `phase48_spotcheck_prep.json` — F-vectors for 12 strategic zeros; input to CAILculator
+* `phase48_results.json` — Phase 48 summary: C≈1.55, asymptote~0.927, CT=5.0435
 
 ---
 
@@ -260,4 +265,4 @@ Chavez Transform and ZDTP computations via the **CAILculator MCP server** (see [
 [CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
 Lean 4 files co-authored with Aristotle (Harmonic Math); both authors credited under CC BY 4.0.
 
-*Last updated: March 30, 2026 — Phase 47 Addendum: Lean 4 sorry closure complete (1 intentional sorry remaining). Phases 43–47 (Second Ascent) complete. KSJ: 215 entries.*
+*Last updated: March 30, 2026 — Phase 48 complete: γₙ-scaling of ZDTP convergence; oscillatory in log(γ), C≈1.55, asymptote~0.927, S3B=S4 universal, CT=5.0435. KSJ: 220 entries (AIEX-208–220).*

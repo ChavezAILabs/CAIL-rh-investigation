@@ -39,6 +39,14 @@ All numerical output files from the CAIL-rh-investigation. Two types:
 | `phase43c_wobble_results.json` | Wobble Test — Rank 6 universal across σ={0.4,0.5,0.6} |
 | `phase43c_zdtp_signatures_wobble.json` | Per-gateway ZDTP at σ=0.4/0.5/0.6 (matched N=50) |
 
+### γₙ-Scaling of ZDTP Convergence (Phase 48)
+
+| File | Key Finding |
+|------|-------------|
+| `phase48_zdtp_spotcheck.json` | 12 CAILculator ZDTP runs (n=1..5000); convergence oscillates in log(γ), S3B=S4 exact at all 12 zeros |
+| `phase48_spotcheck_prep.json` | F-vectors for 12 strategic zeros (σ=0.5, AIEX-001a); input to CAILculator |
+| `phase48_results.json` | Phase 48 summary: floor 0.657 (n=250), ceiling 0.958 (n=10/2000/5000), C≈1.55, asymptote~0.927, CT=5.0435 |
+
 ### Forcing Argument Numerical Evidence (Phases 44–47)
 
 | File | Key Finding |
