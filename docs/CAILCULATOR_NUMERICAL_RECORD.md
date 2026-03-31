@@ -3,6 +3,10 @@
 **Source of truth:** KSJ (Knowledge Synthesis Journal), entries AIEX-086 through AIEX-207.
 **Status:** All results below were captured in-session via the CAILculator MCP server in Claude Desktop. No standalone JSON output files were saved for these runs. The numbers are real; the gap is named.
 
+**Detailed archive (Phases 43–47):** Full raw numerical outputs for Runs 5–11 (AIEX-187 through AIEX-207) are now archived in [`docs/CAILCULATOR_PHASE_43_47_OUTPUTS.md`](CAILCULATOR_PHASE_43_47_OUTPUTS.md). That file is the primary reproducibility record for those phases; the summaries below remain for quick reference.
+
+**Gap (Phases 29–42):** Detailed outputs for Runs 1–4, 11 (AIEX-086 through AIEX-175, AIEX-103/104) are not yet archived in a dedicated file. Pending extraction from KSJ session logs.
+
 ---
 
 ## Chavez Transform
@@ -209,12 +213,14 @@
 | 088 | {2,3,13} decay amplitude | ~0.495 vs ~1.997 (4× difference) | ❌ | ✅ |
 | 103/104 | 64D signature classes | Class I/II/III, ±1 slot progression | ❌ | ✅ |
 | 175 | ZDTP γₙ-scaling | 0.698–0.738 → 0.971 systematic | ❌ | ✅ |
-| 187 | ZDTP structural constant | ~0.843, σ-invariant | ❌ | ✅ |
-| 188 | S3B=S4 universal invariant | exact diagonal pairing at all σ | ❌ | ✅ |
-| 195 | u_antisym ZDTP | 0.958, 2-2-2 split, highest single-vector | ❌ | ✅ |
-| 203 | e₄, e₀ kernel confirmation | e₀=1.000, e₄=0.916 (matches e₃) | ❌ | ✅ |
-| 205 | ZDTP full-range scan | SNR 100%, convergence 1.000 | ❌ | ✅ |
-| 207 | Kernel exit velocity | 5.033t, machine-exact to Phase 47 | ❌ | ✅ |
+| 187 | ZDTP structural constant | ~0.843, σ-invariant | 📄¹ | ✅ |
+| 188 | S3B=S4 universal invariant | exact diagonal pairing at all σ | 📄¹ | ✅ |
+| 195 | u_antisym ZDTP | 0.958, 2-2-2 split, highest single-vector | 📄¹ | ✅ |
+| 203 | e₄, e₀ kernel confirmation | e₀=1.000, e₄=0.916 (matches e₃) | 📄¹ | ✅ |
+| 205 | ZDTP full-range scan | SNR 100%, convergence 1.000 | 📄¹ | ✅ |
+| 207 | Kernel exit velocity | 5.033t, machine-exact to Phase 47 | 📄¹ | ✅ |
+
+¹ Full raw numerical outputs archived in [`docs/CAILCULATOR_PHASE_43_47_OUTPUTS.md`](CAILCULATOR_PHASE_43_47_OUTPUTS.md).
 
 All 12 runs are re-runnable from existing input files using the CAILculator MCP server.
 Numbers transcribed from KSJ primary source entries recorded immediately after each run.
