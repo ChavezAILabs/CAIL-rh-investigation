@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), Phase 48 (γₙ-scaling of ZDTP convergence), and Phase 49 (Discriminant Scan and Structured Sparsity) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), Phase 48 (γₙ-scaling of ZDTP convergence), Phase 49 (Discriminant Scan and Structured Sparsity), Phase 50 (The Arithmetic Boundary), and Phase 51 (The Beyond-GUE Asymptote) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
 
 ---
 
@@ -81,6 +81,14 @@ F_base(t) exits the kernel quadratically: h″(0) = 50.67 > 0. Derivative at t=0
 Riemann zeros are more structured than random chaos but less constrained than pure eigenvalue repulsion. ZDTP serves as a true arithmetic discriminant.
 
 **Prime Commutator Algebra (Phase 49):** Non-commutative interaction $[r_5, r_{13}] = 2e_5 - 2e_{10} - 2e_{15}$ verified. Prime root vector algebra is mediated by the S2/S3A zero divisor subspace.
+
+**The Repulsion Paradox (Phase 50):** Sedenion convergence is **non-monotonic** with respect to eigenvalue repulsion ($\beta$). While $\beta=2$ (GUE) elevates convergence, weak repulsion ($0 < \beta < 1.5$) actually reduces structural stability compared to random (Poisson) models. RH zeros sit in a unique "High Repulsion" regime ($\beta \approx 1.8$).
+
+**The Prime 13 Hub (Phase 50):** Prime 13 acts as a bilateral regulator, forming **Zero Divisor Pairs** with Primes 2 and 3 ($r_2 \times r_{13} = 0$, $r_3 \times r_{13} = 0$). Lower-prime interference is suppressed through these vanishing Interactions.
+
+**Asymptotic Persistence (Phase 51):** The $C \approx 1.55$ log-periodic wiggle persists up to $n=10,000$ (Convergence: 0.93). The arithmetic structure of Riemann zeros represents an **infinite-range physical state**, not a local numerical artifact.
+
+**The Relativistic Sink Hypothesis (Phase 51):** Higher-dimensional prime interactions ($32D$) do not vanish in 16D, but their commutators **translate across the dimension boundary** (e.g., $[r_{17}, r_{Hub}]$ in 32D maps back to 16D subspace). Confirms that algebraic sinks are dimension-specific thresholds.
 
 ### The Four-Step Forcing Argument — Current Status
 
@@ -187,6 +195,8 @@ CAIL-rh-investigation/
 | **47** | **Gap closure** | **h″(0)=50.67>0 (local proof); 0/10,000 violations (numerical seal); derivative in Canonical Six directions** |
 | **48** | **γₙ-scaling of ZDTP convergence** | **Oscillatory in log(γ), C≈1.55, period≈4.05 log-units; asymptote ~0.927 (NOT 1.0); S3B=S4 universal; CT=5.0435** |
 | **49** | **Discriminant scan & surrogates** | **Poisson < RH < GUE inequality; σ=0.4 shift (+13.7%); first prime commutator [r₅, r₁₃] mapped** |
+| **50** | **The Arithmetic Boundary** | **Repulsion Paradox (non-monotonicity); RH Actual matches beta ≈ 1.8; Prime 13 acts as bilateral hub/sink** |
+| **51** | **The Beyond-GUE Asymptote** | **Asymptotic persistence (n=10,000 wiggle); Relativistic sink (32D commutator translation to 16D)** |
 
 ---
 
@@ -278,4 +288,4 @@ Chavez Transform and ZDTP computations via the **CAILculator MCP server** (see [
 [CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
 Lean 4 files co-authored with Aristotle (Harmonic Math); both authors credited under CC BY 4.0.
 
-*Last updated: March 31, 2026 — Phase 49 complete: Discriminant scan & surrogates; Poisson < RH < GUE inequality, σ=0.4 shift (+13.7%), prime commutator [r₅, r₁₃]. KSJ: 239 entries (AIEX-221–238).*
+*Last updated: March 31, 2026 — Phase 51 complete: Asymptotic persistence (n=10,000 wiggle), Relativistic sink (32D), Repulsion Paradox (beta ≈ 1.8), Prime 13 Hub. KSJ: 246 entries (AIEX-221–245).*
