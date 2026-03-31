@@ -86,9 +86,9 @@ Riemann zeros are more structured than random chaos but less constrained than pu
 
 **The Prime 13 Hub (Phase 50):** Prime 13 acts as a bilateral regulator, forming **Zero Divisor Pairs** with Primes 2 and 3 ($r_2 \times r_{13} = 0$, $r_3 \times r_{13} = 0$). Lower-prime interference is suppressed through these vanishing Interactions.
 
-**Asymptotic Persistence (Phase 51):** The $C \approx 1.55$ log-periodic wiggle persists up to $n=10,000$ (Convergence: 0.93). The arithmetic structure of Riemann zeros represents an **infinite-range physical state**, not a local numerical artifact.
+**Asymptotic Persistence (Phase 51 — DEPRECATED):** The original "asymptotic persistence" signal (0.9334 at $n=10,000$) was identified as a **data leakage hallucination** originating from Phase 49 Poisson surrogates. The Phase 51 results are formally deprecated.
 
-**The Relativistic Sink Hypothesis (Phase 51):** Higher-dimensional prime interactions ($32D$) do not vanish in 16D, but their commutators **translate across the dimension boundary** (e.g., $[r_{17}, r_{Hub}]$ in 32D maps back to 16D subspace). Confirms that algebraic sinks are dimension-specific thresholds.
+**The Global Forcing Validation (Phase 52):** Investigation re-anchored to Phase 48 ground truth. Global $\sigma$-scan at true $\gamma_{10000} \approx 9877.78$ confirms **$\sigma$-Discriminant symmetry** (95.9% conjugation symmetry) and $E_8$ shell proximity near $|v|^2 = 16.0$. Trajectory at $n=5,000$ recovered ($C=0.9577$), confirming structural stability at high energy.
 
 ### The Four-Step Forcing Argument — Current Status
 
@@ -196,7 +196,8 @@ CAIL-rh-investigation/
 | **48** | **γₙ-scaling of ZDTP convergence** | **Oscillatory in log(γ), C≈1.55, period≈4.05 log-units; asymptote ~0.927 (NOT 1.0); S3B=S4 universal; CT=5.0435** |
 | **49** | **Discriminant scan & surrogates** | **Poisson < RH < GUE inequality; σ=0.4 shift (+13.7%); first prime commutator [r₅, r₁₃] mapped** |
 | **50** | **The Arithmetic Boundary** | **Repulsion Paradox (non-monotonicity); RH Actual matches beta ≈ 1.8; Prime 13 acts as bilateral hub/sink** |
-| **51** | **The Beyond-GUE Asymptote** | **Asymptotic persistence (n=10,000 wiggle); Relativistic sink (32D commutator translation to 16D)** |
+| **51** | **The Beyond-GUE Asymptote** | **DEPRECATED — Data leakage from Phase 49 surrogates (0.9334 hallucination)** |
+| **52** | **The Global Forcing Validation** | **Re-anchored to P48; σ-Discriminant verified (95.9% symmetry); E8 shell near 16.0** |
 
 ---
 
@@ -288,4 +289,4 @@ Chavez Transform and ZDTP computations via the **CAILculator MCP server** (see [
 [CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
 Lean 4 files co-authored with Aristotle (Harmonic Math); both authors credited under CC BY 4.0.
 
-*Last updated: March 31, 2026 — Phase 51 complete: Asymptotic persistence (n=10,000 wiggle), Relativistic sink (32D), Repulsion Paradox (beta ≈ 1.8), Prime 13 Hub. KSJ: 246 entries (AIEX-221–245).*
+*Last updated: March 31, 2026 — Phase 52 complete: Re-anchored to P48; σ-Discriminant verified at n=10,000 (95.9% symmetry); E8 shell proximity (~16.0) confirmed. Phase 51 deprecated due to surrogate leakage. KSJ: 252 entries (AIEX-241–252).*
