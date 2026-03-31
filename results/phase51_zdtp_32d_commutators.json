@@ -1,0 +1,17 @@
+{
+  "phase": 51,
+  "experiment": "32D Relativistic Sink Test",
+  "date": "2026-03-31",
+  "dimension": 32,
+  "description": "Translation of prime root vectors to 32D upper-half to test dimensional dependence of the Bilateral Sink.",
+  "operands": {
+    "r17_32D": "e18 + e19",
+    "rHub_32D": "e22 + e25"
+  },
+  "results": {
+    "r17_x_rHub_32D": [0,0,0,0,1,-1,0,0,0,0,1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    "rHub_x_r17_32D": [0,0,0,0,-1,1,0,0,0,0,-1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    "commutator_32D": "2e4 - 2e5 + 2e10 - 2e11"
+  },
+  "discovery": "The interaction does not vanish in 32D, but the commutator translates from the 32D upper-half back into the 16D lower-half subspace. This proves that 'sinks' are dimensionally relativistic thresholds."
+}
