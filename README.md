@@ -110,6 +110,8 @@ CAIL-rh-investigation/
 │   └── phase47_results.json
 ├── scripts/                         # Python analysis scripts
 ├── docs/
+│   ├── CAILCULATOR_NUMERICAL_RECORD.md  # CAILculator run summaries (AIEX-086–207); KSJ source of truth
+│   ├── CAILCULATOR_PHASE_43_47_OUTPUTS.md  # Full raw CAILculator outputs, Phases 43–47
 │   ├── findings_summary.md          # Cumulative results summary
 │   ├── roadmap.md                   # Research roadmap
 │   ├── aiex_001_hilbert_polya.md    # AIEX-001 conjecture writeup
