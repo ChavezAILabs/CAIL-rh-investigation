@@ -12,7 +12,7 @@ Imports `MirrorSymmetryHelper.lean` (which transitively imports
 `RHForcingArgument.lean`), providing:
 - `Sed`, `sedBasis`, `u_antisym`, `Ker`, `sed_comm`, `F_base`, `F`
 - `F_base_not_in_kernel` (Gap Theorem)
-- `commutator_theorem_stmt` (Commutator Identity — with documented sorry bridge)
+- `commutator_theorem_stmt` (Commutator Identity — fully proved)
 - `commutator_exact_identity`
 - `Ker_coord_eq_zero`, `Ker_isClosed`, `Ker_nonempty`
 - `sed_comm_u_F_base_coord0/4/5` (coordinate-wise extraction lemmas)
@@ -73,9 +73,8 @@ theorem commutator_not_in_kernel (t : ℝ) (ht : t ≠ 0) :
 If the sedenionic lift `F` satisfies mirror symmetry, then the commutator
 resides in the kernel IF AND ONLY IF `σ = 1/2`.
 
-Uses `commutator_theorem_stmt` from `RHForcingArgument.lean` (proved modulo the
-documented bridge sorry connecting sedenionic algebra to the Riemann Functional
-Equation — Paper 2 target).
+Uses `commutator_theorem_stmt` from `RHForcingArgument.lean` (fully proved via
+bilinearity of sedenion multiplication with the concrete parametric lift).
 -/
 theorem mirror_symmetry_invariance (σ : ℝ)
   (h_mirror : mirror_identity) :
