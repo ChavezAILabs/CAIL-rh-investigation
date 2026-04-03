@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), Phase 48 (γₙ-scaling of ZDTP convergence), Phase 49 (Discriminant Scan and Structured Sparsity), Phase 50 (The Arithmetic Boundary), Phase 51 (The Beyond-GUE Asymptote), Phase 52 (Global Forcing Validation), Phase 53 (Milestone Geometry), Phase 54 (Flare Validation), Phase 55 (Empirical Calibration), Phase 56 (Spectral Profiling), and Phase 57 (The Unity Constraint Bridge) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), Phase 48 (γₙ-scaling of ZDTP convergence), Phase 49 (Discriminant Scan and Structured Sparsity), Phase 50 (The Arithmetic Boundary), Phase 51 (The Beyond-GUE Asymptote), Phase 52 (Global Forcing Validation), Phase 53 (Milestone Geometry), Phase 54 (Flare Validation), Phase 55 (Empirical Calibration), Phase 56 (Spectral Profiling), Phase 57 (The Unity Constraint Bridge), and Phase 58 (Formal Consolidation) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
 
 ---
 
@@ -37,7 +37,7 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 **The Milestone Geometry (Phase 53):** Milestone 600/700 fingerprints established; topological migration (13.5 → 20.7 energy jump) detected at low energy.
 
-### The Fourth Ascent — The Unity Constraint (Phases 54–57)
+### The Fourth Ascent — The Unity Constraint (Phases 54–58)
 
 **The Flare Validation (Phase 54):** High-energy zeros (n=10,000) show a "Flare" signal—a systematic increase in sedenion convergence tension ($|v|^2$ variance) that validates the forcing argument's asymptotic growth predictions.
 
@@ -45,7 +45,9 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 **Spectral Profiling (Phase 56):** Complete mapping of the $n=5,000$ band. Discovery of the **Mirror Symmetry Invariance** in Lean 4 (zero-sorry): $K_Z(\sigma) = K_Z(1-\sigma) \iff \sigma = 1/2$. Three distinct "Precision Peaks" identified with convergence > 0.97.
 
-**The Unity Constraint Bridge (Phase 57):** Resolved the "Chirp Discrepancy" found in Phase 56. Identified a **Variable-Frequency Chirp** tracking Riemann zero density ($P \approx 0.027$ at $n=1,000$ to $P \approx 0.003$ at $n=10,000$). Verified the **Quadratic Energy Cost** ($\Delta E \approx \delta^2$) via high-precision ZDTP scans, proving $\sigma=1/2$ is the unique global minimum of energy deviation.
+**The Unity Constraint Bridge (Phase 57):** Resolved the "Chirp Discrepancy" found in Phase 56. Identified a **Variable-Frequency Chirp** tracking Riemann zero density ($P \approx 0.027$ at $n=1,000$ to $P \approx 0.003$ at $n=10,000$). Verified the **Quadratic Energy Cost** ($\Delta E \approx \delta^2$) via high-precision ZDTP scans.
+
+**Formal Consolidation (Phase 58):** Discharged the "Arithmetic Transparency Hypothesis." Proved the **Energy-Symmetry Duality** in Lean 4 (zero-sorry): Mirror Symmetry mathematically mandates the orthogonal balance ($\langle F_{base}, u \rangle = 0$) required for critical line uniqueness. Asymptotic stability verified at $n=20,000$.
 
 ### The Four-Step Forcing Argument — Current Status
 
@@ -56,7 +58,7 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 | 3 | ‖[u_antisym, F_base(t)]‖ > 0 for all t≠0 | ✅ Local proof (h″(0)=50.67) + 0/10,000 numerical |
 | 4 | P_total(σ,N) diverges O(N) as N→∞ | ✅ Confirmed (Phase 54 Flare Validation) |
 
-**Lean 4 formal verification:** `MirrorSymmetry.lean` and `UnityConstraint.lean` (Scaffold) complete. Mirror Symmetry Invariance proved.
+**Lean 4 formal verification:** `MirrorSymmetry.lean` and `UnityConstraint.lean` are now **zero-sorry**.
 
 ---
 
@@ -69,11 +71,11 @@ CAIL-rh-investigation/
 │   ├── RHForcingArgument.lean       # Complete forcing argument (Lean 4.28)
 │   ├── BilateralCollapse.lean       # Bilateral Collapse Theorem (zero sorry stubs)
 │   ├── MirrorSymmetry.lean          # Mirror Symmetry Invariance (zero sorry stubs)
-│   └── UnityConstraint.lean         # Energy Minimization Principle (Scaffold)
+│   └── UnityConstraint.lean         # Energy-Symmetry Duality (zero sorry stubs)
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄, χ₅, χ₇, χ₈)
-├── results/                         # All phase result JSON files (Phases 1–57)
+├── results/                         # All phase result JSON files (Phases 1–58)
 ├── scripts/                         # Python analysis scripts
 ├── docs/
 │   ├── roadmap.md                   # Research roadmap
@@ -103,8 +105,9 @@ CAIL-rh-investigation/
 | **53** | **Milestone Geometry** | **Milestone 600/700 fingerprints established** |
 | **54** | **Flare Validation** | **High-energy Flare signal confirms forcing pressure growth** |
 | **55** | **Empirical Calibration** | **Precision Peak confirms Arithmetic Transparency (C > 0.95)** |
-| **56** | **Spectral Profiling** | **Mirror Symmetry proved in Lean 4; Precision Peaks mapped** |
+| **56** | **Spectral Profiling** | **Mirror Symmetry proved in Lean 4 (zero-sorry); three precision peaks mapped** |
 | **57** | **Unity Constraint Bridge** | **Chirp Discrepancy resolved; Quadratic Energy Cost verified** |
+| **58** | **Formal Consolidation** | **Duality Lemma closed (zero-sorry); Asymptotic stability verified at n=20,000** |
 
 ---
 
@@ -116,7 +119,7 @@ All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://ha
 |------|----------|--------|
 | `BilateralCollapse.lean` | Bilateral Collapse Theorem: (a·P₁+b·Q₁)·(b·P₁+c·Q₁)=−2·b·(a+c)·e₀ | ✅ Zero sorry stubs |
 | `MirrorSymmetry.lean` | Mirror Symmetry Invariance: KZ(σ) = KZ(1-σ) ↔ σ = 1/2. | ✅ Zero sorry stubs |
-| `UnityConstraint.lean` | Minimization Principle: σ=1/2 is unique solution for |v|²=1. | ✅ Verified (Scaffold) |
+| `UnityConstraint.lean` | Absolute Uniqueness: σ=1/2 is unique solution for |v|²=1 via Energy-Symmetry Duality. | ✅ Zero sorry stubs |
 | `RHForcingArgument.lean` | Complete forcing argument (883 lines). | ⚠️ 1 intentional sorry |
 
 ---
@@ -126,4 +129,4 @@ All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://ha
 [CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
 Lean 4 files co-authored with Aristotle (Harmonic Math).
 
-*Last updated: April 2, 2026 — Phase 57 complete: Unity Constraint Bridge established; Variable-Frequency Chirp identified. KSJ: 268 entries (AIEX-261–268).*
+*Last updated: April 2, 2026 — Phase 58 complete: Energy-Symmetry Duality established; n=20,000 asymptotic check PASS. KSJ: 272 entries (AIEX-268–272).*
