@@ -1,0 +1,38 @@
+{
+  "phase": 55,
+  "date": "2026-04-01",
+  "subject": "Comparison of n=1000 Anchor vs n=5000 Precision Peak",
+  "n1000": {
+    "gamma": 1419.4224809459956,
+    "zdtp": {
+      "convergence_score": 0.8659445153374474,
+      "mean_magnitude": 3.6390930407120603,
+      "std_dev": 0.48784038130477764,
+      "gateway_magnitudes": [3.080665, 3.983404, 3.169386, 4.188759, 4.188759, 3.223583]
+    },
+    "patterns": {
+      "bilateral_zeros": 14,
+      "conjugation_symmetry": 0.6304403193353704,
+      "chavez_transform": -0.10679725552601024
+    },
+    "energy_norm_sq": 1.2645980292520553
+  },
+  "n5000": {
+    "gamma": 5447.8619983012995,
+    "zdtp": {
+      "convergence_score": 0.9577023861134006,
+      "mean_magnitude": 3.2675651959668746,
+      "std_dev": 0.1382102110082974,
+      "gateway_magnitudes": [3.340317, 3.149189, 3.453686, 3.315676, 3.315676, 3.030845]
+    },
+    "patterns": {
+      "bilateral_zeros": 8,
+      "conjugation_symmetry": 0.691914146008038,
+      "chavez_transform": -1.2748732991873775
+    },
+    "energy_norm_sq": 0.9945340095792086
+  },
+  "protocol": "AIEX-001a Sedenion Exponential Product",
+  "engine": "CAILculator v1.0 / ZDTP Transmit",
+  "provenance": "Gemini CLI / April 1, 2026 Session"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "n": 600,
+    "gamma": 939.0243,
+    "avg_sq_magnitude": 13.51,
+    "convergence": 0.8733,
+    "state": "Anchor Aligned"
+  },
+  {
+    "n": 700,
+    "gamma": 1062.9154,
+    "avg_sq_magnitude": 20.69,
+    "convergence": 0.8219,
+    "state": "Structural Flare",
+    "notes": "Jump driven by Gateways 4 and 5 (~29.2). Standard deviation increased to 0.80."
+  },
+  {
+    "n": 1000,
+    "gamma": 1419.4225,
+    "avg_sq_magnitude": 13.48,
+    "convergence": 0.8659,
+    "state": "Settled"
+  },
+  {
+    "n": 5000,
+    "gamma": 5447.8620,
+    "avg_sq_magnitude": 10.70,
+    "convergence": 0.9577,
+    "state": "Precision Peak",
+    "notes": "Highest convergence observed. Lowest energy state."
+  }
+]
