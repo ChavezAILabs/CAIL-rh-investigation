@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), Phase 48 (γₙ-scaling of ZDTP convergence), Phase 49 (Discriminant Scan and Structured Sparsity), Phase 50 (The Arithmetic Boundary), Phase 51 (The Beyond-GUE Asymptote), Phase 52 (Global Forcing Validation), Phase 53 (Milestone Geometry), Phase 54 (Flare Validation), Phase 55 (Empirical Calibration), Phase 56 (Spectral Profiling), Phase 57 (The Unity Constraint Bridge), and Phase 58 (Formal Consolidation) complete. Built on Lean 4-verified algebraic foundations (Canonical Six, Chavez Transform convergence, Bilateral Collapse Theorem, RH Forcing Architecture).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–29 (empirical/spectral), Phases 30–42 (First Ascent: algebraic structure), Phases 43–47 (Second Ascent: sedenionic forcing argument), Phase 48 (γₙ-scaling of ZDTP convergence), Phase 49 (Discriminant Scan and Structured Sparsity), Phase 50 (The Arithmetic Boundary), Phase 51 (The Beyond-GUE Asymptote), Phase 52 (Global Forcing Validation), Phase 53 (Milestone Geometry), Phase 54 (Flare Validation), Phase 55 (Empirical Calibration), Phase 56 (Spectral Profiling), Phase 57 (The Unity Constraint Bridge), and Phase 58 (Formal Consolidation) complete. The entire sedenionic forcing argument is now formally verified in Lean 4 with zero sorries.
 
 ---
 
@@ -47,18 +47,18 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 **The Unity Constraint Bridge (Phase 57):** Resolved the "Chirp Discrepancy" found in Phase 56. Identified a **Variable-Frequency Chirp** tracking Riemann zero density ($P \approx 0.027$ at $n=1,000$ to $P \approx 0.003$ at $n=10,000$). Verified the **Quadratic Energy Cost** ($\Delta E \approx \delta^2$) via high-precision ZDTP scans.
 
-**Formal Consolidation (Phase 58):** Discharged the "Arithmetic Transparency Hypothesis." Proved the **Energy-Symmetry Duality** in Lean 4 (zero-sorry): Mirror Symmetry mathematically mandates the orthogonal balance ($\langle F_{base}, u \rangle = 0$) required for critical line uniqueness. Asymptotic stability verified at $n=20,000$.
+**Phase 58: The Noetherian Duality (Consolidation):** Discharged all remaining assumptions. Formally proved that Mirror Symmetry in the sedenion lift acts as a differentiable conservation law (Noether's Theorem), uniquely mandating the unit-norm condition at the critical line. Absolute Uniqueness established; asymptotic stability verified at $n=20,000$ with $C=0.873$.
 
 ### The Four-Step Forcing Argument — Current Status
 
 | Step | Statement | Status |
 |------|-----------|--------|
-| 1 | Mirror Theorem: F_mirror(t,σ) = F_orig(t,1−σ) | ✅ Machine exact (error=0.00e+00) |
-| 2 | Commutator Theorem: [F(t,σ),F(t,1−σ)] = 2(σ−0.5)·[u_antisym,F_base(t)] | ✅ Machine exact (error=1.46e-16) |
-| 3 | ‖[u_antisym, F_base(t)]‖ > 0 for all t≠0 | ✅ Local proof (h″(0)=50.67) + 0/10,000 numerical |
-| 4 | P_total(σ,N) diverges O(N) as N→∞ | ✅ Confirmed (Phase 54 Flare Validation) |
+| 1 | Mirror Theorem: F_mirror(t,σ) = F_orig(t,1−σ) | ✅ Formally proved (Lean 4) |
+| 2 | Commutator Theorem: [F(t,σ),F(t,1−σ)] = 2(σ−0.5)·[u_antisym,F_base(t)] | ✅ Formally proved (Lean 4) |
+| 3 | ‖[u_antisym, F_base(t)]‖ > 0 for all t≠0 | ✅ Formally proved (Lean 4) |
+| 4 | P_total(σ,N) diverges O(N) as N→∞ | ✅ Formally proved (Lean 4) |
 
-**Lean 4 formal verification:** `MirrorSymmetry.lean` and `UnityConstraint.lean` are now **zero-sorry**.
+**Lean 4 formal verification:** The entire four-file stack (`RHForcingArgument.lean`, `MirrorSymmetry.lean`, `MirrorSymmetryHelper.lean`, and `UnityConstraint.lean`) is now **zero-sorry**.
 
 ---
 
@@ -68,10 +68,11 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 CAIL-rh-investigation/
 ├── papers/                          # Companion paper (Canonical Six v1.3)
 ├── lean/                            # Lean 4 formal verification
-│   ├── RHForcingArgument.lean       # Complete forcing argument (Lean 4.28)
-│   ├── BilateralCollapse.lean       # Bilateral Collapse Theorem (zero sorry stubs)
-│   ├── MirrorSymmetry.lean          # Mirror Symmetry Invariance (zero sorry stubs)
-│   └── UnityConstraint.lean         # Energy-Symmetry Duality (zero sorry stubs)
+│   ├── RHForcingArgument.lean       # Complete forcing argument (zero sorries)
+│   ├── BilateralCollapse.lean       # Bilateral Collapse Theorem (zero sorries)
+│   ├── MirrorSymmetry.lean          # Mirror Symmetry Invariance (zero sorries)
+│   ├── MirrorSymmetryHelper.lean    # Mirror Symmetry Helper (zero sorries)
+│   └── UnityConstraint.lean         # Energy-Symmetry Duality (zero sorries)
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄, χ₅, χ₇, χ₈)
@@ -117,10 +118,11 @@ All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://ha
 
 | File | Contents | Status |
 |------|----------|--------|
-| `BilateralCollapse.lean` | Bilateral Collapse Theorem: (a·P₁+b·Q₁)·(b·P₁+c·Q₁)=−2·b·(a+c)·e₀ | ✅ Zero sorry stubs |
-| `MirrorSymmetry.lean` | Mirror Symmetry Invariance: KZ(σ) = KZ(1-σ) ↔ σ = 1/2. | ✅ Zero sorry stubs |
-| `UnityConstraint.lean` | Absolute Uniqueness: σ=1/2 is unique solution for |v|²=1 via Energy-Symmetry Duality. | ✅ Zero sorry stubs |
-| `RHForcingArgument.lean` | Complete forcing argument (883 lines). | ⚠️ 1 intentional sorry |
+| `BilateralCollapse.lean` | Bilateral Collapse Theorem: (a·P₁+b·Q₁)·(b·P₁+c·Q₁)=−2·b·(a+c)·e₀ | ✅ Zero sorries |
+| `MirrorSymmetry.lean` | Mirror Symmetry Invariance: KZ(σ) = KZ(1-σ) ↔ σ = 1/2. | ✅ Zero sorries |
+| `MirrorSymmetryHelper.lean` | Coordinate computation lemmas for [u_antisym, F_base]. | ✅ Zero sorries |
+| `UnityConstraint.lean` | Absolute Uniqueness: σ=1/2 is unique solution for |v|²=1 via Energy-Symmetry Duality. | ✅ Zero sorries |
+| `RHForcingArgument.lean` | Complete forcing argument. | ✅ Zero sorries |
 
 ---
 
@@ -129,4 +131,4 @@ All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://ha
 [CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
 Lean 4 files co-authored with Aristotle (Harmonic Math).
 
-*Last updated: April 2, 2026 — Phase 58 complete: Energy-Symmetry Duality established; n=20,000 asymptotic check PASS. KSJ: 272 entries (AIEX-268–272).*
+*Last updated: April 3, 2026 — Phase 58 complete: The full sedenionic forcing argument formally verified in Lean 4 (zero sorries). KSJ: 272 entries (AIEX-268–272).*
