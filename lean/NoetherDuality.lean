@@ -28,12 +28,12 @@ def mirror_op (v : Sed) : Sed :=
 lemma mirror_op_identity (h_mirror : mirror_identity) (t σ : ℝ) :
   F t (1 - σ) = mirror_op (F t σ) := by
   ext i
-  unfold mirror_op mirror_map
-  simp only [EuclideanSpace.equiv_symm_apply, h_mirror]
-  -- (15 - i) index check
-  have h_idx : (mirror_map i).1 = 15 - i.1 := rfl
-  congr
-  exact Fin.ext h_idx
+  change (F t (1 - σ)).ofLp i = (mirror_op (F t σ)).ofLp i
+  unfold mirror_op
+  simp [EuclideanSpace.equiv]
+  have : (15 : Fin 16) - i = mirror_map i := by ext; simp [mirror_map]; omega
+  rw [← this]
+  exact h_mirror t σ i
 
 /-- 
 **The Noether Bridge.**
@@ -77,7 +77,7 @@ Corollary: Orthogonal balance is the mechanism that preserves
 the Noetherian unit-energy charge.
 -/
 theorem orthogonal_balance_preserves_charge (h_mirror : mirror_identity) (t : ℝ) :
-  inner (F_base t) u_antisym = 0 :=
+  @inner ℝ Sed _ (F_base t) u_antisym = 0 :=
   inner_product_vanishing h_mirror t
 
 end
