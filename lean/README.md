@@ -6,6 +6,7 @@ Formal verification of zero divisor patterns and the RH sedenionic forcing argum
 **RH Forcing Argument: v2.0 — April 3, 2026 | Zero sorries.**
 **Mirror Symmetry & Unity Constraint: v2.0 — April 3, 2026 | Zero sorries. Fully verified.**
 **Universal Law Stack: v3.0 — April 5, 2026 | Zero sorries. 7-file stack. `lake build` 8,039 jobs, 0 errors.**
+**Symmetry Bridge: v4.0 — April 6, 2026 | 8-file stack. `lake build` 8,041 jobs, 0 errors, 1 intentional sorry (`F_eq_F_full`).**
 
 ---
 
@@ -19,11 +20,36 @@ https://harmonic.fun/
 
 ## Files
 
+### Symmetry Bridge (v4.0 — April 2026)
+
+Phase 60 adds `SymmetryBridge.lean` — the eighth file. It formally proves the Cayley-Dickson ℤ₂ involution structure, diagnoses the surrogate gap with a proved theorem (`mirror_identity_false_for_surrogate`), constructs the fully symmetric `F_full`, and proves `mirror_identity_full_proof` for the correct construction. The one remaining sorry (`F_eq_F_full`) is the precisely bounded modeling gap: identifying the two-prime surrogate with F_full. Compiler-verified by Aristotle (Harmonic Math): `lake build` 8,041 jobs, 0 errors, 1 intentional sorry.
+
+**Import chain:**
+```
+RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstraint
+  → NoetherDuality → UniversalPerimeter → AsymptoticRigidity → SymmetryBridge
+```
+
+#### SymmetryBridge.lean
+- **Status:** ⚠️ Complete — 1 intentional sorry (`F_eq_F_full`). (Phase 60)
+- **Contents:**
+  - **`mirror_map_involution`**: `mirror_map(mirror_map(i)) = i` — ℤ₂ structure of the Cayley-Dickson conjugation involution.
+  - **`mirror_map_no_fixed_point`**: `mirror_map(i) ≠ i` — 15 is odd, 2i=15 has no integer solution.
+  - **`mirror_map_pairs`**: `j = mirror_map(i) → i = mirror_map(j)` — symmetry of conjugate pairs.
+  - **`mirror_identity_false_for_surrogate`**: ¬(mirror_identity holds for the two-prime surrogate F_base) — formally **proved**, not assumed. At t=0, `F_base(0)(0) = cos(0) = 1` but `F_base(0)(15) = 0`.
+  - **`F_base_sym_mirror`**: `F_base_sym(t)(i) = F_base_sym(t)(15−i)` — the correct mirror-symmetric base has components at conjugate pairs {0,15}, {3,12}, {6,9}.
+  - **`u_antisym_full_antisym`**: `u_antisym_full(i) = −u_antisym_full(15−i)` — the extended tension axis is mirror-antisymmetric.
+  - **`mirror_identity_full_proof`**: `F_full` satisfies the mirror identity — LHS = F_base_sym(i) + (1−σ−½)·u_antisym_full(i) = F_base_sym(mirror i) + (σ−½)·u_antisym_full(mirror i) = RHS. ✅ Proved.
+  - **`F_eq_F_full`** (intentional sorry): `F(t,σ)(i) = F_full(t,σ)(i)` — the remaining gap. Requires upgrading F_base → F_base_sym and u_antisym → u_antisym_full throughout the stack.
+  - **`symmetry_bridge_conditional`**: `mirror_identity` holds IF `F = F_full`. Conditional on the sorry.
+
+---
+
 ### Universal Law Stack (v3.0 — April 2026)
 
 The Phase 59 three-pillar extension proves the forcing argument is a universal algebraic law — not a model-specific result. Compiler-verified by Aristotle (Harmonic Math): `lake build` 8,039 jobs, 0 errors, 0 sorries.
 
-**Import chain:**
+**Import chain (Phase 59 base):**
 ```
 RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstraint
   → NoetherDuality → UniversalPerimeter → AsymptoticRigidity
@@ -131,6 +157,14 @@ RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstrain
 
 ## Verification Scope Summary
 
+### Symmetry Bridge (v4.0 — April 2026) — `lake build` 8,041 jobs, 0 errors, 1 intentional sorry
+- ✅ `mirror_map_involution` proved — ℤ₂ Cayley-Dickson conjugation structure.
+- ✅ `mirror_identity_false_for_surrogate` proved — gap is formally named, not assumed.
+- ✅ `F_base_sym_mirror` proved — symmetric base satisfies coordinate mirror condition.
+- ✅ `u_antisym_full_antisym` proved — extended tension axis is mirror-antisymmetric.
+- ✅ `mirror_identity_full_proof` proved — F_full satisfies mirror identity.
+- ⚠️ `F_eq_F_full` — intentional sorry. The remaining modeling gap: F ↔ F_full identification.
+
 ### Universal Law Stack (v3.0 — April 2026) — `lake build` 8,039 jobs, 0 errors
 - ✅ `noether_conservation` proved — unit energy ↔ σ=1/2.
 - ✅ `action_penalty` proved — quadratic off-critical energy penalty.
@@ -157,14 +191,14 @@ RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstrain
 
 ## Technical Details
 
-| | Universal Law (v3.0) | RH / Unity (v2.0) | Canonical Six (v1.3) |
-|---|---|---|---|
-| Lean version | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.24.0 |
-| Mathlib | v4.28.0 | v4.28.0 | f897ebcf72cd16f89ab4577d0c826cd14afaafc7 |
-| Arithmetic foundation | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℚ (exact) |
-| Files | 3 (Phase 59) | 4 (Phase 58) | 5 |
-| Build jobs | 8,039 (full stack) | — | — |
-| Sorry count | 0 | 0 | 0 |
+| | Symmetry Bridge (v4.0) | Universal Law (v3.0) | RH / Unity (v2.0) | Canonical Six (v1.3) |
+|---|---|---|---|---|
+| Lean version | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.24.0 |
+| Mathlib | v4.28.0 | v4.28.0 | v4.28.0 | f897ebcf72cd16f89ab4577d0c826cd14afaafc7 |
+| Arithmetic foundation | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℚ (exact) |
+| Files | 1 (Phase 60) | 3 (Phase 59) | 4 (Phase 58) | 5 |
+| Build jobs | 8,041 (full 8-file stack) | 8,039 (7-file stack) | — | — |
+| Sorry count | 1 (intentional) | 0 | 0 | 0 |
 
 ---
 
