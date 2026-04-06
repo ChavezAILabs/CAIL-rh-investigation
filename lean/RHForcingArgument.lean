@@ -340,8 +340,11 @@ def sedBasis (i : Fin 16) : Sed := EuclideanSpace.single i 1
 /-- The commutator `[x, y] = x·y − y·x` in Sed. -/
 def sed_comm (x y : Sed) : Sed := x * y - y * x
 
-/-- The antisymmetric unit: `u = (1/√2)(e₄ − e₅)`. -/
-def u_antisym : Sed := (1 / Real.sqrt 2) • (sedBasis 4 - sedBasis 5)
+/-- The mirror-antisymmetric tension axis: `u = (1/√2)(e₄ − e₅ − e₁₁ + e₁₀)`.
+    Phase 61 upgrade: extended from the two-index surrogate {4,5} to the full
+    conjugate-pair form {4,5,10,11}, satisfying u(i) = −u(15−i) for all i.
+    ‖u_antisym‖ = √2 (four unit-norm orthogonal components scaled by 1/√2). -/
+def u_antisym : Sed := (1 / Real.sqrt 2) • (sedBasis 4 - sedBasis 5 - sedBasis 11 + sedBasis 10)
 
 /-- The kernel plane: `Ker = span{e₀, u_antisym}`.
     This is the set of elements that commute with `u_antisym`. -/
@@ -355,21 +358,23 @@ The parametric family `F` remains abstract (used only in
 `commutator_theorem_stmt`, which is a documented hypothesis). -/
 
 /--
-Two-prime surrogate for F_base.
-F_base(t) = e₀·cos(t·log 2) + e₃·sin(t·log 2) + e₆·sin(t·log 3)
+Mirror-symmetric base curve with components at conjugate pairs {0,15}, {3,12}, {6,9}.
+Phase 61 upgrade: extended from the two-prime surrogate (indices {0,3,6}) to the full
+conjugate-pair form satisfying F_base(t)(i) = F_base(t)(15−i) for all i.
+
+F_base(t) = cos(t·log 2)·(e₀+e₁₅) + sin(t·log 2)·(e₃+e₁₂) + sin(t·log 3)·(e₆+e₉)
 
 Design rationale:
-- e₀ (sedBasis 0): the scalar anchor, sits inside Ker at t=0.
-- e₃ (sedBasis 3): outside Ker (Ker only spans indices 0, 4, 5).
-- e₆ (sedBasis 6): outside Ker.
-- The ratio log(2)/log(3) = log₃(2) is irrational, ensuring
-  sin(t·log 2) and sin(t·log 3) cannot simultaneously vanish for t ≠ 0.
-- Real-analytic: composition of Real.sin/Real.cos with linear maps.
+- (e₀+e₁₅): scalar channel with mirror partner; cos(t·log 2) at both endpoints.
+- (e₃+e₁₂): p=2 root pair (3+12=15 ✓), matching canonical ROOT_16D vector e₃−e₁₂.
+- (e₆+e₉): p=13 root pair (6+9=15 ✓), matching canonical ROOT_16D vector e₆+e₉.
+- The ratio log(2)/log(3) = log₃(2) is irrational, ensuring non-simultaneous vanishing.
+- ‖F_base(t)‖² = 2·cos²(t·log 2) + 2·sin²(t·log 2) + 2·sin²(t·log 3) = 2 + 2·sin²(t·log 3).
 -/
 noncomputable def F_base (t : ℝ) : Sed :=
-  Real.cos (t * Real.log 2) • sedBasis 0 +
-  Real.sin (t * Real.log 2) • sedBasis 3 +
-  Real.sin (t * Real.log 3) • sedBasis 6
+  Real.cos (t * Real.log 2) • (sedBasis 0 + sedBasis 15) +
+  Real.sin (t * Real.log 2) • (sedBasis 3 + sedBasis 12) +
+  Real.sin (t * Real.log 3) • (sedBasis 6 + sedBasis 9)
 
 /-- The parametric sedenionic lift.
     `F(t, σ) = F_base(t) + (σ − 1/2) • u_antisym`. -/
@@ -412,13 +417,18 @@ def sedMulSignQ : Fin 16 → Fin 16 → ℚ := fun i j =>
     ![ 1, 1,-1,-1, 1, 1,-1, 1,-1, 1,-1,-1, 1, 1,-1,-1]
   ] : Fin 16 → Fin 16 → ℚ) i j
 
-/-- Commutator matrix `M` of `[e₄ - e₅, x]` over ℚ.
-    `M_{k,j}` is the k-th coordinate of `[e₄ - e₅, eⱼ]`. -/
+/-- Commutator matrix `M` of `[e₄ − e₅ − e₁₁ + e₁₀, x]` over ℚ.
+    `M_{k,j}` is the k-th coordinate of `[e₄ − e₅ − e₁₁ + e₁₀, eⱼ]`.
+    Phase 61 upgrade: extended from [e₄−e₅, x] to include e₁₀ and e₁₁ contributions. -/
 def commMatQ : Fin 16 → Fin 16 → ℚ := fun k j =>
   (if sedMulTarget 4 j = k then sedMulSignQ 4 j else 0) -
   (if sedMulTarget j 4 = k then sedMulSignQ j 4 else 0) -
   (if sedMulTarget 5 j = k then sedMulSignQ 5 j else 0) +
-  (if sedMulTarget j 5 = k then sedMulSignQ j 5 else 0)
+  (if sedMulTarget j 5 = k then sedMulSignQ j 5 else 0) -
+  (if sedMulTarget 11 j = k then sedMulSignQ 11 j else 0) +
+  (if sedMulTarget j 11 = k then sedMulSignQ j 11 else 0) +
+  (if sedMulTarget 10 j = k then sedMulSignQ 10 j else 0) -
+  (if sedMulTarget j 10 = k then sedMulSignQ j 10 else 0)
 
 /-- The target matrix `8·(I - P_Ker)` over ℚ, where `P_Ker` is the orthogonal
     projection onto `Ker = span{e₀, (1/√2)(e₄ - e₅)}`. -/
