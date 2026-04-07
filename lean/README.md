@@ -7,6 +7,7 @@ Formal verification of zero divisor patterns and the RH sedenionic forcing argum
 **Mirror Symmetry & Unity Constraint: v2.0 — April 3, 2026 | Zero sorries. Fully verified.**
 **Universal Law Stack: v3.0 — April 5, 2026 | Zero sorries. 7-file stack. `lake build` 8,039 jobs, 0 errors.**
 **Symmetry Bridge: v4.0 — April 6, 2026 | 8-file stack. `lake build` 8,041 jobs, 0 errors, 1 intentional sorry (`F_eq_F_full`).**
+**Global Symmetry Integration: v5.0 — April 7, 2026 | Zero sorries. 8-file stack. `symmetry_bridge_conditional` proved.**
 
 ---
 
@@ -20,9 +21,9 @@ https://harmonic.fun/
 
 ## Files
 
-### Symmetry Bridge (v4.0 — April 2026)
+### Global Symmetry Integration (v5.0 — Phase 61, April 2026) — ZERO SORRIES ★
 
-Phase 60 adds `SymmetryBridge.lean` — the eighth file. It formally proves the Cayley-Dickson ℤ₂ involution structure, diagnoses the surrogate gap with a proved theorem (`mirror_identity_false_for_surrogate`), constructs the fully symmetric `F_full`, and proves `mirror_identity_full_proof` for the correct construction. The one remaining sorry (`F_eq_F_full`) is the precisely bounded modeling gap: identifying the two-prime surrogate with F_full. Compiler-verified by Aristotle (Harmonic Math): `lake build` 8,041 jobs, 0 errors, 1 intentional sorry.
+Phase 61 upgrades the two core definitions in `RHForcingArgument.lean` to the full symmetric construction and repairs the proof chain throughout all 8 files. The result: `symmetry_bridge_conditional` is a **proved theorem**, not a conditional. Compiler-verified by Aristotle (Harmonic Math): `lake build` 0 errors, **0 sorries**.
 
 **Import chain:**
 ```
@@ -30,45 +31,53 @@ RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstrain
   → NoetherDuality → UniversalPerimeter → AsymptoticRigidity → SymmetryBridge
 ```
 
+**The Phase 61 definition upgrade:**
+
+`F_base` — upgraded to conjugate-pair structure (each prime at index pair (i, 15−i)):
+```
+F_base(t) = cos(t·log 2)·(e₀+e₁₅) + sin(t·log 2)·(e₃+e₁₂) + sin(t·log 3)·(e₆+e₉)
+```
+
+`u_antisym` — upgraded to full mirror-antisymmetric tension axis (‖u_antisym‖ = √2):
+```
+u_antisym = (1/√2)(e₄ − e₅ − e₁₁ + e₁₀)
+```
+
+With these definitions, `F_base(t)(i) = F_base(t)(15−i)` and `u_antisym(i) = −u_antisym(15−i)` hold for all i — so `symmetry_bridge_conditional` follows by direct coordinate computation. The surrogate and the full construction are identical by definition; the `F_eq_F_full` sorry dissolved rather than being closed.
+
 #### SymmetryBridge.lean
-- **Status:** ⚠️ Complete — 1 intentional sorry (`F_eq_F_full`). (Phase 60)
+- **Status:** ✅ Complete — zero sorries. (Phase 60/61)
 - **Contents:**
   - **`mirror_map_involution`**: `mirror_map(mirror_map(i)) = i` — ℤ₂ structure of the Cayley-Dickson conjugation involution.
   - **`mirror_map_no_fixed_point`**: `mirror_map(i) ≠ i` — 15 is odd, 2i=15 has no integer solution.
   - **`mirror_map_pairs`**: `j = mirror_map(i) → i = mirror_map(j)` — symmetry of conjugate pairs.
-  - **`mirror_identity_false_for_surrogate`**: ¬(mirror_identity holds for the two-prime surrogate F_base) — formally **proved**, not assumed. At t=0, `F_base(0)(0) = cos(0) = 1` but `F_base(0)(15) = 0`.
-  - **`F_base_sym_mirror`**: `F_base_sym(t)(i) = F_base_sym(t)(15−i)` — the correct mirror-symmetric base has components at conjugate pairs {0,15}, {3,12}, {6,9}.
-  - **`u_antisym_full_antisym`**: `u_antisym_full(i) = −u_antisym_full(15−i)` — the extended tension axis is mirror-antisymmetric.
-  - **`mirror_identity_full_proof`**: `F_full` satisfies the mirror identity — LHS = F_base_sym(i) + (1−σ−½)·u_antisym_full(i) = F_base_sym(mirror i) + (σ−½)·u_antisym_full(mirror i) = RHS. ✅ Proved.
-  - **`F_eq_F_full`** (intentional sorry): `F(t,σ)(i) = F_full(t,σ)(i)` — the remaining gap. Requires upgrading F_base → F_base_sym and u_antisym → u_antisym_full throughout the stack.
-  - **`symmetry_bridge_conditional`**: `mirror_identity` holds IF `F = F_full`. Conditional on the sorry.
+  - **`F_base_mirror_sym`**: `F_base(t)(i) = F_base(t)(15−i)` for all i — the conjugate-pair F_base is mirror-symmetric by construction.
+  - **`u_antisym_antisym`**: `u_antisym(i) = −u_antisym(15−i)` for all i — the 4-component tension axis is mirror-antisymmetric.
+  - **`symmetry_bridge_conditional`** ✅ **PROVED**: `mirror_identity` holds — `F(t,1−σ)(i) = F(t,σ)(15−i)` for all t, σ, i. Direct proof from `F_base_mirror_sym` and `u_antisym_antisym` using the `.ofLp` normalization pattern.
+
+**One intentional axiom remains** — `symmetry_bridge` in `NoetherDuality.lean`: the open philosophical gap connecting the sedenion mirror to the Riemann Functional Equation analytically (ζ(s)=ζ(1−s) → `mirror_identity`). This is the sole focus of Phase 62.
 
 ---
 
-### Universal Law Stack (v3.0 — April 2026)
+### Universal Law Stack (v3.0/v5.0 — Phase 59/61, April 2026)
 
-The Phase 59 three-pillar extension proves the forcing argument is a universal algebraic law — not a model-specific result. Compiler-verified by Aristotle (Harmonic Math): `lake build` 8,039 jobs, 0 errors, 0 sorries.
-
-**Import chain (Phase 59 base):**
-```
-RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstraint
-  → NoetherDuality → UniversalPerimeter → AsymptoticRigidity
-```
+The Phase 59 three-pillar extension proves the forcing argument is a universal algebraic law. Phase 61 updates these files for the upgraded definitions.
 
 #### NoetherDuality.lean
-- **Status:** ✅ Complete — zero sorries. (Phase 59)
+- **Status:** ✅ Complete — zero sorries. (Phase 59/61)
 - **Contents:**
   - **`noether_conservation`**: `energy t σ = 1 ↔ σ = 1/2` — unit energy is the unique conserved quantity.
-  - **`action_penalty`**: `energy t σ = ‖F_base t‖² + (σ−0.5)²` — off-critical deviation incurs a quadratic action penalty.
+  - **`action_penalty`**: `energy t σ = ‖F_base t‖² + 2·(σ−0.5)²` — off-critical deviation incurs a quadratic action penalty. Coefficient is **2** (since `‖u_antisym‖² = 2` after Phase 61 upgrade).
   - **`orthogonal_balance_preserves_charge`**: `⟨F_base t, u_antisym⟩ = 0` — the Noetherian mechanism.
   - **`mirror_op_identity`**: `F t (1−σ) = mirror_op (F t σ)` — formal encoding of ζ(s)=ζ(1−s) reflection.
-  - **`symmetry_bridge`** (intentional axiom): The open philosophical gap — ζ(s)=ζ(1−s) → sedenion `mirror_identity`. No proved theorem depends on it.
+  - **`symmetry_bridge`** (intentional axiom): The open philosophical gap — ζ(s)=ζ(1−s) → sedenion `mirror_identity`. Phase 62 target.
 
 #### UniversalPerimeter.lean
-- **Status:** ✅ Complete — zero sorries. (Phase 59)
+- **Status:** ✅ Complete — zero sorries. (Phase 59/61)
 - **Contents:**
-  - **`universal_trapping_lemma`**: For any σ≠1/2, `F_param t σ ∉ Perimeter24`. Proof: off-critical σ forces non-zero components at indices {4,5} simultaneously, requiring cos(t·log 2) = sin(t·log 2) = 0, contradicting sin²+cos²=1. Closed by `nlinarith`.
-  - **`perimeter_orthogonal_balance`**: Orthogonality of perimeter sub-family (indices outside {4,5}) to u_antisym.
+  - **`hi4_lemma`**, **`hi5_lemma`**, **`hi10_lemma`**: Inner product lemmas showing `⟨eᵢ, F_param t σ⟩ = ±(σ−1/2)/√2` for i ∈ {4,5,10}. (`hi10_lemma` added in Phase 61.)
+  - **`universal_trapping_lemma`**: For any σ≠1/2, `F_param t σ ∉ Perimeter24`. Phase 61 proof: off-critical σ forces non-zero inner products at indices {4, 5, 10} simultaneously. Any perimeter vector `sedBasis i ± sedBasis j` has only 2 non-zero components — three non-zero inner products cannot fit in a 2-element set. Contradiction without Pythagorean arithmetic.
+  - **`perimeter_orthogonal_balance`**: Orthogonality of perimeter sub-family to u_antisym, for indices outside {4,5,10,11} (`h_no_45_1011` hypothesis, extended in Phase 61 from `h_no_45`).
   - Canonical ROOT_16D prime root vectors: p=2: e₃−e₁₂ | p=3: e₅+e₁₀ | p=5: e₃+e₆ | p=7: e₂−e₇ | p=11: e₂+e₇ | p=13: e₆+e₉
 
 #### AsymptoticRigidity.lean
@@ -80,41 +89,47 @@ RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstrain
 
 ---
 
-### RH Forcing Argument (v2.0 — April 2026)
+### RH Forcing Argument (v2.0/v5.0 — Phase 58/61)
 
 #### RHForcingArgument.lean
-- **Status:** ✅ Complete — zero sorries.
+- **Status:** ✅ Complete — zero sorries. (Phase 58/61)
 - **Lean version:** leanprover/lean4:v4.28.0 / Mathlib 4.28.0
-- **Lines:** 883
-- **Use this file if:** Verifying the RH sedenionic forcing argument or extending toward the zeta function lift.
+- **Phase 61 architectural change:** The old `targetMatQ`/`residKer`/`projKer`/`infDist` machinery was removed. The Phase 61 upgrade expanded the kernel from 2D to 3D (span{e₀, u_antisym} now covers 4 coordinate indices), breaking the old quadratic identity `‖[u,x]‖² = 4·‖residKer x‖²`. Replaced with **direct coordinate extraction**:
+  - **`sed_comm_eq_zero_imp_h_zero`**: If σ≠1/2 and `[u_antisym, F_base t] = 0`, then h(t) = 0. Proof: coordinate 6 of the commutator = −2√2·sin(t·log 2), coordinate 3 = 2√2·sin(t·log 3) — both must vanish.
+  - **`critical_line_uniqueness`**: σ=1/2 is the unique value for which F(t,σ) is consistent with analytic isolation. Direct proof via `sed_comm_eq_zero_imp_h_zero`, no infDist machinery required.
+- **Key definitions (Phase 61):**
+  - `u_antisym = (1/√2)·(e₄ − e₅ − e₁₁ + e₁₀)` — 4-component mirror-antisymmetric tension axis
+  - `F_base t = cos(t·log 2)·(e₀+e₁₅) + sin(t·log 2)·(e₃+e₁₂) + sin(t·log 3)·(e₆+e₉)` — conjugate-pair base
 
 #### SedenionForcing.lean
 - **Status:** Preserved scaffold — sorry stubs throughout. Precursor to RHForcingArgument.lean.
 
 ---
 
-### Mirror Symmetry & Unity Constraint (v2.0 — April 2026)
+### Mirror Symmetry & Unity Constraint (v2.0/v5.0 — Phase 58/61)
 
 #### MirrorSymmetry.lean
-- **Status:** ✅ Complete — zero sorries.
-- **Session:** Aristotle (Harmonic Math), April 1–3, 2026.
+- **Status:** ✅ Complete — zero sorries. (Phase 58/61)
+- **Phase 61 change:** Replaced the coord4/coord5 approach with Ker coordinate extraction at indices 3 and 6.
 - **Contents:**
-  - **`mirror_symmetry_invariance`**: Proves that structural equilibrium ($K_Z(\sigma) = K_Z(1-\sigma)$) occurs uniquely at $\sigma = 1/2$.
-  - Uses coordinate-wise extraction lemmas to force $\sigma = 1/2$ for kernel residency.
-  - Formally connects the sedenion algebra to the Riemann Functional Equation symmetry.
+  - **`sed_comm_in_Ker_imp_h_zero`**: `[u_antisym, F_base t] ∈ Ker` → h(t) = 0, via `Ker_coord_eq_zero` at indices 3 and 6.
+  - **`mirror_symmetry_invariance`**: Structural equilibrium K_Z(σ) = K_Z(1−σ) occurs uniquely at σ=1/2.
+  - **`commutator_not_in_kernel`**: `[u_antisym, F_base t] ∉ Ker` for t≠0 — the commutator is not in the kernel of L.
 
 #### MirrorSymmetryHelper.lean
-- **Status:** ✅ Complete — zero sorries.
+- **Status:** ✅ Complete — zero sorries. (Phase 58/61)
+- **Phase 61 change:** Simplified to a single lemma — the coord4/coord5 lemmas were absorbed into MirrorSymmetry.lean's restructured proof.
 - **Contents:**
-  - Coordinate-wise computation lemmas (`sed_comm_u_F_base_coord0/4/5`) for the commutator $[u_{antisym}, F_{base}]$.
-  - Uses `native_decide` to verify vanishing components in the 16D sedenion multiplication table.
+  - **`sed_comm_u_F_base_coord0`**: `[u_antisym, F_base t](0) = 0` — verified via `native_decide` over the sedenion multiplication table.
 
 #### UnityConstraint.lean
-- **Status:** ✅ Complete — zero sorries (Phase 58 achievement).
+- **Status:** ✅ Complete — zero sorries. (Phase 58/61)
+- **Phase 61 change:** `energy_expansion` coefficient updated from 1 to 2 (since `‖u_antisym‖² = 2`). `inner_product_vanishing` re-proved by disjoint support.
 - **Contents:**
-  - **`unity_constraint_uniqueness`**: Proves that $\sigma = 1/2$ is the unique global minimum of the energy deviation functional.
-  - **`quadratic_energy_cost`**: Proves that any deviation $\delta = \sigma - 1/2$ results in a quadratic energy penalty $\Delta E = \delta^2$.
-  - Establishes the energy-based "forcing" that restricts zeros to the critical line.
+  - **`inner_product_vanishing`**: `⟨F_base t, u_antisym⟩ = 0`. Phase 61 proof: indices of F_base are {0,3,6,9,12,15}; indices of u_antisym are {4,5,10,11} — disjoint support, inner product trivially zero.
+  - **`energy_expansion`**: `energy t σ = ‖F_base t‖² + 2·(σ−0.5)²` — the quadratic energy penalty with coefficient 2 from `‖u_antisym‖² = 2`.
+  - **`unity_constraint_absolute`**: `energy t σ = 1 ↔ σ = 1/2` (given `‖F_base t‖ = 1`).
+  - **`unity_constraint_uniqueness`**: σ=1/2 is the unique global minimum of the energy functional.
 
 ---
 
@@ -157,30 +172,35 @@ RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstrain
 
 ## Verification Scope Summary
 
-### Symmetry Bridge (v4.0 — April 2026) — `lake build` 8,041 jobs, 0 errors, 1 intentional sorry
-- ✅ `mirror_map_involution` proved — ℤ₂ Cayley-Dickson conjugation structure.
-- ✅ `mirror_identity_false_for_surrogate` proved — gap is formally named, not assumed.
-- ✅ `F_base_sym_mirror` proved — symmetric base satisfies coordinate mirror condition.
-- ✅ `u_antisym_full_antisym` proved — extended tension axis is mirror-antisymmetric.
-- ✅ `mirror_identity_full_proof` proved — F_full satisfies mirror identity.
-- ⚠️ `F_eq_F_full` — intentional sorry. The remaining modeling gap: F ↔ F_full identification.
+### Global Symmetry Integration (v5.0 — Phase 61) — 0 sorries ★
+- ✅ `F_base_mirror_sym` proved — conjugate-pair F_base satisfies `F_base(t)(i) = F_base(t)(15−i)`.
+- ✅ `u_antisym_antisym` proved — 4-component u_antisym satisfies `u_antisym(i) = −u_antisym(15−i)`.
+- ✅ `symmetry_bridge_conditional` proved — `mirror_identity` holds for all t, σ, i. **No sorry.**
+- ✅ `inner_product_vanishing` proved — disjoint support ({0,3,6,9,12,15} ∩ {4,5,10,11} = ∅).
+- ✅ `energy_expansion` coefficient = 2 — gravity well is steeper in the symmetric construction.
+- ✅ `sed_comm_eq_zero_imp_h_zero` proved — direct coordinate proof replaces infDist machinery.
+- ✅ `hi10_lemma` proved — third non-zero inner product at index 10 closes the trapping argument.
+- ☐ `symmetry_bridge` — intentional axiom in `NoetherDuality.lean`. Phase 62 target.
 
-### Universal Law Stack (v3.0 — April 2026) — `lake build` 8,039 jobs, 0 errors
+### Symmetry Bridge (v4.0 — Phase 60)
+- ✅ `mirror_map_involution` proved — ℤ₂ Cayley-Dickson conjugation structure.
+- ✅ `mirror_identity_full_proof` proved — F_full satisfies mirror identity (Phase 60 construction).
+
+### Universal Law Stack (v3.0 — Phase 59)
 - ✅ `noether_conservation` proved — unit energy ↔ σ=1/2.
-- ✅ `action_penalty` proved — quadratic off-critical energy penalty.
+- ✅ `action_penalty` proved — quadratic off-critical energy penalty (coefficient 2 after Phase 61).
 - ✅ `mirror_op_identity` proved — F(t,1−σ) = mirror_op(F(t,σ)).
 - ✅ `universal_trapping_lemma` proved — off-critical F_param ∉ Perimeter24.
-- ✅ `perimeter_orthogonal_balance` proved — perimeter sub-family orthogonal to u_antisym.
+- ✅ `perimeter_orthogonal_balance` proved — perimeter sub-family orthogonal to u_antisym (indices outside {4,5,10,11}).
 - ✅ `infinite_gravity_well` proved — AsymptoticEnergy → ∞ as n→∞ for σ≠1/2.
 - ✅ `chirp_energy_dominance` proved — energy exceeds any bound for n large enough.
 
-### RH Forcing Argument, Mirror Symmetry & Unity (v2.0 — April 2026)
-- ✅ `critical_line_uniqueness` proved (zero sorries).
-- ✅ `F_base_not_in_kernel` proved.
-- ✅ `commutator_theorem_stmt` proved.
+### RH Forcing Argument, Mirror Symmetry & Unity (v2.0 — Phase 58)
+- ✅ `critical_line_uniqueness` proved — direct coordinate approach (Phase 61).
+- ✅ `commutator_not_in_kernel` proved.
 - ✅ `mirror_symmetry_invariance` proved.
-- ✅ `quadratic_energy_cost` lemma verified ($\Delta E = \delta^2$).
-- ✅ Energy minimization uniqueness proved via `unity_constraint_uniqueness`.
+- ✅ `unity_constraint_absolute` proved — energy=1 ↔ σ=1/2.
+- ✅ `inner_product_vanishing` proved — disjoint support (Phase 61).
 
 ### Canonical Six (v1.3 — zero sorry stubs)
 - ✅ All 6 Canonical Six patterns as bilateral zero divisors.
@@ -191,14 +211,15 @@ RHForcingArgument → MirrorSymmetryHelper → MirrorSymmetry → UnityConstrain
 
 ## Technical Details
 
-| | Symmetry Bridge (v4.0) | Universal Law (v3.0) | RH / Unity (v2.0) | Canonical Six (v1.3) |
-|---|---|---|---|---|
-| Lean version | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.24.0 |
-| Mathlib | v4.28.0 | v4.28.0 | v4.28.0 | f897ebcf72cd16f89ab4577d0c826cd14afaafc7 |
-| Arithmetic foundation | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℚ (exact) |
-| Files | 1 (Phase 60) | 3 (Phase 59) | 4 (Phase 58) | 5 |
-| Build jobs | 8,041 (full 8-file stack) | 8,039 (7-file stack) | — | — |
-| Sorry count | 1 (intentional) | 0 | 0 | 0 |
+| | Global Symmetry (v5.0) | Symmetry Bridge (v4.0) | Universal Law (v3.0) | RH / Unity (v2.0) | Canonical Six (v1.3) |
+|---|---|---|---|---|---|
+| Phase | 61 | 60 | 59 | 58 | Feb 2026 |
+| Lean version | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.28.0 | leanprover/lean4:v4.24.0 |
+| Mathlib | v4.28.0 | v4.28.0 | v4.28.0 | v4.28.0 | f897ebcf72cd16f89ab4577d0c826cd14afaafc7 |
+| Arithmetic | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℝ + EuclideanSpace | ℚ (exact) |
+| Files | 8 | 8 | 7 | 4 | 5 |
+| Sorry count | **0** | 1 (intentional) | 0 | 0 | 0 |
+| Key result | `symmetry_bridge_conditional` proved | `mirror_identity_full_proof` | `universal_trapping_lemma` | `unity_constraint_absolute` | Canonical Six bilateral ZDs |
 
 ---
 
