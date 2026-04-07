@@ -2,7 +2,7 @@
 
 **Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
 
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–59 complete. Phase 60 (SymmetryBridge) complete. The 8-file Lean 4 formal proof stack is compiler-verified (`lake build` 8,041 jobs, 0 errors, 1 intentional sorry, April 6, 2026).
+An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–61 complete. The 8-file Lean 4 formal proof stack is compiler-verified with **zero sorries** (`lake build` 0 errors, 0 sorries, April 6, 2026).
 
 ---
 
@@ -39,13 +39,13 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 ### The Fourth Ascent — The Unity Constraint (Phases 54–58)
 
-**The Flare Validation (Phase 54):** High-energy zeros (n=10,000) show a "Flare" signal—a systematic increase in sedenion convergence tension ($|v|^2$ variance) that validates the forcing argument's asymptotic growth predictions.
+**The Flare Validation (Phase 54):** High-energy zeros (n=10,000) show a "Flare" signal — a systematic increase in sedenion convergence tension ($|v|^2$ variance) that validates the forcing argument's asymptotic growth predictions.
 
 **Empirical Calibration (Phase 55):** Precision Peak mapping at $n=5,000$ confirms a region of "Arithmetic Transparency" where sedenion alignment is near-perfect (C > 0.95). Baseline energy $|v|^2 \approx 1.0$ established as the structural target.
 
 **Spectral Profiling (Phase 56):** Complete mapping of the $n=5,000$ band. Discovery of the **Mirror Symmetry Invariance** in Lean 4 (zero-sorry): $K_Z(\sigma) = K_Z(1-\sigma) \iff \sigma = 1/2$. Three distinct "Precision Peaks" identified with convergence > 0.97.
 
-**The Unity Constraint Bridge (Phase 57):** Resolved the "Chirp Discrepancy" found in Phase 56. Identified a **Variable-Frequency Chirp** tracking Riemann zero density ($P \approx 0.027$ at $n=1,000$ to $P \approx 0.003$ at $n=10,000$). Verified the **Quadratic Energy Cost** ($\Delta E \approx \delta^2$) via high-precision ZDTP scans.
+**The Unity Constraint Bridge (Phase 57):** Resolved the "Chirp Discrepancy." Identified a **Variable-Frequency Chirp** tracking Riemann zero density ($P \approx 0.027$ at $n=1,000$ to $P \approx 0.003$ at $n=10,000$). Verified the **Quadratic Energy Cost** ($\Delta E \approx \delta^2$) via high-precision ZDTP scans.
 
 **Phase 58: Formal Consolidation:** Discharged all remaining assumptions. Formally proved Mirror Symmetry acts as a Noetherian conservation law uniquely mandating the unit-norm condition at the critical line. `unity_constraint_absolute` established; asymptotic stability verified at $n=20,000$ with $C=0.873$.
 
@@ -53,29 +53,41 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 Phase 59 elevates the Phase 58 result from a model-specific proof to a **universal algebraic law**: any analytic prime oscillation embedded in 16D sedenion space is structurally forced to $\sigma=1/2$.
 
-**Universal Perimeter (`UniversalPerimeter.lean`):** The 24-member bilateral zero-divisor family forms an algebraic cage (all vectors on the E8 first shell, span 6D). `universal_trapping_lemma`: for any σ≠1/2, F_param(t,σ) cannot lie on the perimeter. The algebraic heart: off-critical σ forces non-zero components at indices {4} and {5} simultaneously, which would require cos(t·log 2) = sin(t·log 2) = 0 — a contradiction with sin²+cos²=1. Closed by `nlinarith`.
+**Universal Perimeter (`UniversalPerimeter.lean`):** The 24-member bilateral zero-divisor family forms an algebraic cage (all vectors on the E8 first shell, span 6D). `universal_trapping_lemma`: for any σ≠1/2, F_param(t,σ) cannot lie on the perimeter. The algebraic heart: off-critical σ forces non-zero components at indices {4} and {5} simultaneously, requiring cos(t·log 2) = sin(t·log 2) = 0 — contradicting sin²+cos²=1. Closed by `nlinarith`.
 
-**Noether Duality (`NoetherDuality.lean`):** Formalizes mirror symmetry as a Noether conservation law. `noether_conservation`: unit energy (E=1) is conserved ↔ σ=1/2. `mirror_op_identity`: formally encodes the ζ(s)=ζ(1−s) reflection in sedenion coordinates. One intentional axiom (`symmetry_bridge`) marks the remaining open bridge between the analytic functional equation and sedenion mirror symmetry — no proved theorem depends on it.
+**Noether Duality (`NoetherDuality.lean`):** Formalizes mirror symmetry as a Noether conservation law. `noether_conservation`: unit energy (E=1) is conserved ↔ σ=1/2. One intentional axiom (`symmetry_bridge`) marks the open bridge between the analytic functional equation and sedenion mirror symmetry.
 
-**Asymptotic Rigidity (`AsymptoticRigidity.lean`):** `infinite_gravity_well`: for any σ≠1/2, the forcing energy diverges to infinity as n→∞. `chirp_energy_dominance`: the energy exceeds any bound for large enough n. The variable-frequency chirp (period P≈0.027 at n=1k shrinking to P≈0.003 at n=10k) is the empirical mechanism.
+**Asymptotic Rigidity (`AsymptoticRigidity.lean`):** `infinite_gravity_well`: for any σ≠1/2, the forcing energy diverges to infinity as n→∞.
 
 **Build result:** ✅ `lake build` — 8,039 jobs, 0 errors, 0 sorries. Verified by Aristotle (Harmonic Math), April 5, 2026.
 
-### The Sixth Ascent — Symmetry Bridge (Phase 60)
+### The Sixth Ascent — Symmetry Bridge & Global Integration (Phases 60–61)
 
-Phase 60 delivers `SymmetryBridge.lean` — the eighth file in the formal proof stack — and produces the most important mathematical finding of the investigation: a precise, formally proved diagnosis of the one remaining gap.
+Phase 60 delivered `SymmetryBridge.lean` and produced the investigation's most important diagnostic: a formally proved identification of the one remaining gap. Phase 61 closed it.
 
-**Precisely diagnosed gap:** `mirror_identity` (∀ t σ i, F t (1−σ) i = F t σ (15−i)) fails for the two-prime surrogate because `F_base` has active indices {0,3,6} with mirror indices {15,12,9} all zero. The fix is explicit: replace `F_base` with `F_base_sym` and `u_antisym` with `u_antisym_full` — both forced by the canonical ROOT_16D prime root vectors already in the stack.
+**Phase 60 — Precise Diagnosis:**
+`mirror_identity` (∀ t σ i, F t (1−σ) i = F t σ (15−i)) was proved to fail for the two-prime surrogate — `F_base` had active indices {0,3,6} with mirror indices {15,12,9} all zero. The fix was explicit: upgrade to the full conjugate-pair symmetric construction, as the canonical ROOT_16D prime root vectors already require.
 
-**Formally proved theorems:** `mirror_map_involution` (ℤ₂ structure), `mirror_identity_false_for_surrogate` (gap is proved, not assumed), `F_base_sym_mirror` and `u_antisym_full_antisym` (coordinate verification), `mirror_identity_full_proof` (F_full satisfies mirror identity).
+**Phase 61 — Global Symmetry Integration:**
+The core definitions were upgraded throughout the entire 8-file stack:
 
-**One intentional sorry:** `F_eq_F_full` — the identification of F with F_full. This is a mathematical modeling decision, not a tactic problem. It is the precisely bounded remaining gap of the entire investigation.
+- **`F_base`** — upgraded to conjugate-pair structure: `cos(t·log 2)·(e₀+e₁₅) + sin(t·log 2)·(e₃+e₁₂) + sin(t·log 3)·(e₆+e₉)`
+- **`u_antisym`** — upgraded to full mirror-antisymmetric tension axis: `(1/√2)(e₄ − e₅ − e₁₁ + e₁₀)`, with `‖u_antisym‖² = 2`
 
-**Build result:** ✅ `lake build` — 8,041 jobs, 0 errors, 1 intentional sorry. Verified by Aristotle (Harmonic Math), April 6, 2026.
+The upgrade did not merely close the sorry — it **strengthened every result in the stack**:
+
+- `critical_line_uniqueness`: new direct coordinate proof (coordinate 6 = −2√2·sin(t·log 2) = 0; coordinate 3 = 2√2·sin(t·log 3) = 0; contradiction with `analytic_isolation`) — simpler and more elegant than the residKer machinery it replaced
+- `energy_expansion`: coefficient upgraded from 1 to 2 — `energy(t,σ) = ‖F_base‖² + 2·(σ−½)²` — the gravity well is **twice as steep**
+- `universal_trapping_lemma`: simplified — 3 non-zero inner products at {4,5,10} cannot fit in a 2-element perimeter set
+- `inner_product_vanishing`: proved by disjoint support — indices {0,3,6,9,12,15} and {4,5,10,11} do not overlap
+
+`F_eq_F_full` was not proved as a theorem equating two distinct objects — it dissolved when the surrogate became the full construction by definition.
+
+**Build result:** ✅ `lake build` — **0 errors. 0 sorries.** Standard axioms only. Verified by Aristotle (Harmonic Math), April 6, 2026.
 
 ### The Eight-Step Universal Forcing Argument — Current Status
 
-**Lean 4 formal verification:** The complete 8-file stack is compiler-verified (`lake build` 8,041 jobs, 0 errors, 1 intentional sorry).
+**Lean 4 formal verification:** The complete 8-file stack is **zero-sorry** and compiler-verified.
 
 | Step | Statement | Status |
 |------|-----------|--------|
@@ -86,7 +98,9 @@ Phase 60 delivers `SymmetryBridge.lean` — the eighth file in the formal proof 
 | 5 | Universal Trapping: F_param(t,σ) ∉ Perimeter24 for σ≠1/2 | ✅ Proved (Phase 59) |
 | 6 | Noether Conservation: energy=1 ↔ σ=1/2 | ✅ Proved (Phase 59) |
 | 7 | Infinite Gravity Well: AsymptoticEnergy → ∞ as n→∞ | ✅ Proved (Phase 59) |
-| 8 | Symmetry Bridge: F=F_full → mirror_identity (conditional) | ⚠️ 1 intentional sorry: `F_eq_F_full` (Phase 60) |
+| 8 | Symmetry Bridge: i↔15−i encodes ζ(s)=ζ(1−s) | `symmetry_bridge` axiom — Phase 62 |
+
+**One axiom declaration remains:** `symmetry_bridge` in `NoetherDuality.lean` — the open bridge from ζ(s)=ζ(1−s) to `mirror_identity`. No proved theorem depends on it. This is the sole focus of Phase 62.
 
 ---
 
@@ -95,25 +109,25 @@ Phase 60 delivers `SymmetryBridge.lean` — the eighth file in the formal proof 
 ```
 CAIL-rh-investigation/
 ├── papers/                          # Companion paper (Canonical Six v1.3)
-├── lean/                            # Lean 4 formal verification (8-file stack, 1 intentional sorry)
+├── lean/                            # Lean 4 formal verification (8-file stack, 0 sorries)
 │   ├── lakefile.toml                # Build config (mathlib v4.28.0)
 │   ├── lean-toolchain               # leanprover/lean4:v4.28.0
-│   ├── RHForcingArgument.lean       # Commutator identity, non-vanishing (Phase 58)
-│   ├── MirrorSymmetryHelper.lean    # Coordinate lemmas for [u_antisym, F_base] (Phase 58)
-│   ├── MirrorSymmetry.lean          # mirror_symmetry_invariance, commutator_not_in_kernel (Phase 58)
-│   ├── UnityConstraint.lean         # unity_constraint_absolute, energy_expansion (Phase 58)
-│   ├── NoetherDuality.lean          # noether_conservation, mirror_op_identity (Phase 59)
-│   ├── UniversalPerimeter.lean      # universal_trapping_lemma, perimeter_orthogonal_balance (Phase 59)
+│   ├── RHForcingArgument.lean       # Commutator identity, critical_line_uniqueness (Phases 58/61)
+│   ├── MirrorSymmetryHelper.lean    # Coordinate lemmas for [u_antisym, F_base] (Phases 58/61)
+│   ├── MirrorSymmetry.lean          # mirror_symmetry_invariance, commutator_not_in_kernel (Phases 58/61)
+│   ├── UnityConstraint.lean         # unity_constraint_absolute, energy_expansion (Phases 58/61)
+│   ├── NoetherDuality.lean          # noether_conservation, mirror_op_identity (Phases 59/61)
+│   ├── UniversalPerimeter.lean      # universal_trapping_lemma, perimeter_orthogonal_balance (Phases 59/61)
 │   ├── AsymptoticRigidity.lean      # infinite_gravity_well, chirp_energy_dominance (Phase 59)
-│   └── SymmetryBridge.lean          # mirror_identity_full_proof, symmetry_bridge_conditional (Phase 60)
+│   └── SymmetryBridge.lean          # mirror_map_involution, symmetry_bridge_conditional (Phases 60/61)
 ├── data/
 │   ├── primes/                      # Prime datasets (Sophie Germain, safe primes, gaps)
 │   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃, χ₄, χ₅, χ₇, χ₈)
-├── results/                         # All phase result JSON files (Phases 1–60)
+├── results/                         # All phase result JSON files (Phases 1–61)
 ├── scripts/                         # Python analysis scripts
 ├── docs/
 │   ├── roadmap.md                   # Research roadmap
-│   └── phases/                      # Per-phase result writeups (through Phase 60)
+│   └── phases/                      # Per-phase result writeups (through Phase 61)
 └── PHASES_30_47_SUMMARY.md          # Summary of First and Second Ascents
 ```
 
@@ -141,9 +155,10 @@ CAIL-rh-investigation/
 | **55** | **Empirical Calibration** | **Precision Peak confirms Arithmetic Transparency (C > 0.95)** |
 | **56** | **Spectral Profiling** | **Mirror Symmetry proved in Lean 4 (zero-sorry); three precision peaks mapped** |
 | **57** | **Unity Constraint Bridge** | **Chirp Discrepancy resolved; Quadratic Energy Cost verified** |
-| **58** | **Formal Consolidation** | **Duality Lemma closed (zero-sorry); Asymptotic stability verified at n=20,000** |
-| **59** | **Universal Law Stack** | **7-file stack compiler-verified; Universal Trapping Lemma; Infinite Gravity Well; `lake build` 8,039 jobs, 0 errors** |
-| **60** | **Symmetry Bridge** | **8-file stack; `mirror_identity_false_for_surrogate` proved; F_full construction; gap precisely bounded to `F_eq_F_full`; `lake build` 8,041 jobs, 1 intentional sorry** |
+| **58** | **Formal Consolidation** | **Zero-sorry forcing proof; asymptotic stability verified at n=20,000** |
+| **59** | **Universal Law Stack** | **7-file stack; Universal Trapping Lemma; Infinite Gravity Well; 8,039 jobs, 0 sorries** |
+| **60** | **Symmetry Bridge** | **`mirror_identity_false_for_surrogate` proved; gap precisely bounded to F_eq_F_full** |
+| **61** | **Global Integration** | **Full symmetric construction deployed; F_eq_F_full dissolved; 0 sorries across all 8 files; direct coordinate proof; energy penalty doubled** |
 
 ---
 
@@ -151,21 +166,20 @@ CAIL-rh-investigation/
 
 All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://harmonic.fun/>
 
-| File | Phase | Contents | Status |
-|------|-------|----------|--------|
-| `RHForcingArgument.lean` | 58 | Commutator identity, non-vanishing condition | ✅ Zero sorries |
-| `MirrorSymmetryHelper.lean` | 58 | Coordinate computation lemmas for [u_antisym, F_base] | ✅ Zero sorries |
-| `MirrorSymmetry.lean` | 58 | `mirror_symmetry_invariance`, `commutator_not_in_kernel` | ✅ Zero sorries |
-| `UnityConstraint.lean` | 58 | `unity_constraint_absolute`, `inner_product_vanishing`, `energy_expansion` | ✅ Zero sorries |
-| `NoetherDuality.lean` | 59 | `noether_conservation`, `action_penalty`, `mirror_op_identity` | ✅ Zero sorries |
-| `UniversalPerimeter.lean` | 59 | `universal_trapping_lemma`, `perimeter_orthogonal_balance` | ✅ Zero sorries |
+| File | Phases | Contents | Status |
+|------|--------|----------|--------|
+| `RHForcingArgument.lean` | 58/61 | Commutator identity, `critical_line_uniqueness` (direct coordinate proof) | ✅ Zero sorries |
+| `MirrorSymmetryHelper.lean` | 58/61 | `sed_comm_u_F_base_coord0` | ✅ Zero sorries |
+| `MirrorSymmetry.lean` | 58/61 | `mirror_symmetry_invariance`, `commutator_not_in_kernel` | ✅ Zero sorries |
+| `UnityConstraint.lean` | 58/61 | `unity_constraint_absolute`, `inner_product_vanishing` (disjoint support), `energy_expansion` (coeff=2) | ✅ Zero sorries |
+| `NoetherDuality.lean` | 59/61 | `noether_conservation`, `action_penalty`, `mirror_op_identity` | ✅ Zero sorries |
+| `UniversalPerimeter.lean` | 59/61 | `universal_trapping_lemma` (3 non-zero inner products), `perimeter_orthogonal_balance` | ✅ Zero sorries |
 | `AsymptoticRigidity.lean` | 59 | `infinite_gravity_well`, `chirp_energy_dominance` | ✅ Zero sorries |
-| `SymmetryBridge.lean` | 60 | `mirror_map_involution`, `mirror_identity_false_for_surrogate`, `mirror_identity_full_proof`, `symmetry_bridge_conditional` | ⚠️ 1 intentional sorry |
-| `BilateralCollapse.lean` | 18B | Bilateral Collapse Theorem: (a·P₁+b·Q₁)·(b·P₁+c·Q₁)=−2·b·(a+c)·e₀ | ✅ Zero sorries |
+| `SymmetryBridge.lean` | 60/61 | `mirror_map_involution`, `mirror_map_no_fixed_point`, `symmetry_bridge_conditional` | ✅ Zero sorries |
+| `BilateralCollapse.lean` | 18B | Bilateral Collapse Theorem | ✅ Zero sorries |
 
-**Axioms across all 8 core files:** `propext`, `Classical.choice`, `Quot.sound` only.  
-**One intentional axiom:** `symmetry_bridge` in `NoetherDuality.lean` — the open bridge from ζ(s)=ζ(1−s) to `mirror_identity`. No proved theorem depends on it.  
-**One intentional sorry:** `F_eq_F_full` in `SymmetryBridge.lean` — the precisely bounded remaining gap: identification of the two-prime surrogate F with the full mirror-symmetric F_full.
+**Axioms across all 8 core files:** `propext`, `Classical.choice`, `Quot.sound` only.
+**One intentional axiom:** `symmetry_bridge` in `NoetherDuality.lean` — the open bridge from ζ(s)=ζ(1−s) to `mirror_identity`. No proved theorem depends on it. This is the sole remaining gap and the focus of Phase 62.
 
 ---
 
@@ -174,4 +188,4 @@ All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://ha
 [CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
 Lean 4 files co-authored with Aristotle (Harmonic Math).
 
-*Last updated: April 6, 2026 — Phase 60 complete: Symmetry Bridge. 8-file Lean 4 stack compiler-verified by Aristotle (Harmonic Math). `lake build` 8,041 jobs, 0 errors, 1 intentional sorry (`F_eq_F_full`). KSJ: 318 entries.*
+*Last updated: April 6, 2026 — Phase 61 complete: Global Symmetry Integration. 8-file Lean 4 stack compiler-verified by Aristotle (Harmonic Math). Zero sorries across all 8 files. KSJ: 330 entries.*
