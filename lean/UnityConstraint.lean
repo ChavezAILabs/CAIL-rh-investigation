@@ -24,35 +24,41 @@ def F_param (t σ : ℝ) : Sed :=
 def energy (t σ : ℝ) : ℝ :=
   ‖F_param t σ‖ ^ 2
 
-/-
+/--
 Energy Expansion Lemma:
     ‖F_base + δu‖² = ‖F_base‖² + δ²‖u‖² + 2δ⟨F_base, u⟩
+
+With ‖u_antisym‖² = 2 (four components at ±1/√2), this gives:
+    energy t σ = ‖F_base t‖² + 2(σ-0.5)² + 2(σ-0.5)⟨F_base t, u_antisym⟩
 -/
 lemma energy_expansion (t σ : ℝ) :
-  energy t σ = ‖F_base t‖ ^ 2 + (σ - 0.5) ^ 2 +
+  energy t σ = ‖F_base t‖ ^ 2 + 2 * (σ - 0.5) ^ 2 +
     2 * (σ - 0.5) * @inner ℝ Sed _ (F_base t) u_antisym := by
-  -- By definition of $u_antisym$, we know that $‖u_antisym‖ = 1$.
-  have h_u_antisym_norm : ‖u_antisym‖ = 1 := by
-    unfold u_antisym;
-    norm_num [ norm_smul, EuclideanSpace.norm_eq ];
-    erw [ Finset.sum_eq_add ( 4 ) ( 5 ) ] <;> norm_num [ Fin.ext_iff, sedBasis ];
-    · norm_num [ abs_of_pos ];
-    · aesop;
-  convert norm_add_sq_real ( F_base t ) ( ( σ - 0.5 ) • u_antisym ) using 1 ; norm_num [ h_u_antisym_norm ] ; ring;
-  norm_num [ norm_smul, inner_smul_right, h_u_antisym_norm ] ; ring
+  have h_u_antisym_norm_sq : ‖u_antisym‖ ^ 2 = 2 := by
+    unfold u_antisym
+    simp [norm_smul, EuclideanSpace.norm_eq]
+    rw [Real.sq_sqrt (by positivity : (0:ℝ) ≤ _)]
+    simp +decide [Fin.sum_univ_succ, sedBasis]
+    norm_num [Real.sq_sqrt (show (0:ℝ) ≤ 2 by norm_num)]
+  unfold energy F_param
+  rw [norm_add_sq_real, norm_smul, inner_smul_right]
+  have : (‖σ - 0.5‖ * ‖u_antisym‖) ^ 2 = (σ - 0.5) ^ 2 * ‖u_antisym‖ ^ 2 := by
+    rw [mul_pow]; congr 1; rw [Real.norm_eq_abs, sq_abs]
+  rw [this, h_u_antisym_norm_sq]
+  ring
 
 /-
 **The Duality Lemma: Mirror Symmetry implies Orthogonal Balance.**
-If the sedenionic lift satisfies mirror symmetry, then the base lift
-must be orthogonal to the tension axis.
+F_base has support at {0,3,6,9,12,15} and u_antisym at {4,5,10,11} — disjoint.
+So ⟨F_base t, u_antisym⟩ = 0.
 -/
-lemma inner_product_vanishing (h_mirror : mirror_identity) (t : ℝ) :
+lemma inner_product_vanishing (_h_mirror : mirror_identity) (t : ℝ) :
   @inner ℝ Sed _ (F_base t) u_antisym = (0 : ℝ) := by
-  unfold F_base u_antisym; norm_num [ inner_add_left, inner_smul_left ] ; ring;
-  unfold sedBasis; norm_num [ EuclideanSpace.inner_single_left, EuclideanSpace.inner_single_right ] ;
-  simp +decide [ Fin.ext_iff ]
+    unfold F_base u_antisym;
+    simp +decide [ inner_add_left, inner_add_right, inner_smul_left, inner_smul_right, sedBasis ];
+    simp +decide [ inner, Fin.sum_univ_succ ]
 
-/-
+/--
 **Theorem: Unity Constraint (Absolute)**
     Under Mirror Symmetry, σ = 1/2 is the unique value that satisfies
     the unit energy requirement (‖v‖² = 1), assuming unit average energy.
@@ -60,7 +66,8 @@ lemma inner_product_vanishing (h_mirror : mirror_identity) (t : ℝ) :
 theorem unity_constraint_absolute (h_mirror : mirror_identity)
   (h_unit : ∀ t, ‖F_base t‖ ^ 2 = 1) (t : ℝ) (σ : ℝ) :
   energy t σ = 1 ↔ σ = 1/2 := by
-  rw [ energy_expansion, inner_product_vanishing ] ; norm_num [ h_unit ] ; constructor <;> intros <;> nlinarith;
-  assumption
+  rw [energy_expansion, inner_product_vanishing h_mirror]
+  norm_num [h_unit]
+  constructor <;> intro h <;> nlinarith
 
 end

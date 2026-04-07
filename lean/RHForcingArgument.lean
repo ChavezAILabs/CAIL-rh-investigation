@@ -430,222 +430,6 @@ def commMatQ : Fin 16 → Fin 16 → ℚ := fun k j =>
   (if sedMulTarget 10 j = k then sedMulSignQ 10 j else 0) -
   (if sedMulTarget j 10 = k then sedMulSignQ j 10 else 0)
 
-/-- The target matrix `8·(I - P_Ker)` over ℚ, where `P_Ker` is the orthogonal
-    projection onto `Ker = span{e₀, (1/√2)(e₄ - e₅)}`. -/
-def targetMatQ : Fin 16 → Fin 16 → ℚ := fun i j =>
-  8 * ((if i = j then 1 else 0) -
-       (if i = 0 ∧ j = 0 then 1
-        else if i = 4 ∧ j = 4 then 1/2
-        else if i = 4 ∧ j = 5 then -1/2
-        else if i = 5 ∧ j = 4 then -1/2
-        else if i = 5 ∧ j = 5 then 1/2
-        else 0))
-
-/-- **Key computation**: `MᵀM = 8·(I - P_Ker)` verified over ℚ by `native_decide`. -/
-theorem comm_matrix_identity : ∀ i j : Fin 16,
-    (∑ k : Fin 16, commMatQ k i * commMatQ k j) = targetMatQ i j := by
-  native_decide
-
-/-! ### Explicit orthogonal projection residual -/
-
-/-- The residual `x - P_Ker(x)`, where `P_Ker` is the orthogonal projection
-    onto `Ker = span{e₀, u_antisym}`. Defined explicitly in coordinates:
-    - coordinate 0 is zeroed out (e₀ component removed)
-    - coordinates 4,5 are replaced by their average (u_antisym component removed)
-    - all other coordinates are unchanged -/
-def residKer (x : Sed) : Sed :=
-  (EuclideanSpace.equiv (Fin 16) ℝ).symm (fun i : Fin 16 =>
-    if i = (0 : Fin 16) then 0
-    else if i = (4 : Fin 16) then (x 4 + x 5) / 2
-    else if i = (5 : Fin 16) then (x 4 + x 5) / 2
-    else x i)
-
-/-- The projection `P_Ker(x)` onto Ker, defined explicitly. -/
-def projKer (x : Sed) : Sed :=
-  (EuclideanSpace.equiv (Fin 16) ℝ).symm (fun i : Fin 16 =>
-    if i = (0 : Fin 16) then x 0
-    else if i = (4 : Fin 16) then (x 4 - x 5) / 2
-    else if i = (5 : Fin 16) then (x 5 - x 4) / 2
-    else 0)
-
-/-
-PROBLEM
-`residKer x = x - projKer x`
-
-PROVIDED SOLUTION
-Both sides are elements of EuclideanSpace ℝ (Fin 16). Use funext (or ext) to reduce to showing equality coordinate by coordinate. For each i : Fin 16, case split on whether i = 0, i = 4, i = 5, or other:
-- i = 0: LHS = 0, RHS = x 0 - x 0 = 0 ✓
-- i = 4: LHS = (x 4 + x 5)/2, RHS = x 4 - (x 4 - x 5)/2 = (x 4 + x 5)/2 ✓
-- i = 5: LHS = (x 4 + x 5)/2, RHS = x 5 - (x 5 - x 4)/2 = (x 4 + x 5)/2 ✓
-- otherwise: LHS = x i, RHS = x i - 0 = x i ✓
-Use `fin_cases` or case analysis on Fin 16, and `ring` or `simp` for each case.
--/
-lemma residKer_eq_sub_projKer (x : Sed) : residKer x = x - projKer x := by
-  ext i; simp +decide [ *, sub_eq_add_neg ] ; ring;
-  unfold residKer projKer; fin_cases i <;> simp +decide ;
-  · ring!;
-  · ring!
-
-/-
-PROBLEM
-The explicit projection `projKer x` lies in `Ker`.
-
-PROVIDED SOLUTION
-projKer x = x 0 • sedBasis 0 + ((x 4 - x 5)/2) • (sedBasis 4 - sedBasis 5).
-Note that sedBasis 4 - sedBasis 5 = √2 • u_antisym (since u_antisym = (1/√2)(sedBasis 4 - sedBasis 5)).
-So projKer x = x 0 • sedBasis 0 + ((x 4 - x 5)/2) • (√2 • u_antisym)
-            = x 0 • sedBasis 0 + ((x 4 - x 5) * √2 / 2) • u_antisym.
-Both sedBasis 0 and u_antisym are in Ker (they are the generators of the span).
-So projKer x is a linear combination of elements in Ker, hence in Ker.
-Use Submodule.add_mem and Submodule.smul_mem with Submodule.subset_span.
--/
-lemma projKer_mem_Ker (x : Sed) : projKer x ∈ Ker := by
-  -- By definition of $projKer$, we know that $projKer x = x 0 • sedBasis 0 + ((x 4 - x 5) * Real.sqrt 2 / 2) • u_antisym$.
-  have h_projKer : projKer x = x 0 • sedBasis 0 + ((x 4 - x 5) * Real.sqrt 2 / 2) • u_antisym := by
-    unfold projKer u_antisym sedBasis; ext i; fin_cases i <;> simp +decide [ div_eq_mul_inv ] ; ring;
-    · norm_num [ mul_assoc ];
-    · norm_num [ mul_assoc, mul_comm, mul_left_comm ] ; ring;
-  exact h_projKer.symm ▸ Submodule.add_mem _ ( Submodule.smul_mem _ _ ( Submodule.subset_span ( Set.mem_insert _ _ ) ) ) ( Submodule.smul_mem _ _ ( Submodule.subset_span ( Set.mem_insert_of_mem _ ( Set.mem_singleton _ ) ) ) )
-
-/-
-PROBLEM
-The residual `x - projKer x` is orthogonal to `Ker`.
-
-PROVIDED SOLUTION
-We need to show ⟨residKer x, y⟩ = 0 for all y ∈ Ker = span{sedBasis 0, u_antisym}.
-By Submodule.span_induction, it suffices to show:
-1. ⟨residKer x, sedBasis 0⟩ = 0
-2. ⟨residKer x, u_antisym⟩ = 0
-3. ⟨residKer x, 0⟩ = 0 (trivial)
-4. ⟨residKer x, y₁ + y₂⟩ = ⟨residKer x, y₁⟩ + ⟨residKer x, y₂⟩ (linearity)
-5. ⟨residKer x, c • y⟩ = c * ⟨residKer x, y⟩ (linearity)
-
-For (1): ⟨residKer x, sedBasis 0⟩ = (residKer x) 0 = 0 (by definition of residKer).
-For (2): ⟨residKer x, u_antisym⟩ = ∑ i, (residKer x) i * u_antisym i
-  = (residKer x) 4 * (1/√2) + (residKer x) 5 * (-1/√2)
-  = ((x 4 + x 5)/2) * (1/√2) + ((x 4 + x 5)/2) * (-1/√2) = 0.
-
-Use inner_add_right, inner_smul_right for linearity, and Submodule.span_induction for the induction.
--/
-lemma residKer_orthogonal (x : Sed) :
-    ∀ y ∈ (Ker : Set Sed), @inner ℝ Sed _ (residKer x) y = 0 := by
-  intro y hy
-  obtain ⟨a, b, ha⟩ : ∃ a b : ℝ, y = a • sedBasis 0 + b • u_antisym := by
-    exact Submodule.mem_span_pair.mp hy |> fun ⟨ a, b, h ⟩ => ⟨ a, b, h.symm ⟩;
-  unfold residKer u_antisym at *;
-  unfold sedBasis at * ; simp_all +decide [ Fin.sum_univ_succ, inner_add_left, inner_add_right, inner_smul_left, inner_smul_right ] ; ring_nf ; norm_num;
-  simp +decide [ inner, Fin.sum_univ_succ ] ; ring_nf ; norm_num
-
-/-
-PROBLEM
-`Metric.infDist x Ker = ‖residKer x‖`.
-
-PROVIDED SOLUTION
-Use the characterization of Metric.infDist for closed subspaces: infDist x K = ‖x - P(x)‖ where P is the orthogonal projection.
-
-Step 1: Show residKer x = x - projKer x (use residKer_eq_sub_projKer).
-Step 2: Show projKer x ∈ Ker (use projKer_mem_Ker).
-Step 3: Show x - projKer x ⊥ Ker, i.e., residKer x ⊥ Ker (use residKer_orthogonal).
-Step 4: By the characterization of the closest point in a closed convex set, projKer x minimizes ‖x - y‖ over y ∈ Ker. This is because projKer x ∈ Ker and x - projKer x ⊥ Ker.
-Step 5: Therefore infDist x Ker = ‖x - projKer x‖ = ‖residKer x‖.
-
-Key Mathlib lemmas:
-- norm_eq_iInf_iff_real_inner_eq_zero: v minimizes distance iff x - v ⊥ K
-- Metric.infDist_eq_iInf: infDist = ⨅ y ∈ K, ‖x - y‖
-- Use that Ker is nonempty (has 0) and closed (finite-dimensional)
--/
-lemma infDist_eq_norm_residKer (x : Sed) :
-    Metric.infDist x (Ker : Set Sed) = ‖residKer x‖ := by
-  -- By Lemma \ref{lem:residKer_eq_sub_projKer}, projKer x ∈ Ker.
-  have h_projKer_mem : projKer x ∈ (Ker : Set Sed) := by
-    exact projKer_mem_Ker x;
-  rw [ Metric.infDist_eq_iInf ];
-  -- Now use the fact that the projection onto a closed subspace is the closest point.
-  have h_closest : ∀ y ∈ (Ker : Set Sed), ‖x - y‖ ≥ ‖x - projKer x‖ := by
-    intro y hy
-    have h_orthogonal : @inner ℝ Sed _ (x - projKer x) (y - projKer x) = 0 := by
-      have h_orthogonal : ∀ y ∈ (Ker : Set Sed), @inner ℝ Sed _ (x - projKer x) y = 0 := by
-        exact fun y hy => by simpa [ residKer_eq_sub_projKer ] using residKer_orthogonal x y hy;
-      exact h_orthogonal _ ( Submodule.sub_mem _ hy h_projKer_mem );
-    have h_norm_sq : ‖x - y‖^2 = ‖x - projKer x‖^2 + ‖y - projKer x‖^2 := by
-      rw [ show x - y = ( x - projKer x ) - ( y - projKer x ) by abel1, @norm_sub_sq ℝ ] ; aesop;
-    exact le_of_pow_le_pow_left₀ ( by norm_num ) ( norm_nonneg _ ) ( h_norm_sq ▸ le_add_of_nonneg_right ( sq_nonneg _ ) );
-  -- Therefore, the infimum distance is achieved at projKer x.
-  have h_inf_achieved : ⨅ y : Ker, ‖x - y‖ = ‖x - projKer x‖ := by
-    rw [ @ciInf_eq_of_forall_ge_of_forall_gt_exists_lt ] <;> aesop;
-  convert h_inf_achieved using 1;
-  rw [ residKer_eq_sub_projKer ]
-
-/-
-PROBLEM
-Key norm identity: `‖sed_comm u_antisym x‖² = 4 · ‖residKer x‖²`.
-
-PROVIDED SOLUTION
-Both sides are quadratic forms in x. We show they equal the same quadratic form.
-
-Key identity: Both sides equal 4·∑_{i≠0,4,5} (x i)² + 2·(x 4 + x 5)².
-
-For the RHS: ‖residKer x‖² = ∑ i, (residKer x i)² where:
-  - residKer x 0 = 0
-  - residKer x 4 = (x 4 + x 5)/2
-  - residKer x 5 = (x 4 + x 5)/2
-  - residKer x i = x i for i ∉ {0,4,5}
-So ‖residKer x‖² = ∑_{i≠0,4,5} (x i)² + 2·((x 4 + x 5)/2)² = ∑_{i≠0,4,5} (x i)² + (x 4 + x 5)²/2
-And 4·‖residKer x‖² = 4·∑_{i≠0,4,5} (x i)² + 2·(x 4 + x 5)².
-
-For the LHS: The commutator map L(x) = sed_comm u_antisym x = (1/√2)·[e₄-e₅, x].
-Its matrix M (of [e₄-e₅, -]) satisfies MᵀM = 8·(I - P_Ker) (verified by comm_matrix_identity).
-So ‖L(x)‖² = (1/2)·xᵀ MᵀM x = (1/2)·8·xᵀ(I-P)x = 4·‖(I-P)x‖² = 4·‖residKer x‖².
-
-The computation uses:
-1. EuclideanSpace.norm_sq for both sides
-2. The commutator coordinates match the matrix commMatQ (cast to ℝ) times x, scaled by 1/√2
-3. The comm_matrix_identity theorem (which verified MᵀM = target over ℚ)
-
-To formalize: expand both ‖sed_comm u_antisym x‖² and 4·‖residKer x‖² using EuclideanSpace.norm_sq = ∑ i (· i)², and show the results are equal by algebraic manipulation.
--/
-set_option maxHeartbeats 1600000 in
-lemma comm_norm_sq_eq_four_residKer_sq (x : Sed) :
-    ‖sed_comm u_antisym x‖ ^ 2 = 4 * ‖residKer x‖ ^ 2 := by
-  -- By definition of sed_comm, we have sed_comm u_antisym x = u_antisym * x - x * u_antisym.
-  have h_comm : sed_comm u_antisym x = (EuclideanSpace.equiv (Fin 16) ℝ).symm (fun i : Fin 16 =>
-    (1 / Real.sqrt 2) * (∑ j : Fin 16, ∑ k : Fin 16,
-      if sedMulTarget j k = i then sedMulSign j k * (if j = 4 then 1 else if j = 5 then -1 else 0) * x k else 0) -
-    (1 / Real.sqrt 2) * (∑ j : Fin 16, ∑ k : Fin 16,
-      if sedMulTarget j k = i then sedMulSign j k * x j * (if k = 4 then 1 else if k = 5 then -1 else 0) else 0)) := by
-        unfold sed_comm u_antisym;
-        unfold sedBasis;
-        ext i; simp +decide [ Finset.sum_ite, Finset.filter_eq', Finset.filter_ne' ] ; ring;
-        -- By definition of multiplication in the sedenions, we can expand the left-hand side.
-        have h_expand : ∀ (x y : Sed), (x * y).ofLp i = ∑ j : Fin 16, ∑ k : Fin 16, if sedMulTarget j k = i then sedMulSign j k * x.ofLp j * y.ofLp k else 0 := by
-          bound;
-        simp +decide [ h_expand, Finset.sum_ite ] ; ring;
-        simp +decide [ Finset.sum_filter, Finset.sum_add_distrib, mul_assoc, mul_comm, mul_left_comm, Finset.mul_sum _ _ _ ] ; ring;
-        simp +decide [ Finset.sum_ite, Finset.filter_eq', Finset.filter_ne', mul_assoc, mul_comm, mul_left_comm, Finset.mul_sum _ _ _ ] ; ring;
-        rw [ show ( ∑ x_1 : Fin 16, ∑ x_2 ∈ if sedMulTarget x_1 4 = i then { 4 } else ∅, ( Real.sqrt 2 ) ⁻¹ * sedMulSign x_1 x_2 * x.ofLp x_1 ) = ∑ x_1 ∈ Finset.filter ( fun x_1 => sedMulTarget x_1 4 = i ) Finset.univ, ( Real.sqrt 2 ) ⁻¹ * sedMulSign x_1 4 * x.ofLp x_1 by rw [ Finset.sum_filter ] ; congr; ext; aesop ] ; ring;
-  rw [ h_comm, EuclideanSpace.norm_eq, EuclideanSpace.norm_eq ];
-  rw [ Real.sq_sqrt, Real.sq_sqrt ];
-  · unfold sedMulTarget sedMulSign;
-    rw [ show ( residKer x ).ofLp = fun i => if i = 0 then 0 else if i = 4 then ( x.ofLp 4 + x.ofLp 5 ) / 2 else if i = 5 then ( x.ofLp 4 + x.ofLp 5 ) / 2 else x.ofLp i from ?_ ];
-    · simp +decide [ Fin.sum_univ_succ ] at *;
-      grind;
-    · ext i; simp [residKer];
-  · exact Finset.sum_nonneg fun _ _ => sq_nonneg _;
-  · exact Finset.sum_nonneg fun _ _ => sq_nonneg _
-
-/--
-**Commutator Exact Identity** (proved from helpers above).
--/
-theorem commutator_exact_identity (x : Sed) :
-    ‖sed_comm u_antisym x‖ = 2 * Metric.infDist x (Ker : Set Sed) := by
-  rw [infDist_eq_norm_residKer]
-  have hsq := comm_norm_sq_eq_four_residKer_sq x
-  have h1 : 0 ≤ ‖sed_comm u_antisym x‖ := norm_nonneg _
-  have h2 : 0 ≤ 2 * ‖residKer x‖ := by positivity
-  have h3 : ‖sed_comm u_antisym x‖ ^ 2 = (2 * ‖residKer x‖) ^ 2 := by ring_nf; linarith
-  nlinarith [sq_abs ‖sed_comm u_antisym x‖, sq_abs (2 * ‖residKer x‖),
-             abs_of_nonneg h1, abs_of_nonneg h2]
-
 /-! ### Bilinearity of Sedenion Multiplication
 
 The multiplication `instMulSed` is bilinear by construction, since each
@@ -653,64 +437,39 @@ coordinate `(x * y) k = Σ_{i,j} sign(i,j) · x(i) · y(j)` is linear in
 both `x` and `y`. We prove the distributivity/scalar-compatibility
 laws needed for the commutator factorization. -/
 
-/-
-Left distributivity of sedenion multiplication.
--/
 lemma sed_mul_left_distrib (a b c : Sed) : a * (b + c) = a * b + a * c := by
   ext k;
-  simp +zetaDelta at *;
-  rw [ show ( a * ( b + c ) ) = ( EuclideanSpace.equiv ( Fin 16 ) ℝ ).symm ( fun k => ∑ i : Fin 16, ∑ j : Fin 16, if sedMulTarget i j = k then sedMulSign i j * a i * ( b j + c j ) else 0 ) from rfl ] ; erw [ show ( a * b ) = ( EuclideanSpace.equiv ( Fin 16 ) ℝ ).symm ( fun k => ∑ i : Fin 16, ∑ j : Fin 16, if sedMulTarget i j = k then sedMulSign i j * a i * b j else 0 ) from rfl ] ; erw [ show ( a * c ) = ( EuclideanSpace.equiv ( Fin 16 ) ℝ ).symm ( fun k => ∑ i : Fin 16, ∑ j : Fin 16, if sedMulTarget i j = k then sedMulSign i j * a i * c j else 0 ) from rfl ] ;
-  simp +decide [ mul_add, Finset.sum_add_distrib ];
+  exact show ∑ i, ∑ j, ( if sedMulTarget i j = k then sedMulSign i j * a i * ( b j + c j ) else 0 ) = ∑ i, ∑ j, ( if sedMulTarget i j = k then sedMulSign i j * a i * b j else 0 ) + ∑ i, ∑ j, ( if sedMulTarget i j = k then sedMulSign i j * a i * c j else 0 ) by rw [ ← Finset.sum_add_distrib ] ; exact Finset.sum_congr rfl fun i hi => by rw [ ← Finset.sum_add_distrib ] ; exact Finset.sum_congr rfl fun j hj => by split_ifs <;> ring;
+
+lemma sed_mul_right_distrib (a b c : Sed) : (a + b) * c = a * c + b * c := by
+  ext k;
+  convert ( show ∑ i : Fin 16, ∑ j : Fin 16, ( if sedMulTarget i j = k then sedMulSign i j * ( a i + b i ) * c j else 0 ) = ∑ i : Fin 16, ∑ j : Fin 16, ( if sedMulTarget i j = k then sedMulSign i j * a i * c j else 0 ) + ∑ i : Fin 16, ∑ j : Fin 16, ( if sedMulTarget i j = k then sedMulSign i j * b i * c j else 0 ) from ?_ ) using 1;
   simpa only [ ← Finset.sum_add_distrib ] using Finset.sum_congr rfl fun i hi => Finset.sum_congr rfl fun j hj => by split_ifs <;> ring;
 
-/-
-Right distributivity of sedenion multiplication.
--/
-lemma sed_mul_right_distrib (a b c : Sed) : (a + b) * c = a * c + b * c := by
-  -- By definition of multiplication in the sedenions, we can expand both sides.
-  have h_expand : ∀ k : Fin 16, ((a + b) * c) k = (a * c + b * c) k := by
-    intro k;
-    -- By definition of multiplication in the sedenions, we can expand both sides using the distributive property and the linearity of the sum.
-    have h_expand : ∀ k : Fin 16, ((a + b) * c) k = ∑ i : Fin 16, ∑ j : Fin 16, if sedMulTarget i j = k then sedMulSign i j * (a i + b i) * c j else 0 := by
-      exact?;
-    convert h_expand k using 1;
-    have h_expand : ∀ k : Fin 16, (a * c + b * c) k = ∑ i : Fin 16, ∑ j : Fin 16, (if sedMulTarget i j = k then sedMulSign i j * a i * c j else 0) + ∑ i : Fin 16, ∑ j : Fin 16, (if sedMulTarget i j = k then sedMulSign i j * b i * c j else 0) := by
-      aesop;
-    rw [ h_expand k, ← Finset.sum_add_distrib ] ; congr ; ext i ; rw [ ← Finset.sum_add_distrib ] ; congr ; ext j ; split_ifs <;> ring;
-  exact?
-
-/-
-Left scalar compatibility of sedenion multiplication.
--/
 lemma sed_mul_smul_left (r : ℝ) (a b : Sed) : (r • a) * b = r • (a * b) := by
   ext k;
-  -- Apply the definition of multiplication in Sed.
-  have h_mul_def : ∀ (a b : Sed) (k : Fin 16), (a * b).ofLp k = ∑ i, ∑ j, if sedMulTarget i j = k then sedMulSign i j * a.ofLp i * b.ofLp j else 0 := by
+  -- By definition of multiplication and scalar multiplication, we can expand both sides.
+  have h_expand : ∀ k, (r • a * b) k = ∑ i, ∑ j, if sedMulTarget i j = k then sedMulSign i j * (r * a i) * b j else 0 := by
     exact?;
-  simp +decide [ h_mul_def, mul_assoc, mul_comm, mul_left_comm, Finset.mul_sum _ _ _, Finset.sum_mul ]
+  convert h_expand k using 1;
+  convert congr_arg ( fun x : ℝ => r * x ) ( show ( a * b ).ofLp k = ∑ i, ∑ j, if sedMulTarget i j = k then sedMulSign i j * a i * b j else 0 from ?_ ) using 1;
+  · simp +decide [ mul_assoc, mul_left_comm, Finset.mul_sum _ _ _ ];
+  · exact?
 
-/-
-Right scalar compatibility of sedenion multiplication.
--/
 lemma sed_mul_smul_right (r : ℝ) (a b : Sed) : a * (r • b) = r • (a * b) := by
-  -- Apply the definition of multiplication in Sed.
-  have h_mul_def : ∀ (k : Fin 16), (a * (r • b)) k = ∑ (i : Fin 16), ∑ (j : Fin 16), (if sedMulTarget i j = k then sedMulSign i j * a i * (r • b) j else 0) := by
-    exact?;
-  have h_mul_def' : ∀ (k : Fin 16), (r • (a * b)) k = r * ∑ (i : Fin 16), ∑ (j : Fin 16), (if sedMulTarget i j = k then sedMulSign i j * a i * b j else 0) := by
-    intros k
-    simp [EuclideanSpace.equiv, Pi.smul_apply];
-    exact Or.inl rfl;
-  ext k; specialize h_mul_def k; specialize h_mul_def' k; simp_all +decide [ mul_assoc, mul_comm, mul_left_comm, Finset.mul_sum _ _ _ ] ;
+  ext k;
+  simp [instMulSed];
+  erw [ show ( a * r • b ).ofLp k = ∑ x : Fin 16, ∑ y : Fin 16, if sedMulTarget x y = k then sedMulSign x y * a x * ( r • b ) y else 0 from ?_, show ( a * b ).ofLp k = ∑ x : Fin 16, ∑ y : Fin 16, if sedMulTarget x y = k then sedMulSign x y * a x * b y else 0 from ?_ ];
+  · simp +decide [ mul_assoc, mul_left_comm, Finset.mul_sum _ _ _, mul_comm ];
+  · exact?;
+  · exact?
 
-/-
+/-!
 **Commutator Theorem** (mirror-spinor factorization).
 
 With the concrete definition `F t σ = F_base t + (σ − 1/2) • u_antisym`,
 the commutator `[F(t,σ), F(t,1−σ)]` factors as
 `2(σ − 1/2) • [u_antisym, F_base(t)]`.
-
-This is a purely algebraic identity following from bilinearity of
-sedenion multiplication. The `mirror_symmetry` hypothesis is not needed.
 -/
 theorem commutator_theorem_stmt
     (mirror_symmetry : ∀ t σ : ℝ,
@@ -718,102 +477,40 @@ theorem commutator_theorem_stmt
     (σ t : ℝ) :
     sed_comm (F t σ) (F t (1 - σ)) =
       (2 * (σ - 1/2)) • sed_comm u_antisym (F_base t) := by
-  unfold F;
-  -- Expand the commutator using the definitions of F t σ and F t (1 - σ).
+  unfold F
   apply eq_of_sub_eq_zero
-  simp [sed_comm, sed_mul_left_distrib, sed_mul_right_distrib, sed_mul_smul_left, sed_mul_smul_right];
-  ext i; norm_num; ring;
+  simp [sed_comm, sed_mul_left_distrib, sed_mul_right_distrib, sed_mul_smul_left, sed_mul_smul_right]
+  ext i; norm_num; ring
 
-/-
+/-!
 **Helper: Irrationality of log₃(2).**
-log(2)/log(3) is irrational since 2^q = 3^p is impossible for nonzero integers
-(by unique prime factorization).
-
-PROVIDED SOLUTION
-log(2)/log(3) is irrational. Suppose log(2)/log(3) = p/q for integers p, q with q ≠ 0. Then q * log(2) = p * log(3), so log(2^q) = log(3^p), hence 2^q = 3^p. But this is impossible for nonzero p, q since 2^q has only prime factor 2 and 3^p has only prime factor 3, contradicting unique prime factorization. The case p = 0 or q = 0 also leads to contradiction since log 2 ≠ 0 and log 3 ≠ 0.
-
-Key approach: Use `Irrational` definition, show that if log2/log3 = p/q then 2^q = 3^p which contradicts Nat.Prime 2 and Nat.Prime 3. Use Real.log_injOn_pos or Real.exp_log to convert between log equality and exponential equality.
 -/
 lemma log2_div_log3_irrational : Irrational (Real.log 2 / Real.log 3) := by
-  rw [ Irrational ] at *;
-  -- Assume for contradiction that $\frac{\log 2}{\log 3}$ is rational.
+  rw [Irrational] at *
   by_contra h
   obtain ⟨p, q, hq_pos, h_eq⟩ : ∃ p q : ℕ, q > 0 ∧ Real.log 2 / Real.log 3 = p / q := by
-    obtain ⟨ q, hq ⟩ := h; exact ⟨ q.num.natAbs, q.den, Nat.cast_pos.mpr q.pos, by simpa [ abs_of_nonneg ( Rat.num_nonneg.mpr ( show 0 ≤ q by exact_mod_cast hq.symm ▸ div_nonneg ( Real.log_nonneg ( by norm_num ) ) ( Real.log_nonneg ( by norm_num ) ) ) ), Rat.cast_def ] using hq.symm ⟩ ;
-  -- Then we have $2^q = 3^p$.
+    obtain ⟨ q, hq ⟩ := h
+    exact ⟨ q.num.natAbs, q.den, Nat.cast_pos.mpr q.pos, by
+      simpa [ abs_of_nonneg ( Rat.num_nonneg.mpr ( show 0 ≤ q by
+        exact_mod_cast hq.symm ▸ div_nonneg ( Real.log_nonneg ( by norm_num ) )
+          ( Real.log_nonneg ( by norm_num ) ) ) ), Rat.cast_def ] using hq.symm ⟩
   have h_exp : (2 : ℝ) ^ q = 3 ^ p := by
-    rw [ div_eq_div_iff ] at h_eq <;> try positivity;
-    rw [ ← Real.rpow_natCast, ← Real.rpow_natCast, Real.rpow_def_of_pos, Real.rpow_def_of_pos ] <;> norm_num ; linarith;
-  exact absurd h_exp ( mod_cast ne_of_apply_ne ( · % 2 ) ( by norm_num [ Nat.pow_mod, hq_pos.ne' ] ) )
+    rw [ div_eq_div_iff ] at h_eq <;> try positivity
+    rw [ ← Real.rpow_natCast, ← Real.rpow_natCast,
+         Real.rpow_def_of_pos, Real.rpow_def_of_pos ] <;> norm_num; linarith
+  exact absurd h_exp ( mod_cast ne_of_apply_ne ( · % 2 )
+    ( by norm_num [ Nat.pow_mod, hq_pos.ne' ] ) )
 
-/-
-PROBLEM
+/-!
 **Local Quadratic Exit.**
-At `t = 0`: `h(0) = 0`, `h'(0) = 0`, `h''(0) > 0`.
-Positive curvature forces immediate exit from the kernel plane.
-
-With the two-prime surrogate:
-- h(0) = sin(0)² + sin(0)² = 0
-- h'(0) = 2·log(2)·sin(0)·cos(0) + 2·log(3)·sin(0)·cos(0) = 0
-- h''(0) = 2·log(2)² + 2·log(3)² > 0
-
-PROVIDED SOLUTION
-h(t) = sin(t*log2)^2 + sin(t*log3)^2.
-
-Part 1: h(0) = sin(0)^2 + sin(0)^2 = 0. Use Real.sin_zero.
-
-Part 2: h'(0) = 0. h is the sum of two functions f(t) = sin(t*c)^2 where c = log2, log3. By chain rule, f'(t) = 2*c*sin(t*c)*cos(t*c). At t=0, sin(0) = 0 so f'(0) = 0. Use HasDerivAt to compute deriv h, then evaluate at 0.
-
-Actually, the simplest approach: show that h = fun t => sin(t*log2)^2 + sin(t*log3)^2, then compute derivatives using HasDerivAt for sin and cos composed with linear functions, and mul/pow.
-
-For deriv h 0 = 0:
-- HasDerivAt (fun t => Real.sin (t * c)) (c * Real.cos (0 * c)) 0 using HasDerivAt.sin and HasDerivAt.mul_const
-- HasDerivAt (fun t => Real.sin (t * c) ^ 2) (2 * Real.sin (0 * c) * (c * Real.cos (0 * c))) 0
-- At t=0: sin(0) = 0, so derivative = 0
-
-For h''(0) > 0:
-- h'(t) = 2*log2*sin(t*log2)*cos(t*log2) + 2*log3*sin(t*log3)*cos(t*log3)
-- Actually h'(t) can be rewritten using sin(2x) = 2sin(x)cos(x): h'(t) = log2*sin(2t*log2) + log3*sin(2t*log3)
-- h''(t) = 2*log2^2*cos(2t*log2) + 2*log3^2*cos(2t*log3)
-- h''(0) = 2*log2^2 + 2*log3^2 > 0
-
-This is conceptually straightforward but technically involved with HasDerivAt chains. Use:
-- Real.hasDerivAt_sin, Real.hasDerivAt_cos
-- HasDerivAt.pow, HasDerivAt.add
-- HasDerivAt.comp for the composition with linear maps
-- Real.sin_zero, Real.cos_zero, mul_zero, zero_mul for evaluation at 0
-- Real.log_pos (by norm_num : (1:ℝ) < 2) for positivity
 -/
 theorem local_quadratic_exit :
     h 0 = 0 ∧ deriv h 0 = 0 ∧ deriv (deriv h) 0 > 0 := by
-  unfold h; norm_num [ mul_comm ] ; ring_nf ; (
-  unfold deriv ; norm_num [ fderiv_apply_one_eq_deriv, mul_comm ] ; ring_nf ; positivity;);
+  unfold h; norm_num [mul_comm]; ring_nf
+  unfold deriv; norm_num [fderiv_apply_one_eq_deriv, mul_comm]; ring_nf; positivity
 
-/-
-PROBLEM
+/-!
 **Analytic Isolation Principle.**
-h(t) = sin(t·log 2)² + sin(t·log 3)² = 0 requires both sin terms to vanish.
-This means t·log 2 = kπ and t·log 3 = mπ for integers k, m.
-For t ≠ 0 this gives log(2)/log(3) = k/m, contradicting irrationality of log₃(2).
-
-PROVIDED SOLUTION
-h(t) = sin(t*log2)^2 + sin(t*log3)^2. We need h(t) > 0 for t ≠ 0.
-
-Since h(t) is a sum of squares, h(t) ≥ 0 always. It equals 0 iff both sin(t*log2) = 0 AND sin(t*log3) = 0.
-
-sin(t*log2) = 0 means t*log2 = k*π for some k ∈ ℤ.
-sin(t*log3) = 0 means t*log3 = m*π for some m ∈ ℤ.
-
-If t ≠ 0, then k ≠ 0 and m ≠ 0 (since log2 > 0 and log3 > 0, t*log2 = 0 iff t = 0).
-
-From t*log2 = k*π and t*log3 = m*π, divide: log2/log3 = k/m.
-But log2/log3 is irrational (by log2_div_log3_irrational). Contradiction.
-
-So for t ≠ 0, we cannot have both sin terms = 0, hence h(t) > 0.
-
-More precisely: assume h(t) = 0 for some t ≠ 0. Then sin(t*log2) = 0 and sin(t*log3) = 0. By Real.sin_eq_zero_iff, t*log2 = k*π and t*log3 = m*π for integers k, m. Since t ≠ 0 and log2 > 0, k ≠ 0. Similarly m ≠ 0. Then log2/log3 = (t*log2)/(t*log3) = (k*π)/(m*π) = k/m ∈ ℚ, contradicting irrationality.
-
-Use by_contra, push_neg, then extract the two sin = 0 conditions, get k and m from Real.sin_eq_zero_iff, compute the ratio, and apply log2_div_log3_irrational.
 -/
 theorem analytic_isolation :
     ∀ t : ℝ, t ≠ 0 → h t > 0 := by
@@ -821,62 +518,51 @@ theorem analytic_isolation :
   have h_sin_zero : Real.sin (t * Real.log 2) ≠ 0 ∨ Real.sin (t * Real.log 3) ≠ 0 := by
     by_contra! h_sin_zero
     have h_contra : ∃ k m : ℤ, t * Real.log 2 = k * Real.pi ∧ t * Real.log 3 = m * Real.pi := by
-      exact ⟨ Real.sin_eq_zero_iff.mp h_sin_zero.1 |> Classical.choose, Real.sin_eq_zero_iff.mp h_sin_zero.2 |> Classical.choose, by linarith [ Real.sin_eq_zero_iff.mp h_sin_zero.1 |> Classical.choose_spec ], by linarith [ Real.sin_eq_zero_iff.mp h_sin_zero.2 |> Classical.choose_spec ] ⟩
+      exact ⟨ Real.sin_eq_zero_iff.mp h_sin_zero.1 |> Classical.choose,
+              Real.sin_eq_zero_iff.mp h_sin_zero.2 |> Classical.choose,
+              by linarith [ Real.sin_eq_zero_iff.mp h_sin_zero.1 |> Classical.choose_spec ],
+              by linarith [ Real.sin_eq_zero_iff.mp h_sin_zero.2 |> Classical.choose_spec ] ⟩
     obtain ⟨k, m, hk, hm⟩ := h_contra
     have h_ratio : Real.log 2 / Real.log 3 = k / m := by
-      rw [ div_eq_div_iff ] <;> cases lt_or_gt_of_ne ht_ne_zero <;> cases lt_or_gt_of_ne ( show Real.log 2 ≠ 0 by positivity ) <;> cases lt_or_gt_of_ne ( show Real.log 3 ≠ 0 by positivity ) <;> nlinarith [ Real.pi_pos ] ;
-    have h_irr : Irrational (Real.log 2 / Real.log 3) := by
-      exact log2_div_log3_irrational
-    exact h_irr ⟨k / m, by
-      aesop⟩;
-  cases h_sin_zero <;> unfold h <;> positivity;
+      rw [ div_eq_div_iff ] <;>
+        cases lt_or_gt_of_ne ht_ne_zero <;>
+        cases lt_or_gt_of_ne ( show Real.log 2 ≠ 0 by positivity ) <;>
+        cases lt_or_gt_of_ne ( show Real.log 3 ≠ 0 by positivity ) <;>
+        nlinarith [ Real.pi_pos ]
+    exact log2_div_log3_irrational ⟨k / m, by aesop⟩
+  cases h_sin_zero <;> unfold h <;> positivity
 
-/-
-PROBLEM
-Elements of Ker have zero coordinates at indices other than 0, 4, 5.
-    In particular, coordinates 3 and 6 are zero.
+/-! ### Kernel Coordinate Lemma -/
 
-PROVIDED SOLUTION
-x ∈ Ker = span{sedBasis 0, u_antisym}. By Submodule.mem_span_pair, x = a • sedBasis 0 + b • u_antisym for some a, b : ℝ.
-
-sedBasis 0 = EuclideanSpace.single 0 1, so (sedBasis 0) i = if i = 0 then 1 else 0.
-u_antisym = (1/√2) • (sedBasis 4 - sedBasis 5), so u_antisym i = if i = 4 then 1/√2 else if i = 5 then -1/√2 else 0.
-
-For i ≠ 0, 4, 5: x i = a * 0 + b * 0 = 0.
-
-Use EuclideanSpace.single_apply (or PiLp.equiv_single) to evaluate the basis vectors at specific indices. The key is showing (a • sedBasis 0 + b • u_antisym) i = 0 when i ≠ 0, 4, 5.
+/--
+Elements of `Ker = span{e₀, u_antisym}` have zero coordinates at indices
+other than {0, 4, 5, 10, 11}.
+Since `u_antisym = (1/√2)(e₄ − e₅ − e₁₁ + e₁₀)`, members of `Ker` are
+`a • e₀ + b • u_antisym`, which have non-zero only at {0, 4, 5, 10, 11}.
 -/
 lemma Ker_coord_eq_zero (x : Sed) (hx : x ∈ Ker)
-    (i : Fin 16) (hi0 : i ≠ 0) (hi4 : i ≠ 4) (hi5 : i ≠ 5) :
+    (i : Fin 16) (hi0 : i ≠ 0) (hi4 : i ≠ 4) (hi5 : i ≠ 5)
+    (hi10 : i ≠ 10) (hi11 : i ≠ 11) :
     x i = 0 := by
   obtain ⟨a, b, hx⟩ : ∃ a b : ℝ, x = a • sedBasis 0 + b • u_antisym := by
-    rw [ Submodule.mem_span_pair ] at hx ; tauto
-  generalize_proofs at *;
-  unfold u_antisym at hx; fin_cases i <;> simp_all +decide [ sedBasis ] ;
+    rw [Submodule.mem_span_pair] at hx; tauto
+  unfold u_antisym at hx
+  fin_cases i <;> simp_all +decide [sedBasis]
 
-/-
-PROBLEM
-F_base(t) ∈ Ker implies h(t) = 0: if both sin components vanish
-    (forced by the coordinate constraints of Ker), h is zero.
-
-PROVIDED SOLUTION
-Use Ker_coord_eq_zero to get that (F_base t) at indices 3 and 6 are 0 (since 3 ≠ 0,4,5 and 6 ≠ 0,4,5).
-
-Then compute that (F_base t) 3 = sin(t*log2) and (F_base t) 6 = sin(t*log3). This follows from the definition F_base t = cos(t*log2) • sedBasis 0 + sin(t*log2) • sedBasis 3 + sin(t*log3) • sedBasis 6, where sedBasis i j = if i = j then 1 else 0 (EuclideanSpace.single).
-
-So sin(t*log2) = 0 and sin(t*log3) = 0, hence h t = 0^2 + 0^2 = 0.
+/--
+`F_base(t) ∈ Ker` implies `h(t) = 0`.
+F_base has sin(t·log2) at index 3 and sin(t·log3) at index 6,
+both outside {0,4,5,10,11}, so both must be zero.
 -/
 lemma F_base_mem_Ker_imp_h_zero (t : ℝ) (hmem : F_base t ∈ Ker) :
     h t = 0 := by
-  unfold h; exact (by
-  -- By definition of $F_base$, we know that $F_base t = \cos(t \log 2) \cdot sedBasis 0 + \sin(t \log 2) \cdot sedBasis 3 + \sin(t \log 3) \cdot sedBasis 6$.
-  have h_F_base : F_base t = Real.cos (t * Real.log 2) • sedBasis 0 + Real.sin (t * Real.log 2) • sedBasis 3 + Real.sin (t * Real.log 3) • sedBasis 6 := by
-    rfl;
-  -- By definition of $Ker$, we know that $F_base t$ has zero coordinates at indices 3 and 6.
-  have h_coords : (F_base t) 3 = 0 ∧ (F_base t) 6 = 0 := by
-    apply And.intro (Ker_coord_eq_zero (F_base t) hmem 3 (by decide) (by decide) (by decide)) (Ker_coord_eq_zero (F_base t) hmem 6 (by decide) (by decide) (by decide))
-  generalize_proofs at *; (
-  simp_all +decide [ sedBasis ]));
+  have h3 := Ker_coord_eq_zero (F_base t) hmem 3
+    (by decide) (by decide) (by decide) (by decide) (by decide)
+  have h6 := Ker_coord_eq_zero (F_base t) hmem 6
+    (by decide) (by decide) (by decide) (by decide) (by decide)
+  unfold F_base at h3 h6
+  simp +decide [sedBasis] at h3 h6
+  unfold h; rw [h3, h6]; ring
 
 /-! ================================================================
     Part 3: Main Theorems
@@ -896,8 +582,8 @@ lemma Ker_nonempty : (Ker : Set Sed).Nonempty :=
 
 /--
 **The Gap Theorem.**
-`F_base(t)` exits the 2D kernel for all `t ≠ 0`, using analyticity
-and local quadratic exit. Proved from `analytic_isolation`. -/
+`F_base(t)` exits the 2D kernel for all `t ≠ 0`.
+-/
 theorem F_base_not_in_kernel (t : ℝ) (ht : t ≠ 0) :
     F_base t ∉ Ker := by
   intro hmem
@@ -905,14 +591,49 @@ theorem F_base_not_in_kernel (t : ℝ) (ht : t ≠ 0) :
   have hzero : h t = 0 := F_base_mem_Ker_imp_h_zero t hmem
   linarith
 
+/-!
+### Direct Commutator Coordinate Extraction
+
+The commutator `[u_antisym, F_base t]`, when set to zero, forces
+both `sin(t·log 2) = 0` and `cos(t·log 2) = 0`, which contradicts
+`sin² + cos² = 1`. This gives a DIRECT proof of `critical_line_uniqueness`
+without needing residKer/projKer/infDist machinery.
+-/
+
+/-
+If `[u_antisym, F_base t] = 0`, then `h(t) = 0`.
+
+The commutator at coordinate 6 equals `-(2√2)·sin(t·log 2)`,
+and at coordinate 3 equals `(2√2)·sin(t·log 3)`.
+Both vanishing gives `h(t) = sin²(t·log 2) + sin²(t·log 3) = 0`.
+-/
+lemma sed_comm_eq_zero_imp_h_zero (t : ℝ)
+    (hcomm : sed_comm u_antisym (F_base t) = 0) : h t = 0 := by
+  -- Extract coordinates 3 and 6 from the commutator being zero
+  have h3 : (sed_comm u_antisym (F_base t)) (3 : Fin 16) = 0 := by
+    rw [hcomm]; rfl
+  have h6 : (sed_comm u_antisym (F_base t)) (6 : Fin 16) = 0 := by
+    rw [hcomm]; rfl
+  -- These coordinates, when expanded, give sin(t·log3) = 0 and sin(t·log2) = 0
+  -- via the sedenion multiplication table
+  unfold h;
+  unfold sed_comm at h3 h6;
+  -- By definition of `u_antisym` and `F_base`, we can expand the commutator.
+  have h_expand : ∀ i, (u_antisym * F_base t - F_base t * u_antisym) i = ∑ j, ∑ k, (if sedMulTarget j k = i then sedMulSign j k else 0) * (u_antisym j * F_base t k - F_base t j * u_antisym k) := by
+    intro i
+    simp [instMulSed];
+    rw [ show ( u_antisym * F_base t ).ofLp i = ∑ x, ∑ x_1, if sedMulTarget x x_1 = i then sedMulSign x x_1 * u_antisym.ofLp x * ( F_base t ).ofLp x_1 else 0 from ?_, show ( F_base t * u_antisym ).ofLp i = ∑ x, ∑ x_1, if sedMulTarget x x_1 = i then sedMulSign x x_1 * ( F_base t ).ofLp x * u_antisym.ofLp x_1 else 0 from ?_ ];
+    · rw [ ← Finset.sum_sub_distrib ] ; congr ; ext ; rw [ ← Finset.sum_sub_distrib ] ; congr ; ext ; split_ifs <;> ring;
+    · convert congr_arg ( fun x : Sed => x i ) ( show F_base t * u_antisym = _ from rfl ) using 1;
+    · convert congr_arg ( fun x : Sed => x i ) ( show u_antisym * F_base t = _ from rfl ) using 1;
+  norm_num [ h_expand ] at h3 h6 ⊢;
+  unfold u_antisym F_base at *;
+  simp +decide [ Fin.sum_univ_succ, sedMulTarget, sedMulSign, sedBasis ] at h3 h6 ⊢;
+  grind
+
 /--
 **THE MAIN RESULT: Critical Line Uniqueness.**
 If the commutator vanishes for all `t ≠ 0`, then `σ = 1/2`.
-Proved from `commutator_theorem_stmt`, `commutator_exact_identity`,
-`F_base_not_in_kernel`.
-
-The `mirror_symmetry` hypothesis encodes the Riemann Functional Equation
-in sedenionic form — the one bridge to analytic number theory (Paper 2).
 -/
 theorem critical_line_uniqueness (σ : ℝ)
     (mirror_symmetry : ∀ t σ : ℝ,
@@ -929,15 +650,8 @@ theorem critical_line_uniqueness (σ : ℝ)
       rcases smul_eq_zero.mp h1 with hc | hc
       · exact absurd hc hcoeff
       · exact hc
-    have hnorm : ‖sed_comm u_antisym (F_base 1)‖ = 0 := by
-      rw [hcomm, norm_zero]
-    rw [commutator_exact_identity] at hnorm
-    have hdist : Metric.infDist (F_base 1) (Ker : Set Sed) = 0 := by
-      have : 0 ≤ Metric.infDist (F_base 1) (Ker : Set Sed) := Metric.infDist_nonneg
-      linarith
-    have hmem : F_base 1 ∈ Ker :=
-      (Ker_isClosed.mem_iff_infDist_zero Ker_nonempty).mpr hdist
-    exact F_base_not_in_kernel 1 one_ne_zero hmem
+    have hzero : h 1 = 0 := sed_comm_eq_zero_imp_h_zero 1 hcomm
+    linarith [analytic_isolation 1 one_ne_zero]
   · intro hσ t _
     rw [commutator_theorem_stmt mirror_symmetry, hσ]
     simp
