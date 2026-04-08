@@ -1,5 +1,5 @@
 name = "RequestProject"
-defaultTargets = ["AsymptoticRigidity", "MirrorSymmetry", "MirrorSymmetryHelper", "NoetherDuality", "RHForcingArgument", "UnityConstraint", "UniversalPerimeter", "SymmetryBridge"]
+defaultTargets = ["AsymptoticRigidity", "MirrorSymmetry", "MirrorSymmetryHelper", "NoetherDuality", "RHForcingArgument", "UnityConstraint", "UniversalPerimeter", "SymmetryBridge", "PrimeEmbedding"]
 
 [[require]]
 name = "mathlib"
@@ -37,3 +37,7 @@ globs = ["UniversalPerimeter"]
 [[lean_lib]]
 name = "SymmetryBridge"
 globs = ["SymmetryBridge"]
+
+[[lean_lib]]
+name = "PrimeEmbedding"
+globs = ["PrimeEmbedding"]
