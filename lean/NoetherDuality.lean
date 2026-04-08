@@ -12,6 +12,9 @@ duality where σ = 1/2 is the unique conserved manifold.
 
 noncomputable section
 
+set_option maxHeartbeats 800000
+set_option linter.unusedSimpArgs false
+
 open Real InnerProductSpace
 
 /-- The Mirror Map: An involution on the 16 indices. -/
@@ -43,12 +46,46 @@ def RiemannFunctionalSymmetry (f : ℂ → ℂ) : Prop :=
   ∀ s, f s = f (1 - s)
 
 /--
-Axiom: The sedenionic lift F is constructed such that its
-coordinate-wise mirror symmetry directly reflects the analytic
-symmetry of the zeta function.
+**The Symmetry Bridge — Phase 62 Proved Theorem.**
+
+`mirror_identity` holds for the Phase 61 definitions of `F_base` and
+`u_antisym` by direct coordinate computation:
+- `F_base` has conjugate-pair structure → `F_base(t)(i) = F_base(t)(15−i)`
+- `u_antisym` is mirror-antisymmetric → `u_antisym(i) = −u_antisym(15−i)`
+- Therefore `F(t,1−σ)(i) = F(t,σ)(15−i)` for all t, σ, i.
+
+**Route A discharge:** `_h_zeta` is intentionally unused — `mirror_identity`
+follows from the algebraic structure of the definitions alone. The analytic
+identification (proving that `RiemannFunctionalSymmetry f` IS the sedenion
+mirror symmetry via the prime exponential embedding) is the Phase 63 target.
 -/
-axiom symmetry_bridge {f : ℂ → ℂ} (h_zeta : RiemannFunctionalSymmetry f) :
-  mirror_identity
+theorem symmetry_bridge {f : ℂ → ℂ} (_h_zeta : RiemannFunctionalSymmetry f) :
+    mirror_identity := by
+  -- F_base is mirror-symmetric: F_base(t)(i) = F_base(t)(mirror_map i)
+  have F_base_sym : ∀ (t : ℝ) (i : Fin 16),
+      (F_base t) i = (F_base t) (mirror_map i) := by
+    intro t i
+    simp only [F_base, map_add, map_smul, Pi.add_apply,
+               sedBasis, mirror_map]
+    fin_cases i <;> simp +decide
+  -- u_antisym is mirror-antisymmetric: u_antisym(i) = −u_antisym(mirror_map i)
+  have u_antisym_sym : ∀ (i : Fin 16),
+      u_antisym i = -(u_antisym (mirror_map i)) := by
+    intro i
+    simp only [u_antisym, sedBasis, mirror_map]
+    fin_cases i <;> simp +decide
+  -- Main proof: unfold F, apply both symmetry lemmas, close by ring
+  intro t σ i
+  show (F t (1 - σ)).ofLp i = (F t σ).ofLp ((15 : Fin 16) - i)
+  have hmm : (15 : Fin 16) - i = mirror_map i := by
+    ext; simp [mirror_map]; omega
+  rw [hmm]
+  simp only [F, WithLp.ofLp_add, WithLp.ofLp_smul, Pi.add_apply, Pi.smul_apply]
+  rw [F_base_sym t i, u_antisym_sym i, smul_neg]
+  congr 1
+  show -((1 - σ - 1 / 2) • u_antisym.ofLp (mirror_map i)) =
+       (σ - 1 / 2) • u_antisym.ofLp (mirror_map i)
+  rw [show (1 - σ - 1 / 2 : ℝ) = -((σ - 1 / 2)) from by ring, neg_smul, neg_neg]
 
 /--
 **Noetherian Conservation: Energy Stability on the Critical Line.**
