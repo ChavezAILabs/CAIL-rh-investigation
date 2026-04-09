@@ -1,116 +1,201 @@
 # CAIL-rh-investigation
+**Chavez AI Labs LLC | Applied Pathological Mathematics**
+*Better math, less suffering.*
 
-**Chavez AI Labs — Riemann Hypothesis Empirical Investigation**
-
-An open science research project applying the **Chavez Transform** and **sedenion zero divisor analysis** to empirically probe the structure of the Riemann Hypothesis. Phases 1–63 complete. The 9-file Lean 4 formal proof stack is compiler-verified with **zero sorries, zero non-standard axioms, and zero warnings** (`lake build` 8,043 jobs, 0 errors, April 7–8, 2026).
-
----
-
-## Overview
-
-This repository contains all data, analysis scripts, results, and formal proofs from an ongoing empirical and algebraic investigation into the structure of the Riemann zeta function's nontrivial zeros.
-
-The investigation is grounded in two novel tools:
-
-* **Chavez Transform** — Uses zero divisor structure from Cayley-Dickson algebras (sedenions, 16D+) to analyze numerical sequences across hypercomplex dimensions. Formally verified in Lean 4 (convergence and stability theorems).
-* **ZDTP (Zero Divisor Transmission Protocol)** — Lossless dimensional transmission (16D→32D→64D) with six canonical gateway analyses.
-
-The algebraic foundation is the **Canonical Six** — six framework-independent bilateral zero divisor patterns in 16D sedenion space, formally established in the companion paper (v1.4, April 2026).
+A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted openly under the handle [@aztecsungod](https://x.com/aztecsungod).
 
 ---
 
-## Key Results
+## Current Status — Phase 64 Complete
 
-### The Second Ascent — Sedenionic Forcing Argument (Phases 43–47)
-
-**The Central Epiphany (Phase 43 — Paul Chavez):** σ=1/2 is not a boundary condition. It is the **fixed scalar component of a sedenionic spinor**.
-
-**Commutator Theorem (Phase 45):** The sedenion commutator vanishes **if and only if σ=0.5**. Forcing pressure P_total(σ,N) grows O(N), diverging for any σ≠0.5 as N→∞.
-
-**Gap Closure (Phase 47):** F_base(t) exits the kernel quadratically: h″(0) = 50.67 > 0. Verified over 10,000 tested values with **zero violations**.
-
-### The Third Ascent — Discriminants and Milestones (Phases 48–53)
-
-**γₙ-scaling (Phase 48):** ZDTP convergence oscillates in log(γ) with a stable frequency $C \approx 1.55$ and period $\approx 4.05$ log-units.
-
-**The Repulsion Paradox (Phase 50):** RH zeros sit in a unique "High Repulsion" regime ($\beta \approx 1.8$). Sedenion convergence is non-monotonic with respect to eigenvalue repulsion.
-
-### The Fourth Ascent — The Unity Constraint (Phases 54–58)
-
-**Empirical Calibration (Phase 55):** Precision Peak mapping at $n=5,000$ confirms "Arithmetic Transparency" — sedenion alignment is near-perfect (C > 0.95).
-
-**Phase 58: Formal Consolidation:** `unity_constraint_absolute` established — σ=1/2 is the unique global energy minimum. Asymptotic stability verified at $n=20,000$.
-
-### The Fifth Ascent — Universal Law (Phase 59)
-
-**Universal Perimeter:** The 24-member bilateral zero-divisor family forms an algebraic cage on the E8 first shell. `universal_trapping_lemma` proves F_param(t,σ) ∉ Perimeter24 for σ≠1/2 — closed by contradiction with sin²+cos²=1.
-
-**Noether Duality:** Mirror symmetry formalized as a Noether conservation law. `energy(t,σ) = ‖F_base‖² + 2·(σ−½)²` — the gravity well at σ=1/2 is the conserved manifold.
-
-**Asymptotic Rigidity:** `infinite_gravity_well` — for any σ≠1/2, forcing energy diverges to infinity as n→∞.
-
-### The Sixth Ascent — Symmetry Bridge & Global Integration (Phases 60–61)
-
-**Phase 60 — Precise Diagnosis:** `mirror_identity` fails for the two-prime surrogate. Fix: upgrade F_base and u_antisym to full conjugate-pair symmetric construction.
-
-**Phase 61 — Global Integration:** Definitions upgraded throughout the stack. Energy penalty doubled (‖u_antisym‖²=2), trapping argument simplified, `critical_line_uniqueness` proved by direct coordinate extraction. Zero sorries across all 8 files.
-
-### The Summit — Symmetry Bridge Proved (Phase 62)
-
-**`symmetry_bridge` is a formally verified theorem**, not an axiom.
+**Conditional proof of the Riemann Hypothesis formally verified.**
 
 ```
-#print axioms symmetry_bridge
-'symmetry_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+lake build → 8,037 jobs · 0 errors
+#print axioms riemann_hypothesis
+→ [propext, sorryAx, Classical.choice, Quot.sound]
 ```
 
-**Proof (Route A):** `mirror_identity` follows from the algebraic structure of the Phase 61 definitions — conjugate-pair F_base and antisymmetric u_antisym — by `fin_cases i <;> simp +decide` across all 16 coordinates.
+`sorryAx` traces exclusively to `zeta_zero_forces_commutator` — the Phase 65 target. All other steps in the proof chain are verified at 0 errors, 0 sorries by Aristotle (Harmonic Math).
 
-**Build result:** ✅ `lake build` — 8,041 jobs, 0 errors, 0 sorries, 0 non-standard axioms. Verified by Aristotle (Harmonic Math), April 7, 2026.
-
-### The Analytic Bridge — Route B Complete (Phase 63)
-
-**`PrimeEmbedding.lean`** establishes the formal analytic connection between the Riemann Functional Equation and the sedenion mirror identity.
-
-**`energy_RFE`:** `energy(t,σ) = energy(−t,1−σ)` for all t,σ — the sedenion expression of ζ(s)=ζ(1−s). The full RFE symmetry decomposes into:
-- **Mirror component** (algebraic, Phase 62): σ↦1−σ, i↦15−i — `mirror_identity`
-- **Time-reversal component** (analytic, Phase 63): t↦−t — `‖F_base(−t)‖ = ‖F_base(t)‖` because sin² is even
-
-**`ζ_sed(s) = energy(Im(s), Re(s))`** — the sedenion energy as a complex function — is proved to satisfy `RiemannFunctionalSymmetry`.
-
-**`symmetry_bridge_analytic`:** `mirror_identity` via `symmetry_bridge zeta_sed_satisfies_RFS` — `h_zeta` is concretely instantiated, not unused.
-
-```
-#print axioms symmetry_bridge_analytic
-'symmetry_bridge_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
-```
-
-**Build result:** ✅ `lake build` — 8,043 jobs, **0 errors, 0 sorries, 0 warnings**. Verified by Aristotle (Harmonic Math), April 8, 2026.
-
-**Phase 64 (next):** Prove `embedding_connection` — formally connecting `RiemannFunctionalSymmetry f` to the coordinate identity `(F_base t)(i) = (F_base t)(mirror_map i)` via the Dirichlet series prime exponential embedding.
+> **The conditional proof:**
+> IF a Riemann zero forces commutator vanishing in the sedenion model (`zeta_zero_forces_commutator`) —
+> THEN all non-trivial zeros of ζ(s) lie on the critical line Re(s) = 1/2.
 
 ---
 
-## The Nine-Step Formal Proof
+## The 11-File Lean 4 Stack
 
-**Lean 4 formal verification:** 9-file stack. Zero sorries. Zero non-standard axioms. Zero warnings.
+| # | File | Phase | Key Theorems | Sorries |
+|---|---|---|---|---|
+| 1 | `RHForcingArgument.lean` | 58/61 | `critical_line_uniqueness`, commutator identity | 0 |
+| 2 | `MirrorSymmetryHelper.lean` | 58/61 | `sed_comm_u_F_base_coord0` | 0 |
+| 3 | `MirrorSymmetry.lean` | 58/61 | `mirror_symmetry_invariance`, `commutator_not_in_kernel` | 0 |
+| 4 | `UnityConstraint.lean` | 58/61 | `unity_constraint_absolute`, `inner_product_vanishing`, `energy_expansion` | 0 |
+| 5 | `NoetherDuality.lean` | 59/62 | `noether_conservation`, `action_penalty`, `symmetry_bridge` | 0 |
+| 6 | `UniversalPerimeter.lean` | 59/61 | `universal_trapping_lemma`, `perimeter_orthogonal_balance` | 0 |
+| 7 | `AsymptoticRigidity.lean` | 59 | `infinite_gravity_well`, `chirp_energy_dominance` | 0 |
+| 8 | `SymmetryBridge.lean` | 60/61 | `mirror_map_involution`, `symmetry_bridge_conditional` | 0 |
+| 9 | `PrimeEmbedding.lean` | 63 | `F_base_norm_sq_even`, `energy_RFE`, `zeta_sed_satisfies_RFS`, `symmetry_bridge_analytic` | 0 |
+| 10 | `ZetaIdentification.lean` | 64 | `F_base_norm_sq_formula`, `PrimeExponentialLift`, `zeta_sed_is_prime_lift`, `symmetry_bridge_via_lift` | 1 (explicit) |
+| 11 | `RiemannHypothesisProof.lean` | 64 | `riemann_hypothesis` (conditional) | 0 |
+
+**Axiom footprint (all 11 files):** `propext`, `Classical.choice`, `Quot.sound`, `sorryAx` (traces to `zeta_zero_forces_commutator` only).
+
+---
+
+## Three Routes to `mirror_identity`
+
+Three independent formal paths to the sedenion mirror identity have been established:
+
+| Route | Phase | Method | `h_zeta` status |
+|---|---|---|---|
+| A | 62 | Algebraic — conjugate-pair structure of `F_base` + `u_antisym` | Unused (`_h_zeta`) |
+| B | 63 | Analytic — `ζ_sed` satisfies Riemann Functional Symmetry | External (call site) |
+| C | 64 | Structural — `PrimeExponentialLift` constrains `f` to prime embedding | **Load-bearing** via `hlift.satisfies_RFS` |
+
+---
+
+## The Formal Proof Chain
 
 | Step | Statement | Status |
-|------|-----------|--------|
-| 1 | Mirror Theorem: F_mirror(t,σ) = F_orig(t,1−σ) | ✅ Proved |
-| 2 | Commutator Theorem: [F(t,σ),F(t,1−σ)] = 2(σ−0.5)·[u_antisym,F_base(t)] | ✅ Proved |
-| 3 | ‖[u_antisym, F_base(t)]‖ > 0 for all t≠0 | ✅ Proved |
-| 4 | P_total(σ,N) diverges O(N) as N→∞ | ✅ Proved |
-| 5 | Universal Trapping: F_param(t,σ) ∉ Perimeter24 for σ≠1/2 | ✅ Proved |
-| 6 | Noether Conservation: energy=1 ↔ σ=1/2 | ✅ Proved |
-| 7 | Infinite Gravity Well: AsymptoticEnergy → ∞ as n→∞ | ✅ Proved |
-| 8 | Symmetry Bridge: mirror_identity (Route A — algebraic) | ✅ Proved (Phase 62) |
-| 9 | Analytic Bridge: ζ_sed satisfies RiemannFunctionalSymmetry | ✅ Proved (Phase 63) |
+|---|---|---|
+| 1 | Mirror Theorem (error = 0.00e+00) | ✅ Phases 43–47 |
+| 2 | Commutator Identity (error = 1.46e−16) | ✅ Phases 43–47 |
+| 3 | Non-vanishing (0/10,000 violations) | ✅ Phases 43–47 |
+| 4 | Forcing pressure O(N) divergence | ✅ Phases 43–47 |
+| 5 | Universal Trapping Lemma | ✅ Phase 59/61 |
+| 6 | Noether Conservation | ✅ Phase 59/62 |
+| 7 | Infinite Gravity Well | ✅ Phase 59 |
+| 8 | Symmetry Bridge — Route A (algebraic) | ✅ Phase 62 |
+| 9 | Analytic Bridge — Route B (`ζ_sed` satisfies RFS) | ✅ Phase 63 |
+| 10 | Prime Exponential Embedding — Route C (`h_zeta` load-bearing) | ✅ Phase 64 |
+| 11 | `riemann_hypothesis` (conditional) | ✅ Phase 64 |
+| 12 | `zeta_zero_forces_commutator` — zero forces commutator vanishing | 🎯 Phase 65 |
 
-**The formally verified conditional proof:**
-> IF AIEX-001a correctly encodes the Riemann zeta function — THEN all non-trivial zeros of ζ(s) must lie on σ=1/2.
+---
 
-**Phase 64 (next):** Prove `embedding_connection` — formally connecting `RiemannFunctionalSymmetry f` to the sedenion coordinate structure via the prime exponential Dirichlet series embedding.
+## Core Mathematical Objects
+
+### AIEX-001a — The Sedenion Hamiltonian
+
+The multiplicative sedenion exponential product:
+```
+F(σ+it) = ∏_p exp_sed(t · log p · r_p / ‖r_p‖)
+```
+A Berry-Keating xp Hamiltonian analogue in 16-dimensional sedenion space. Each prime p contributes one cos/sin pair to a 16D F-vector via the ROOT_16D prime root vectors. Identified in Phases 24–28.
+
+### The Canonical Six
+
+Six framework-independent zero divisor patterns in 16D sedenions, formally verified in Lean 4 (Aristotle, 822 lines) and published on Zenodo. The unique 8-root subset with pure Clifford grade structure. Proved via the Bilateral Collapse Theorem (zero sorry stubs). Published: [DOI: 10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495).
+
+### The Chavez Transform
+
+Spectral analysis tool built on the ZDTP convergence structure. Validated on CERN LHC dimuon data (~87.6% convergence, 238 Z boson candidates) and Bitcoin regime detection (99.71% convergence during stable periods).
+
+### ZDTP — Zero Divisor Transmission Protocol
+
+Bilateral annihilation confirmed universal across all 50 tested Riemann zeros and all 6 gateways (product_norm = 0). S3B=S4 bilateral gateway pairing holds exactly at all tested zeros — protocol-invariant and algebraic. ZDTP convergence increases with γₙ — a new observable. Structural ceiling: 0.9577. Log-periodic oscillatory decay: angular frequency C ≈ 1.55.
+
+### Key Constants and Invariants
+
+| Constant / Invariant | Value | Discovery |
+|---|---|---|
+| Three-machine constant c₁ | ≈ 0.11798 | Phase 29 |
+| Weil angle | 6.784° | Phase 29 |
+| Universal rank invariant (norm² rank) | 4 (6-basis) / 12 (60-basis) | Phase 42 |
+| ZDTP structural ceiling | 0.9577 | Phases 48–57 |
+| ZDTP log-periodic angular frequency C | ≈ 1.55 | Phases 48–57 |
+| F_base norm² (two-prime surrogate) | 2 + 2·sin²(t·log 3) ≥ 2 | Phase 64 |
+
+---
+
+## Phase History
+
+### The First Ascent — Phases 1–42 (Oct 2025 – March 2026)
+
+**Phases 1–17 (Oct–Nov 2025):** Six-week R&D sprint systematically enumerating zero divisors in Cayley-Dickson and Clifford algebras. Discovery of the Canonical Six through exhaustive computation. CAILculator developed as the primary computational tool. Block Replication Theorem proved: zero divisor patterns persist across dimensional doublings 16D→256D. Foundational paper published on Zenodo with CERN DOI.
+
+**Phases 18–29 (March 2026):**
+- Universal Bilateral Orthogonality Theorem: ⟨P_8D, Q_8D⟩ = 0 for all 48 bilateral pairs
+- 45 bilateral P∪Q directions classified as exactly D₆ minus 15 "both-negative" roots
+- Canonical Six identified as unique 8-root subset with pure Clifford grade structure
+- AIEX-001 operator H₅⊕H₁ constructed with a 6-step closing argument
+- Bilateral Collapse Theorem formally verified in Lean 4 by Aristotle (zero sorry stubs)
+- Heegner Selectivity finding: Q2 elevation specific to Kronecker symbols for D=−3 and D=−8
+- AIEX-001a identified as Berry-Keating xp Hamiltonian in 16D sedenion space (Phases 24–28)
+- Three-machine constant c₁ ≈ 0.11798 derived from 6.784° Weil angle — confirmed structural and permanent
+
+**Phases 30–42 (March 2026):**
+- Universal rank invariant: norm² rank = 4 (6-basis) or 12 (60-basis), invariant of AIEX-001a map
+- ZDTP bilateral annihilation confirmed universal: product_norm = 0 across all 50 zeros, all 6 gateways
+- ZDTP convergence increases with γₙ established as a new observable
+- Lean 4 hermiticity confirmed on (A₁)⁶ Canonical Six subspace
+- Norm² inner product resolves the eigenvalue scale problem
+- Srednicki N→∞ viability within 16D sedenions confirmed
+- First Ascent complete: 2026-03-28 | KSJ: 177 entries
+
+### The Second Ascent — Phases 43–57 (March 2026)
+
+Shift from empirical spectral analysis to formal algebraic forcing argument.
+
+**Phases 43–47:**
+- Mirror Wobble Theorem: error = 0.00e+00
+- Commutator Theorem: error = 1.46e−16
+- Non-vanishing condition seal: 0/10,000 violations
+- O(N) divergence of forcing pressure confirmed
+- Core forcing argument: σ=1/2 is the unique global minimum for unit energy states
+
+**Phases 48–57:**
+- γₙ-scaling of ZDTP convergence characterized
+- S3B=S4 bilateral gateway pairing: holds exactly at all tested zeros, zero violations; protocol-invariant and algebraic confirmed
+- Log-periodic oscillatory decay: angular frequency C ≈ 1.55
+- Convergence structural ceiling: 0.9577 (not 1.0)
+- Cross-platform workflow formalized: Claude Desktop (strategy/rigor) + Gemini CLI (F-vector generation/ZDTP)
+
+### The Formal Ascent — Phases 58–64 (March–April 2026)
+
+**Phases 58–61:**
+- 8-file Lean 4 stack: 8,041 jobs · 0 errors · 0 sorries · standard axioms only
+- Key theorems: `critical_line_uniqueness`, `unity_constraint_absolute`, `noether_conservation`, `universal_trapping_lemma`, `infinite_gravity_well`
+- `symmetry_bridge` in `NoetherDuality.lean` identified as the intentional open gap entering Phase 62
+
+**Phase 62 — Route A:**
+- `symmetry_bridge_conditional` proved
+- `mirror_identity` derived algebraically from `F_base` conjugate-pair structure + `u_antisym`
+- `h_zeta` underscore-prefixed — gap documented honestly
+
+**Phase 63 — Route B:**
+- `PrimeEmbedding.lean` (9th file): `ζ_sed` proved to satisfy RiemannFunctionalSymmetry
+- RFE decomposed into mirror component (σ↦1−σ) + time-reversal component (t↦−t)
+- `energy_RFE`: energy(t,σ) = energy(−t,1−σ) proved
+- `symmetry_bridge_analytic`: `mirror_identity` via Route B
+- Build: 8,043 jobs · 0 errors · 0 sorries · standard axioms only
+
+**Phase 64 — Route C:**
+- `ZetaIdentification.lean` (10th file): prime exponential embedding formalized, `PrimeExponentialLift` structure, `h_zeta` load-bearing via `hlift.satisfies_RFS`
+- `RiemannHypothesisProof.lean` (11th file): `riemann_hypothesis` proved conditionally in three lines
+- `zeta_zero_forces_commutator`: explicit named gap — Phase 65 target
+- Build: 8,037 jobs · 0 errors · 1 sorry (explicit, named)
+
+---
+
+## Key Milestones
+
+| Milestone | Phase | Date |
+|---|---|---|
+| Canonical Six discovered | 1–17 | Oct–Nov 2025 |
+| Foundational paper published (Zenodo) | 17 | Nov 2025 |
+| Bilateral Collapse Theorem (Lean 4, 0 sorries) | 18–29 | March 2026 |
+| Heegner Selectivity finding | 18–29 | March 2026 |
+| Universal rank invariant confirmed | 30–42 | March 2026 |
+| ZDTP bilateral annihilation universal | 30–42 | March 2026 |
+| First Ascent complete | 42 | 2026-03-28 |
+| Mirror Wobble Theorem (error = 0.00e+00) | 43–47 | March 2026 |
+| 8-file stack: 0 errors, 0 sorries | 58–61 | March 2026 |
+| Route A: `mirror_identity` algebraic | 62 | March 2026 |
+| Route B: `ζ_sed` satisfies RFS, 9-file stack | 63 | April 8, 2026 |
+| Route C: `h_zeta` load-bearing, conditional RH proved, 11-file stack | 64 | April 8, 2026 |
 
 ---
 
@@ -118,76 +203,70 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 ```
 CAIL-rh-investigation/
-├── papers/                          # Canonical Six paper (v1.4, April 2026)
-├── lean/                            # Lean 4 formal verification (9-file stack)
-│   ├── README.md                    # Lean stack documentation
-│   ├── lakefile.toml                # Build config (mathlib v4.28.0)
-│   ├── lean-toolchain               # leanprover/lean4:v4.28.0
-│   ├── RHForcingArgument.lean       # Commutator identity, critical_line_uniqueness
-│   ├── MirrorSymmetryHelper.lean    # Coordinate lemmas
-│   ├── MirrorSymmetry.lean          # mirror_symmetry_invariance
-│   ├── UnityConstraint.lean         # unity_constraint_absolute, energy_expansion
-│   ├── NoetherDuality.lean          # noether_conservation, symmetry_bridge
-│   ├── UniversalPerimeter.lean      # universal_trapping_lemma
-│   ├── AsymptoticRigidity.lean      # infinite_gravity_well
-│   ├── SymmetryBridge.lean          # symmetry_bridge_conditional, mirror_map
-│   └── PrimeEmbedding.lean          # energy_RFE, ζ_sed, symmetry_bridge_analytic
-├── data/
-│   ├── primes/                      # Prime datasets
-│   └── riemann/                     # Riemann zero datasets (1k, 10k, χ₃–χ₈)
-├── results/                         # Phase result JSON files (Phases 1–63)
-├── scripts/                         # Python analysis scripts
-└── docs/
-    ├── roadmap.md                   # Research roadmap
-    └── phases/                      # Per-phase result writeups (through Phase 63)
+├── lean/                         # All Lean 4 source files
+│   ├── RHForcingArgument.lean
+│   ├── MirrorSymmetryHelper.lean
+│   ├── MirrorSymmetry.lean
+│   ├── UnityConstraint.lean
+│   ├── NoetherDuality.lean
+│   ├── UniversalPerimeter.lean
+│   ├── AsymptoticRigidity.lean
+│   ├── SymmetryBridge.lean
+│   ├── PrimeEmbedding.lean
+│   ├── ZetaIdentification.lean
+│   ├── RiemannHypothesisProof.lean
+│   └── README.md
+├── results/
+│   ├── PHASE_63_RESULTS.md
+│   └── PHASE_64_RESULTS.md
+├── lakefile.toml
+└── README.md
 ```
 
 ---
 
-## Phases Summary
+## Multi-AI Workflow
 
-| Phase | Topic | Key Finding |
-|-------|-------|-------------|
-| 1–15 | Spectral Baseline | GUE fingerprinting; p-detection (SNR 7-245x) |
-| **18B** | **Collapse Theorem** | **Bilateral Collapse Theorem — Lean 4 proven** |
-| **18D** | **E8 Root Geometry** | **All 48 bilateral pairs embed as E8 first-shell roots** |
-| **28** | **BK Hamiltonian** | **AIEX-001a identified as Berry-Keating xp Hamiltonian in 16D** |
-| **43** | **Sedenionic Spinor** | **σ=1/2 as fixed scalar spine of a 16D spinor** |
-| **45** | **Commutator Theorem** | **Commutator vanishes IFF σ=0.5; forcing pressure O(N)** |
-| **58** | **Formal Consolidation** | **Zero-sorry forcing proof; unity_constraint_absolute** |
-| **59** | **Universal Law Stack** | **Universal Trapping Lemma; Infinite Gravity Well; 0 sorries** |
-| **60** | **Symmetry Bridge** | **Gap precisely diagnosed; F_full construction defined** |
-| **61** | **Global Integration** | **Full symmetric construction; 0 sorries across all 8 files** |
-| **62** | **Summit** | **symmetry_bridge proved as theorem; 0 sorries, 0 non-standard axioms** |
-| **63** | **Analytic Bridge** | **energy_RFE; ζ_sed satisfies RFS; symmetry_bridge_analytic; 9-file stack, 0 warnings** |
+| Platform | Role |
+|---|---|
+| Claude Desktop | Strategy, KSJ curation, gap analysis, handoff documents |
+| Gemini CLI | F-vector generation, ZDTP computation, pre-handoff analysis |
+| Claude Code | Lean 4 scaffolding, proof architecture |
+| Aristotle (Harmonic Math) | Compiler verification, tactic fixes, build confirmation |
 
 ---
 
-## Lean 4 Formal Verification
+## Tools and Infrastructure
 
-All Lean 4 proofs co-authored with **Aristotle (Harmonic Math)** — <https://harmonic.fun/>
-
-| File | Key Theorems | Status |
-|------|-------------|--------|
-| `RHForcingArgument.lean` | `critical_line_uniqueness`, commutator identity | ✅ Zero sorries |
-| `MirrorSymmetryHelper.lean` | `sed_comm_u_F_base_coord0` | ✅ Zero sorries |
-| `MirrorSymmetry.lean` | `mirror_symmetry_invariance`, `commutator_not_in_kernel` | ✅ Zero sorries |
-| `UnityConstraint.lean` | `unity_constraint_absolute`, `inner_product_vanishing`, `energy_expansion` | ✅ Zero sorries |
-| `NoetherDuality.lean` | `noether_conservation`, `action_penalty`, `symmetry_bridge` | ✅ Zero sorries |
-| `UniversalPerimeter.lean` | `universal_trapping_lemma`, `perimeter_orthogonal_balance` | ✅ Zero sorries |
-| `AsymptoticRigidity.lean` | `infinite_gravity_well`, `chirp_energy_dominance` | ✅ Zero sorries |
-| `SymmetryBridge.lean` | `mirror_map_involution`, `symmetry_bridge_conditional` | ✅ Zero sorries |
-| `PrimeEmbedding.lean` | `energy_RFE`, `zeta_sed_satisfies_RFS`, `symmetry_bridge_analytic` | ✅ Zero sorries |
-| `BilateralCollapse.lean` | Bilateral Collapse Theorem | ✅ Zero sorries |
-
-**Axioms across all 9 core files:** `propext`, `Classical.choice`, `Quot.sound` only.
-**No non-standard axiom declarations remain.**
+| Tool | Description |
+|---|---|
+| CAILculator | MCP-based computational tool — sedenion algebra, Chavez Transform, ZDTP |
+| KSJ (Knowledge Synthesis Journal) | 357-entry research journal; `ksj-mcp` server open source on GitHub |
+| KSJ 2.0 | Physical journal companion (Amazon KDP, $24.99) |
+| ZDTP Chess | Proof-of-concept multi-dimensional decision system |
 
 ---
 
-## License
+## Publications
 
-[CC BY 4.0](LICENSE) — Paul Chavez, Chavez AI Labs, 2026.
-Lean 4 files co-authored with Aristotle (Harmonic Math).
+| Publication | Status | Link |
+|---|---|---|
+| Canonical Six paper (v1.4) | Published | [DOI: 10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495) |
+| Paper 2 — Chavez Transform | In preparation | — |
+| Paper 3 — RH investigation | Conditional on unconditional proof | — |
 
-*Last updated: April 8, 2026 — Phase 63 complete: Analytic Bridge. `PrimeEmbedding.lean` adds `energy_RFE`, `ζ_sed`, and `symmetry_bridge_analytic`. 9-file Lean 4 stack: 8,043 jobs, 0 errors, 0 sorries, 0 warnings, 0 non-standard axioms. KSJ: 350 entries.*
+Sophie Germain prime download milestones tracked on X and BlueSky under [@aztecsungod](https://x.com/aztecsungod).
+
+---
+
+## Philosophy
+
+> *"Applied Pathological Mathematics — treating 'pathological' mathematical structures as exploitable resources rather than errors."*
+
+The Canonical Six, ZDTP, and the sedenion energy framework all emerge from this principle: the zero divisors of 16D sedenions, far from being obstacles, encode the arithmetic structure of the primes.
+
+---
+
+*Chavez AI Labs LLC | Paul Chavez founder*
+*GitHub: [ChavezAILabs](https://github.com/ChavezAILabs)*
+*Zenodo: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)*

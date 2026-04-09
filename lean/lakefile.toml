@@ -1,5 +1,5 @@
 name = "RequestProject"
-defaultTargets = ["AsymptoticRigidity", "MirrorSymmetry", "MirrorSymmetryHelper", "NoetherDuality", "RHForcingArgument", "UnityConstraint", "UniversalPerimeter", "SymmetryBridge", "PrimeEmbedding"]
+defaultTargets = ["AsymptoticRigidity", "MirrorSymmetry", "MirrorSymmetryHelper", "NoetherDuality", "RHForcingArgument", "UnityConstraint", "UniversalPerimeter", "SymmetryBridge", "PrimeEmbedding", "ZetaIdentification", "RiemannHypothesisProof"]
 
 [[require]]
 name = "mathlib"
@@ -41,3 +41,11 @@ globs = ["SymmetryBridge"]
 [[lean_lib]]
 name = "PrimeEmbedding"
 globs = ["PrimeEmbedding"]
+
+[[lean_lib]]
+name = "ZetaIdentification"
+globs = ["ZetaIdentification"]
+
+[[lean_lib]]
+name = "RiemannHypothesisProof"
+globs = ["RiemannHypothesisProof"]
