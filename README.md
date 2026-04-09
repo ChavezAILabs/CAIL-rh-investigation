@@ -2,7 +2,7 @@
 **Chavez AI Labs LLC | Applied Pathological Mathematics**
 *Better math, less suffering.*
 
-A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted openly under the handle [@aztecsungod](https://x.com/aztecsungod).
+A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted as an Open Science project.
 
 ---
 
@@ -91,7 +91,7 @@ Six framework-independent zero divisor patterns in 16D sedenions, formally verif
 
 ### The Chavez Transform
 
-Spectral analysis tool built on the ZDTP convergence structure. Validated on CERN LHC dimuon data (~87.6% convergence, 238 Z boson candidates) and Bitcoin regime detection (99.71% convergence during stable periods).
+Spectral analysis tool built on the foundation of The Canonical Six. The integral transform that uses bilateral zero divisors as a kernel formally verified in Lean 4.
 
 ### ZDTP — Zero Divisor Transmission Protocol
 
