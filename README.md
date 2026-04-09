@@ -117,9 +117,11 @@ Bilateral annihilation confirmed universal across all 50 tested Riemann zeros an
 
 ### The First Ascent — Phases 1–42 (Oct 2025 – March 2026)
 
-**Phases 1–17 (Oct–Nov 2025):** Six-week R&D sprint systematically enumerating zero divisors in Cayley-Dickson and Clifford algebras. Discovery of the Canonical Six through exhaustive computation. CAILculator developed as the primary computational tool. Block Replication Theorem proved: zero divisor patterns persist across dimensional doublings 16D→256D. Foundational paper published on Zenodo with CERN DOI.
+**Phases 1–17 (October 2025):** Six-week R&D sprint systematically enumerating zero divisors in Cayley-Dickson and Clifford algebras. Discovery of the Canonical Six through exhaustive computation. CAILculator developed as the primary computational tool. Block Replication Theorem proved: zero divisor patterns persist across dimensional doublings 16D→256D. Foundational paper published on Zenodo with CERN DOI.
 
-**Phases 18–29 (March 2026):**
+**Pre-phase interlude (Jan–Feb 2026):** Chavez Transform formally verified in Lean 4 by Aristotle (late January 2026) — triggering the first systematic probe of the Riemann Hypothesis via prime number analysis (`chavez_riemann_analysis.txt`). Conjugation symmetry in prime gaps and dimensional persistence confirmed at high confidence. Continued a few weeks later with a Sophie Germain Primes investigation — structural selectivity in the sedenion prime embedding. These results motivated the formal phase work that began in earnest in early March 2026.
+
+**Phases 18–29 (early March 2026):**
 - Universal Bilateral Orthogonality Theorem: ⟨P_8D, Q_8D⟩ = 0 for all 48 bilateral pairs
 - 45 bilateral P∪Q directions classified as exactly D₆ minus 15 "both-negative" roots
 - Canonical Six identified as unique 8-root subset with pure Clifford grade structure
@@ -129,7 +131,7 @@ Bilateral annihilation confirmed universal across all 50 tested Riemann zeros an
 - AIEX-001a identified as Berry-Keating xp Hamiltonian in 16D sedenion space (Phases 24–28)
 - Three-machine constant c₁ ≈ 0.11798 derived from 6.784° Weil angle — confirmed structural and permanent
 
-**Phases 30–42 (March 2026):**
+**Phases 30–42 (mid–late March 2026):**
 - Universal rank invariant: norm² rank = 4 (6-basis) or 12 (60-basis), invariant of AIEX-001a map
 - ZDTP bilateral annihilation confirmed universal: product_norm = 0 across all 50 zeros, all 6 gateways
 - ZDTP convergence increases with γₙ established as a new observable
@@ -156,7 +158,7 @@ Shift from empirical spectral analysis to formal algebraic forcing argument.
 - Convergence structural ceiling: 0.9577 (not 1.0)
 - Cross-platform workflow formalized: Claude Desktop (strategy/rigor) + Gemini CLI (F-vector generation/ZDTP)
 
-### The Formal Ascent — Phases 58–64 (March–April 2026)
+### The Formal Ascent — Phases 58–65 (March–April 2026)
 
 **Phases 58–61:**
 - 8-file Lean 4 stack: 8,041 jobs · 0 errors · 0 sorries · standard axioms only
@@ -181,14 +183,23 @@ Shift from empirical spectral analysis to formal algebraic forcing argument.
 - `zeta_zero_forces_commutator`: explicit named gap — Phase 65 target
 - Build: 8,037 jobs · 0 errors · 1 sorry (explicit, named)
 
+**Phase 65 — sorryAx eliminated:**
+- `prime_exponential_identification` installed as named axiom — RH stated directly in terms of Mathlib's `riemannZeta`
+- `zeta_zero_forces_commutator` promoted from sorry to proved theorem (3 lines via `prime_exponential_identification` + `critical_line_uniqueness`)
+- Build: 8,037 jobs · 0 errors · 0 sorries
+- Axiom footprint: `[propext, prime_exponential_identification, Classical.choice, Quot.sound]` — `sorryAx` absent
+- Phase 66 target: prove `prime_exponential_identification` via Euler product identification
+
 ---
 
 ## Key Milestones
 
 | Milestone | Phase | Date |
 |---|---|---|
-| Canonical Six discovered | 1–17 | Oct–Nov 2025 |
-| Foundational paper published (Zenodo) | 17 | Nov 2025 |
+| Canonical Six discovered | 1–17 | Oct 2025 |
+| Foundational paper published (Zenodo) | 1–17 | Oct 2025 |
+| Chavez Transform formally verified (Aristotle, Lean 4) | pre-phase | Jan 2026 |
+| RH probing begins; Sophie Germain Primes investigation | pre-phase | Jan–Feb 2026 |
 | Bilateral Collapse Theorem (Lean 4, 0 sorries) | 18–29 | March 2026 |
 | Heegner Selectivity finding | 18–29 | March 2026 |
 | Universal rank invariant confirmed | 30–42 | March 2026 |
@@ -258,8 +269,6 @@ CAIL-rh-investigation/
 | Canonical Six paper (v1.4) | Published | [DOI: 10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495) |
 | Paper 2 — Chavez Transform | In preparation | — |
 | Paper 3 — RH investigation | Conditional on unconditional proof | — |
-
-Sophie Germain prime download milestones tracked on X and BlueSky under [@aztecsungod](https://x.com/aztecsungod).
 
 ---
 
