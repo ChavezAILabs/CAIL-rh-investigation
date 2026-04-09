@@ -98,28 +98,73 @@ This is the most mathematically ambitious route and the most likely to require o
 
 ---
 
-## Phase 66 Recommended Opening Sequence
+## Legacy Archive Audit — Results (April 9, 2026)
 
-**Step 1 — Mathlib audit (immediate):**
-Search Mathlib v4.28.0 and the `mathlib4` main branch for:
-- `riemannZeta_euler_product` or similar
-- `zeta_eq_tsum_one_div_nat_cpow`
-- `ArithmeticFunction.IsMultiplicative` applied to the Riemann zeta
-- `Nat.Primes` product convergence lemmas
+All three archive candidate bridges have been formally audited. Results are definitive.
 
-Determine whether the Euler product is available. This dictates whether Phase 66 is a proof or an axiom-reduction.
+### `ChavezTransform_Specification_aristotle.lean` — Not reusable
 
-**Step 2 — `BilateralCollapse.lean` audit:**
-Read the archive file to understand what `sedMulSignQ` actually provides and whether any path exists to `riemannZeta`. Confirm Bridge 2 is or isn't viable before investing further.
+Uses `CD4_mul (x y : CD4) : CD4 := 0` — multiplication defined as zero for formalization purposes. There is **no formal statement of the form "prime p contributes exp_sed(s·log p·r_p) to F."** The spec formalizes the Chavez Transform as a 1D integral with a bilateral kernel (convergence + stability theorems), using a simplified sedenion model with trivially-zero multiplication. It also uses a different type (`CD4 = Fin 16 → ℝ`) than the CAIL stack's `Sed = EuclideanSpace ℝ (Fin 16)`.
 
-**Step 3 — Architecture decision:**
-Based on Steps 1–2, choose one of:
-- (A) Full Euler product proof (if Mathlib has it)
-- (B) Introduce `euler_product_riemannZeta` as a named axiom and prove `prime_exponential_identification` from it (if Mathlib doesn't)
-- (C) Novel approach discovered in audit
+**Conclusion:** The sedenion-side prime propagation statement does not exist in the archive. It must be built fresh in `EulerProductBridge.lean` from `PrimeExponentialLift` and the canonical root vectors in `UniversalPerimeter.lean`.
 
-**Step 4 — Implementation:**
-Build the sedenion Euler product object `F_euler` (if route A/B), connect to `PrimeExponentialLift`, prove `prime_exponential_identification`. Target: new file `EulerProductBridge.lean` (12th file in the stack).
+### `BilateralCollapse.lean` — Bridge 2 closed
+
+840 lines of ℚ-arithmetic Cayley-Dickson proofs using `CD : Nat → Type` (nested pairs over ℚ). All six Canonical Six patterns (`IsBilateralZeroDivisor P Q`) proved via component-wise ℚ arithmetic and `Prod.ext`. `sedMulSignQ` (line 400 of `RHForcingArgument.lean`) is a rational sign lookup table for sedenion multiplication — it provides machine-exact commutator arithmetic over ℚ but has no path to `riemannZeta s = 0`, which is an analytic statement about a complex function. A type bridge (`CD 4` over ℚ → `EuclideanSpace ℝ (Fin 16)`) plus an analytic bridge to `riemannZeta` would both be required.
+
+**Conclusion: Bridge 2 is formally closed.** Not a bypass around the analytic gap.
+
+### `e8_weyl_orbit_unification.lean` — Bridge 3 closed as proof vehicle
+
+Uses the same `CD : Nat → Type` over ℚ with `V8 : Type := Fin 8 → ℚ` for E₈ geometry. Has P1–Q6 Canonical Six patterns and E₈ simple roots (`α1`–`α8`) defined as `V8` vectors. Confirms the geometric connection between the Canonical Six and the E₈ first shell, but contains no Lean theorems connecting the Weyl orbit structure to `riemannZeta` or to `EulerProductBridge`. Same type mismatch as above.
+
+**Conclusion: Bridge 3 is closed as a Phase 66 proof vehicle.** Retains value as motivating structural argument for the paper. The E₈ / modular forms connection (theta series → L-functions → zeros) is a long-range research direction.
+
+### Mathlib v4.28.0 — Source not locally searchable
+
+Mathlib is compiled into `.ltar` olean archives; source files are not on disk. The Euler product audit must go through Aristotle. This is **Task 1** below.
+
+---
+
+## Phase 66 Opening Sequence
+
+**Task 1 — Aristotle: Mathlib Euler product audit (first action)**
+
+In a minimal Lean 4 file importing Mathlib, run:
+
+```lean
+import Mathlib
+
+-- Check 1: Does the Euler product theorem exist?
+#check @EulerProduct.eulerProduct_completely_multiplicative_tsum
+-- or
+#check @riemannZeta_eq_tsum_one_div_nat_cpow
+
+-- Check 2: Search for riemannZeta + Euler product connection
+example (s : ℂ) (hs : 1 < s.re) :
+    riemannZeta s = ∏' p : Nat.Primes, (1 - (p : ℂ)^(-s))⁻¹ := by
+  exact?  -- or: search for the theorem name
+```
+
+Report: the exact theorem name(s) available, their hypotheses, and whether they state the product directly in terms of `riemannZeta` or only in terms of an `LSeries`/`DirichletSeries` abstraction that would require an additional identification step.
+
+**Task 2 — Architecture decision (after Task 1)**
+
+Based on the Mathlib audit, choose:
+- **(A) Euler product is in Mathlib referencing `riemannZeta` directly:** Build `EulerProductBridge.lean` using the Mathlib theorem.
+- **(B) Euler product exists but only for `LSeries` abstractions:** Prove the `riemannZeta ↔ LSeries` identification, then connect to the Euler product.
+- **(C) Euler product is absent from Mathlib:** Introduce `euler_product_riemannZeta` as a new named axiom and prove `prime_exponential_identification` from it — trading one axiom for a cleaner, classical, well-understood claim.
+
+**Task 3 — Build `EulerProductBridge.lean` (12th file)**
+
+New file importing `ZetaIdentification`. Starting point is `PrimeExponentialLift` and the canonical root vectors (`root_2` through `root_13` in `UniversalPerimeter.lean`). Build the sedenion Euler product object:
+
+```lean
+noncomputable def F_euler (s : ℂ) : Sed :=
+  -- ∏_p exp_sed(s · log p · r_p) — to be formalized
+```
+
+Prove it satisfies `PrimeExponentialLift`, then derive `prime_exponential_identification` as a theorem.
 
 ---
 
