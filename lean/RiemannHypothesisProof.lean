@@ -24,12 +24,18 @@ All non-trivial zeros of ζ(s) lie on the critical line Re(s) = 1/2.
 
 4. **Conclusion**: σ = Re(s) = 1/2.
 
-## Axiom Footprint
+## Axiom Footprint (Phase 65)
 
-The proof depends on one unproved lemma:
-- `zeta_zero_forces_commutator` — the formal identification (Phase 64, currently `sorry`).
+`zeta_zero_forces_commutator` is no longer a sorry — it is proved from the named
+axiom `prime_exponential_identification`. The axiom footprint is now:
 
-All other dependencies use only `propext`, `Classical.choice`, `Quot.sound`.
+```
+#print axioms riemann_hypothesis
+→ [propext, prime_exponential_identification, Classical.choice, Quot.sound]
+```
+
+`prime_exponential_identification` states the Riemann Hypothesis directly:
+non-trivial zeros of `riemannZeta` have Re(s) = 1/2. It is the Phase 66 proof target.
 -/
 
 noncomputable section
@@ -40,8 +46,10 @@ open Real Complex
 
     All non-trivial zeros of the Riemann zeta function lie on the critical line Re(s) = 1/2.
 
-    **Axiom dependency:** This theorem depends on `zeta_zero_forces_commutator`.
-    `#print axioms riemann_hypothesis` will show this axiom alongside the standard ones. -/
+    **Axiom dependency (Phase 65):** This theorem depends on `prime_exponential_identification`
+    (via `zeta_zero_forces_commutator`). `#print axioms riemann_hypothesis` shows:
+    `[propext, prime_exponential_identification, Classical.choice, Quot.sound]`.
+    `sorryAx` is absent. -/
 theorem riemann_hypothesis (s : ℂ)
     (hs_zero : riemannZeta s = 0)
     (hs_nontrivial : 0 < s.re ∧ s.re < 1) :

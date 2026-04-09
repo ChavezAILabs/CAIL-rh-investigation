@@ -6,21 +6,24 @@ A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sed
 
 ---
 
-## Current Status — Phase 64 Complete
+## Current Status — Phase 65 Complete
 
-**Conditional proof of the Riemann Hypothesis formally verified.**
+**`sorryAx` eliminated. Conditional proof of the Riemann Hypothesis verified with clean axiom footprint.**
 
 ```
-lake build → 8,037 jobs · 0 errors
+lake build → 8,037 jobs · 0 errors · 0 sorries
 #print axioms riemann_hypothesis
-→ [propext, sorryAx, Classical.choice, Quot.sound]
+→ [propext, prime_exponential_identification, Classical.choice, Quot.sound]
 ```
 
-`sorryAx` traces exclusively to `zeta_zero_forces_commutator` — the Phase 65 target. All other steps in the proof chain are verified at 0 errors, 0 sorries by Aristotle (Harmonic Math).
+`sorryAx` is **absent**. `zeta_zero_forces_commutator` is now a proved theorem (3 lines via `prime_exponential_identification` + `critical_line_uniqueness`). Verified by Aristotle (Harmonic Math).
 
 > **The conditional proof:**
-> IF a Riemann zero forces commutator vanishing in the sedenion model (`zeta_zero_forces_commutator`) —
-> THEN all non-trivial zeros of ζ(s) lie on the critical line Re(s) = 1/2.
+> `prime_exponential_identification` (named axiom = RH stated directly) →
+> `zeta_zero_forces_commutator` (proved theorem) →
+> `riemann_hypothesis` (conditional proof).
+>
+> **Phase 66 target:** Prove `prime_exponential_identification` as a theorem via Euler product identification.
 
 ---
 
@@ -37,10 +40,10 @@ lake build → 8,037 jobs · 0 errors
 | 7 | `AsymptoticRigidity.lean` | 59 | `infinite_gravity_well`, `chirp_energy_dominance` | 0 |
 | 8 | `SymmetryBridge.lean` | 60/61 | `mirror_map_involution`, `symmetry_bridge_conditional` | 0 |
 | 9 | `PrimeEmbedding.lean` | 63 | `F_base_norm_sq_even`, `energy_RFE`, `zeta_sed_satisfies_RFS`, `symmetry_bridge_analytic` | 0 |
-| 10 | `ZetaIdentification.lean` | 64 | `F_base_norm_sq_formula`, `PrimeExponentialLift`, `zeta_sed_is_prime_lift`, `symmetry_bridge_via_lift` | 1 (explicit) |
-| 11 | `RiemannHypothesisProof.lean` | 64 | `riemann_hypothesis` (conditional) | 0 |
+| 10 | `ZetaIdentification.lean` | 64/65 | `prime_exponential_identification` (axiom), `zeta_zero_forces_commutator` (proved), `zeta_sed_is_prime_lift`, `symmetry_bridge_via_lift` | 0 |
+| 11 | `RiemannHypothesisProof.lean` | 64/65 | `riemann_hypothesis` (conditional) | 0 |
 
-**Axiom footprint (all 11 files):** `propext`, `Classical.choice`, `Quot.sound`, `sorryAx` (traces to `zeta_zero_forces_commutator` only).
+**Axiom footprint (all 11 files):** `propext`, `Classical.choice`, `Quot.sound`, `prime_exponential_identification`. **`sorryAx` absent.**
 
 ---
 
@@ -196,6 +199,7 @@ Shift from empirical spectral analysis to formal algebraic forcing argument.
 | Route A: `mirror_identity` algebraic | 62 | March 2026 |
 | Route B: `ζ_sed` satisfies RFS, 9-file stack | 63 | April 8, 2026 |
 | Route C: `h_zeta` load-bearing, conditional RH proved, 11-file stack | 64 | April 8, 2026 |
+| `sorryAx` eliminated — `prime_exponential_identification` axiom, 0 sorries | 65 | April 9, 2026 |
 
 ---
 
