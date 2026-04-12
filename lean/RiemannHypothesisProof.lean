@@ -24,18 +24,19 @@ All non-trivial zeros of ζ(s) lie on the critical line Re(s) = 1/2.
 
 4. **Conclusion**: σ = Re(s) = 1/2.
 
-## Axiom Footprint (Phase 65)
+## Axiom Footprint (Phase 68)
 
-`zeta_zero_forces_commutator` is no longer a sorry — it is proved from the named
-axiom `prime_exponential_identification`. The axiom footprint is now:
+`prime_exponential_identification` is now a **theorem** (proved in Phase 68 from
+`euler_sedenion_bridge` via `critical_line_uniqueness`). The axiom footprint is:
 
 ```
 #print axioms riemann_hypothesis
-→ [propext, prime_exponential_identification, Classical.choice, Quot.sound]
+→ [euler_sedenion_bridge, propext, Classical.choice, Quot.sound]
 ```
 
-`prime_exponential_identification` states the Riemann Hypothesis directly:
-non-trivial zeros of `riemannZeta` have Re(s) = 1/2. It is the Phase 66 proof target.
+`euler_sedenion_bridge` is the sole remaining non-standard axiom. It connects
+`riemannZeta s = 0` in the critical strip to sedenion commutator vanishing.
+It is the **Phase 69 proof target** via analytic continuation.
 -/
 
 noncomputable section
@@ -46,10 +47,10 @@ open Real Complex
 
     All non-trivial zeros of the Riemann zeta function lie on the critical line Re(s) = 1/2.
 
-    **Axiom dependency (Phase 65):** This theorem depends on `prime_exponential_identification`
+    **Axiom dependency (Phase 68):** This theorem depends on `euler_sedenion_bridge`
     (via `zeta_zero_forces_commutator`). `#print axioms riemann_hypothesis` shows:
-    `[propext, prime_exponential_identification, Classical.choice, Quot.sound]`.
-    `sorryAx` is absent. -/
+    `[euler_sedenion_bridge, propext, Classical.choice, Quot.sound]`.
+    `sorryAx` is absent. `prime_exponential_identification` is now a theorem. -/
 theorem riemann_hypothesis (s : ℂ)
     (hs_zero : riemannZeta s = 0)
     (hs_nontrivial : 0 < s.re ∧ s.re < 1) :
