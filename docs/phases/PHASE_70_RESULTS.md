@@ -8,9 +8,9 @@
 
 ## Executive Summary
 
-Phase 70 delivers two results that together define the current frontier of AIEX-001.
+Phase 70 delivers two results that together define the current frontier of the CAIL-RH Investigation.
 
-**Formally:** `bilateral_collapse_continuation` — the scalar annihilation axiom introduced in Phase 69 — is now a **proved theorem** in Lean 4. In its place stands `riemann_critical_line`, a new named axiom that states the Riemann Hypothesis directly and without sedenion indirection: all non-trivial zeros of ζ in the critical strip have real part 1/2. Phase 70 also delivers `bilateral_collapse_iff_RH`, a machine-verified Lean theorem proving the AIEX-001 scalar annihilation condition is bidirectionally equivalent to the classical Riemann Hypothesis. The AIEX-001 reduction is tight and formally closed.
+**Formally:** `bilateral_collapse_continuation` — the scalar annihilation axiom introduced in Phase 69 — is now a **proved theorem** in Lean 4. In its place stands `riemann_critical_line`, a new named axiom that states the Riemann Hypothesis directly and without sedenion indirection: all non-trivial zeros of ζ in the critical strip have real part 1/2. Phase 70 also delivers `bilateral_collapse_iff_RH`, a machine-verified Lean theorem proving the sedenion forcing argument's scalar annihilation condition is bidirectionally equivalent to the classical Riemann Hypothesis. The sedenion RH stack reduction is tight and formally closed.
 
 **Empirically:** The CAILculator experimental suite establishes the forcing profile, functional equation sensitivity, and structural stability of the sedenion framework. Experiment 5 (HD-500, 500-point ZDTP regime detection sweep) identifies four structural regimes across σ ∈ [0.1, 2.0] and discovers the **Euler Snap** — a 3.69× curvature discontinuity at σ=1.0. Experiment 8 (100-zero 6-pattern bilateral invariance) delivers three universals: product_norm = 0.0 across all 600 transmissions, bilateral invariance = 1.000 for all 100 zeros, and a near-perfect anti-correlation (r = −0.9998) between sin²(t·log2) + sin²(t·log3) and gateway convergence — connecting the empirical convergence driver directly to the irrationality argument in `sed_comm_u_Fbase_nonzero`. Together, EXP-05 and EXP-08 span the full two-dimensional forcing landscape: σ-axis and zero-axis.
 
@@ -117,7 +117,7 @@ theorem bilateral_collapse_iff_RH :
 - **Forward:** Instantiate at t=1 (nonzero). Get `(s.re − 1/2) • sed_comm u_antisym (F_base 1) = 0`. By `smul_eq_zero`: either `s.re − 1/2 = 0` (gives `s.re = 1/2` by `linarith`) or `sed_comm u_antisym (F_base 1) = 0` (contradicts `sed_comm_u_Fbase_nonzero 1 one_ne_zero`). ✓
 - **Backward:** `s.re = 1/2` → `s.re − 1/2 = 0` → `rw [h_half, sub_self, zero_smul]`. ✓
 
-**Significance:** AIEX-001 has achieved a **machine-verified, bidirectional reduction** of the Riemann Hypothesis to a scalar annihilation identity in the 16D sedenion algebra. The `∀ t ≠ 0` quantifier in `bilateral_collapse_continuation` carries no additional content beyond a single instantiation: the vector is nonzero everywhere, so the universal statement collapses to the scalar statement.
+**Significance:** The CAIL-RH Investigation has achieved a **machine-verified, bidirectional reduction** of the Riemann Hypothesis to a scalar annihilation identity in the 16D sedenion algebra. The `∀ t ≠ 0` quantifier in `bilateral_collapse_continuation` carries no additional content beyond a single instantiation: the vector is nonzero everywhere, so the universal statement collapses to the scalar statement.
 
 ### Result 3: `bilateral_collapse_continuation` as Theorem
 
@@ -154,7 +154,7 @@ Status of each component in the forcing chain:
 | Full forcing argument (Mirror, Noether, Universal Trapping, Asymptotic Rigidity) | ✅ Proved |
 | `riemannZeta s = 0` in strip → `s.re = 1/2` | **THE GAP** (`riemann_critical_line`) |
 
-`bilateral_collapse_iff_RH` proves formally that closing this gap is exactly proving RH — no more, no less. AIEX-001's reduction is tight.
+`bilateral_collapse_iff_RH` proves formally that closing this gap is exactly proving RH — no more, no less. The sedenion forcing argument's reduction is tight.
 
 ---
 
@@ -307,13 +307,13 @@ Phase 69 narrowed the gap to a scalar. Phase 70 named it honestly.
 
 `bilateral_collapse_iff_RH` is the central Phase 70 result. It proves, without equivocation and with Lean's kernel as witness, that:
 
-> The AIEX-001 sedenion scalar annihilation condition is logically equivalent to the classical Riemann Hypothesis.
+> The sedenion forcing argument's scalar annihilation condition is logically equivalent to the classical Riemann Hypothesis.
 
 Nothing was hidden in the sedenion framework. The `∀ t ≠ 0` quantifier adds no mathematical content beyond the scalar claim, because the sedenion vector is nonzero everywhere the scalar is tested. The reduction is tight, bidirectional, and machine-verified.
 
 The architectural restructure — replacing `bilateral_collapse_continuation` with `riemann_critical_line` — makes this explicit at the level of Lean syntax. Any reader of the axiom footprint can now understand exactly what remains to be proved without knowing what a sedenion is.
 
-Phase 70 did not prove the Riemann Hypothesis. No phase has. No mathematician has. But Phase 70 proved that the AIEX-001 reduction of RH is as sharp as it can be, and made the remaining gap transparent.
+Phase 70 did not prove the Riemann Hypothesis. No phase has. No mathematician has. But Phase 70 proved that the sedenion forcing argument's reduction of RH is as sharp as it can be, and made the remaining gap transparent.
 
 ---
 
