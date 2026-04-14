@@ -1,0 +1,19 @@
+{
+  "phase": 70,
+  "date": "2026-04-13",
+  "experiment": "Geometric prime enumeration (Experiment 10)",
+  "description": "Shadow operation identifying primes whose ROOT_16D vectors lie within the Canonical Six subspace. Used to define the 'Chavez Prime' class for geometric prime theory.",
+  "protocol": "Weyl Orbit Subspace Membership Test",
+  "engine": "Manual mapping / algebraic verification",
+  "provenance": "Claude Code / April 13, 2026 Session",
+  "dimension": 16,
+  "subspace_indices": [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14],
+  "results": {
+    "chavez_primes": [2, 3, 5, 13, 17, 19, 23, 29],
+    "non_chavez_primes": [7, 11, 31],
+    "membership_criteria": "ROOT_16D(p) ∈ span{e_i | i ∈ subspace_indices}",
+    "test_count": 11
+  },
+  "interpretation": "Primes 7, 11, and 31 use indices (7, 8, 15) that lie outside the Canonical Six subspace, marking them as geometrically distinct in the sedenion framework. The majority of early primes (8/11) align with the subspace, suggesting the Canonical Six is a natural attractor for prime embeddings.",
+  "phase_70_relevance": "Shadow investigation for Paper 2 (Geometric Prime Theory). Connects Riemann Hypothesis sedenion forcing to the broader Weyl orbit structure of E8."
+}

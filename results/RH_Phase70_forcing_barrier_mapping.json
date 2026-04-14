@@ -1,0 +1,46 @@
+{
+  "phase": 70,
+  "date": "2026-04-13",
+  "experiment": "Forcing profile and critical strip barrier mapping",
+  "description": "Tier 1 experiments mapping the sedenion forcing pressure at non-trivial zeros and tracking structural stability (ZDTP convergence) across the sigma=1.0 analytic barrier.",
+  "protocol": "AIEX-001a Sedenion Exponential Product / ZDTP 1.0",
+  "engine": "CAILculator / compute_high_dimensional / zdtp_transmit",
+  "provenance": "Claude Code / April 13, 2026 Session",
+  "dimension": 16,
+  "forcing_profile": {
+    "description": "Commutator norm ||[u_antisym, F_base(t)]|| at first 5 Riemann zeros. Measures forcing pressure pushing zeros toward sigma=1/2.",
+    "results": [
+      {"zero": "gamma_1", "t": 14.134725, "norm": 3.337632039188663},
+      {"zero": "gamma_2", "t": 21.022040, "norm": 6.832686084102769},
+      {"zero": "gamma_3", "t": 25.010858, "norm": 6.349930364938502},
+      {"zero": "gamma_4", "t": 30.424876, "norm": 6.639707124265732},
+      {"zero": "gamma_5", "t": 32.935062, "norm": 6.9814132416608174}
+    ]
+  },
+  "zdtp_sigma_sweep": {
+    "description": "ZDTP convergence sweep for Euler product factors across the sigma=1.0 boundary at t=gamma_1.",
+    "results": [
+      {"sigma": 0.1, "convergence": 0.9756053498193529},
+      {"sigma": 0.3, "convergence": 0.9633357221183259},
+      {"sigma": 0.5, "convergence": 0.9708},
+      {"sigma": 0.7, "convergence": 0.9799683189395073},
+      {"sigma": 0.9, "convergence": 0.9862078343202668},
+      {"sigma": 1.0, "convergence": 0.9883},
+      {"sigma": 1.1, "convergence": 0.9899088305217211},
+      {"sigma": 1.3, "convergence": 0.9921124102336328},
+      {"sigma": 1.5, "convergence": 0.9946527477711893},
+      {"sigma": 1.7, "convergence": 0.9946527477711893},
+      {"sigma": 1.9, "convergence": 0.9955329771802818},
+      {"sigma": 2.0, "convergence": 0.9959}
+    ]
+  },
+  "experiment_2_pattern_probe": {
+    "description": "Conjugation symmetry tracking for F(t, sigma) moving from critical line (0.5) to boundary (1.0).",
+    "results": [
+      {"sigma": 0.5, "conjugation_symmetry_confidence": 1.0},
+      {"sigma": 1.0, "conjugation_symmetry_confidence": 0.823223304703363}
+    ]
+  },
+  "interpretation": "Forcing pressure remains consistently high across the first 5 zeros, supporting the universal forcing hypothesis. ZDTP convergence identifies sigma=1.0 as a structural transition point where stability begins to degrade upon entering the critical strip. The dip at sigma=0.3 suggests a secondary transition or resonance near the strip boundary.",
+  "phase_70_relevance": "Empirical grounding for Route 1 (Analytic Continuation) and Route 3 (Forcing Arguments). Maps the 'pressure gradient' that bilateral_collapse_continuation formalizes."
+}

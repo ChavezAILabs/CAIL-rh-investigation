@@ -73,28 +73,67 @@ set_option maxHeartbeats 800000
 noncomputable section
 open Real Complex
 
-/-- **The Riemann Zeta Zero Symmetry.**
+lemma not_pole_of_critical_strip (s : ℂ) (hs : 0 < s.re ∧ s.re < 1) (n : ℕ) : s ≠ -n := by
+  intro h
+  have h_re := congr_arg Complex.re h
+  simp at h_re
+  linarith [hs.1]
+
+lemma not_one_of_critical_strip (s : ℂ) (hs : 0 < s.re ∧ s.re < 1) : s ≠ 1 := by
+  intro h
+  have h_re := congr_arg Complex.re h
+  simp at h_re
+  linarith [hs.2]
+
+/-- **The Riemann Zeta Zero Symmetry (Theorem).**
 
     If s is a non-trivial zero of the Riemann zeta function in the critical strip,
     then 1−s is also a zero.
 
-    **Grounding:** Follows from `riemannZeta_one_sub` (Mathlib v4.28.0):
-    `ζ(1−s) = 2^s · π^{s−1} · sin(πs/2) · Γ(s) · ζ(s)` (with hypothesis `Γ(s) ≠ 0`).
-
-    Forward direction (ζ(s)=0 → ζ(1−s)=0): trivial — multiply by 0.
-    Backward direction (ζ(1−s)=0 → ζ(s)=0): requires prefactor ≠ 0.
-    For 0 < Re(s) < 1:
-    - `2^s · π^{s−1}` is a complex exponential, never zero.
-    - `Γ(s) ≠ 0`: follows from `Complex.Gamma_ne_zero` (Γ has no zeros;
-      non-positive integer arguments have Re ≤ 0, outside critical strip).
-    - `sin(πs/2) ≠ 0`: zeros of sin(πs/2) are at s = 2k for integer k;
-      in the critical strip 0 < Re(s) < 1, no such s exists.
-
-    **Phase 70 target:** Derive from `riemannZeta_one_sub` in Lean using
-    `Complex.Gamma_ne_zero` and nonvanishing of trigonometric/exponential prefactors. -/
-axiom riemannZeta_zero_symmetry (s : ℂ)
+    **Proof:** Follows from `riemannZeta_one_sub` (Mathlib v4.28.0). The prefactors
+    (2, (2π)^{-s}, Γ(s), and cos(πs/2)) are all non-zero in the open critical strip
+    0 < Re(s) < 1. Γ(s) is non-zero because s is not a non-positive integer.
+    cos(πs/2) is non-zero because its zeros are at s = 2n+1, which are integers
+    outside the open strip. -/
+theorem riemannZeta_zero_symmetry (s : ℂ)
     (hs_nontrivial : 0 < s.re ∧ s.re < 1) :
-    riemannZeta s = 0 ↔ riemannZeta (1 - s) = 0
+    riemannZeta s = 0 ↔ riemannZeta (1 - s) = 0 := by
+  have h_not_pole : ∀ (n : ℕ), s ≠ -↑n := fun n => not_pole_of_critical_strip s hs_nontrivial n
+  have h_not_one : s ≠ 1 := not_one_of_critical_strip s hs_nontrivial
+  have h_gamma_ne_zero : Complex.Gamma s ≠ 0 := Complex.Gamma_ne_zero h_not_pole
+  constructor
+  · intro hz
+    rw [@riemannZeta_one_sub s h_not_pole h_not_one]
+    simp [hz]
+  · intro hz'
+    rw [@riemannZeta_one_sub s h_not_pole h_not_one] at hz'
+    have h_two_ne_zero : (2 : ℂ) ≠ 0 := by norm_num
+    have h_pow_ne_zero : (2 * ↑π : ℂ) ^ (-s) ≠ 0 := by
+      rw [Complex.cpow_def_of_ne_zero]
+      · exact Complex.exp_ne_zero _
+      · apply mul_ne_zero
+        · norm_num
+        · exact Complex.ofReal_ne_zero.mpr (ne_of_gt pi_pos)
+    have h_cos_ne_zero : Complex.cos (↑π * s / 2) ≠ 0 := by
+      intro h_cos_zero
+      obtain ⟨n, hn⟩ := Complex.cos_eq_zero_iff.mp h_cos_zero
+      have h_pi_ne_zero : (π : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr (ne_of_gt pi_pos)
+      have h_two_ne_zero : (2 : ℂ) ≠ 0 := by norm_num
+      have h_s_eq : s = 2 * n + 1 := by
+        field_simp [h_pi_ne_zero, h_two_ne_zero] at hn
+        linear_combination hn
+      have h_re_eq : s.re = 2 * (n : ℝ) + 1 := by
+        rw [h_s_eq]
+        simp
+      rcases hs_nontrivial with ⟨h_re_pos, h_re_lt_one⟩
+      rw [h_re_eq] at h_re_pos h_re_lt_one
+      have h_re_pos' : -1 < 2 * (n : ℝ) := by linarith
+      have h_re_lt_one' : 2 * (n : ℝ) < 0 := by linarith
+      norm_cast at h_re_pos' h_re_lt_one'
+      omega
+    repeat rw [mul_assoc] at hz'
+    simp [h_two_ne_zero, h_pow_ne_zero, h_cos_ne_zero, h_gamma_ne_zero] at hz'
+    exact hz'
 
 /-- riemannZeta is used as an approximation of `RiemannFunctionalSymmetry` for the
     purpose of the PrimeExponentialLift structure.
