@@ -6,14 +6,14 @@ A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sed
 
 ---
 
-## Current Status — Phase 70 Complete (build verification in progress)
+## Current Status — Phase 70 Complete
 
 **`bilateral_collapse_continuation` proved as a theorem. `riemann_critical_line` — the Riemann Hypothesis stated directly — is the sole remaining non-standard axiom.**
 
 ```
-lake build → build verification in progress (Gemini CLI, April 14, 2026)
+lake build → 8,051 jobs · 0 errors · 0 sorries  (verified April 14, 2026)
 #print axioms riemann_hypothesis
-→ [riemann_critical_line, propext, Classical.choice, Quot.sound]  ← target
+→ [propext, riemann_critical_line, Classical.choice, Quot.sound]
 ```
 
 `sorryAx` is **absent**. `bilateral_collapse_continuation` is now a **proved theorem** derived from `riemann_critical_line`. `euler_sedenion_bridge` is a **proved theorem** (Phase 69). `prime_exponential_identification` is a **proved theorem** (Phase 68). `riemannZeta_zero_symmetry` is a **proved theorem** (Phase 70).
@@ -232,7 +232,7 @@ Shift from empirical spectral analysis to formal algebraic forcing argument.
 - `bilateral_collapse_iff_RH` proved: machine-verified bidirectional equivalence between the AIEX-001 scalar annihilation condition and the classical Riemann Hypothesis.
 - `riemann_critical_line` introduced as the sole remaining non-standard axiom — RH stated directly (all non-trivial zeros have Re(s)=1/2).
 - `bilateral_collapse_continuation` demoted from axiom to proved theorem, derived from `riemann_critical_line` via `sub_self` + `zero_smul`.
-- **Target axiom footprint:** `[riemann_critical_line, propext, Classical.choice, Quot.sound]`
+- **Build:** 8,051 jobs · 0 errors · 0 sorries (verified April 14, 2026)
 - **EXP-05 (HD-500):** Four-regime σ-axis portrait. Euler Snap at σ=1.0 detected — 3.69× curvature vs σ=0.5. First CAILculator detection of the Euler product convergence boundary as a geometric feature. δ=0.0535 for conv≥0.99.
 - **EXP-08 (100-Zero):** Bilateral invariance = 1.000 across 600 transmissions. sin²(t·log2)+sin²(t·log3) correlation with convergence: r=−0.9998. S5 anti-resonance (β=−0.991) identified as convergence driver — directly connects to `sed_comm_u_Fbase_nonzero`.
 
