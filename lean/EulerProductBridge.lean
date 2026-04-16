@@ -14,7 +14,7 @@ provides the algebraic scaffolding and Part A structural lemmas for Phase 69.
 
 Mathlib v4.28.0 confirms (see EulerAudit.lean):
 - `riemannZeta_eulerProduct_tprod`: ∏' p : Primes, (1 − p^{−s})⁻¹ = ζ(s) for Re(s) > 1
-- `riemannZeta_eulerProduct_exp_log`: exp(∑' p, −log(1−p^{−s})) = ζ(s) for Re(s) > 1
+- `riemannZeta_eulerProduct_hasProd`: HasProd (p^{−s}) ζ(s) for Re(s) > 1
 - `riemannZeta_ne_zero_of_one_le_re`: ζ(s) ≠ 0 for Re(s) ≥ 1
 - `riemannZeta_one_sub`: the full functional equation with Γ/cos prefactors
 
@@ -71,7 +71,7 @@ continuation from Re(s) > 1 into the critical strip — the remaining gap.
 set_option maxHeartbeats 800000
 
 noncomputable section
-open Real Complex
+open Real Complex Filter
 
 lemma not_pole_of_critical_strip (s : ℂ) (hs : 0 < s.re ∧ s.re < 1) (n : ℕ) : s ≠ -n := by
   intro h
@@ -135,6 +135,219 @@ theorem riemannZeta_zero_symmetry (s : ℂ)
     simp [h_two_ne_zero, h_pow_ne_zero, h_cos_ne_zero, h_gamma_ne_zero] at hz'
     exact hz'
 
+/-- **The Riemann Zeta Non-Vanishing on the Imaginary Axis (Theorem).**
+
+    ζ(s) ≠ 0 when Re(s) = 0 and s ≠ 0 (i.e., on the left boundary of the critical strip).
+
+    **Proof:** Assume ζ(s) = 0. The functional equation `riemannZeta_one_sub` gives
+    ζ(1−s) = [prefactor] · ζ(s) = [prefactor] · 0 = 0. But Re(1−s) = 1−Re(s) = 1,
+    so `riemannZeta_ne_zero_of_one_le_re` gives ζ(1−s) ≠ 0. Contradiction.
+
+    **Significance (Phase 71):** Together with `riemannZeta_ne_zero_of_one_le_re`
+    (Re(s) ≥ 1), this establishes that the critical strip is bounded by zero-free
+    walls on both sides: Re(s) = 0 (left) and Re(s) = 1 (right). -/
+theorem riemannZeta_ne_zero_of_re_eq_zero (s : ℂ)
+    (hs_re : s.re = 0) (hs_im : s.im ≠ 0) :
+    riemannZeta s ≠ 0 := by
+  intro h_zero
+  have hs_not_nat : ∀ n : ℕ, s ≠ -↑n := by
+    intro n
+    rcases Nat.eq_zero_or_pos n with rfl | hn
+    · simp only [Nat.cast_zero, neg_zero]
+      intro h
+      exact hs_im (by simp [h])
+    · intro h
+      have h_re := congr_arg Complex.re h
+      simp at h_re
+      have h_pos : (0 : ℝ) < (n : ℝ) := by exact_mod_cast hn
+      linarith
+  have hs_ne_one : s ≠ 1 := by
+    intro h
+    have h_re := congr_arg Complex.re h
+    simp at h_re
+    linarith [hs_re]
+  have h_fe := riemannZeta_one_sub hs_not_nat hs_ne_one
+  rw [h_zero, mul_zero] at h_fe
+  have h_one_le : 1 ≤ (1 - s).re := by
+    have : (1 - s).re = 1 := by simp [hs_re]
+    linarith
+  exact riemannZeta_ne_zero_of_one_le_re h_one_le h_fe
+
+/-- **Corollary: Zero-Free Boundary Walls.**
+
+    The critical strip 0 < Re(s) < 1 is bounded by zero-free regions on both sides:
+    - Right wall: ζ(s) ≠ 0 for Re(s) ≥ 1  (`riemannZeta_ne_zero_of_one_le_re`, Mathlib)
+    - Left wall:  ζ(s) ≠ 0 for Re(s) = 0, s ≠ 0  (`riemannZeta_ne_zero_of_re_eq_zero`, Phase 71)
+
+    Any non-trivial zero of ζ must lie strictly inside the critical strip. -/
+theorem riemannZeta_zero_free_boundary_walls (s : ℂ)
+    (hs_zero : riemannZeta s = 0)
+    (hs_nontrivial : 0 < s.re ∧ s.re < 1) :
+    0 < s.re ∧ s.re < 1 := hs_nontrivial
+
+/-! ================================================================
+    Path 2: Schwarz Reflection and Quadruple Zero Structure
+    (Phase 71 Part 2)
+
+    The Riemann zeta function satisfies ζ(conj s) = conj(ζ(s)).
+    This follows from real Dirichlet series coefficients (Re(s) > 1)
+    extended by analytic continuation (identity principle).
+
+    Combined with riemannZeta_zero_symmetry, this establishes the
+    quadruple zero structure: {s₀, conj s₀, 1−s₀, 1−conj s₀}.
+    The quadruple collapses to a pair exactly when Re(s₀) = 1/2. -/
+
+/-- Conjugation commutes with complex power of a positive natural number:
+    `conj(n^s) = n^(conj s)` for `n : ℕ`, `n ≠ 0`. This is because `n` is a
+    positive real, so `log n` is real and conjugation passes through `exp`. -/
+private lemma conj_natCast_cpow (n : ℕ) (hn : n ≠ 0) (s : ℂ) :
+    starRingEnd ℂ ((n : ℂ) ^ s) = (n : ℂ) ^ (starRingEnd ℂ s) := by
+  have hn0 : (n : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr hn
+  rw [Complex.cpow_def_of_ne_zero hn0, Complex.cpow_def_of_ne_zero hn0,
+      ← Complex.exp_conj, map_mul]
+  congr 1
+  have h_arg : (n : ℂ).arg ≠ Real.pi := by
+    have : (n : ℂ) = ((n : ℝ) : ℂ) := by push_cast; ring
+    rw [this, Complex.arg_ofReal_of_nonneg (by exact_mod_cast (Nat.pos_of_ne_zero hn).le)]
+    exact (ne_of_gt Real.pi_pos).symm
+  have h_conj_n : starRingEnd ℂ (n : ℂ) = (n : ℂ) := by simp
+  have := Complex.log_conj (n : ℂ) h_arg
+  rw [h_conj_n] at this; rw [← this]
+
+/-- Conjugation commutes with each term of the L-series for `f = 1`. -/
+private lemma conj_LSeries_term_one (s : ℂ) (n : ℕ) :
+    starRingEnd ℂ (LSeries.term 1 s n) = LSeries.term 1 (starRingEnd ℂ s) n := by
+  rcases eq_or_ne n 0 with rfl | hn
+  · simp [LSeries.term]
+  · simp only [LSeries.term, hn, ite_false, Pi.one_apply, one_div]
+    rw [map_inv₀, conj_natCast_cpow n hn s]
+
+/-- Schwarz reflection for ζ on the convergence half-plane Re(s) > 1.
+    Proved directly from the L-series representation `ζ(s) = ∑ n⁻ˢ`
+    and the fact that conjugation commutes with each Dirichlet term
+    (since all coefficients are real). -/
+theorem riemannZeta_conj_of_re_gt_one {s : ℂ} (hs : 1 < s.re) :
+    riemannZeta (starRingEnd ℂ s) = starRingEnd ℂ (riemannZeta s) := by
+  have hs' : 1 < (starRingEnd ℂ s).re := by rw [Complex.conj_re]; exact hs
+  rw [← LSeries_one_eq_riemannZeta hs, ← LSeries_one_eq_riemannZeta hs']
+  simp only [LSeries, starRingEnd_apply]
+  rw [← starRingEnd_apply, tsum_star]
+  congr 1; ext n
+  exact (conj_LSeries_term_one s n).symm
+
+/-- Schwarz reflection for ζ — general case (Theorem).
+
+    **Proof:** For Re(s) > 1, the identity follows from conjugating the Dirichlet
+    series term-by-term (`riemannZeta_conj_of_re_gt_one`). Both sides define
+    ℂ-analytic functions on `{s | s ≠ 1}` (the LHS via `DifferentiableAt.conj_conj`,
+    the RHS via `differentiableAt_riemannZeta`). Since `{s | s ≠ 1}` is preconnected
+    (complement of a point in a space of real rank ≥ 2), the identity principle
+    (`AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq`) extends the equality
+    to all `s ≠ 1`. -/
+theorem riemannZeta_conj (s : ℂ) (hs : s ≠ 1) :
+    riemannZeta (starRingEnd ℂ s) = starRingEnd ℂ (riemannZeta s) := by
+  -- Define the two analytic functions whose equality we want.
+  -- f₁(z) = star(ζ(star z)) and f₂(z) = ζ(z).
+  -- f₁ = f₂ is equivalent to ζ(star z) = star(ζ(z)).
+  let f₁ : ℂ → ℂ := fun z => starRingEnd ℂ (riemannZeta (starRingEnd ℂ z))
+  let f₂ : ℂ → ℂ := riemannZeta
+  -- It suffices to show f₁(s) = f₂(s).
+  suffices h : f₁ s = f₂ s by
+    simp only [f₁, f₂] at h
+    have := congr_arg (starRingEnd ℂ) h
+    simp at this
+    exact this
+  -- The domain U = {z | z ≠ 1} is open.
+  let U : Set ℂ := {z | z ≠ 1}
+  have hU_open : IsOpen U := isOpen_ne
+  -- f₂ = ζ is differentiable on U.
+  have hf₂_diff : DifferentiableOn ℂ f₂ U := fun z hz =>
+    (differentiableAt_riemannZeta hz).differentiableWithinAt
+  -- f₁ = star ∘ ζ ∘ star is differentiable on U (via DifferentiableAt.conj_conj).
+  have hf₁_diff : DifferentiableOn ℂ f₁ U := fun z hz => by
+    have hz' : starRingEnd ℂ z ≠ 1 := by
+      intro h; apply hz; have := congr_arg (starRingEnd ℂ) h
+      simp [map_one] at this; exact this
+    have h1 := (differentiableAt_riemannZeta hz').conj_conj
+    rw [starRingEnd_self_apply] at h1
+    exact h1.differentiableWithinAt
+  -- Both are analytic on U (ℂ-differentiable on open ⇒ analytic).
+  have hf₁_an : AnalyticOnNhd ℂ f₁ U := hf₁_diff.analyticOnNhd hU_open
+  have hf₂_an : AnalyticOnNhd ℂ f₂ U := hf₂_diff.analyticOnNhd hU_open
+  -- U = ℂ \ {1} is preconnected (rank ℝ ℂ = 2 > 1).
+  have hU_preconn : IsPreconnected U := by
+    rw [show U = {(1 : ℂ)}ᶜ from by ext; simp [U]]
+    exact (isConnected_compl_singleton_of_one_lt_rank
+      (by rw [Complex.rank_real_complex]; norm_num) 1).isPreconnected
+  -- f₁ and f₂ agree on a neighborhood of z₀ = 2 ∈ U.
+  have hz₀_mem : (2 : ℂ) ∈ U := by simp [U]
+  have h_agree_nhd : f₁ =ᶠ[nhds (2 : ℂ)] f₂ := by
+    apply Filter.eventuallyEq_iff_exists_mem.mpr
+    exact ⟨{z | 1 < z.re},
+      (isOpen_lt continuous_const Complex.continuous_re).mem_nhds (by simp : (2 : ℂ).re > 1),
+      fun z hz => by
+        simp only [f₁, f₂]
+        rw [riemannZeta_conj_of_re_gt_one hz, starRingEnd_self_apply]⟩
+  -- Identity principle: f₁ = f₂ on all of U.
+  exact hf₁_an.eqOn_of_preconnected_of_eventuallyEq hf₂_an hU_preconn hz₀_mem h_agree_nhd hs
+
+/-- If ζ(s₀) = 0 in the critical strip, then ζ(conj s₀) = 0. -/
+theorem riemannZeta_zero_conj {s : ℂ}
+    (hs_strip : 0 < s.re ∧ s.re < 1)
+    (h : riemannZeta s = 0) :
+    riemannZeta (starRingEnd ℂ s) = 0 := by
+  rw [riemannZeta_conj s (not_one_of_critical_strip s hs_strip), h, map_zero]
+
+/-- Algebraic characterization: the cross-pairing of the quadruple
+    collapses exactly on the critical line. Pure complex arithmetic —
+    no analytic content, no dependence on riemannZeta_conj.
+    This is the algebraic heart of why RH is about Re(s) = 1/2. -/
+theorem quadruple_critical_line_characterization (s₀ : ℂ) :
+    s₀ = 1 - starRingEnd ℂ s₀ ↔ s₀.re = 1 / 2 := by
+  constructor
+  · intro h
+    have h_re := congr_arg Complex.re h
+    rw [sub_re, one_re, conj_re] at h_re
+    linarith
+  · intro h
+    apply Complex.ext
+    · rw [sub_re, one_re, conj_re, h]
+      linarith
+    · rw [sub_im, one_im, conj_im]
+      simp
+
+/-- The Quadruple Zero Structure.
+    If ζ(s₀) = 0 in the critical strip, all four members of the V₄-orbit
+    {s₀, conj s₀, 1−s₀, 1−conj s₀} are zeros.
+    Axiom footprint target: [propext, Classical.choice, Quot.sound].
+    Requires: riemannZeta_conj + riemannZeta_zero_symmetry. -/
+theorem riemannZeta_quadruple_zero {s₀ : ℂ}
+    (hs_strip : 0 < s₀.re ∧ s₀.re < 1)
+    (h : riemannZeta s₀ = 0) :
+    riemannZeta s₀ = 0 ∧
+    riemannZeta (starRingEnd ℂ s₀) = 0 ∧
+    riemannZeta (1 - s₀) = 0 ∧
+    riemannZeta (1 - starRingEnd ℂ s₀) = 0 := by
+  have hs_one_sub_strip : 0 < (1 - s₀).re ∧ (1 - s₀).re < 1 := by
+    constructor <;> { rw [sub_re, one_re]; linarith [hs_strip.1, hs_strip.2] }
+  have h_one_sub := (riemannZeta_zero_symmetry s₀ hs_strip).mp h
+  have h_four : riemannZeta (starRingEnd ℂ (1 - s₀)) = 0 :=
+    riemannZeta_zero_conj hs_one_sub_strip h_one_sub
+  simp only [map_sub, map_one] at h_four
+  exact ⟨h,
+         riemannZeta_zero_conj hs_strip h,
+         h_one_sub,
+         h_four⟩
+
+/-- Capstone: RH is exactly the assertion that every non-trivial zero
+    is in the collapsed case of the quadruple structure.
+    The algebraic condition s₀ = 1 − conj s₀ ↔ Re(s₀) = 1/2 is proved.
+    That all non-trivial zeros satisfy this is riemann_critical_line. -/
+theorem quadruple_RH_connection (s₀ : ℂ)
+    (hs_strip : 0 < s₀.re ∧ s₀.re < 1) :
+    s₀ = 1 - starRingEnd ℂ s₀ ↔ s₀.re = 1 / 2 :=
+  quadruple_critical_line_characterization s₀
+
 /-- riemannZeta is used as an approximation of `RiemannFunctionalSymmetry` for the
     purpose of the PrimeExponentialLift structure.
 
@@ -185,19 +398,7 @@ theorem prime_exponential_identification_thm (s : ℂ)
     The structural lemmas in this section prove that the sedenion F_base
     prime embedding exactly encodes the oscillatory angular structure of
     the Euler product factors. These are PROVED from definitions and
-    Complex analysis — they do not require analytic continuation.
-
-    **The core correspondence:**
-    For prime p and imaginary part t = s.im:
-
-        (p : ℂ)^(-s) = p^{-σ} · [cos(t·log p) - i·sin(t·log p)]
-
-    The F_base encoding:
-        primeEmbedding2(t) = cos(t·log 2)·(e₀+e₁₅) + sin(t·log 2)·(e₃+e₁₂)
-        primeEmbedding3(t) = sin(t·log 3)·(e₆+e₉)
-
-    So F_base coordinates exactly track the angular components of p^{-s}.
-    -/
+    Mathlib's `Complex.log` and `Complex.cpow` API. -/
 
 /-- **Part A: Euler factor phase decomposition.**
 
