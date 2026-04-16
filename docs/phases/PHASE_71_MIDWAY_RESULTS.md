@@ -12,7 +12,7 @@ Phase 71 has achieved a significant reduction in the investigation's non-standar
 
 **Key Achievements:**
 1.  **Path 1 (Boundary Walls):** Formally proved that $\zeta(s) \neq 0$ for $Re(s)=0$ ($s \neq 0$). Combined with Mathlib's known results for $Re(s) \geq 1$, this completes the zero-free "walls" on both sides of the critical strip.
-2.  **Path 2 (Schwarz Reflection):** Successfully discharged the `riemannZeta_conj` axiom as a verified theorem. The proof utilizes the identity principle to extend the Dirichlet series conjugation property from the convergence region to the entire complex plane (minus the pole at $s=1$).
+2.  **Path 2 (Schwarz Reflection):** Successfully discharged the `riemannZeta_conj` axiom as a verified theorem. The proof was completed by **Aristotle (Harmonic Math)** after the Gemini CLI was unable to close the formal proof on the identity principle extension. This represents a major cross-platform achievement in the investigation.
 3.  **Quadruple Structure:** Established the Klein four-group ($V_4$) orbit of zeros $\{s, \bar{s}, 1-s, 1-\bar{s}\}$. Proved the algebraic characterization that the quadruple collapses to a pair exactly on the critical line $Re(s)=1/2$.
 
 The proof stack is now technically "leaner" than at any point in the investigation, with the sole remaining non-standard dependency being the Riemann Hypothesis itself.
