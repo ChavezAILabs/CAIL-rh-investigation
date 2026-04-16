@@ -30,6 +30,18 @@ The proof stack is now technically "leaner" than at any point in the investigati
 
 ---
 
+## Mathlib v4.28.0 Infrastructure Audit
+
+**Plan:** Conduct a comprehensive audit of the Lean 4 Mathlib (v4.28.0) analytic infrastructure to identify existing theorems related to the Riemann Zeta function and determine the "hard wall" of formalization.
+
+**Results:**
+- **Zero-Free Region:** Confirmed that Mathlib provides a "hard wall" at $Re(s)=1$ (non-vanishing of $\zeta(s)$ for $Re(s) \geq 1$).
+- **Critical Strip Status:** The critical strip ($0 < Re(s) < 1$) remains formally "blank" in Mathlib, with no internal zero-free results or symmetry proofs provided.
+- **Riemann Hypothesis:** The proposition `def RiemannHypothesis : Prop` exists within Mathlib, but no proof or conditional proof stack is currently available.
+- **Audit Conclusion:** The investigation's formal proof stack remains entirely additive to the current state of Mathlib.
+
+---
+
 ## Path 1 Findings: Zero-Free Boundary Walls
 
 **Theorem:** `riemannZeta_ne_zero_of_re_eq_zero`
@@ -43,6 +55,7 @@ The proof stack is now technically "leaner" than at any point in the investigati
 
 **Theorem:** `riemannZeta_conj` (Discharged Axiom)
 - **Result:** $\forall s \neq 1, \zeta(\bar{s}) = \overline{\zeta(s)}$.
+- **Credit:** Successfully discharged by **Aristotle (Harmonic Math)** as a proved theorem after Gemini CLI could not close the formal proof on the identity principle extension. This represents a critical cross-platform handoff that eliminated the mirror symmetry axiom.
 - **Proof Strategy:**
     - **Step 1:** Proved for $Re(s) > 1$ using the $L$-series representation $\zeta(s) = \sum n^{-s}$. helper lemmas confirmed conjugation commutes with term-by-term Dirichlet factors for real coefficients.
     - **Step 2:** Extended to $\mathbb{C} \setminus \{1\}$ via the identity principle for analytic functions on the preconnected domain (real rank 2).
