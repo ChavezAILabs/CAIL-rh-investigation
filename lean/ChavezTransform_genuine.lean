@@ -7,6 +7,23 @@ Formal verification of the Chavez Transform with genuine sedenion multiplication
 Supersedes ChavezTransform_Specification_aristotle.lean (UUID 0bfec79d), where
 CD4_mul was defined as the zero function, making all theorems vacuous.
 
+Authors:
+  Paul Chavez — Chavez AI Labs LLC (@aztecsungod)
+    Mathematical design, proof architecture, session direction
+
+AI Contributors:
+  Claude Code (Anthropic) — four-step proof architecture, file construction,
+    error diagnosis and repair across multiple build iterations
+  Gemini CLI (Google) — build completion via multi-AI relay handoff
+  Aristotle / Harmonic Math — final stack verification, axiom footprint
+    confirmation: [propext, Classical.choice, Quot.sound]
+
+Multi-AI Workflow:
+  Claude Desktop (Anthropic) — strategy, session prompts, KSJ curation
+  Claude Code — Lean scaffolding and iterative build
+  Gemini CLI — relay completion at Claude Code context limit
+  Aristotle — final independent verification (Harmonic Math platform)
+
 Design:
   - Sed := EuclideanSpace ℝ (Fin 16) with instMulSed (genuine 16×16 table)
   - realToSed x = x • sedBasis 0  (embeds ℝ ↪ Sed via the scalar channel e₀)
@@ -15,7 +32,18 @@ Design:
   - stability_constant P Q α = 2 * (‖P‖² + ‖Q‖²) / (α * Real.exp 1)
   - Domain: parametric (a, b]  (matches IntervalIntegrable)
 
-Axiom footprint target: [propext, Classical.choice, Quot.sound]
+Key Results:
+  - chavez_transform_convergence: finite value for any bounded integrable f
+  - chavez_transform_stability: |C[f]| ≤ stability_constant P Q α * L1_norm f a b
+  - Both theorems unconditional on P*Q=0 (zero divisor property not required)
+  - K_Z_realToSed exact formula: pattern invariance formally proved as theorem
+
+Axiom footprint (both theorems):
+  [propext, Classical.choice, Quot.sound]
+  No riemann_critical_line. No sorryAx. No non-standard axioms.
+
+GitHub: https://github.com/ChavezAILabs/CAIL-rh-investigation
+Zenodo: https://doi.org/10.5281/zenodo.17402495
 -/
 
 import Mathlib

@@ -348,6 +348,99 @@ theorem quadruple_RH_connection (s₀ : ℂ)
     s₀ = 1 - starRingEnd ℂ s₀ ↔ s₀.re = 1 / 2 :=
   quadruple_critical_line_characterization s₀
 
+/-! ================================================================
+    Path 3: completedRiemannZeta Real on Critical Line (Phase 71 Part 3)
+    ================================================================
+
+    The completed Riemann zeta function Λ(s) = π^(-s/2)·Γ(s/2)·ζ(s)
+    (`completedRiemannZeta` in Mathlib) is real-valued on the critical line
+    Re(s) = 1/2. Two facts combine:
+    (1) Λ(conj s) = conj(Λ(s)) — Schwarz reflection (proved below)
+    (2) Λ(1 - s) = Λ(s)        — `completedRiemannZeta_one_sub` (Mathlib)
+    On the critical line Re(s) = 1/2: conj(s) = 1 - s, so both give
+    Λ(s) = conj(Λ(s)), forcing Im(Λ(s)) = 0.
+
+    Axiom footprint: [propext, Classical.choice, Quot.sound]. -/
+
+/-- Schwarz reflection for Γℝ(s) = π^(-s/2)·Γ(s/2):
+    Γℝ(conj s) = conj(Γℝ(s)) for all s : ℂ. -/
+private lemma Gammaℝ_conj (s : ℂ) :
+    Gammaℝ (starRingEnd ℂ s) = starRingEnd ℂ (Gammaℝ s) := by
+  -- starRingEnd ℂ fixes real numerals (conjugation fixes ℝ ⊂ ℂ)
+  have h2 : starRingEnd ℂ (2 : ℂ) = 2 := by
+    apply Complex.ext <;> simp [Complex.conj_re, Complex.conj_im]
+  simp only [Gammaℝ_def, map_mul]
+  congr 1
+  · -- π ^ (-(conj s) / 2) = conj (π ^ (-s / 2))
+    have h_comm : starRingEnd ℂ (-s / 2) = -(starRingEnd ℂ s) / 2 := by
+      rw [map_div₀, map_neg, h2]
+    have h_arg : (↑π : ℂ).arg ≠ Real.pi := by
+      rw [Complex.arg_ofReal_of_nonneg (le_of_lt Real.pi_pos)]
+      exact ne_of_lt Real.pi_pos
+    rw [← h_comm, Complex.cpow_conj _ _ h_arg,
+        show starRingEnd ℂ (↑π : ℂ) = (↑π : ℂ) from by simp]
+  · -- Gamma ((conj s) / 2) = conj (Gamma (s / 2))
+    rw [show (starRingEnd ℂ s) / 2 = starRingEnd ℂ (s / 2) from by rw [map_div₀, h2]]
+    exact Complex.Gamma_conj _
+
+/-- Schwarz reflection for completedRiemannZeta = Λ(s) = π^(-s/2)·Γ(s/2)·ζ(s):
+    Λ(conj s) = conj(Λ(s)) for Re(s) > 0 and s ≠ 1.
+    Proved from `riemannZeta_conj`, `Gammaℝ_conj`, and `riemannZeta_def_of_ne_zero`. -/
+theorem completedRiemannZeta_conj {s : ℂ} (hs_re : 0 < s.re) (hs1 : s ≠ 1) :
+    completedRiemannZeta (starRingEnd ℂ s) = starRingEnd ℂ (completedRiemannZeta s) := by
+  have hs0 : s ≠ 0 := by intro h; simp [h] at hs_re
+  have hs0' : starRingEnd ℂ s ≠ 0 := by
+    intro h; apply hs0; have := congr_arg (starRingEnd ℂ) h; simp at this; exact this
+  have hs1' : starRingEnd ℂ s ≠ 1 := by
+    intro h; apply hs1; have := congr_arg (starRingEnd ℂ) h; simp at this; exact this
+  have hs_conj_re : 0 < (starRingEnd ℂ s).re := by
+    rw [Complex.conj_re]; exact hs_re
+  have hG  : Gammaℝ s ≠ 0               := Gammaℝ_ne_zero_of_re_pos hs_re
+  have hG' : Gammaℝ (starRingEnd ℂ s) ≠ 0 := Gammaℝ_ne_zero_of_re_pos hs_conj_re
+  have hΛ  : completedRiemannZeta s = riemannZeta s * Gammaℝ s :=
+    (div_eq_iff hG).mp (riemannZeta_def_of_ne_zero hs0).symm
+  have hΛ' : completedRiemannZeta (starRingEnd ℂ s) =
+             riemannZeta (starRingEnd ℂ s) * Gammaℝ (starRingEnd ℂ s) :=
+    (div_eq_iff hG').mp (riemannZeta_def_of_ne_zero hs0').symm
+  rw [hΛ', riemannZeta_conj s hs1, Gammaℝ_conj s, ← map_mul, ← hΛ]
+
+/-- The completed Riemann zeta function Λ(s) is real-valued on the critical line Re(s) = 1/2.
+    On the critical line: conj(s) = 1 - s, so Λ(conj s) = Λ(1-s) = Λ(s) and
+    Λ(conj s) = conj(Λ(s)), giving Λ(s) = conj(Λ(s)), i.e., Im(Λ(s)) = 0.
+    Axiom footprint: [propext, Classical.choice, Quot.sound]. -/
+theorem completedRiemannZeta_real_on_critical_line (t : ℝ) :
+    (completedRiemannZeta ((1 : ℂ)/2 + ↑t * Complex.I)).im = 0 := by
+  set s := (1 : ℂ)/2 + ↑t * Complex.I with hs_def
+  have hs1 : s ≠ 1 := by
+    intro h; have := congr_arg Complex.re h; simp [hs_def] at this
+  have hs_re : (0 : ℝ) < s.re := by
+    have : s.re = 1/2 := by
+      simp only [hs_def, Complex.add_re, Complex.mul_re, Complex.ofReal_re,
+                 Complex.ofReal_im, Complex.I_re, Complex.I_im]; norm_num
+    linarith
+  -- On the critical line Re(s) = 1/2: conj(s) = 1 - s
+  have h_conj : starRingEnd ℂ s = 1 - s := by
+    apply Complex.ext
+    · rw [Complex.conj_re, Complex.sub_re, Complex.one_re]
+      simp only [hs_def, Complex.add_re, Complex.mul_re, Complex.ofReal_re,
+                 Complex.ofReal_im, Complex.I_re, Complex.I_im]; norm_num
+    · rw [Complex.conj_im, Complex.sub_im, Complex.one_im]
+      simp only [hs_def, Complex.add_im, Complex.mul_im, Complex.ofReal_re,
+                 Complex.ofReal_im, Complex.I_re, Complex.I_im]; ring
+  -- Λ(conj s) = conj(Λ(s))  and  Λ(conj s) = Λ(1-s) = Λ(s)
+  have h_schwarz : completedRiemannZeta (starRingEnd ℂ s) =
+                   starRingEnd ℂ (completedRiemannZeta s) :=
+    completedRiemannZeta_conj hs_re hs1
+  have h_sym : completedRiemannZeta (starRingEnd ℂ s) = completedRiemannZeta s := by
+    rw [h_conj, completedRiemannZeta_one_sub]
+  -- Combining: Λ(s) = conj(Λ(s)), so Im(Λ(s)) = 0
+  have h_real : completedRiemannZeta s = starRingEnd ℂ (completedRiemannZeta s) :=
+    h_sym.symm.trans h_schwarz
+  have h_im : (completedRiemannZeta s).im = -(completedRiemannZeta s).im := by
+    conv_lhs => rw [h_real]
+    rw [Complex.conj_im]
+  linarith
+
 /-- riemannZeta is used as an approximation of `RiemannFunctionalSymmetry` for the
     purpose of the PrimeExponentialLift structure.
 
