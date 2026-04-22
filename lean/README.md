@@ -22,15 +22,13 @@ Phase 71 represents the successful "clearing of the decks" for the investigation
 The **Chavez Transform** is a formally verified algebraic operator designed to detect structural stability and conjugation symmetry in high-dimensional data. It is a cornerstone of the CAILculator v2.0.3 engine, providing a validation framework grounded in algebraic certainty.
 
 ### The Official Equation
-As formalized in `ChavezTransform_genuine.lean`, the 1D Chavez Transform $C[f]$ of an integrable function $f$ on $(a, b]$ is:
+As formalized in `ChavezTransform_genuine.lean` and confirmed via the official 2026 representation:
 
-$$C[f](P, Q, \alpha, d, a, b) = \int_{a}^{b} f(x) \cdot K(P, Q, \tilde{x}, \alpha, d) \, dx$$
+$$\mathcal{C}[f](P, Q, \alpha, d) = \int_D f(x) \cdot K_Z(P, Q, x) \cdot \exp(-\alpha \|x\|^2) \cdot \Omega_d(x) dx$$
 
-Where the **Full Kernel** $K$ is:
-
-$$K(P, Q, \tilde{x}, \alpha, d) = \underbrace{(\|P \cdot \tilde{x}\|^2 + \|\tilde{x} \cdot Q\|^2 + \|Q \cdot \tilde{x}\|^2 + \|\tilde{x} \cdot P\|^2)}_{K_Z(P, Q, \tilde{x})} \cdot e^{-\alpha \|\tilde{x}\|^2} \cdot (1 + \|\tilde{x}\|^2)^{-d/2}$$
-
-And $\tilde{x} = x \cdot e_0$ represents the embedding of the real signal into the scalar channel of the 16D sedenion algebra.
+Where:
+- $K_Z(P, Q, x) = \|P \cdot x\|^2 + \|x \cdot Q\|^2 + \|Q \cdot x\|^2 + \|x \cdot P\|^2$
+- $\Omega_d(x) = (1 + \|x\|^2)^{-d/2}$
 
 ### Stability & Verification
 The transform's stability is machine-verified (0 sorries, Mathlib-compliant), satisfying the bound:
@@ -42,9 +40,6 @@ Where the **Stability Constant** $M$ is defined as:
 $$M(P, Q, \alpha) = \frac{2(\|P\|^2 + \|Q\|^2)}{\alpha \cdot e}$$
 
 This bound ensures that the transform remains robust against noise, a property exploited by the **CAILculator v2.0.3** "Profile Manager" for Journalism (Sourcing Confidence) and Quant Equity (Volatility Anchors).
-
-### Integration in RHI
-Within the **Riemann Hypothesis Investigation (RHI)** profile, the transform is used to compute the **Geometric Penalty Function** $P(\sigma) \sim |\sigma - 0.5|^{2.59}$. Numerical scans consistently show that algebraic annihilation—and thus transform symmetry—is maximized precisely on the critical line ($\sigma = 0.5$).
 
 ---
 
