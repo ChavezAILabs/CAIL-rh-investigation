@@ -117,18 +117,6 @@ Shift from empirical spectral analysis to formal algebraic forcing argument. Con
 
 ---
 
-## 📦 Phase 71 Artifacts
-
-| Local File Path | GitHub Destination | Status |
-| :--- | :--- | :--- |
-| `docs/phases/PHASE_71_RESULTS.md` | `docs/phases/PHASE_71_RESULTS.md` | **Pushed** |
-| `docs/phases/PHASE_71_MIDWAY_RESULTS.md` | `docs/phases/PHASE_71_MIDWAY_RESULTS.md` | **Pushed** |
-| `docs/handoffs/ARISTOTLE_HANDOFF_PHASE71_CONJ.md` | `docs/handoffs/ARISTOTLE_HANDOFF_PHASE71_CONJ.md` | **Pushed** |
-| `docs/handoffs/PHASE_71_PART2_HANDOFF_FINAL.md` | `docs/handoffs/PHASE_71_PART2_HANDOFF_FINAL.md` | **Pushed** |
-| `docs/handoffs/Handoff_surgical_bridge.md` | `docs/handoffs/Handoff_surgical_bridge.md` | **Pushed** |
-
----
-
 ## 🛠️ Infrastructure & Tools
 
 | Tool | Description |
