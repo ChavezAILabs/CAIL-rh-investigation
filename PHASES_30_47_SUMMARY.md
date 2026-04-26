@@ -251,4 +251,4 @@ The forcing argument is complete. The one open bridge — connecting the concret
 ---
 
 *Chavez AI Labs LLC — Applied Pathological Mathematics — Better math, less suffering.*
-*@aztecsungod | github.com/ChavezAILabs*
+| github.com/ChavezAILabs*
