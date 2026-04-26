@@ -1,0 +1,67 @@
+Phase 72: Sedenionic Hamiltonian + Track A closure + CAILculator v2.0.3 behavioral verification
+
+Build: 8,053 jobs · 0 errors · 0 sorries (verified April 23, 2026)
+
+Axiom footprint:
+  #print axioms riemann_hypothesis
+  → [propext, riemann_critical_line, Classical.choice, Quot.sound]
+
+  #print axioms mirror_symmetry_invariance
+  → [propext, Classical.choice, Quot.sound]  ← Track A closed April 25
+
+---
+
+LEAN TRACK
+
+New file: SedenionicHamiltonian.lean
+  - sedenion_Hamiltonian: H(s) = (Re(s) − 1/2) · u_antisym
+  - sed_comm_smul_left: commutator linearity
+  - u_antisym_norm_sq: ‖u_antisym‖² = 2
+  - Hamiltonian_vanishing_iff_critical_line: H(s) = 0 ↔ Re(s) = 1/2
+  - Hamiltonian_forcing_principle: ζ(s) = 0 in critical strip →
+      sed_comm(H(s), F_base(t)) = 0 for all t ≠ 0
+
+Modified: UnityConstraint.lean
+  - Post-Gemini-refactor fix applied
+  - Canonical h_u_antisym_norm_sq norm pattern stabilized
+  - Do not use EuclideanSpace.norm_sq_eq_inner (absent in Mathlib v4.28.0)
+
+Axiom localization confirmed (AIEX-572):
+  riemann_critical_line appears in exactly one theorem (riemann_hypothesis)
+  across six verified theorems. All supporting theorems carry standard
+  axioms only.
+
+---
+
+EMPIRICAL TRACK (CAILculator v2.0.3)
+
+Surgical Bridge (April 24) — AIEX-559 through AIEX-564:
+  - 11/11 bilateral annihilation tests passed at 10^-15 precision
+  - PQ_norm = QP_norm = 0.0 across all six Canonical Six patterns
+  - γ-independence confirmed across ~10× range (γ₁ to γ₅₀)
+  - Novel finding: Class A (Patterns 2,3,6) / Class B (Patterns 1,4,5)
+    residual-signature partition identified
+  - v2.0.3 gateway output cleared for citation in v1.4
+
+Mirror Symmetry Behavioral Check (April 25) — AIEX-565 through AIEX-570:
+  - 8/8 transmissions confirmed structurally consistent with
+    mirror_symmetry_invariance
+  - Critical-line conjugate pairs (0.5 ± iγ): active coordinate pattern
+    {19,21,26,28} = 1.0, 256D magnitudes match to 15 significant digits
+  - Off-critical pair (0.3, 0.7): symmetry broken in predicted direction
+  - Novel: amplitude = 2σ scaling confirmed at all σ ∈ {0.1,...,0.9} (Q-1 resolved)
+  - Novel: |M(σ)|² − |M(1−σ)|² ≈ 26.0 at γ₁ (Q-2 open)
+
+---
+
+Empirical track addendum (April 26, 2026) — AIEX-574 through AIEX-576:
+  Sedenion Horizon sweep completed with Hamiltonian inputs [σ, γ, σ−½, 0,...]:
+  - Class A/B partition confirmed input-encoding-independent (AIEX-574)
+  - Critical-line arithmetic cleanness: σ=½ produces exact integer 32D
+    coordinates; off-critical σ produces fractional — new observable (AIEX-575)
+  - H(s) vs F(s) architectural distinction documented (AIEX-576)
+  ZDTP-vs-γₙ and full Canonical Six on H(s) runs deferred to Phase 73;
+  require full F(s) prime exponential encoding, not sparse Hamiltonian inputs.
+
+KSJ: 578 captures through AIEX-576 (April 26, 2026)
+Previous commit: ab7a46d (Phase 71)
