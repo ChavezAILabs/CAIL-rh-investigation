@@ -1,4 +1,4 @@
-# Formal Verification of the Riemann Hypothesis via Sedenion Forcing
+# CAIL-RH Investigation — Lean 4 Formal Proof Stack
 **CAIL-rh-investigation | Chavez AI Labs LLC**
 
 This directory contains the formal proof stack for the **Riemann Hypothesis Investigation (RHI)**, implemented in **Lean 4**. Using the non-associative sedenion algebra (16D) as a forcing framework, this project establishes a formal bridge between high-dimensional algebraic annihilation and the distribution of prime numbers.
