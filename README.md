@@ -2,34 +2,65 @@
 **Chavez AI Labs LLC | Applied Pathological Mathematics**
 *Better math, less suffering.*
 
-A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted as an Open Science project.
+A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted as an Open Science project under the methodology of **Applied Pathological Mathematics (APM)** — the discovery, formal verification, and active deployment of algebraic structures traditionally dismissed as pathological.
 
 ---
 
-## 🏆 Current Status — Phase 73 COMPLETE (May 5, 2026)
+## 🏆 Current Status — Phase 74 COMPLETE (May 8, 2026)
 
-**The "Spectral Identification" Milestone: Formal proof that every zero of ζ(s) in the critical strip is a spectral point of the Sedenionic Hamiltonian H(s), and every spectral point lies on the critical line Re(s) = ½. Confirmed universal across all six Canonical Six gateways via CAILculator v2.0.3.**
+**The "Gateway Integer Law" Milestone: Formal proof that the 32D ZDTP lift coordinate of the Sedenionic Hamiltonian H(s) is an integer if and only if Re(s) = ½ in the critical strip. `gateway_integer_iff_critical_line` carries standard axioms only — independent of `riemann_critical_line`. The investigation now holds three independent standard-axiom characterizations of the critical line.**
 
 ```
-lake build → 8,055 jobs · 0 errors · 1 sorry (by design)  (verified May 5, 2026)
+lake build → 8,057 jobs · 0 errors · 1 sorry (by design)  (verified May 8, 2026)
+Branch: phase-74-gateway · Commit: 45c1034
 
-#print axioms eigenvalue_zero_mapping
-→ [propext, riemann_critical_line, Classical.choice, Quot.sound]
+#print axioms gateway_integer_iff_critical_line
+→ [propext, Classical.choice, Quot.sound]                    ✅ RH-independent
 
-#print axioms zeta_zero_implies_spectral
+#print axioms lift_coord_scaling
 → [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
 ```
 
 **The 1 sorry** in `spectral_implies_zeta_zero` is intentionally held. H(s) vanishes on the entire critical line, not only at ζ zeros — the pointwise converse is false. The proved result is spectral containment, which is the correct and sufficient statement for the investigation's thesis.
 
-**Axiom localization:** `riemann_critical_line` appears in exactly **one** theorem (`riemann_hypothesis`) and its downstream `eigenvalue_zero_mapping`. Every supporting theorem carries standard axioms only.
+**Axiom localization:** `riemann_critical_line` appears in exactly **one** theorem (`riemann_hypothesis`) and its downstream `eigenvalue_zero_mapping`. Every supporting theorem — including all three critical line characterizations — carries standard axioms only.
+
+### Three Independent Standard-Axiom Characterizations of Re(s) = ½
+
+| # | Theorem | Route | Axiom Footprint |
+|---|---|---|---|
+| 1 | `Hamiltonian_vanishing_iff_critical_line` | H(s) = 0 ↔ Re(s) = ½ (energy minimum) | Standard only |
+| 2 | `spectral_implies_critical_line` | Spectral containment → Re(s) = ½ | Standard only |
+| 3 | `gateway_integer_iff_critical_line` | Integer lift coordinate ↔ Re(s) = ½ | Standard only (**RH-independent**) |
+
+These three characterize the same geometric object — the critical line — through distinct algebraic mechanisms: energy vanishing, spectral containment, and arithmetic integrality of a sedenion-algebraic projection. Their formal assembly into a single convergence statement is the Phase 75 primary target.
+
+### Phase 74 Achievements
+- **Gateway Integer Law:** `GatewayScaling.lean` proves `gateway_integer_iff_critical_line` — within the critical strip, `lift_coordinate s g` is an integer if and only if Re(s) = ½. The unique integer achieved is **1**, at exactly σ = ½.
+- **`lift_coord_scaling`:** Proved `lift_coordinate s g = 2 * s.re` algebraically from `‖u_antisym‖² = 2` via `real_inner_smul_left`. Gateway-independent by definition.
+- **`lift_coord_gateway_independent`:** Proved all six gateways yield the same lift coordinate — the 2σ law is universal across the Canonical Six.
+- **Q-13 CLOSED:** CAILculator Run C confirmed the 2σ scaling law is exactly linear to 10⁻¹⁵ precision with zero higher-order corrections and strict bilateral symmetry about σ = ½.
+- **Q-8 DEVELOPING:** Extended γ sweep (γ₁₁–γ₂₀) reveals the Class B/A magnitude ratio descends toward 4.0 from above with tightening local minima (4.067 → 4.057 → 4.044 at γ₁₂, γ₁₄, γ₁₆). E₈/Fano algebraic argument is the natural resolution path.
+
+---
+
+## ✅ Phase 73 COMPLETE — The "Spectral Identification" Milestone (May 5, 2026)
+
+**Formal proof that every zero of ζ(s) in the critical strip is a spectral point of the Sedenionic Hamiltonian H(s), and every spectral point lies on the critical line Re(s) = ½.**
+
+```
+lake build → 8,055 jobs · 0 errors · 1 sorry (by design)  (verified May 5, 2026)
+
+#print axioms zeta_zero_implies_spectral
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+```
 
 ### Phase 73 Achievements
 - **Spectral Identification:** `SpectralIdentification.lean` proves `eigenvalue_zero_mapping` — the formal link between ζ zeros and the spectral theory of H. Forward direction (`zeta_zero_implies_spectral`) proved axiom-clean.
-- **2σ Universal Law:** Active 32D ZDTP gateway lift coordinates equal exactly ±2σ across all six Canonical Six gateways. Integer values {±1} occur uniquely at σ = ½. Lean lemma `gateway_integer_iff_critical_line` motivated for Phase 74.
+- **2σ Universal Law:** Active 32D ZDTP gateway lift coordinates equal exactly 2σ across all six Canonical Six gateways, motivating Phase 74 formalization.
 - **Magnitude Growth Law:** Mean 256D magnitude scales linearly as μ ≈ 2.5γₙ across γ₁–γ₁₀ (Q-9 closed).
 - **Std/Mean Invariant:** 0.60 ± 0.01 across all 10 zeros, encoding-independent (Q-10 closed).
-- **Canonical Sync:** `SedenionicHamiltonian.lean` refined — unused definitions removed, named lemmas `sed_comm_smul_left` and `u_antisym_norm_sq` promoted to canonical.
+- **Canonical Sync:** `SedenionicHamiltonian.lean` refined — named lemmas `sed_comm_smul_left` and `u_antisym_norm_sq` promoted to canonical.
 
 ---
 
@@ -85,7 +116,7 @@ Where:
 
 ---
 
-## 🧬 The 14-File Lean 4 Stack
+## 🧬 The 15-File Lean 4 Stack
 
 | # | File | Phase | Key Theorems | Sorries |
 |---|---|---|---|---|
@@ -103,6 +134,7 @@ Where:
 | 12 | `EulerProductBridge.lean` | 67–71 | `riemannZeta_conj`, `completedRiemannZeta_real`, `riemannZeta_ne_zero` | 0 |
 | 13 | `SedenionicHamiltonian.lean` | 72/73 | `sedenion_Hamiltonian`, `Hamiltonian_vanishing_iff_critical_line`, `u_antisym_norm_sq` | 0 |
 | 14 | `SpectralIdentification.lean` | 73 | `eigenvalue_zero_mapping`, `zeta_zero_implies_spectral`, `spectral_implies_critical_line` | 1 (by design) |
+| 15 | `GatewayScaling.lean` | 74 | `lift_coord_scaling`, `gateway_integer_iff_critical_line`, `lift_coord_gateway_independent` | 0 |
 
 ---
 
@@ -120,7 +152,13 @@ Formally verified in `SedenionicHamiltonian.lean`. Vanishes if and only if Re(s)
 ζ(s) = 0 in critical strip  →  H(s) = 0  (proved, axiom-clean)
 H(s) = 0                    →  Re(s) = ½  (proved, standard axioms)
 ```
-The 2σ coordinate scaling law — active 32D ZDTP lift coordinates equal exactly 2σ, integer-exact uniquely at σ = ½ — is confirmed universal across all six Canonical Six gateways.
+
+### Gateway Integer Law (Phase 74)
+```
+lift_coordinate s g  =  2 · Re(s)          (lift_coord_scaling, standard axioms)
+2 · Re(s) ∈ ℤ  ↔  Re(s) = ½              (in critical strip 0 < Re(s) < 1)
+```
+The 32D ZDTP lift coordinate of H(s) equals exactly 2·Re(s) across all six Canonical Six gateways. The unique integer value achieved within the critical strip is **1**, at Re(s) = ½ only. Proved in `GatewayScaling.lean` with standard axioms only — no dependence on `riemann_critical_line`. Confirmed numerically to 10⁻¹⁵ precision (CAILculator Run C, Q-13 closed).
 
 ### The Sedenion Hamiltonian — AIEX-001a
 The multiplicative sedenion exponential product:
@@ -147,13 +185,14 @@ Discovery of the Canonical Six. Block Replication Theorem proved: zero divisor p
 ### The First Ascent — Phases 1–42 (January–March 2026)
 First examination of the RH through a 16-dimensional lens. Universal rank invariant established. ZDTP bilateral annihilation confirmed universal.
 
-### The Formal Ascent — Phases 43–73 (March–May 2026)
+### The Formal Ascent — Phases 43–74 (March–May 2026)
 - **Phases 58–63:** 9-file Lean 4 stack with zero sorries; `riemann_hypothesis` proved conditionally.
 - **Phase 69:** `euler_sedenion_bridge` proved as theorem.
 - **Phase 70:** `riemann_critical_line` introduced as sole transparent non-standard axiom.
 - **Phase 71:** Schwarz Reflection discharged. All boundary walls secured. Axiom footprint = 1.
 - **Phase 72:** Sedenionic Hamiltonian constructed. Track A closed. Build at 8,053 jobs.
 - **Phase 73:** Spectral identification proved. 2σ universal law confirmed. Build at 8,055 jobs.
+- **Phase 74:** Gateway Integer Law proved. Three independent standard-axiom characterizations of Re(s) = ½ established. Build at 8,057 jobs.
 
 ---
 
@@ -173,6 +212,8 @@ First examination of the RH through a 16-dimensional lens. Universal rank invari
 | **Phase 72: Track A closed — all supporting theorems standard-axiom-only** | 72 | April 25, 2026 |
 | **Phase 73: Spectral identification proved — eigenvalue-zero mapping** | 73 | May 5, 2026 |
 | **Phase 73: 2σ universal law confirmed across all six gateways** | 73 | May 5, 2026 |
+| **Phase 74: Gateway Integer Law proved — RH-independent, standard axioms only** | 74 | May 8, 2026 |
+| **Phase 74: Three independent standard-axiom characterizations of Re(s) = ½ in stack** | 74 | May 8, 2026 |
 
 ---
 
@@ -196,4 +237,4 @@ First examination of the RH through a 16-dimensional lens. Universal rank invari
 *Chavez AI Labs LLC | Paul Chavez, founder*
 *GitHub: [ChavezAILabs](https://github.com/ChavezAILabs)*
 *Zenodo: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)*
-*KSJ: 625 captures through AIEX-623 (May 5, 2026)*
+*KSJ: 642 captures through AIEX-640 (May 8, 2026)*
