@@ -14,6 +14,8 @@
 
 **Q-15 (convergence/bilateral-annihilation γₙ probe): CLOSED — negative for all existing ZDTP channels, with a constructive discovery.** Dense sweeps (19,001 points, t ∈ [10,105], γ₁–γ₃₁) show no γₙ signature in the convergence channel or in the nonlinear bilateral sandwich residuals. But the **explicit-formula positive control** — the scalar −Σₚ (log p/√p)cos(t·log p) built from the *same six prime oscillators* — detects the zeros decisively (z = 6.36). The negative is therefore **architectural, not information-theoretic**: the signal is present in the encoding and is destroyed downstream. Pinpointing where: the **signed gateway scalar c_S2** (which the server computes and exposes at 32D lift slot 0) carries a significant γₙ value signature (z = +3.72, p = 0.0004, Bonferroni-surviving), and the magnitude law |M|² = ‖x‖² + 4c² + 16(2σ)² **squares c, erasing the sign coherence that carries the signal**. The instrument detects the zeros, then discards the detection before reporting. Reading the signed lift scalar directly — the proposed **Signed Gateway Channel** — turns the CAILculator into a genuine (weak, 6-prime) zero detector.
 
+**Q-17 (Signed Gateway Channel characterization): CLOSED same-day.** Scale test: the c_S2 signature strengthens to z = 4.92 over γ₁–γ₁₀₁. The **Detector Encoding** exploits the disjoint supports of u₂ and u₆ to realize the full 6-prime explicit-formula detector *exactly* as the sum of two signed instrument readings — c_S2 + c_S6 = −2·Σ(log p/√p)cos(t·log p), residual 1.8×10⁻¹⁵, live-validated at γ₁. Detector performance over 101 zeros: **z = 8.42, ROC AUC 0.87 (δ=0.5), peak precision 0.83 vs 0.43 chance at ε=0.5**. See §2A.
+
 Environment re-verified June 12: 8,061 jobs · 0 errors · 1 sorry (by design) · stack at commit `e1f170e` intact.
 
 ---
@@ -142,6 +144,50 @@ Documented-encoding vector at t = γ₁ = 14.134725141734695, gateway S2, RHI pr
 
 ---
 
+## 2A. Q-17 — The Signed Gateway Channel as a Zero Detector (June 12, 2026)
+
+Q-17 (proposed in §2.5) was executed same-day. Three results:
+
+### 2A.1 Scale test (γ₁–γ₁₀₁)
+
+Extending the sweep to t ∈ [10, 240] (46,001 points, 101 zeros): the c_S2 signature **strengthens with sample size** — z = 3.62 at 31 zeros → **z = 4.92 at 101 zeros** (p < 0.0002). Growth is sub-√N (√N prediction 6.53), consistent with a fixed 6-prime resolution against rising zero density — the expected behavior of a genuine but truncation-limited signal, not an artifact.
+
+### 2A.2 The Detector Encoding — exact realization of the explicit-formula detector
+
+The supports of u₂ = e₃+e₁₂+e₅+e₁₀ and u₆ = e₂−e₁₃+e₆+e₉ are disjoint. Placing w_p·cos(t·ln p), w_p = log p/√p, in those slots (p = 2,3,11,13 → u₂ slots; p = 5,7 → u₆ slots; pos2 = 0; pos0 = σ, pos1 = t retained) yields the **exact identity**:
+
+> **c_S2(D(t)) + c_S6(D(t)) = −2·Σₚ (log p/√p)·cos(t·log p)** (sweep residual 1.8×10⁻¹⁵)
+
+— the full 6-prime k=1 von Mangoldt explicit-formula detector, realized as the **sum of two signed readings of the unmodified instrument**. Live-validated June 12: pattern 2 returned 3.1204551984921403 and pattern 6 returned 2.102194713548072 at γ₁ (both exact; sum 5.2226499…). This is a deliberate, documented deviation from the Documented F(s) Encoding (purpose-built detector input). Detector statistic at 101 zeros: **z = 8.42**.
+
+### 2A.3 Detector performance (γ₁–γ₁₀₁, honest baselines)
+
+| Metric | c_S2 (documented) | Detector (c_S2+c_S6) | Chance baseline |
+|---|---|---|---|
+| ROC AUC, δ=0.25 | 0.673 | **0.810** | 0.500 |
+| ROC AUC, δ=0.5 | 0.694 | **0.866** | 0.500 |
+| Peak precision @ ε=0.5 | 0.718 | **0.831** | 0.433 |
+| Peak F1 @ ε=0.5 | 0.656 | **0.719** | — |
+| Peak precision @ ε=1.0 | 0.847 | 0.974 | 0.875 (≈ mean gap 2.28) |
+
+The ε=0.5 figures are the meaningful ones (ε=1.0 baseline is near-saturated at this zero density and is reported only for completeness). A high-γ documented-encoding spot check (γ₁₀₀, pattern 2: server −1.1533297669142253 = replica to 10⁻¹⁵) is recorded with a *negative* reading — the signature is statistical, not pointwise, and the record keeps that honest.
+
+### 2A.4 Candidate Lean lemma (not yet implemented)
+
+The detector identity is pure algebra over the Gateway Linear Law and is formalizable with standard axioms over the `GatewayLinearLaw.lean` infrastructure:
+
+```
+theorem detector_channel_identity (t : ℝ) :
+    gatewayScalar (D t) 2 + gatewayScalar (D t) 6
+      = -2 * ∑ p ∈ {2,3,5,7,11,13}, (Real.log p / Real.sqrt p) * Real.cos (t * Real.log p)
+```
+
+The zero-detection *statistics* are number-theoretic (explicit-formula truncation) and are not a Lean target. Implementation deferred pending Paul's call on whether to grow the stack (would be an 18th-file or GatewayLinearLaw addition; current verified baseline 8,061 jobs untouched).
+
+**Q-17: CLOSED (characterized).** The Signed Gateway Channel is the first ZDTP observable with demonstrated, quantified zero-detection capability — AUC 0.87, detector z = 8.42 — and it is exactly the explicit-formula truncation, proved by construction and validated live.
+
+---
+
 ## 3. Artifacts
 
 | Artifact | Path |
@@ -151,6 +197,9 @@ Documented-encoding vector at t = γ₁ = 14.134725141734695, gateway S2, RHI pr
 | Q-14 live continuity record | `results/phase77_q14_live_continuity_run.json` |
 | Q-15 probe script | `scripts/phase77_q15_convergence_probe.py` |
 | Q-15 results JSON | `results/phase77_q15_results.json` |
+| Q-17 detector script | `scripts/phase77_q17_signed_channel.py` |
+| Q-17 results JSON | `results/phase77_q17_results.json` |
+| Q-17 live validation | `results/phase77_q17_live_validation.json` |
 
 Build baseline re-verified June 12, 2026 (cached replay): 8,061 jobs · 0 errors · 1 sorry (`spectral_implies_zeta_zero`, by design) · 1 non-standard axiom (`riemann_critical_line`). Stack files unchanged since commit `e1f170e`.
 
@@ -160,8 +209,8 @@ Build baseline re-verified June 12, 2026 (cached replay): 8,061 jobs · 0 errors
 
 - Q-16: sedenion orthogonality theorem in Lean (e₀-transparency of the Canonical Six)
 - `ba_asymptote_sq` (B/A² → 17) Lean stretch goal
-- Q-17 (proposed, from this session): Signed Gateway Channel zero-detection characterization — extend the sweep to γ₁–γ₁₀₀, quantify detector ROC, consider Lean statement of the c-channel/zero correlation as an explicit-formula truncation
-- v1.4 paper abstract (gates Berry/Keating + Tao outreach — through Paul)
+- ~~Q-17~~ **CLOSED same-day** (§2A): Signed Gateway Channel characterized — detector z = 8.42, AUC 0.87, exact explicit-formula realization live-validated. Optional follow-up: `detector_channel_identity` Lean lemma (Paul's call on stack growth)
+- v1.4 paper abstract (gates Berry/Keating + Tao outreach — through Paul); the Signed Gateway Channel is a natural abstract highlight alongside `critical_line_convergence`
 
 ---
 

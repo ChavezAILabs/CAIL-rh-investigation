@@ -1,0 +1,41 @@
+{
+  "phase": "77",
+  "question": "Q-17",
+  "purpose": "Live validation of the Detector Encoding identity (c_S2 + c_S6 = -2 sum_p w_p cos(t ln p), w_p = log p/sqrt p) and a high-gamma documented-encoding signed reading.",
+  "date": "2026-06-12",
+  "tool": "CAILculator v2.1.4 / ZDTP v2.0 / profile=RHI (live MCP calls, restrict_to_pattern)",
+  "runs": [
+    {
+      "label": "detector_encoding_gamma1_pattern2",
+      "input_16d": [0.5, 14.134725141734695, 0.0, -0.4564864319016121, 0.0, -0.6241066363311436, -0.5227925174928422, 0.0, 0.0, -0.5283048392811939, -0.5694126951199865, 0.0, 0.08977816410667207, 0.0, 0.0, 0.0],
+      "pattern": 2,
+      "server_lift_slot0": 3.1204551984921403,
+      "replica_prediction": 3.1204551984921403,
+      "agreement": "exact"
+    },
+    {
+      "label": "detector_encoding_gamma1_pattern6",
+      "input_16d": "same as pattern2 run",
+      "pattern": 6,
+      "server_lift_slot0": 2.102194713548072,
+      "replica_prediction": 2.102194713548072,
+      "agreement": "exact"
+    },
+    {
+      "label": "documented_encoding_gamma100_pattern2",
+      "input_16d": [0.5, 236.5242296658162, 0.0019, 0.8346579141749632, 0.5555467120712332, 0.7856616947429189, -0.8585551461134471, -0.3625486595493889, -0.011574994810645261, 0.7070594103380329, -0.10267697063662702, 0.7033695471446305, -0.9409777548241425, -0.23933330830258034, 0.0, 0.0],
+      "pattern": 2,
+      "server_lift_slot0": -1.1533297669142253,
+      "replica_prediction": -1.153329766914225,
+      "agreement": "1e-15",
+      "note": "Negative reading at a zero — the signed-channel signature is statistical (mean over zeros), not pointwise; recorded for honesty."
+    }
+  ],
+  "detector_identity_check": {
+    "c_S2_plus_c_S6_at_gamma1": 5.222649912040213,
+    "explicit_formula_value_at_gamma1": 5.222649912040213,
+    "statement": "c_S2(D(t)) + c_S6(D(t)) = -2 * sum_{p in {2,3,5,7,11,13}} (log p/sqrt p) cos(t log p), exact (sweep residual 1.776e-15)"
+  },
+  "encoding_deviation_disclosure": "The Detector Encoding deliberately deviates from the Phase 76 Documented F(s) Encoding: u_2 support slots {3,5,10,12} carry w_p cos(t ln p) for p=2,3,11,13; u_6 support slots {6,9} carry w_p cos(t ln p) for p=5,7; pos2=0; pos0=sigma, pos1=t retained. Purpose-built zero-detector input, documented per the encoding rule.",
+  "verdict": "Detector Encoding identity confirmed live and exact: the full 6-prime k=1 explicit-formula zero detector is realizable as the sum of two signed readings of the unmodified CAILculator v2.1.4 instrument."
+}

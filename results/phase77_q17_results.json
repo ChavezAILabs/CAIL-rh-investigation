@@ -1,0 +1,124 @@
+{
+  "phase": "77",
+  "question": "Q-17",
+  "grid": {
+    "t_lo": 10.0,
+    "t_hi": 240.0,
+    "dt": 0.005,
+    "n": 46001
+  },
+  "zeros_in_range": 101,
+  "detector_identity_max_abs_residual": 1.7763568394002505e-15,
+  "scale": {
+    "cS2_doc_gamma31": {
+      "n_zeros": 31,
+      "observed": 1.8464032684851623,
+      "null_mean": 0.009143844797810009,
+      "null_std": 0.5075134479007187,
+      "z": 3.620119686063496,
+      "p_two_sided": 0.0004
+    },
+    "cS2_doc_gamma100": {
+      "n_zeros": 101,
+      "observed": 1.3735297886871838,
+      "null_mean": 0.004396026335899458,
+      "null_std": 0.27831650508966754,
+      "z": 4.919340884616883,
+      "p_two_sided": 0.0
+    },
+    "detector_gamma100": {
+      "n_zeros": 101,
+      "observed": 1.9661573443371425,
+      "null_mean": -0.0104500995552135,
+      "null_std": 0.23461305292875698,
+      "z": 8.424967917247878,
+      "p_two_sided": 0.0
+    },
+    "sqrtN_prediction_from_31": 6.534355660126566
+  },
+  "roc": {
+    "cS2_documented": [
+      {
+        "delta": 0.25,
+        "n_pos": 10100,
+        "n_neg": 35901,
+        "auc": 0.6728188547107405
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "auc": 0.6938894096644063
+      }
+    ],
+    "detector": [
+      {
+        "delta": 0.25,
+        "n_pos": 10100,
+        "n_neg": 35901,
+        "auc": 0.809499547848994
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "auc": 0.8660883906335627
+      }
+    ]
+  },
+  "peaks": {
+    "cS2_documented": [
+      {
+        "eps": 0.5,
+        "n_maxima": 85,
+        "best": {
+          "f1": 0.6559139784946236,
+          "precision": 0.7176470588235294,
+          "recall": 0.6039603960396039,
+          "n_predictions": 85,
+          "threshold": -2.1086093717974332
+        },
+        "recall_at_full": 0.6039603960396039
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 85,
+        "best": {
+          "f1": 0.7741935483870968,
+          "precision": 0.8470588235294118,
+          "recall": 0.7128712871287128,
+          "n_predictions": 85,
+          "threshold": -2.1086093717974332
+        },
+        "recall_at_full": 0.7128712871287128
+      }
+    ],
+    "detector": [
+      {
+        "eps": 0.5,
+        "n_maxima": 83,
+        "best": {
+          "f1": 0.7191011235955057,
+          "precision": 0.8311688311688312,
+          "recall": 0.6336633663366337,
+          "n_predictions": 77,
+          "threshold": 0.43341314589199587
+        },
+        "recall_at_full": 0.6435643564356436
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 83,
+        "best": {
+          "f1": 0.8426966292134831,
+          "precision": 0.974025974025974,
+          "recall": 0.7425742574257426,
+          "n_predictions": 77,
+          "threshold": 0.43341314589199587
+        },
+        "recall_at_full": 0.7524752475247525
+      }
+    ]
+  },
+  "notes": "Detector Encoding deviates from the Phase 76 Documented F(s) Encoding by design: u_2/u_6 support slots carry w_p cos(t ln p), w_p = log p/sqrt p; pos2 = 0. The identity c_S2 + c_S6 = -2 sum_p w_p cos(t ln p) is exact (residual above) and is a direct consequence of the Gateway Linear Law \u2014 a candidate Lean lemma over GatewayLinearLaw.lean infrastructure (standard axioms). The zero-detection statistics quantify a 6-prime k=1 explicit-formula truncation; they are number-theoretic, not instrument, properties."
+}
