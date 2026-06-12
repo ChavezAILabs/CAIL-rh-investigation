@@ -1,0 +1,49 @@
+{
+  "phase": "77",
+  "question": "Q-14",
+  "purpose": "Instrument-continuity test: feed the verbatim Phase 73 Run B baseline vector (sigma=0.5, gamma_1=14.1347) to the CURRENT CAILculator v2.1.4 server and compare against the observables recorded on 2026-04-29 (KSJ AIEX-586/587) under v2.0.3.",
+  "date": "2026-06-12",
+  "tool": "CAILculator v2.1.4 / ZDTP v2.0 / profile=RHI / gateway=all (live MCP call)",
+  "input_16d": [0.5, 14.1347, 0.5019, -0.8651, 0.3546, -0.935, 0.6283, 0.778, 0.1288, -0.9917, 0.4154, -0.9097, 0.7071, 0.7071, 0.0, 0.0],
+  "input_provenance": "CAILculator_Phase73_Runs_AB.md, Run B sigma=0.5 vector, verbatim",
+  "server_gateway_label_map": "server S1,S2,S3A,S3B,S4,S5 = patterns 1,2,3,4,5,6",
+  "server_magnitudes_256d": {
+    "pattern_1": 57.85853863864866,
+    "pattern_2": 15.145510071304962,
+    "pattern_3": 15.347263051111101,
+    "pattern_4": 52.412810525290475,
+    "pattern_5": 56.462158790822016,
+    "pattern_6": 15.073589569840358
+  },
+  "server_gateway_scalars_c_g": {
+    "pattern_1": -27.953400000000002,
+    "pattern_2": 1.3552,
+    "pattern_3": 1.837,
+    "pattern_4": -25.125,
+    "pattern_5": -27.2302,
+    "pattern_6": 1.1372
+  },
+  "server_convergence": {
+    "score": 0.4273964226844107,
+    "mean_magnitude": 35.38331177450292,
+    "std_dev": 20.260610899353185,
+    "stability_level": "LOW"
+  },
+  "bilateral_verification": "all 6 gateways PQ_norm = QP_norm = 0.0 at 1e-15",
+  "recorded_2026_04_29": {
+    "mean_magnitude_AIEX587": 35.38,
+    "convergence_AIEX586": 0.4274,
+    "BA_ratio_run_doc": 3.66
+  },
+  "law_replica_prediction": {
+    "pattern_magnitudes": [57.8585, 15.1455, 15.3473, 52.4128, 56.4622, 15.0736],
+    "convergence": 0.4274,
+    "BA_ratio": 3.6591
+  },
+  "computed_from_server": {
+    "B_mean_patterns_1_4_5": 55.57783598158705,
+    "A_mean_patterns_2_3_6": 15.188787564085474,
+    "BA_ratio": 3.659135252182524
+  },
+  "verdict": "EXACT instrument continuity. The v2.1.4 server reproduces the 2026-04-29 v2.0.3 recorded observables (mean 35.38, conv 0.4274, B/A 3.66) on the historical input, and the Gateway Linear Law replica matches the server to ~1e-12 on all six magnitudes. The Phase 73 magnitude channel is retroactively law-consistent; the Phase 75 Q-2/Q-4 published tables remain the sole law-incompatible record (see infeasibility certificate in phase77_q14_reconciliation.json)."
+}

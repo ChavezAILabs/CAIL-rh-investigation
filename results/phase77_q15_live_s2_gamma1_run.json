@@ -1,0 +1,20 @@
+{
+  "phase": "77",
+  "question": "Q-15",
+  "purpose": "Live confirmation of the Signed Gateway Channel discovery: the gateway scalar c_S2 (32D lift slot 0) is positive-high at gamma_1 as predicted by the explicit-formula mechanism, and matches the law replica exactly.",
+  "date": "2026-06-12",
+  "tool": "CAILculator v2.1.4 / ZDTP v2.0 / profile=RHI / gateway=S2 (live MCP call)",
+  "encoding": "Phase 76 Documented F(s) Encoding, sigma=0.5, t=gamma_1=14.134725141734695",
+  "input_16d": [0.5, 14.134725141734695, 0.0019, -0.9313596320381072, 0.12616204687699129, 0.17842007775019125, -0.7263402944660711, -0.4860194320368997, -0.7183082023846593, 0.49195189113719195, -0.7875774567811273, 0.43573027756295024, 0.12620123401733904, -0.7014532231490924, 0.0, 0.0],
+  "server_lift_slot0_c_S2": 2.828631554103408,
+  "replica_prediction_c_S2": 2.8286315541034086,
+  "agreement": "1e-15",
+  "server_magnitude_256d": 15.868211512886674,
+  "bilateral_verification": "PQ_norm = QP_norm = 0.0 at 1e-15",
+  "context": {
+    "c_S2_formula": "-2*( cos(t ln2) + cos(t ln13) + sin(t ln3) + cos(t ln11) )",
+    "T1_statistic_gamma1_31": {"z": 3.72, "p_two_sided": 0.0004, "trials": 5000},
+    "mechanism": "At Riemann zeros, sum_p cos(gamma ln p) is systematically negative (k=1 von Mangoldt explicit formula), making c_S2 systematically positive-high. The magnitude law |M|^2 = ||x||^2 + 4c^2 + 16(2 sigma)^2 is even in c and erases this sign coherence — which is why all norm-type ZDTP channels are blind to the zeros while the signed lift scalar sees them."
+  },
+  "verdict": "Signed Gateway Channel confirmed live: the server already exposes the zero-detecting observable at 32D lift slot 0; replica agreement 1e-15; value at gamma_1 positive-high as predicted."
+}
