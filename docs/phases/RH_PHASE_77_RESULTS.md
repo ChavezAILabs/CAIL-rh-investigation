@@ -154,6 +154,8 @@ Documented-encoding vector at t = γ₁ = 14.134725141734695, gateway S2, RHI pr
 
 Build baseline re-verified June 12, 2026 (cached replay): 8,061 jobs · 0 errors · 1 sorry (`spectral_implies_zeta_zero`, by design) · 1 non-standard axiom (`riemann_critical_line`). Stack files unchanged since commit `e1f170e`.
 
+**KSJ record:** Phase 77 insight extraction approved by Paul and committed June 12, 2026 — **AIEX-731 through AIEX-738** (tags `#phase-77-archaeology`, `#phase-77-convergence`).
+
 ## 4. Phase 77 Remaining Queue
 
 - Q-16: sedenion orthogonality theorem in Lean (e₀-transparency of the Canonical Six)
