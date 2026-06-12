@@ -203,7 +203,7 @@ The zero-detection *statistics* are number-theoretic (explicit-formula truncatio
 
 Build baseline re-verified June 12, 2026 (cached replay): 8,061 jobs · 0 errors · 1 sorry (`spectral_implies_zeta_zero`, by design) · 1 non-standard axiom (`riemann_critical_line`). Stack files unchanged since commit `e1f170e`.
 
-**KSJ record:** Phase 77 insight extraction approved by Paul and committed June 12, 2026 — **AIEX-731 through AIEX-738** (tags `#phase-77-archaeology`, `#phase-77-convergence`).
+**KSJ record:** Phase 77 insight extractions approved by Paul and committed June 12, 2026 — **AIEX-731 through AIEX-738** (Q-14/Q-15; tags `#phase-77-archaeology`, `#phase-77-convergence`) and **AIEX-739 through AIEX-743** (Q-17; tag `#phase-77-convergence`).
 
 ## 4. Phase 77 Remaining Queue
 
