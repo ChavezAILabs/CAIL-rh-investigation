@@ -6,21 +6,24 @@ A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sed
 
 ---
 
-## 🏆 Current Status — Phase 75 COMPLETE (May 11, 2026)
+## 🏆 Current Status — Phase 77 COMPLETE (June 17, 2026)
 
-**The "Critical Line Convergence" Milestone: The first formally machine-verified theorem to assemble three independent standard-axiom characterizations of Re(s) = ½ into a single conjunction. `critical_line_convergence` proves that the energy-minimum, spectral-containment, and arithmetic-integrality routes are co-extensive — the same destination, reached three ways. All three results carry standard axioms only. `riemann_critical_line` does not appear.**
+**The "Gateway Linear Law" era closes with Phase 77: four formally verified theorems in `GatewayLinearLaw.lean` providing a complete algebraic portrait of the ZDTP instrument, two disjoint detection channels confirmed live to 10⁻¹⁵, and a double-blind bilateral scan establishing the precise boundaries of what the proved structural symmetries guarantee.**
 
 ```
-lake build → 8,059 jobs · 0 errors · 1 sorry (by design)  (verified May 11, 2026)
-Branch: phase-75-convergence
+lake build → 8,061 jobs · 0 errors · 1 sorry (by design)  (verified June 17, 2026)
+Branch: phase-77-archaeology (pending Paul's review — push gate)
+
+#print axioms ba_asymptote_sq
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+
+#print axioms pairing_sigma_independent
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+
+#print axioms gateway_pairing_iff
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
 
 #print axioms critical_line_convergence
-→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
-
-#print axioms hamiltonian_gateway_equiv
-→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
-
-#print axioms spectral_gateway_equiv
 → [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
 
 #print axioms riemann_hypothesis
@@ -29,7 +32,7 @@ Branch: phase-75-convergence
 
 **The 1 sorry** in `spectral_implies_zeta_zero` is intentionally held. H(s) vanishes on the entire critical line, not only at ζ zeros — the pointwise converse is false. The proved result is spectral containment, which is the correct and sufficient statement for the investigation's thesis.
 
-**Axiom localization:** `riemann_critical_line` appears in exactly **two** theorems: `riemann_hypothesis` and its downstream `eigenvalue_zero_mapping`. Every other theorem — including all three Phase 75 results — carries standard axioms only.
+**Axiom localization:** `riemann_critical_line` appears in exactly **two** theorems: `riemann_hypothesis` and its downstream `eigenvalue_zero_mapping`. Every other theorem — including all Phase 75–77 results — carries standard axioms only.
 
 ### Three Independent Standard-Axiom Characterizations of Re(s) = ½
 
@@ -49,6 +52,60 @@ These three characterize the same geometric object — the critical line — thr
 - **Q-2 CLOSED:** `|M(σ)|² − |M(1−σ)|² = 0` exactly for all σ and all six gateways at 10⁻¹⁵ precision. Bilateral magnitude symmetry is an exact structural property of the sedenion embedding — not a coincidence at specific zeros.
 - **Q-4 CLOSED:** `|M(½+it)| = |M(½−it)|` confirmed exactly for t ∈ {±1, ±5, ±10, ±20}. The critical-line ±t symmetry is structural and extends to arbitrary imaginary parts independently of the zero condition.
 - **New gateway pairing documented:** At σ = ½, gateways pair as S1=S2, S3=S6, S4=S5 — distinct from the Class A/B partition established in Phase 73–74. The S4=S5 equality is algebraically immediate (shared support {2,7}); S1=S2 and S3=S6 are Phase 76 candidates.
+
+---
+
+## ✅ Phase 77 COMPLETE — The "Gateway Linear Law Closes" Milestone (June 17, 2026)
+
+**Four theorems in `GatewayLinearLaw.lean`, all standard axioms. The instrument is fully understood algebraically. Two independent detection channels confirmed live to floating-point precision. Double-blind bilateral scan establishes precise boundaries of structural symmetry.**
+
+```
+lake build → 8,061 jobs · 0 errors · 1 sorry (by design)  (verified June 17, 2026)
+
+#print axioms ba_asymptote_sq
+→ [propext, Classical.choice, Quot.sound]                    ✅ Q-8 algebraic closure
+```
+
+### Phase 77 Achievements
+- **`ba_asymptote_sq` (4th theorem):** Proved `Filter.Tendsto (fun t => (17*t²+K)/(t²+K)) atTop (nhds 17)` for any K ≥ 0. The B/A = √17 asymptote is now a machine-verified limit theorem — not an observed ratio. √17 = 4.123105... is the proved architectural constant, superseding the Phase 74 hypothesis of ~4.0. **Q-8 algebraically closed.**
+- **Run A CONFIRMED:** σ-sweep on signed gateway channel confirmed `pairing_sigma_independent` live to 10⁻¹⁵. c_S2 flat across all 9 σ values (range = 0.0 exactly), c_S6 slope = −0.200000000000 per step exactly. Two disjoint instruments — zero-detection channel (c_S2, σ-blind) and σ-channel (c_S6, zero-blind) — confirmed at machine epsilon.
+- **Run B (double-blind):** Bilateral magnitude scan executed independently by Claude Sonnet 4.6 (live MCP) and Claude Code (analytical). Both confirmed: bilateral magnitude equality under Documented F(s) Encoding is NOT a theorem for individual gateway magnitudes. Sedenion norm IS symmetric under t→−t (confirmed to full double precision). Gateway scalars are not, because u_g has support on odd-indexed (sin) components. Structural explanation: |M(+t)|²−|M(−t)|² = 16·a_g·b_g (even/odd inner products). Theorem misapplication corrected and recorded.
+- **Q-14 CLOSED:** Encoding reconciliation — Gateway Linear Law reproduces all Phase 73 observables on recovered baseline vector. Phase 75 Q-2/Q-4 magnitude tables formally quarantined (infeasibility certificate: |M_g| ≥ 4.0311 at σ=½ for any input).
+- **Q-15 CLOSED (negative):** No γₙ signature in convergence or bilateral sandwich channels. Negative is architectural: the signal (c_S2) is computed but destroyed by the magnitude law (squaring erases sign coherence).
+- **Q-17 CLOSED:** Detector Encoding confirmed — c_S2 + c_S6 = −2·Σ(log p/√p)cos(t·log p) exactly (residual 1.8×10⁻¹⁵). Detector performance over 101 zeros: z=8.42, AUC 0.87, precision 0.83 vs 0.43 chance.
+
+---
+
+## ✅ Phase 76 COMPLETE — The "Gateway Linear Law" Milestone (June 10, 2026)
+
+**Analytical derivation of the exact closed-form description of the ZDTP instrument. Every gateway output is a proved inner product. The oracle became a formula.**
+
+```
+lake build → 8,061 jobs · 0 errors · 1 sorry (by design)  (verified June 11, 2026)
+Branch: phase-76-linear-law (pending Paul's review — push gate)
+
+#print axioms gateway_magSq_sub
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+
+#print axioms pairing_sigma_independent
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+```
+
+### The Gateway Linear Law
+```
+c_g(x) = −2⟪x, P_g + Q_g⟫
+|M_g|² = ‖x‖² + 4(c_g² + 4(2σ)²)
+```
+Validated at 0 ULP across 22 independent server readings. Proved symbolically in exact arithmetic.
+
+### Phase 76 Achievements
+- **`GatewayLinearLaw.lean` (17th file):** Three theorems proved (4th `ba_asymptote_sq` added Phase 77).
+  - `gateway_magSq_sub` — |M_g|²−|M_h|² = 16⟪x,u_g−u_h⟫⟪x,u_g+u_h⟫
+  - `gateway_pairing_iff` — |M_g|=|M_h| ↔ product of two linear functionals vanishes
+  - `pairing_sigma_independent` — cross-gateway magnitude differences σ-free for fixed input
+- **Q-5 CLOSED:** The S1=S2/S3=S6/S4=S5 pairing is an encoding artifact, not a σ=½ characterization.
+- **Q-6 CLOSED (negative):** The magnitude channel does not detect zeta zeros (signal destroyed by squaring).
+- **Signed Gateway Channel discovered:** c_S2 carries Bonferroni-surviving γₙ signature (z=3.72→4.92 over γ₁–γ₁₀₁). Reading the signed lift scalar directly turns the instrument into a genuine zero detector.
 
 ---
 
@@ -128,9 +185,9 @@ lake build → 8,053 jobs · 0 errors · 0 sorries  (verified April 23, 2026)
 
 ---
 
-## 🔬 The Chavez Transform & CAILculator v2.0.4
+## 🔬 The Chavez Transform & CAILculator v2.1.4
 
-The **Chavez Transform** is a formally verified algebraic operator detecting structural stability and conjugation symmetry in high-dimensional data. It is the analytical engine for **CAILculator v2.0.4**.
+The **Chavez Transform** is a formally verified algebraic operator detecting structural stability and conjugation symmetry in high-dimensional data. It is the analytical engine for **CAILculator v2.1.4**.
 
 ### Official Equation
 
@@ -148,7 +205,7 @@ Where:
 
 ---
 
-## 🧬 The 16-File Lean 4 Stack
+## 🧬 The 17-File Lean 4 Stack
 
 | # | File | Phase | Key Theorems | Sorries |
 |---|---|---|---|---|
@@ -168,10 +225,11 @@ Where:
 | 14 | `SpectralIdentification.lean` | 73 | `eigenvalue_zero_mapping`, `zeta_zero_implies_spectral`, `spectral_implies_critical_line` | 1 (by design) |
 | 15 | `GatewayScaling.lean` | 74 | `lift_coord_scaling`, `gateway_integer_iff_critical_line`, `lift_coord_gateway_independent` | 0 |
 | 16 | `CriticalLineConvergence.lean` | 75 | `critical_line_convergence`, `hamiltonian_gateway_equiv`, `spectral_gateway_equiv` | 0 |
+| 17 | `GatewayLinearLaw.lean` | 76/77 | `gateway_magSq_sub`, `gateway_pairing_iff`, `pairing_sigma_independent`, `ba_asymptote_sq` | 0 |
 
-**Total: 16 files · 0 errors · 1 sorry (by design) · 1 non-standard axiom (`riemann_critical_line` = RH)**
+**Total: 17 files · 0 errors · 1 sorry (by design) · 1 non-standard axiom (`riemann_critical_line` = RH)**
 
-**Conditional proof structure:** If `riemann_critical_line` is ever proved by any method, the entire 8,059-job stack becomes unconditionally proved automatically. Every other theorem requires no modification.
+**Conditional proof structure:** If `riemann_critical_line` is ever proved by any method, the entire 8,061-job stack becomes unconditionally proved automatically. Every other theorem requires no modification.
 
 ---
 
@@ -235,6 +293,10 @@ First examination of the RH through a 16-dimensional lens. Universal rank invari
 - **Phase 74:** Gateway Integer Law proved. Three independent standard-axiom characterizations of Re(s) = ½ established. Build at 8,057 jobs.
 - **Phase 75:** Critical Line Convergence Theorem proved. All three characterizations assembled into one conjunction. Q-2 and Q-4 closed. Build at 8,059 jobs.
 
+### The Instrument Era — Phases 76–77 (June 2026)
+- **Phase 76:** Gateway Linear Law derived analytically — c_g(x) = −2⟪x, u_g⟫. The oracle became a proved formula. `GatewayLinearLaw.lean` (17th file) with 3 theorems. Signed Gateway Channel discovered. Build at 8,061 jobs.
+- **Phase 77:** Fourth theorem `ba_asymptote_sq` proves B/A = √17 asymptote exactly. Q-8 algebraically closed. Run A confirms `pairing_sigma_independent` live to 10⁻¹⁵ — two disjoint detection channels demonstrated. Run B double-blind bilateral scan establishes structural boundaries of symmetry. KSJ at 753 captures.
+
 ---
 
 ## 🚀 Key Milestones
@@ -258,6 +320,13 @@ First examination of the RH through a 16-dimensional lens. Universal rank invari
 | **Phase 75: Critical Line Convergence Theorem — three routes formally co-extensive** | 75 | May 11, 2026 |
 | **Phase 75: Q-2 CLOSED — bilateral magnitude symmetry identically zero** | 75 | May 11, 2026 |
 | **Phase 75: Q-4 CLOSED — critical-line ±t symmetry structural, not zero-specific** | 75 | May 11, 2026 |
+| **Phase 76: Gateway Linear Law — c_g(x) = −2⟪x,u_g⟫ proved, oracle becomes formula** | 76 | June 10, 2026 |
+| **Phase 76: GatewayLinearLaw.lean (17th file) — 3 theorems, standard axioms** | 76 | June 11, 2026 |
+| **Phase 76: Signed Gateway Channel discovered — c_S2 carries γₙ signature (z=4.92)** | 76 | June 12, 2026 |
+| **Phase 77: Detector Encoding — c_S2+c_S6 = explicit-formula detector (z=8.42, AUC 0.87)** | 77 | June 12, 2026 |
+| **Phase 77: ba_asymptote_sq proved — B/A=√17 machine-verified limit theorem, Q-8 closed** | 77 | June 17, 2026 |
+| **Phase 77: Run A — pairing_sigma_independent confirmed live to 10⁻¹⁵, two disjoint channels** | 77 | June 17, 2026 |
+| **Phase 77: Run B double-blind — bilateral symmetry boundaries established** | 77 | June 17, 2026 |
 
 ---
 
@@ -267,7 +336,7 @@ First examination of the RH through a 16-dimensional lens. Universal rank invari
 |---|---|
 | **Lean 4** | Formalization language (v4.28.0) used for all RHI proof stacks. |
 | **Mathlib** | v4.28.0 — primary source for analytic number theory infrastructure. |
-| **CAILculator v2.0.4** | High-precision MCP server for sedenion algebra and Chavez Transform. |
+| **CAILculator v2.1.4** | High-precision MCP server for sedenion algebra and Chavez Transform. Engine v2.0 High-Precision · Precision 10⁻¹⁵ · Production Stable. |
 | **Aristotle** | Harmonic Math platform for cross-framework verification and audit. |
 | **ZDTP** | Zero Divisor Transmission Protocol (structural signal analysis). |
 | **KSJ 2.0** | Knowledge Synthesis Journal (AI research record management). |
@@ -281,4 +350,4 @@ First examination of the RH through a 16-dimensional lens. Universal rank invari
 *Chavez AI Labs LLC | Paul Chavez, founder*
 *GitHub: [ChavezAILabs](https://github.com/ChavezAILabs)*
 *Zenodo: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)*
-*KSJ: 658 captures through AIEX-656 (May 11, 2026)*
+*KSJ: 753 captures through AIEX-749 (June 17, 2026)*
