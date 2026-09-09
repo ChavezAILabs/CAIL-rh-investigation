@@ -125,9 +125,7 @@ Phase 71 reduced the non-standard axiom footprint from three independent assumpt
 
 ## 🔬 The Chavez Transform & CAILculator v2.1.4
 
-> ⚠ **Correction pending** — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-018.
-
-The **Chavez Transform** is a formally verified algebraic operator providing the empirical backbone of the investigation. Its stability is machine-verified in `ChavezTransform_genuine.lean`.
+The **Chavez Transform** is an algebraic operator over Cayley-Dickson algebras providing the empirical backbone of the investigation. `ChavezTransform_genuine.lean` machine-verifies two real theorems (integrability and stability, both corrected 2026-09-09 — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-017), but only for the **scalar-channel restriction** of the transform below, not the general equation — see the scope note after it ([`CORRECTIONS.md`](../CORRECTIONS.md) C-018).
 
 ### The Official Equation
 
@@ -137,7 +135,9 @@ Where:
 - $K_Z(P, Q, x) = \|P \cdot x\|^2 + \|x \cdot Q\|^2 + \|Q \cdot x\|^2 + \|x \cdot P\|^2$
 - $\Omega_d(x) = (1 + \|x\|^2)^{-d/2}$
 
-### Stability Bound (Machine-Verified)
+**Scope of what is verified:** the domain $D$ above is general — any subset of the 16-dimensional sedenion space $\mathrm{Sed}$. What is formalized is the restriction to $x = \mathrm{realToSed}(t) = t \cdot e_0$ for $t \in \mathbb{R}$, the embedded real line. Because $e_0$ is the multiplicative identity, $P \cdot (t \cdot e_0) = t \cdot P$ for every $P$, so sedenion multiplication collapses exactly to scalar multiplication there — $K_Z$ reduces in closed form to $2t^2(\|P\|^2+\|Q\|^2)$, with no $P \cdot Q$ product surviving. The zero-divisor structure that motivates using a Cayley-Dickson algebra at all is not exercised anywhere in this proof. What follows is a real, non-trivial, sharp-constant bound on that restriction — not on the general transform.
+
+### Stability Bound on the Scalar-Channel Restriction (Machine-Verified)
 
 $$|\mathcal{C}[f]| \leq M \cdot \|f\|_1 \qquad M(P, Q, \alpha) = \frac{2(\|P\|^2 + \|Q\|^2)}{\alpha \cdot e}$$
 

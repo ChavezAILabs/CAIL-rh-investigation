@@ -3,11 +3,11 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 21 entries · 4 corrected · 2 confirmed against source ·
-3 modified by verification · 12 open
+**Status:** ACTIVE — 21 entries · 5 corrected · 2 confirmed against source ·
+3 modified by verification · 11 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
-**Last correction applied:** September 9, 2026 (C-017, `chavez_transform_integrable`
-in `lean/ChavezTransform_genuine.lean`)
+**Last correction applied:** September 9, 2026 (C-018, scope language in
+`README.md`, `lean/README.md`, `ChavezTransform_genuine.lean`)
 
 ---
 
@@ -84,7 +84,7 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-015 | Repository tree omits four `.lean` files, including axiom-bearing ones | 1 | Open |
 | C-016 | `CD4_mul` defined as the zero function — all Chavez Transform theorems vacuous | 4 | **Corrected** |
 | C-017 | `chavez_transform_convergence` is vacuous in the replacement file | 4 | **Corrected** |
-| C-018 | Chavez Transform verification scope overstated — 1D scalar channel only | 4 | Open |
+| C-018 | Chavez Transform verification scope overstated — 1D scalar channel only | 4 | **Corrected (docs only)** |
 | C-019 | `eigenvalue_zero_mapping` axiom footprint omits `sorryAx` in both READMEs | 4 | Open — **confirmed verbatim** |
 | C-020 | Decorative hypothesis in `Fbase_nondegeneracy`; stale Path B docstring | 2 | Open — **confirmed** |
 | C-021 | Critical-line "characterizations" are definitionally engineered | 3 | Open |
@@ -633,7 +633,7 @@ signature, not only to what it replaces.
 ---
 
 ### C-018 — Chavez Transform verification scope overstated
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** Open
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** **Corrected (documentation only — see note below)**
 **Affects:** `README.md` Overview; `lean/README.md` §Chavez Transform; `ChavezTransform_genuine.lean` header Key Results; Canonical Six companion paper claims
 
 **The claim as published:** "**Chavez Transform** — Applies zero divisor structure
@@ -672,6 +672,26 @@ where P·x and x·P differ, which needs `sed_norm_mul_le` or an equivalent bound
 The April 16 design note records that `realToSed` was chosen specifically to avoid
 needing it. That trade should be documented as a scope limitation rather than
 presented as an architectural advantage.
+
+**Corrected:** 2026-09-09, on Paul's explicit choice of the documentation-only
+path over extending the proof. `README.md` Overview, `lean/README.md`
+§Chavez Transform, and `ChavezTransform_genuine.lean`'s header now state the
+scope directly: the transform's variable enters only through
+`realToSed x = x · e₀`, sedenion multiplication collapses to scalar
+multiplication there, the zero-divisor structure is never exercised, and
+what is proved is a real, non-trivial, sharp-constant bound on that
+restriction — not on the transform described in the papers. `README.md`
+now also distinguishes this from CAILculator's *empirical* sedenion algebra
+(a live MCP server computing real sedenion products), which this entry does
+not concern and is unaffected.
+
+**Not done, and not claimed to be done:** the Follow-on above (a genuine
+multi-dimensional formalization, needing `sed_norm_mul_le` or equivalent) is
+a separate, substantially larger undertaking and remains open. This
+correction fixes the mismatch between claim and proof; it does not close the
+gap between what exists and what the papers describe. The Canonical Six
+companion paper itself was not edited — out of scope for a repository
+documentation pass.
 
 ---
 
@@ -898,8 +918,9 @@ held up.
 | 2026-09-08 | C-002 confirmed against `SpectralIdentification.lean` line 47. C-019, C-020, C-021 opened from the same file. C-020 was produced by applying standing check item 1. |
 | 2026-09-08 | C-012 file attribution corrected: the ~15 KB figure is in `CLAUDE_CODE_HANDOFF_PHASE78_Q18.md`, not `DATA_MANIFEST_CLAUDE_CODE.md`. Fifth correction to this register from outside it. |
 | 2026-09-08 | **First verification batch (six tasks, Claude Code).** C-019 confirmed verbatim; C-020 confirmed by deletion test and independently by the Lean linter; C-008, C-011, C-012 modified. **The batch corrected this register three times: C-012's central claim was refuted outright, C-011 resolved in the investigation's favour, and C-008's causal explanation was retracted. A fourth correction was internal — C-007's assertion about the 1.92× ratio was wrong on its own arithmetic.** Second Failure Mode section added. |
-| 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-018, C-021 remain Open — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
+| 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-018, C-021 remain Open at this point — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
 | 2026-09-09 | C-017 closed as **Corrected**, on Paul's explicit request — `chavez_transform_convergence` replaced by `chavez_transform_integrable` in `lean/ChavezTransform_genuine.lean`, proving the entry's own named target. Standard axioms, no sorryAx; three hypotheses confirmed load-bearing by deletion, `h_bounded` dropped as confirmed unnecessary (see this entry's own Corrected block for the nuance — the register's original prediction about which hypotheses would do the work was half right). This is a technical correctness fix, not a framing decision, so it did not need the same hold C-018/C-021 are under. Reproducibility record in `verification/2026-09-09/`. |
+| 2026-09-09 | C-018 closed as **Corrected (documentation only)**, on Paul's explicit choice of that path over extending the proof. `README.md` Overview, `lean/README.md` §Chavez Transform, and `ChavezTransform_genuine.lean`'s header now state directly that only the scalar-channel restriction is verified and the zero-divisor structure is not exercised. The Follow-on (a genuine multi-dimensional formalization) remains open and unattempted — this correction fixes the claim/proof mismatch, not the underlying gap. Only C-021 remains Open among the four original framing entries. |
 
 ---
 

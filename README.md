@@ -65,7 +65,7 @@ This repository contains all data, analysis scripts, results, and formal proofs 
 
 The investigation is grounded in two novel instruments:
 
-**Chavez Transform** — Applies zero divisor structure from Cayley-Dickson algebras (sedenions, 16D and above) to analyze numerical sequences across hypercomplex dimensions. Formally verified in Lean 4 with convergence and stability theorems proved under standard axioms. ⚠ *Correction pending — see [`CORRECTIONS.md`](CORRECTIONS.md) C-017, C-018.*
+**Chavez Transform** — An integral operator over Cayley-Dickson algebras (sedenions, 16D and above), designed to apply their zero-divisor structure to numerical sequences across hypercomplex dimensions. What is currently formally verified in Lean 4, in `ChavezTransform_genuine.lean`, is a scalar-channel restriction of the transform — genuine integrability and stability theorems (corrected 2026-09-09, see [`CORRECTIONS.md`](CORRECTIONS.md) C-017), both proved under standard axioms, but on the embedded real line where sedenion multiplication reduces to ordinary scalar multiplication. The transform's zero-divisor structure itself — its actual subject — is not yet exercised by any proof in the stack (see [`CORRECTIONS.md`](CORRECTIONS.md) C-018).
 
 **ZDTP (Zero Divisor Transmission Protocol)** — Lossless dimensional transmission (16D → 32D → 64D) with analysis at six canonical gateway positions. In Phase 76, every gateway output was shown to be an exact closed-form inner product: c_g(x) = −2⟪x, u_g⟫. The protocol transformed from an empirical oracle into a proved formula.
 

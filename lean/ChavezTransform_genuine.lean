@@ -3,7 +3,10 @@ ChavezTransform_genuine.lean
 Chavez AI Labs LLC — Applied Pathological Mathematics
 April 2026
 
-Formal verification of the Chavez Transform with genuine sedenion multiplication.
+Formal verification of a scalar-channel restriction of the Chavez Transform,
+using genuine sedenion multiplication (see Scope note below -- this file does
+NOT verify the transform's zero-divisor structure, which is its actual
+subject; see CORRECTIONS.md C-018).
 Supersedes ChavezTransform_Specification_aristotle.lean (UUID 0bfec79d), where
 CD4_mul was defined as the zero function, making all theorems vacuous.
 
@@ -45,10 +48,32 @@ Key Results:
     K's boundedness alone supplies the rest). The other three hypotheses
     were independently confirmed load-bearing by the same check.
   - chavez_transform_stability: |C[f]| ≤ stability_constant P Q α * L1_norm f a b
-  - Both theorems unconditional on P*Q=0 (zero divisor property not required)
-  - K_Z_realToSed exact formula: pattern invariance formally proved as theorem
-  [!] Scope note pending -- see CORRECTIONS.md C-018 (1D scalar-channel scope;
-      unaffected by the C-017 fix above).
+  - K_Z_realToSed: exact closed form of K_Z on the embedded line (not a
+    "pattern invariance" result -- see Scope note)
+
+Scope (corrected 2026-09-09 -- see CORRECTIONS.md C-018):
+  Both theorems above are about chavez_transform_1d, whose integration
+  variable enters ONLY through realToSed x = x . sedBasis 0 -- the e0 scalar
+  channel. Because e0 is the multiplicative identity, P * (x.e0) = x.P for
+  EVERY P, so sedenion multiplication reduces exactly to scalar
+  multiplication on this subspace (K_Z_realToSed makes this literal:
+  K_Z P Q (realToSed x) = 2x^2(||P||^2+||Q||^2), no P,Q product survives).
+  The zero-divisor structure -- the actual subject of the Chavez Transform,
+  and the reason to use a non-associative Cayley-Dickson algebra at all --
+  is invisible on this line and is NOT exercised by anything proved here.
+  "Both theorems unconditional on P*Q=0" is true but is a symptom of this,
+  not a strength: the zero-divisor condition never mattered because the
+  product never appeared. K_Z_realToSed's formula is pattern-independent
+  because the multiplication degenerated, not because distinct Canonical
+  Six patterns were shown equivalent -- "pattern invariance formally proved
+  as theorem" (the previous framing) does not follow from it.
+  What IS proved: a correct, non-trivial, sharp-constant bound on this
+  scalar-channel restriction -- genuinely useful, but a different and much
+  simpler object than "the Chavez Transform...formally verified" as
+  described elsewhere in this repo. A genuine formalization of the full
+  transform needs the integral over an actual multi-dimensional sedenion
+  domain where P.x and x.Q differ, which needs a bound like
+  sed_norm_mul_le (or equivalent) that does not yet exist in this stack.
 
 Axiom footprint (both theorems):
   [propext, Classical.choice, Quot.sound]
