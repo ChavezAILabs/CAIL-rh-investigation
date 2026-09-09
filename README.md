@@ -36,7 +36,13 @@ Their formal co-extensiveness — that all three describe the same set — is th
 
 ---
 
-## Build Status — Phase 77 (June 17, 2026)
+## Build Status — Phase 77 (June 17, 2026; re-verified from a cold build September 8, 2026)
+
+Phase 78 was an empirical-only phase (§Phase History below) — no `.lean` file in the
+canonical stack was modified, so this build status is unchanged since Phase 77.
+It was independently reproduced from a fresh Mathlib cache on 2026-09-08 as part
+of that phase's verification batch, after the local build environment behind the
+June figures had been lost from the machine (see `verification/2026-09-08/`).
 
 ```
 lake build → 8,061 jobs · 0 errors · 1 sorry (by design)
@@ -214,6 +220,16 @@ With the three-route convergence theorem in place, Phase 76 turned to a precise 
 
 **Phase 77** completed the instrument characterization. `ba_asymptote_sq` proved that the B/A ratio converges to √17 exactly — not as an observed approximation but as a machine-verified limit theorem. Run A confirmed `pairing_sigma_independent` live to 10⁻¹⁵, demonstrating two disjoint detection channels: c_S2 (zero-detecting, σ-blind) and c_S6 (σ-sensitive, zero-blind). Run B (double-blind, two independent solvers) **refuted** per-gateway bilateral magnitude equality (see C-004) — the time-reversal-symmetric quantity is the sedenion norm ‖F(+t)‖ = ‖F(−t)‖, not the per-gateway magnitude. Detector performance over 101 zeros: z = 8.42 (seed-dependent, ±0.09 across seeds — see C-008), AUC = 0.87, precision = 0.83 vs. 0.43 chance at ε=0.5 specifically (the honest baseline is radius-dependent — see C-007). Build: 8,061 jobs. KSJ: 753 captures.
 
+### Phase 78 — Q-18 Detector Ensemble & Corrections Register (August–September 2026)
+
+Phase 78 was empirical-only — no Lean file was touched — and split into two parts, fully written up in [`docs/phases/RH_PHASE_78_RESULTS_v2.md`](docs/phases/RH_PHASE_78_RESULTS_v2.md) and [`CORRECTIONS.md`](CORRECTIONS.md).
+
+**Q-18 (Aug 22–23, 2026)** tested whether a multi-gateway ensemble could beat the Phase 77 Detector Encoding baseline (z=8.42, AUC 0.866). Two candidates failed with identified mechanisms: per-gateway weighting (a sign-discarding formula plus an S3≡S6 double-count) and a Class-B sign-structure hybrid (a 121-point grid search found essentially nothing to adjust, λ*=−0.05). The third — extending the explicit-formula truncation from 6 primes to 8 (k=1→k=2) — succeeded: z rose from 8.42 to 9.84, and ROC AUC from 0.866 to 0.906 at N=101 (a rank-based metric, confirmed 2026-09-08, so the gain cannot be an amplitude artifact of the larger detector). Run C extended the grid to γ₃₄₀ ≈ 598.5: the detector's z keeps rising with no plateau, but per-zero signal strength actually *declines* with height (to 76.5% of its N=101 value) — the z growth is entirely the Monte-Carlo null tightening as 1/√N, not the detector getting stronger. The k=1→k=2 improvement holds at scale but is a uniform gain, not one that grows with zero density.
+
+**Corrections Register opened (Sept 8, 2026).** A review of the Phase 77/78 artifacts, READMEs, and Lean sources found 21 issues, from cosmetic to a fully vacuous theorem, and opened `CORRECTIONS.md` as a permanent, public, append-only record — linked from the top of this document. A verification batch then checked every entry that could be checked against a live build or a re-run, rather than left as an assertion: `#print axioms` confirmed `eigenvalue_zero_mapping` carries `sorryAx` (C-019); a hypothesis-deletion test confirmed a decorative hypothesis in `Fbase_nondegeneracy` and a load-bearing one in `ba_asymptote_sq` (C-020); and three entries were **corrected by the verification itself** — a provenance claim was refuted outright (C-012, byte-identity to a June 12 commit, verified by SHA-256), a T1-only result was resolved in the investigation's favor by an independent rank-based metric (C-011), and a causal explanation for a z discrepancy was retracted after a three-arm test found it indistinguishable from ordinary Monte-Carlo noise (C-008). The register's own count of self-corrections is tracked in its Log table, on the view that finding your own errors faster than critics do is the actual defense of a research programme run at this pace and volume.
+
+Branch `phase-78-q18`, commits `4af1fa7`, `acaaf3e`, `44b3aca`, fast-forward merged to `main` September 8–9, 2026.
+
 ---
 
 ## Milestones
@@ -231,6 +247,7 @@ With the three-route convergence theorem in place, Phase 76 turned to a precise 
 | Critical Line Convergence Theorem — three routes formally co-extensive | 75 | May 11, 2026 |
 | Gateway Linear Law — oracle becomes proved formula | 76 | Jun 10, 2026 |
 | `ba_asymptote_sq` proved; two disjoint channels confirmed live to 10⁻¹⁵ | 77 | Jun 17, 2026 |
+| k=1→k=2 detector extension (z 8.42→9.84, rank-confirmed); Corrections Register opened | 78 | Sep 8, 2026 |
 
 ---
 
@@ -282,7 +299,7 @@ CAIL-rh-investigation/
 | **CAILculator v2.1.4** | High-precision MCP server; sedenion algebra and Chavez Transform; 10⁻¹⁵ precision; production stable |
 | **Aristotle (Harmonic Math)** | Cross-framework verification and independent audit |
 | **ZDTP** | Zero Divisor Transmission Protocol (structural signal analysis) |
-| **KSJ 2.0** | Knowledge Synthesis Journal (research record management; 753 captures through Phase 77) |
+| **KSJ 2.0** | Knowledge Synthesis Journal (research record management; 753 captures through Phase 77 — Phase 78 extraction not yet run; `extract_insights` goes through Claude Desktop, not Claude Code) |
 
 Lean 4 files from Phase 72 onward were developed using Claude Code. Gemini CLI is permitted for CAILculator runs and pre-handoff strategic analysis only; it is not used for Lean toolchain tasks due to documented version-drift on Mathlib v4.28.0 lemma names.
 
@@ -295,4 +312,4 @@ Lean 4 files co-authored with Aristotle ([Harmonic Math](https://harmonic.fun/))
 
 *Zenodo: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)*  
 *GitHub: [ChavezAILabs](https://github.com/ChavezAILabs)*  
-*Last updated: June 17, 2026 — Phase 77 complete.*
+*Last updated: September 9, 2026 — Phase 78 complete; Corrections Register opened.*
