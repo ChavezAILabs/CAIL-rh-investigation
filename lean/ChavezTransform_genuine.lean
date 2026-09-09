@@ -33,11 +33,22 @@ Design:
   - Domain: parametric (a, b]  (matches IntervalIntegrable)
 
 Key Results:
-  [!] Correction pending -- see CORRECTIONS.md C-017, C-018.
-  - chavez_transform_convergence: finite value for any bounded integrable f
+  - chavez_transform_integrable (2026-09-09, replaces the vacuous
+    chavez_transform_convergence -- see CORRECTIONS.md C-017): the
+    transform's integrand f(x)*K(P,Q,realToSed x,α,d) is genuinely
+    IntegrableOn (a,b] whenever f is interval-integrable and α,d > 0.
+    This is where "the integral converges" actually has content, unlike
+    the old theorem's `∃ C, |C[f]| ≤ C`, which holds for any real number
+    regardless of hypotheses. h_bounded was dropped from the old
+    signature -- confirmed unnecessary by the standing hypothesis-use
+    check (integrability of f, not boundedness, is what the proof needs;
+    K's boundedness alone supplies the rest). The other three hypotheses
+    were independently confirmed load-bearing by the same check.
   - chavez_transform_stability: |C[f]| ≤ stability_constant P Q α * L1_norm f a b
   - Both theorems unconditional on P*Q=0 (zero divisor property not required)
   - K_Z_realToSed exact formula: pattern invariance formally proved as theorem
+  [!] Scope note pending -- see CORRECTIONS.md C-018 (1D scalar-channel scope;
+      unaffected by the C-017 fix above).
 
 Axiom footprint (both theorems):
   [propext, Classical.choice, Quot.sound]
@@ -275,18 +286,56 @@ lemma K_bound (P Q : Sed) (α d x : ℝ) (hα : 0 < α) (hd : 0 < d) :
 -- §10  MAIN THEOREMS
 -- ============================================================
 
-/-- **Theorem 1: Convergence.**
-    The Chavez Transform of any bounded integrable function is finite.
+/-- `K P Q (realToSed x) α d`, as a function of `x : ℝ`, is continuous.
+    Substitutes the exact 1D formulas (`K_Z_realToSed`, `norm_realToSed_sq`) to
+    reduce to elementary real-analysis continuity: a polynomial times `exp`
+    times an `rpow` with strictly positive base `1 + x^2`, so the rpow's
+    continuity holds regardless of the sign of its exponent `-d/2`. -/
+lemma K_realToSed_continuous (P Q : Sed) (α d : ℝ) :
+    Continuous (fun x : ℝ => K P Q (realToSed x) α d) := by
+  have heq : (fun x : ℝ => K P Q (realToSed x) α d)
+      = fun x => 2 * x ^ 2 * (‖P‖ ^ 2 + ‖Q‖ ^ 2) * Real.exp (-α * x ^ 2)
+          * (1 + x ^ 2) ^ (-d / 2) := by
+    funext x
+    unfold K
+    rw [K_Z_realToSed, norm_realToSed_sq]
+  rw [heq]
+  have hrpow : Continuous (fun x : ℝ => (1 + x ^ 2) ^ (-d / 2)) := by
+    apply Continuous.rpow_const (by fun_prop)
+    intro x; left; positivity
+  fun_prop
 
-    ⚠ Correction pending -- see CORRECTIONS.md C-017. -/
-theorem chavez_transform_convergence
+/-- **Theorem 1: Convergence (integrability), corrected 2026-09-09.**
+    The Chavez Transform's integrand is genuinely integrable on `(a, b]`
+    whenever `f` is interval-integrable and `α, d > 0` -- this is what "the
+    transform converges" should mean, and it is where the hypotheses
+    actually do work. Replaces `chavez_transform_convergence`, whose
+    conclusion `∃ C, |C[f]| ≤ C` was true unconditionally (see
+    CORRECTIONS.md C-017) and used none of its four hypotheses.
+
+    Proof: `f * K(...)` is dominated a.e. by the integrable majorant
+    `stability_constant P Q α * |f|` (integrable via `h_integrable.norm`,
+    the same expression `chavez_transform_stability` uses for its own
+    dominating function) and is itself a.e.-strongly-measurable (`f` from
+    `h_integrable`, `K(...)` from `K_realToSed_continuous`), so
+    `Integrable.mono'` applies. -/
+theorem chavez_transform_integrable
     (f : ℝ → ℝ) (P Q : Sed) (α d a b : ℝ)
-    (h_bounded    : ∃ M, ∀ x ∈ Set.Ioc a b, |f x| ≤ M)
     (h_integrable : IntervalIntegrable f MeasureTheory.volume a b)
     (h_alpha      : 0 < α)
     (h_d          : 0 < d) :
-    ∃ C : ℝ, |chavez_transform_1d f P Q α d a b| ≤ C :=
-  ⟨_, le_refl _⟩
+    IntegrableOn (fun x => f x * K P Q (realToSed x) α d) (Set.Ioc a b) volume := by
+  unfold IntegrableOn
+  apply Integrable.mono' (g := fun x => stability_constant P Q α * |f x|)
+  · exact (h_integrable.norm.1).const_mul _
+  · exact h_integrable.1.aestronglyMeasurable.mul
+      (K_realToSed_continuous P Q α d).aestronglyMeasurable
+  · filter_upwards [ae_restrict_mem measurableSet_Ioc] with x _
+    rw [Real.norm_eq_abs, abs_mul]
+    have hK_nn := K_nonneg P Q (realToSed x) α d
+    rw [abs_of_nonneg hK_nn]
+    have hKbound := K_bound P Q α d x h_alpha h_d
+    nlinarith [abs_nonneg (f x)]
 
 /-- **Theorem 2: Stability.**
     |C[f]| ≤ stability_constant(P,Q,α) · ‖f‖₁. -/

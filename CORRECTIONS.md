@@ -3,10 +3,11 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 21 entries · 3 corrected · 2 confirmed against source ·
-3 modified by verification · 13 open
+**Status:** ACTIVE — 21 entries · 4 corrected · 2 confirmed against source ·
+3 modified by verification · 12 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
-**Last correction applied:** September 9, 2026 (C-002, in `README.md` and `lean/README.md`)
+**Last correction applied:** September 9, 2026 (C-017, `chavez_transform_integrable`
+in `lean/ChavezTransform_genuine.lean`)
 
 ---
 
@@ -82,7 +83,7 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-014 | `(z_g/Σz)²` weighting formula discards sign and does not normalize | 2 | Open |
 | C-015 | Repository tree omits four `.lean` files, including axiom-bearing ones | 1 | Open |
 | C-016 | `CD4_mul` defined as the zero function — all Chavez Transform theorems vacuous | 4 | **Corrected** |
-| C-017 | `chavez_transform_convergence` is vacuous in the replacement file | 4 | Open |
+| C-017 | `chavez_transform_convergence` is vacuous in the replacement file | 4 | **Corrected** |
 | C-018 | Chavez Transform verification scope overstated — 1D scalar channel only | 4 | Open |
 | C-019 | `eigenvalue_zero_mapping` axiom footprint omits `sorryAx` in both READMEs | 4 | Open — **confirmed verbatim** |
 | C-020 | Decorative hypothesis in `Fbase_nondegeneracy`; stale Path B docstring | 2 | Open — **confirmed** |
@@ -561,7 +562,7 @@ of a different kind.
 ---
 
 ### C-017 — `chavez_transform_convergence` is vacuous in the replacement file
-**Found:** 2026-09-08 · **By:** Claude (Opus 5), reading `ChavezTransform_genuine.lean` · **Severity:** 4 · **Status:** Open
+**Found:** 2026-09-08 · **By:** Claude (Opus 5), reading `ChavezTransform_genuine.lean` · **Severity:** 4 · **Status:** **Corrected**
 **Affects:** `ChavezTransform_genuine.lean` §10 and header Key Results; `README.md` Overview ("convergence and stability theorems"); `CHAVEZ_TRANSFORM_GEMINI_HANDOFF.md` §File Architecture
 
 **The claim as published:** "**Theorem 1: Convergence.** The Chavez Transform of
@@ -609,6 +610,25 @@ present in the Claude Code handoff document written *before* the Gemini CLI rela
 so it originated in the proof architecture, not in the build completion. The
 subsequent standing order restricting Gemini from Lean work rests on Mathlib
 lemma-name drift and is not evidenced by this entry.
+
+**Corrected:** 2026-09-09, by proving exactly the target this entry named:
+`chavez_transform_integrable`, `IntegrableOn (fun x => f x * K P Q (realToSed x) α d)
+(Set.Ioc a b) volume`. Standard axioms only
+(`[propext, Classical.choice, Quot.sound]`), no `sorryAx` — verbatim
+`#print axioms` output and the hypothesis-deletion audit are in
+`verification/2026-09-09/`.
+
+**This entry's own prediction needed a small correction on verification.**
+"The boundedness and decay hypotheses would actually do work" was checked
+directly: the decay hypotheses (`h_alpha`, `h_d`) and `h_integrable` are all
+load-bearing (confirmed by deletion — each one breaks the proof when
+removed), but `h_bounded` (the boundedness hypothesis) is not — integrability
+of the integrand needs `f` integrable, not `f` bounded, since `K(...)`'s own
+boundedness (from `h_alpha`, `h_d` via `K_bound`) already supplies what's
+needed for the dominated-convergence argument. `h_bounded` was dropped from
+`chavez_transform_integrable`'s signature rather than kept and left
+decorative — the standing check's point 1 applies to a fix's own new
+signature, not only to what it replaces.
 
 ---
 
@@ -863,6 +883,9 @@ held up.
   312e541 (see C-012).
 - **Detector reproducibility.** `seed = 20260612`, `n_trials = 5000`; the published
   z = 8.424967917247878 reproduces bit-for-bit.
+- **`chavez_transform_integrable` (C-017 fix).** Standard axioms only, no
+  `sorryAx`; all three of its hypotheses confirmed load-bearing by deletion.
+  `chavez_transform_stability` reconfirmed unaffected.
 
 ---
 
@@ -875,7 +898,8 @@ held up.
 | 2026-09-08 | C-002 confirmed against `SpectralIdentification.lean` line 47. C-019, C-020, C-021 opened from the same file. C-020 was produced by applying standing check item 1. |
 | 2026-09-08 | C-012 file attribution corrected: the ~15 KB figure is in `CLAUDE_CODE_HANDOFF_PHASE78_Q18.md`, not `DATA_MANIFEST_CLAUDE_CODE.md`. Fifth correction to this register from outside it. |
 | 2026-09-08 | **First verification batch (six tasks, Claude Code).** C-019 confirmed verbatim; C-020 confirmed by deletion test and independently by the Lean linter; C-008, C-011, C-012 modified. **The batch corrected this register three times: C-012's central claim was refuted outright, C-011 resolved in the investigation's favour, and C-008's causal explanation was retracted. A fourth correction was internal — C-007's assertion about the 1.92× ratio was wrong on its own arithmetic.** Second Failure Mode section added. |
-| 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-017, C-018, C-021 remain Open — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
+| 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-018, C-021 remain Open — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
+| 2026-09-09 | C-017 closed as **Corrected**, on Paul's explicit request — `chavez_transform_convergence` replaced by `chavez_transform_integrable` in `lean/ChavezTransform_genuine.lean`, proving the entry's own named target. Standard axioms, no sorryAx; three hypotheses confirmed load-bearing by deletion, `h_bounded` dropped as confirmed unnecessary (see this entry's own Corrected block for the nuance — the register's original prediction about which hypotheses would do the work was half right). This is a technical correctness fix, not a framing decision, so it did not need the same hold C-018/C-021 are under. Reproducibility record in `verification/2026-09-09/`. |
 
 ---
 
