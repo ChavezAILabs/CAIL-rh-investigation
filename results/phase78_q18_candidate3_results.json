@@ -1,0 +1,61 @@
+{
+  "phase": "78",
+  "question": "Q-18",
+  "candidate": "3_higher_primes",
+  "grid": {
+    "t_lo": 10.0,
+    "t_hi": 240.0,
+    "dt": 0.005,
+    "n": 46001
+  },
+  "zeros_in_range": 101,
+  "identity_residual_p17": 8.881784197001252e-16,
+  "quick20": {
+    "baseline": {
+      "n_zeros": 20,
+      "observed": 2.9645062112109963,
+      "null_mean": -0.010725356631016732,
+      "null_std": 0.5301655065732034,
+      "z": 5.611892005334005,
+      "p_two_sided": 0.0
+    },
+    "plus_p17": {
+      "n_zeros": 20,
+      "observed": 3.4052807960808757,
+      "null_mean": -0.015266029604137754,
+      "null_std": 0.5736293830567994,
+      "z": 5.962990960221295,
+      "p_two_sided": 0.0
+    }
+  },
+  "proceed_to_full": true,
+  "full101_plus_p17": {
+    "baseline": {
+      "n_zeros": 101,
+      "observed": 1.9661573443371425,
+      "null_mean": -0.0104500995552135,
+      "null_std": 0.23461305292875698,
+      "z": 8.424967917247878,
+      "p_two_sided": 0.0
+    },
+    "plus_p17": {
+      "n_zeros": 101,
+      "observed": 2.3194902887097286,
+      "null_mean": -0.012083543247576083,
+      "null_std": 0.2541341054377628,
+      "z": 9.174580593742089,
+      "p_two_sided": 0.0
+    }
+  },
+  "full101_plus_p17_p19": {
+    "detector": {
+      "n_zeros": 101,
+      "observed": 2.659700984183496,
+      "null_mean": -0.01577106167211102,
+      "null_std": 0.27187440450833483,
+      "z": 9.840838274915965,
+      "p_two_sided": 0.0
+    }
+  },
+  "verdict": "IMPROVEMENT: best higher-prime z = 9.84 vs baseline z = 8.42"
+}

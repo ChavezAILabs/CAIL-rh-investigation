@@ -1,0 +1,60 @@
+{
+  "phase": "78",
+  "question": "Q-18",
+  "candidate": "2_classb_hybrid",
+  "grid": {
+    "t_lo": 10.0,
+    "t_hi": 240.0,
+    "dt": 0.005,
+    "n": 46001
+  },
+  "zeros_in_range": 101,
+  "train_n": 30,
+  "test_n": 71,
+  "s1_minus_s4_identity_residual": 5.684341886080802e-14,
+  "lambda_grid": {
+    "lo": -3.0,
+    "hi": 3.0,
+    "n": 121
+  },
+  "lambda_star": -0.04999999999999982,
+  "train_z_at_lambda_star": 6.091821737648217,
+  "train_z_at_lambda_zero": 6.0902270935743825,
+  "heldout_test": {
+    "hybrid": {
+      "n_zeros": 71,
+      "observed": 1.656743919660976,
+      "null_mean": -0.010428802286771104,
+      "null_std": 0.270946983026717,
+      "z": 6.153132628841096,
+      "p_two_sided": 0.0
+    },
+    "baseline": {
+      "n_zeros": 71,
+      "observed": 1.6886517663795277,
+      "null_mean": -0.010185731219719107,
+      "null_std": 0.27588493632583705,
+      "z": 6.157775485040674,
+      "p_two_sided": 0.0
+    }
+  },
+  "full101_lambda_fixed": {
+    "hybrid": {
+      "n_zeros": 101,
+      "observed": 1.9297793050769263,
+      "null_mean": -0.010569228182452182,
+      "null_std": 0.23043116826414656,
+      "z": 8.42051250217648,
+      "p_two_sided": 0.0
+    },
+    "baseline": {
+      "n_zeros": 101,
+      "observed": 1.9661573443371425,
+      "null_mean": -0.0104500995552135,
+      "null_std": 0.23461305292875698,
+      "z": 8.424967917247878,
+      "p_two_sided": 0.0
+    }
+  },
+  "verdict": "NO IMPROVEMENT: held-out hybrid z (6.15) does not beat baseline (6.16)."
+}

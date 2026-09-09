@@ -1,0 +1,157 @@
+{
+  "phase": "78",
+  "question": "Q-18",
+  "candidate": "1_per_gateway_weighting",
+  "grid": {
+    "t_lo": 10.0,
+    "t_hi": 240.0,
+    "dt": 0.005,
+    "n": 46001
+  },
+  "zeros_in_range": 101,
+  "structural_precheck": {
+    "max_abs_cS3_minus_cS6": 0.0,
+    "cS1_linear_slope_vs_t": -2.000137444569306,
+    "note": "S3 is algebraically identical to S6 under the Detector Encoding (their differentiating support indices {4,11} vs {2,13} are all zeroed by the encoding, leaving only the shared {6,9} slots). S1/S4/S5 (Class B) are dominated by a -2t linear term from the shared pos1=t protocol slot in their support."
+  },
+  "per_gateway_z_full101": {
+    "1": -2.3197600145347224,
+    "2": 6.64163490454297,
+    "3": 5.3509953184473265,
+    "4": -2.374173197172774,
+    "5": -2.308374835880035,
+    "6": 5.3509953184473265
+  },
+  "insample": {
+    "weights": {
+      "1": 0.050319274737853685,
+      "2": 0.412475590774709,
+      "3": 0.2677425518872588,
+      "4": 0.05270757700480888,
+      "5": 0.04982656163606617,
+      "6": 0.2677425518872588
+    },
+    "ensemble_t1": {
+      "n_zeros": 101,
+      "observed": -42.0554080119823,
+      "null_mean": -38.19128603978405,
+      "null_std": 2.0487653667517516,
+      "z": -1.886073454240728,
+      "p_two_sided": 0.0576
+    },
+    "baseline_t1": {
+      "n_zeros": 101,
+      "observed": 1.9661573443371425,
+      "null_mean": -0.0104500995552135,
+      "null_std": 0.23461305292875698,
+      "z": 8.424967917247878,
+      "p_two_sided": 0.0
+    },
+    "caveat": "weights are fit on the same 101 zeros used to evaluate z here -- optimistic, matches the doc's literal Step 2-4 instructions but is lookahead-biased."
+  },
+  "heldout": {
+    "train_n": 50,
+    "test_n": 51,
+    "weights": {
+      "1": 0.023559572135422466,
+      "2": 0.042170420050822284,
+      "3": 0.02815002248008723,
+      "4": 0.023050521300198096,
+      "5": 0.023645519265485485,
+      "6": 0.02815002248008723
+    },
+    "ensemble_t1": {
+      "n_zeros": 51,
+      "observed": -26.978769969479032,
+      "null_mean": -17.54514617801562,
+      "null_std": 1.2995923475547977,
+      "z": -7.258909926034048,
+      "p_two_sided": 0.0
+    },
+    "baseline_t1": {
+      "n_zeros": 51,
+      "observed": 1.6674523249648472,
+      "null_mean": -0.01065577505594256,
+      "null_std": 0.3275325409587591,
+      "z": 5.123485120313853,
+      "p_two_sided": 0.0
+    }
+  },
+  "roc": {
+    "ensemble_insample": [
+      {
+        "delta": 0.25,
+        "n_pos": 10100,
+        "n_neg": 35901,
+        "auc": 0.4291078242945879
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "auc": 0.4040941112431132
+      }
+    ],
+    "baseline": [
+      {
+        "delta": 0.25,
+        "n_pos": 10100,
+        "n_neg": 35901,
+        "auc": 0.809499547848994
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "auc": 0.8660883906335627
+      }
+    ]
+  },
+  "peaks": {
+    "ensemble_insample": [
+      {
+        "eps": 0.5,
+        "n_maxima": 79,
+        "best": {
+          "f1": 0.6666666666666666,
+          "precision": 0.759493670886076,
+          "recall": 0.594059405940594,
+          "n_predictions": 79
+        }
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 79,
+        "best": {
+          "f1": 0.8111111111111111,
+          "precision": 0.9240506329113924,
+          "recall": 0.7227722772277227,
+          "n_predictions": 79
+        }
+      }
+    ],
+    "baseline": [
+      {
+        "eps": 0.5,
+        "n_maxima": 83,
+        "best": {
+          "f1": 0.7191011235955057,
+          "precision": 0.8311688311688312,
+          "recall": 0.6336633663366337,
+          "n_predictions": 77
+        }
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 83,
+        "best": {
+          "f1": 0.8426966292134831,
+          "precision": 0.974025974025974,
+          "recall": 0.7425742574257426,
+          "n_predictions": 77
+        }
+      }
+    ]
+  },
+  "verdict": "NO IMPROVEMENT: held-out ensemble z (-7.26) does not beat the unfitted baseline (5.12); in-sample 'improvement' is a fitting artifact from reusing the evaluation zeros to set weights, amplified by the S3=S6 degeneracy (double-counts the {5,7} prime channel) and t-dominated noise from S1/S4/S5."
+}
