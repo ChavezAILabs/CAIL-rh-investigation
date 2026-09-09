@@ -429,10 +429,12 @@ signal decay that C-001 identified in the T1 values.
 
 ### C-012 — Phase 77 baseline artifact provenance broken
 **Found:** 2026-09-08 · **By:** Paul Chavez · **Severity:** 3 · **Status:** **Modified — central claim refuted 2026-09-08**
-**Affects:** `DATA_MANIFEST_CLAUDE_CODE.md` file-size figure
+**Affects:** `CLAUDE_CODE_HANDOFF_PHASE78_Q18.md` file-size figure (this entry
+originally named `DATA_MANIFEST_CLAUDE_CODE.md` — misattributed, corrected
+2026-09-08)
 
 **The claim as filed:** All five result JSONs share a file origination date and
-`phase77_q17_results.json` is 3,557 bytes against a manifest description of ~15 KB,
+`phase77_q17_results.json` is 3,557 bytes against a documented description of ~15 KB,
 therefore the file is a regeneration rather than a preserved June 12 artifact, and
 the Phase 78 pre-flight "reproduction" was circular.
 
@@ -450,8 +452,8 @@ to the committed artifact anyway. The Phase 78 pre-flight was therefore a genuin
 reproduction against a committed reference, not a comparison of a script to its own
 output.
 
-**What survives:** the manifest's "~15 KB" figure is wrong; the file is ~3.5 KB.
-Severity of the surviving claim is 1, not 3.
+**What survives:** the "~15 KB" figure is wrong; the file is ~3.5 KB. Severity of
+the surviving claim is 1, not 3.
 
 **Retracted:** the circularity charge against `RH_PHASE_78_RESULTS.md` §1, and the
 recommendation to restate AIEX-741/742's provenance. Both were unfounded.
@@ -861,6 +863,7 @@ held up.
 | 2026-09-08 | Register opened. C-001 through C-015 entered; C-013 entered as already corrected. C-016 reserved pending specification. |
 | 2026-09-08 | C-016 specified from `CHAVEZ_TRANSFORM_GEMINI_HANDOFF.md` and closed as Corrected. C-017 and C-018 opened from review of `ChavezTransform_genuine.lean`. Recurring Failure Mode section added. |
 | 2026-09-08 | C-002 confirmed against `SpectralIdentification.lean` line 47. C-019, C-020, C-021 opened from the same file. C-020 was produced by applying standing check item 1. |
+| 2026-09-08 | C-012 file attribution corrected: the ~15 KB figure is in `CLAUDE_CODE_HANDOFF_PHASE78_Q18.md`, not `DATA_MANIFEST_CLAUDE_CODE.md`. Fifth correction to this register from outside it. |
 | 2026-09-08 | **First verification batch (six tasks, Claude Code).** C-019 confirmed verbatim; C-020 confirmed by deletion test and independently by the Lean linter; C-008, C-011, C-012 modified. **The batch corrected this register three times: C-012's central claim was refuted outright, C-011 resolved in the investigation's favour, and C-008's causal explanation was retracted. A fourth correction was internal — C-007's assertion about the 1.92× ratio was wrong on its own arithmetic.** Second Failure Mode section added. |
 
 ---
