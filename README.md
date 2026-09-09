@@ -10,9 +10,9 @@ A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sed
 
 ## Principal Result
 
-> ⚠ **Correction pending** — see [`CORRECTIONS.md`](CORRECTIONS.md) C-002, C-021.
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](CORRECTIONS.md) C-021.
 
-**Three independent standard-axiom characterizations of the critical line Re(s) = ½, formally verified in Lean 4.**
+**Two independent standard-axiom mechanisms characterizing the critical line Re(s) = ½, assembled with a third equivalent formulation into one machine-verified conjunction in Lean 4** (corrected 2026-09-09 from an earlier "three independent characterizations" claim — see [`CORRECTIONS.md`](CORRECTIONS.md) C-002: `isSpectralPoint s` is *defined* as `sedenion_Hamiltonian s = 0`, so the second conjunct below is not independent of the first — it delta-reduces to it).
 
 ```
 theorem critical_line_convergence (s : ℂ) (hs : 0 < s.re ∧ s.re < 1) (g : Gateway) :
@@ -24,7 +24,7 @@ theorem critical_line_convergence (s : ℂ) (hs : 0 < s.re ∧ s.re < 1) (g : Ga
 → [propext, Classical.choice, Quot.sound]    ✅ Standard axioms only
 ```
 
-Each biconditional characterizes the same geometric object — the critical line — through a distinct algebraic mechanism derived from 16-dimensional sedenion zero divisor structure:
+The first and third biconditionals characterize the critical line through genuinely distinct algebraic mechanisms — the Sedenionic Hamiltonian's energy minimum and the ZDTP gateway's arithmetic integrality. The second is the direct forward projection of the first (one `.mp` away, via `isSpectralPoint`'s definition) rather than an independent route:
 
 | # | Theorem | Route | Axiom Footprint |
 |---|---------|-------|-----------------|
@@ -209,7 +209,7 @@ Selected results:
 | 71 | Schwarz Reflection discharged; all boundary walls secured; axiom footprint = 1 |
 | 72 | **Sedenionic Hamiltonian constructed.** `Hamiltonian_vanishing_iff_critical_line` proved. Build: 8,053 jobs |
 | 73 | Spectral identification: ζ(s) = 0 → H(s) = 0 (proved); 2σ universal law confirmed across all six gateways. Build: 8,055 jobs |
-| 74 | **Gateway Integer Law** proved under standard axioms only — RH-independent. Three independent standard-axiom characterizations of Re(s) = ½ now in stack. Build: 8,057 jobs |
+| 74 | **Gateway Integer Law** proved under standard axioms only — RH-independent. Three standard-axiom characterizations of Re(s) = ½ now in stack (two independent mechanisms plus a third, equivalent formulation — see [`CORRECTIONS.md`](CORRECTIONS.md) C-002). Build: 8,057 jobs |
 | 75 | **Critical Line Convergence Theorem:** all three characterizations packaged in one machine-verified conjunction. ~~Q-2 CLOSED (bilateral magnitude symmetry identically zero). Q-4 CLOSED (±t symmetry structural).~~ **Retracted (Phase 77 Run B) — see [`CORRECTIONS.md`](CORRECTIONS.md) C-004; per-gateway bilateral magnitude equality does not hold.** Build: 8,059 jobs |
 
 ### The Instrument Era — Phases 76–77 (June 2026)

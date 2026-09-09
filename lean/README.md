@@ -7,9 +7,7 @@ This directory contains the formal proof stack for the **Riemann Hypothesis Inve
 
 ## 🏆 The Phase 75 "Critical Line Convergence" Milestone (May 11, 2026)
 
-> ⚠ **Correction pending** — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-002.
-
-Phase 75 formally assembles the three independent standard-axiom characterizations of Re(s) = ½ into a single convergence theorem. `critical_line_convergence` is the first machine-verified theorem in the CAIL-RH stack joining all three routes — sedenion algebra, spectral theory, and discrete geometry — into one conjunction, all from standard Lean/Mathlib axioms.
+Phase 75 formally assembles two independent standard-axiom characterizations of Re(s) = ½, plus a third equivalent formulation, into a single convergence theorem (corrected 2026-09-09 from an earlier "three independent characterizations" claim — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-002). `critical_line_convergence` is the first machine-verified theorem in the CAIL-RH stack joining all three routes — sedenion algebra, spectral theory, and discrete geometry — into one conjunction, all from standard Lean/Mathlib axioms. Route 2 (spectral theory) is not independent of Route 1 (sedenion algebra): `isSpectralPoint s` is *defined* as `sedenion_Hamiltonian s = 0`, so Route 2's theorem is the direct forward projection of Route 1's, one `.mp` away.
 
 ```
 lake build → 8,059 jobs · 0 errors · 1 sorry (by design)  (verified May 11, 2026)
@@ -27,7 +25,7 @@ Branch: phase-75-convergence
 
 **Axiom localization:** `riemann_critical_line` appears in exactly **two** theorems (`riemann_hypothesis` and its downstream `eigenvalue_zero_mapping`) across the full 8,059-job stack — corrected from a previous "exactly one" claim, see [`CORRECTIONS.md`](../CORRECTIONS.md) C-003. Every supporting theorem — including all three critical line characterizations and the convergence assembly — carries standard axioms only.
 
-### Three Independent Standard-Axiom Characterizations of Re(s) = ½ — Assembled
+### Three Standard-Axiom Characterizations of Re(s) = ½ — Assembled (Two Independent, One Equivalent Formulation)
 
 | # | Theorem | Route | File |
 |---|---|---|---|
@@ -35,7 +33,7 @@ Branch: phase-75-convergence
 | 2 | `spectral_implies_critical_line` | H(s) = 0 → Re(s) = ½ (spectral containment) | `SpectralIdentification.lean` |
 | 3 | `gateway_integer_iff_critical_line` | Integer lift coords ↔ Re(s) = ½ in critical strip | `GatewayScaling.lean` |
 
-All three carry standard axioms only. All three characterize the same geometric object — the critical line Re(s) = ½ — through distinct algebraic mechanisms. **Phase 75 assembled these into `critical_line_convergence` (May 11, 2026).**
+All three carry standard axioms only, and all three characterize the same geometric object — the critical line Re(s) = ½. Routes 1 and 3 do so through distinct algebraic mechanisms; Route 2 is Route 1's direct forward projection (see above), not a third mechanism. **Phase 75 assembled these into `critical_line_convergence` (May 11, 2026).**
 
 ### Key Technical Achievements — Phase 75
 - **`CriticalLineConvergence.lean` (new, 16th file):** Assembles all three characterizations into a single ∧-conjunction theorem. Avoids the `↔`-right-associativity trap — uses `∧` throughout.

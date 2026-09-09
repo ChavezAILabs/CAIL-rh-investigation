@@ -3,9 +3,10 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 21 entries · 2 corrected · 3 confirmed against source ·
+**Status:** ACTIVE — 21 entries · 3 corrected · 2 confirmed against source ·
 3 modified by verification · 13 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
+**Last correction applied:** September 9, 2026 (C-002, in `README.md` and `lean/README.md`)
 
 ---
 
@@ -66,7 +67,7 @@ appears; a provenance chain that cannot be traced to an artifact.
 | ID | Title | Sev | Status |
 |---|---|---|---|
 | C-001 | Sub-√N growth misread as signal strengthening | 3 | Open |
-| C-002 | "Three independent characterizations" — routes 1 and 2 are not independent | 4 | Open — **confirmed** |
+| C-002 | "Three independent characterizations" — routes 1 and 2 are not independent | 4 | **Corrected** |
 | C-003 | `riemann_critical_line` axiom count stated as one; it is two | 2 | Open |
 | C-004 | Retracted Q-2 / Q-4 results still published as CLOSED | 4 | Open |
 | C-005 | B/A → 4.0 hypothesis superseded by √17, not withdrawn | 2 | Open |
@@ -133,7 +134,7 @@ unexplained growth claim.
 ---
 
 ### C-002 — "Three independent characterizations" — routes 1 and 2 are not independent
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** Open — **confirmed against source 2026-09-08**
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** **Corrected**
 **Affects:** `README.md` Principal Result; `lean/README.md` Phase 75 section; planned v1.4 paper; RH paper framing; all milestone claims citing "three routes"
 
 **The claim as published:** "Three independent standard-axiom characterizations of
@@ -174,6 +175,15 @@ headline sentence of both READMEs.
 characterizing Re(s) = ½, assembled with a third equivalent formulation into one
 machine-verified conjunction." This costs nothing that was real and removes the
 claim a referee would open with.
+
+**Corrected:** 2026-09-09, in `README.md` (Principal Result and the Phase 74
+milestone row) and `lean/README.md` (Phase 75 section), using the recommended
+restatement above, with an added note that Route 2 is Route 1's direct forward
+projection rather than a third mechanism. Historical dated phase-completion
+documents (`RH_PHASE_74_RESULTS.md`, `RH_PHASE_75_HANDOFF.md`,
+`RH_PHASE_75_RESULTS.md`, and session handoffs from that period) were left
+as-is — they record what was believed at the time and are not rewritten,
+consistent with how this register treats history elsewhere (see C-016).
 
 ---
 
@@ -865,6 +875,7 @@ held up.
 | 2026-09-08 | C-002 confirmed against `SpectralIdentification.lean` line 47. C-019, C-020, C-021 opened from the same file. C-020 was produced by applying standing check item 1. |
 | 2026-09-08 | C-012 file attribution corrected: the ~15 KB figure is in `CLAUDE_CODE_HANDOFF_PHASE78_Q18.md`, not `DATA_MANIFEST_CLAUDE_CODE.md`. Fifth correction to this register from outside it. |
 | 2026-09-08 | **First verification batch (six tasks, Claude Code).** C-019 confirmed verbatim; C-020 confirmed by deletion test and independently by the Lean linter; C-008, C-011, C-012 modified. **The batch corrected this register three times: C-012's central claim was refuted outright, C-011 resolved in the investigation's favour, and C-008's causal explanation was retracted. A fourth correction was internal — C-007's assertion about the 1.92× ratio was wrong on its own arithmetic.** Second Failure Mode section added. |
+| 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-017, C-018, C-021 remain Open — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
 
 ---
 
