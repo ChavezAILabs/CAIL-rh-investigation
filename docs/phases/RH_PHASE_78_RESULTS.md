@@ -1,4 +1,11 @@
 # RH Investigation — Phase 78 Results: Q-18 Detector Ensemble & Run C
+
+> ⚠ **Superseded by [`RH_PHASE_78_RESULTS_v2.md`](RH_PHASE_78_RESULTS_v2.md), 2026-09-08.**
+> This version's headline Run C finding (§4, finding 1) is inverted — see
+> [`CORRECTIONS.md`](../../CORRECTIONS.md) C-001, and C-007, C-009, C-010,
+> C-011, C-012 for the other corrections v2 applies. Retained for the record;
+> read v2 for the corrected account.
+
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Date:** August 22, 2026
 **Phase:** 78 (Q-18 empirical track + Run C)

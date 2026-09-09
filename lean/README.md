@@ -7,6 +7,8 @@ This directory contains the formal proof stack for the **Riemann Hypothesis Inve
 
 ## 🏆 The Phase 75 "Critical Line Convergence" Milestone (May 11, 2026)
 
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-002.
+
 Phase 75 formally assembles the three independent standard-axiom characterizations of Re(s) = ½ into a single convergence theorem. `critical_line_convergence` is the first machine-verified theorem in the CAIL-RH stack joining all three routes — sedenion algebra, spectral theory, and discrete geometry — into one conjunction, all from standard Lean/Mathlib axioms.
 
 ```
@@ -23,7 +25,7 @@ Branch: phase-75-convergence
 → [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
 ```
 
-**Axiom localization:** `riemann_critical_line` appears in exactly **one** theorem (`riemann_hypothesis`) across the full 8,059-job stack. Every supporting theorem — including all three critical line characterizations and the convergence assembly — carries standard axioms only.
+**Axiom localization:** `riemann_critical_line` appears in exactly **two** theorems (`riemann_hypothesis` and its downstream `eigenvalue_zero_mapping`) across the full 8,059-job stack — corrected from a previous "exactly one" claim, see [`CORRECTIONS.md`](../CORRECTIONS.md) C-003. Every supporting theorem — including all three critical line characterizations and the convergence assembly — carries standard axioms only.
 
 ### Three Independent Standard-Axiom Characterizations of Re(s) = ½ — Assembled
 
@@ -40,8 +42,9 @@ All three carry standard axioms only. All three characterize the same geometric 
 - **`critical_line_convergence`:** `(H(s) = 0 ↔ Re(s) = ½) ∧ (isSpectralPoint s ↔ Re(s) = ½) ∧ (lift_coord ∈ {-1,1} ↔ Re(s) = ½)`. Proof: `refine ⟨_, ?_, _⟩` with `unfold isSpectralPoint`.
 - **`hamiltonian_gateway_equiv`:** Novel cross-route directly connecting H-vanishing ↔ gateway integer without passing through Re(s) = ½. One-line proof via `Iff.trans` + `Iff.symm`. Standard axioms only.
 - **`spectral_gateway_equiv`:** isSpectralPoint s ↔ gateway integer. Follows from `hamiltonian_gateway_equiv` via `unfold isSpectralPoint`. Standard axioms only.
-- **CAILculator Q-2 CLOSED:** |M(σ)|² − |M(1−σ)|² = 0 exactly for all σ; bilateral magnitude symmetry is a structural property of the CAIL-RH sedenion embedding, confirmed to 10⁻¹⁵ across all six gateways.
-- **CAILculator Q-4 CLOSED:** |M(½+it)| = |M(½−it)| exactly for t ∈ {±1, ±5, ±10, ±20}; structural ±t symmetry independent of zero condition.
+- ~~**CAILculator Q-2 CLOSED:** |M(σ)|² − |M(1−σ)|² = 0 exactly for all σ; bilateral magnitude symmetry is a structural property of the CAIL-RH sedenion embedding, confirmed to 10⁻¹⁵ across all six gateways.~~
+- ~~**CAILculator Q-4 CLOSED:** |M(½+it)| = |M(½−it)| exactly for t ∈ {±1, ±5, ±10, ±20}; structural ±t symmetry independent of zero condition.~~
+- **Retracted (Phase 77 Run B):** per-gateway bilateral magnitude equality does not hold. Both Q-2 and Q-4 as stated above were refuted; the magnitude tables behind them were quarantined via infeasibility certificate as a v2.0.4 pipeline artifact. The time-reversal-symmetric quantity is the sedenion norm ‖F(+t)‖ = ‖F(−t)‖, not the per-gateway magnitude. See [`CORRECTIONS.md`](../CORRECTIONS.md) C-004.
 - **New gateway pairing:** S1=S2, S3=S6, S4=S5 at σ = ½ (distinct from Class A/B split A:S2,S3,S6 / B:S1,S4,S5 established in Phase 73–74). Q-5 open: does pairing collapse at σ ≠ ½?
 - **γ₄ approach signature:** S3,S4,S5,S6 magnitudes collapse to ~2.57 at t = ±20 (near γ₄ ≈ 21.022) while S1,S2 hold near 8.1 — differential prime sensitivity as a zero-approach probe.
 
@@ -65,7 +68,7 @@ Branch: phase-74-gateway · Commit: 45c1034
 - **`gateway_integer_iff_critical_line`:** In the critical strip, the lift coordinate is an integer iff Re(s) = ½. Standard axioms only — **RH-independent**.
 - **`lift_coord_gateway_independent`:** The 2σ scaling law is uniform across all six gateways.
 - **CAILculator Q-13 CLOSED:** σ gradient sweep confirms 2σ law is exactly linear to 10⁻¹⁵, no higher-order corrections, bilateral symmetry about σ = ½ exact.
-- **CAILculator Q-8 DEVELOPING:** Extended γ sweep γ₁₁–γ₂₀ shows B/A magnitude ratio local minima tightening toward 4.0 (γ₁₂: 4.067 · γ₁₄: 4.057 · γ₁₆: 4.044). E₈/Fano algebraic argument is the natural resolution path (Phase 76).
+- ~~**CAILculator Q-8 DEVELOPING:** Extended γ sweep γ₁₁–γ₂₀ shows B/A magnitude ratio local minima tightening toward 4.0 (γ₁₂: 4.067 · γ₁₄: 4.057 · γ₁₆: 4.044).~~ **Superseded (Phase 77):** `ba_asymptote_sq` proves B/A² → 17, so B/A → √17 = 4.1231…, as a machine-verified limit theorem under standard axioms — not the 4.0 the observed values appeared to be approaching. See [`CORRECTIONS.md`](../CORRECTIONS.md) C-005.
 
 ---
 
@@ -122,7 +125,9 @@ Phase 71 reduced the non-standard axiom footprint from three independent assumpt
 
 ---
 
-## 🔬 The Chavez Transform & CAILculator v2.0.4
+## 🔬 The Chavez Transform & CAILculator v2.1.4
+
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-018.
 
 The **Chavez Transform** is a formally verified algebraic operator providing the empirical backbone of the investigation. Its stability is machine-verified in `ChavezTransform_genuine.lean`.
 
@@ -155,7 +160,7 @@ $$|\mathcal{C}[f]| \leq M \cdot \|f\|_1 \qquad M(P, Q, \alpha) = \frac{2(\|P\|^2
 | Theorem | File | Footprint | Status |
 |---|---|---|---|
 | `riemann_hypothesis` | `RiemannHypothesisProof.lean` | `[propext, riemann_critical_line, Classical.choice, Quot.sound]` | Conditional on RH |
-| `eigenvalue_zero_mapping` | `SpectralIdentification.lean` | `[propext, riemann_critical_line, Classical.choice, Quot.sound]` | Spectral identification |
+| `eigenvalue_zero_mapping` | `SpectralIdentification.lean` | `[propext, riemann_critical_line, sorryAx, Classical.choice, Quot.sound]` | Spectral identification — **carries `sorryAx`, see C-019** |
 | `critical_line_convergence` | `CriticalLineConvergence.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · **Three-way assembly** |
 | `hamiltonian_gateway_equiv` | `CriticalLineConvergence.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · **Cross-route** |
 | `spectral_gateway_equiv` | `CriticalLineConvergence.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
@@ -171,6 +176,17 @@ $$|\mathcal{C}[f]| \leq M \cdot \|f\|_1 \qquad M(P, Q, \alpha) = \frac{2(\|P\|^2
 | `completedRiemannZeta_real_on_critical_line` | `EulerProductBridge.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
 | `energy_minimum_characterization` | `UnityConstraint.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
 | `chavez_transform_stability` | `ChavezTransform_genuine.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
+
+**Sorry inheritance (C-019, confirmed 2026-09-08 by `lake env lean axiom_check_c019.lean` against a clean 8,061-job build):**
+
+```
+'eigenvalue_zero_mapping' depends on axioms: [propext, riemann_critical_line, sorryAx, Classical.choice, Quot.sound]
+'zeta_zero_implies_spectral' depends on axioms: [propext, riemann_critical_line, Classical.choice, Quot.sound]
+'spectral_implies_zeta_zero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'spectral_implies_critical_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+`eigenvalue_zero_mapping` inherits `sorryAx` from `spectral_implies_zeta_zero` (its backward-direction component) — it is **not** a proved biconditional. `zeta_zero_implies_spectral` (the forward direction alone) and `spectral_implies_critical_line` remain clean. See [`CORRECTIONS.md`](../CORRECTIONS.md) C-019 and the reproducibility record in `verification/2026-09-08/`.
 
 ---
 
@@ -190,7 +206,7 @@ H(s) = (Re(s) − 1/2) · u_antisym
 The Berry-Keating $xp$ Hamiltonian analogue in 16D sedenion space. $H(s) = 0 \iff \text{Re}(s) = 1/2$.
 
 ### Conditional Proof Structure
-If `riemann_critical_line` is ever proved by any method by anyone, the entire 8,059-job Lean stack becomes unconditionally proved automatically. The axiom localization across Phases 69–75 was specifically engineered for this: `riemann_critical_line` appears in exactly one named theorem (`riemann_hypothesis`) and its downstream `eigenvalue_zero_mapping`. Every supporting theorem — including the three-way assembly `critical_line_convergence` — requires no modification.
+If `riemann_critical_line` is ever proved by any method by anyone, the entire 8,059-job Lean stack becomes unconditionally proved automatically. The axiom localization across Phases 69–75 was specifically engineered for this: `riemann_critical_line` appears in exactly two named theorems, `riemann_hypothesis` and its downstream `eigenvalue_zero_mapping` (see C-003). Every supporting theorem — including the three-way assembly `critical_line_convergence` — requires no modification. Note that `riemann_critical_line` localization is narrower than this might suggest: it does not appear in `spectral_implies_zeta_zero` at all (see C-019).
 
 ### The Canonical Six Framework
 All proofs are grounded in the **Bilateral Collapse Theorem** (`BilateralCollapse.lean`), formally verifying the six fundamental zero divisor patterns and their E8 connection. Published: [DOI: 10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495).
@@ -216,7 +232,8 @@ All proofs are grounded in the **Bilateral Collapse Theorem** (`BilateralCollaps
 | `SedenionicHamiltonian.lean` | 72/73 | $H(s)$ definition; `Hamiltonian_vanishing_iff_critical_line`; `Hamiltonian_forcing_principle` |
 | `SpectralIdentification.lean` | 73 | `eigenvalue_zero_mapping`; `zeta_zero_implies_spectral`; `spectral_implies_critical_line` |
 | `GatewayScaling.lean` | 74 | `Gateway` type (Fin 6); `lift_coordinate`; `lift_coord_scaling`; `gateway_integer_iff_critical_line` (RH-independent) |
-| `CriticalLineConvergence.lean` | **75** | **New.** `critical_line_convergence` (three-way ∧-assembly); `hamiltonian_gateway_equiv` (cross-route); `spectral_gateway_equiv` |
+| `CriticalLineConvergence.lean` | 75 | `critical_line_convergence` (three-way ∧-assembly); `hamiltonian_gateway_equiv` (cross-route); `spectral_gateway_equiv` |
+| `GatewayLinearLaw.lean` | 76/77 | The Gateway Linear Law; `gateway_pairing_iff`, `gateway_magSq_sub`, `pairing_sigma_independent`, `ba_asymptote_sq`. Standalone over Mathlib — not in the main import chain. Previously absent from this table, see C-015. |
 | `BilateralCollapse.lean` | 18–29 | Bilateral Collapse Theorem; Canonical Six verification |
 | `ChavezTransform_genuine.lean` | pre-phase | Chavez Transform stability constant $M$ |
 | `Path4_Isomorphism.lean` | 71 | de Bruijn-Newman / Sedenion Energy isomorphism |

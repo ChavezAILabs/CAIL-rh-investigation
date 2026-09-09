@@ -1,0 +1,290 @@
+{
+  "base6_N101": {
+    "n_zeros": 101,
+    "gamma_last": 237.7698204809252,
+    "roc": [
+      {
+        "delta": 0.25,
+        "n_pos": 10100,
+        "n_neg": 35901,
+        "auc": 0.809499547848994
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "auc": 0.8660883906335627
+      }
+    ],
+    "peaks": [
+      {
+        "eps": 0.5,
+        "n_maxima": 83,
+        "best": {
+          "f1": 0.7191011235955057,
+          "precision": 0.8311688311688312,
+          "recall": 0.6336633663366337,
+          "n_predictions": 77,
+          "threshold": 0.43341314589199587
+        },
+        "recall_at_full": 0.6435643564356436
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 83,
+        "best": {
+          "f1": 0.8426966292134831,
+          "precision": 0.974025974025974,
+          "recall": 0.7425742574257426,
+          "n_predictions": 77,
+          "threshold": 0.43341314589199587
+        },
+        "recall_at_full": 0.7524752475247525
+      }
+    ],
+    "chance_grid_base_rate": [
+      {
+        "eps": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "chance_precision": 0.4334470989761092
+      },
+      {
+        "eps": 1.0,
+        "n_pos": 34992,
+        "n_neg": 11009,
+        "chance_precision": 0.7606791156713985
+      }
+    ],
+    "chance_maxima_pool": [
+      {
+        "eps": 0.5,
+        "n_maxima": 83,
+        "n_within_eps": 65,
+        "chance_precision": 0.7831325301204819
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 83,
+        "n_within_eps": 76,
+        "chance_precision": 0.9156626506024096
+      }
+    ]
+  },
+  "ext8_N101": {
+    "n_zeros": 101,
+    "gamma_last": 237.7698204809252,
+    "roc": [
+      {
+        "delta": 0.25,
+        "n_pos": 10100,
+        "n_neg": 35901,
+        "auc": 0.8533312456339642
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "auc": 0.9059351881191744
+      }
+    ],
+    "peaks": [
+      {
+        "eps": 0.5,
+        "n_maxima": 91,
+        "best": {
+          "f1": 0.8021978021978022,
+          "precision": 0.9012345679012346,
+          "recall": 0.7227722772277227,
+          "n_predictions": 81,
+          "threshold": 0.9760890352056044
+        },
+        "recall_at_full": 0.7326732673267327
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 91,
+        "best": {
+          "f1": 0.8648648648648649,
+          "precision": 0.9523809523809523,
+          "recall": 0.7920792079207921,
+          "n_predictions": 84,
+          "threshold": 0.44869809374199776
+        },
+        "recall_at_full": 0.7920792079207921
+      }
+    ],
+    "chance_grid_base_rate": [
+      {
+        "eps": 0.5,
+        "n_pos": 19939,
+        "n_neg": 26062,
+        "chance_precision": 0.4334470989761092
+      },
+      {
+        "eps": 1.0,
+        "n_pos": 34992,
+        "n_neg": 11009,
+        "chance_precision": 0.7606791156713985
+      }
+    ],
+    "chance_maxima_pool": [
+      {
+        "eps": 0.5,
+        "n_maxima": 91,
+        "n_within_eps": 74,
+        "chance_precision": 0.8131868131868132
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 91,
+        "n_within_eps": 80,
+        "chance_precision": 0.8791208791208791
+      }
+    ]
+  },
+  "base6_N340": {
+    "n_zeros": 340,
+    "gamma_last": 598.4930773461648,
+    "roc": [
+      {
+        "delta": 0.25,
+        "n_pos": 33940,
+        "n_neg": 84061,
+        "auc": 0.7557003235373936
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 65748,
+        "n_neg": 52253,
+        "auc": 0.8341658714851936
+      }
+    ],
+    "peaks": [
+      {
+        "eps": 0.5,
+        "n_maxima": 213,
+        "best": {
+          "f1": 0.6204379562043796,
+          "precision": 0.8173076923076923,
+          "recall": 0.5,
+          "n_predictions": 208,
+          "threshold": -0.32037760625648537
+        },
+        "recall_at_full": 0.5
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 213,
+        "best": {
+          "f1": 0.7477313974591652,
+          "precision": 0.976303317535545,
+          "recall": 0.6058823529411764,
+          "n_predictions": 211,
+          "threshold": -0.7362620449047489
+        },
+        "recall_at_full": 0.6058823529411764
+      }
+    ],
+    "chance_grid_base_rate": [
+      {
+        "eps": 0.5,
+        "n_pos": 65748,
+        "n_neg": 52253,
+        "chance_precision": 0.5571817187989933
+      },
+      {
+        "eps": 1.0,
+        "n_pos": 103424,
+        "n_neg": 14577,
+        "chance_precision": 0.8764671485834866
+      }
+    ],
+    "chance_maxima_pool": [
+      {
+        "eps": 0.5,
+        "n_maxima": 213,
+        "n_within_eps": 170,
+        "chance_precision": 0.7981220657276995
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 213,
+        "n_within_eps": 206,
+        "chance_precision": 0.9671361502347418
+      }
+    ]
+  },
+  "ext8_N340": {
+    "n_zeros": 340,
+    "gamma_last": 598.4930773461648,
+    "roc": [
+      {
+        "delta": 0.25,
+        "n_pos": 33940,
+        "n_neg": 84061,
+        "auc": 0.7922014912747125
+      },
+      {
+        "delta": 0.5,
+        "n_pos": 65748,
+        "n_neg": 52253,
+        "auc": 0.870396787285567
+      }
+    ],
+    "peaks": [
+      {
+        "eps": 0.5,
+        "n_maxima": 234,
+        "best": {
+          "f1": 0.7067137809187278,
+          "precision": 0.8849557522123894,
+          "recall": 0.5882352941176471,
+          "n_predictions": 226,
+          "threshold": -0.10957970468331912
+        },
+        "recall_at_full": 0.5911764705882353
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 234,
+        "best": {
+          "f1": 0.7809187279151943,
+          "precision": 0.9778761061946902,
+          "recall": 0.65,
+          "n_predictions": 226,
+          "threshold": -0.10957970468331912
+        },
+        "recall_at_full": 0.6529411764705882
+      }
+    ],
+    "chance_grid_base_rate": [
+      {
+        "eps": 0.5,
+        "n_pos": 65748,
+        "n_neg": 52253,
+        "chance_precision": 0.5571817187989933
+      },
+      {
+        "eps": 1.0,
+        "n_pos": 103424,
+        "n_neg": 14577,
+        "chance_precision": 0.8764671485834866
+      }
+    ],
+    "chance_maxima_pool": [
+      {
+        "eps": 0.5,
+        "n_maxima": 234,
+        "n_within_eps": 201,
+        "chance_precision": 0.8589743589743589
+      },
+      {
+        "eps": 1.0,
+        "n_maxima": 234,
+        "n_within_eps": 222,
+        "chance_precision": 0.9487179487179487
+      }
+    ]
+  }
+}

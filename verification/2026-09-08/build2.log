@@ -1,0 +1,225 @@
+✔ [8026/8061] Built GatewayLinearLaw (175s)
+ℹ [8028/8061] Built EulerAudit (334s)
+info: EulerAudit.lean:18:0: @AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {F : Type u_3} [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f g : E → F} {U : Set E},
+  AnalyticOnNhd 𝕜 f U → AnalyticOnNhd 𝕜 g U → IsPreconnected U → ∀ {z₀ : E}, z₀ ∈ U → f =ᶠ[nhds z₀] g → Set.EqOn f g U
+info: EulerAudit.lean:23:0: conjLIE : ℂ ≃ₗᵢ[ℝ] ℂ
+info: EulerAudit.lean:24:0: @LinearIsometryEquiv.toHomeomorph : {R : Type u_1} →
+  {R₂ : Type u_2} →
+    {E : Type u_3} →
+      {E₂ : Type u_4} →
+        [inst : Semiring R] →
+          [inst_1 : Semiring R₂] →
+            {σ₁₂ : R →+* R₂} →
+              {σ₂₁ : R₂ →+* R} →
+                [inst_2 : RingHomInvPair σ₁₂ σ₂₁] →
+                  [inst_3 : RingHomInvPair σ₂₁ σ₁₂] →
+                    [inst_4 : SeminormedAddCommGroup E] →
+                      [inst_5 : SeminormedAddCommGroup E₂] →
+                        [inst_6 : Module R E] → [inst_7 : Module R₂ E₂] → (E ≃ₛₗᵢ[σ₁₂] E₂) → E ≃ₜ E₂
+info: EulerAudit.lean:33:0: @Tendsto.congr : ∀ {α : Type u_1} {β : Type u_2} {f₁ f₂ : α → β} {l₁ : Filter α} {l₂ : Filter β},
+  (∀ (x : α), f₁ x = f₂ x) → Tendsto f₁ l₁ l₂ → Tendsto f₂ l₁ l₂
+info: EulerAudit.lean:34:0: @tendsto_congr : ∀ {α : Type u_1} {β : Type u_2} {f₁ f₂ : α → β} {l₁ : Filter α} {l₂ : Filter β},
+  (∀ (x : α), f₁ x = f₂ x) → (Tendsto f₁ l₁ l₂ ↔ Tendsto f₂ l₁ l₂)
+⚠ [8030/8061] Built RHForcingArgument (337s)
+info: RHForcingArgument.lean:453:4: Try this:
+  [apply] exact fun k => Real.ext_cauchy rfl
+info: RHForcingArgument.lean:457:4: Try this:
+  [apply] exact Real.ext_cauchy rfl
+info: RHForcingArgument.lean:464:4: Try this:
+  [apply] exact Real.ext_cauchy rfl
+info: RHForcingArgument.lean:465:4: Try this:
+  [apply] exact Real.ext_cauchy rfl
+warning: RHForcingArgument.lean:463:67: This simp argument is unused:
+  mul_comm
+
+Hint: Omit it from the simp argument list.
+  simp +decide [ ̵mul_assoc, mul_left_comm, Finset.mul_sum _ _ _,̵ ̵m̵u̵l̵_̵c̵o̵m̵m̵ ̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RHForcingArgument.lean:475:5: unused variable `mirror_symmetry`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8032/8061] Built MirrorSymmetryHelper (160s)
+info: MirrorSymmetryHelper.lean:15:8: Try this:
+  [apply] exact fun x y => Real.ext_cauchy rfl
+warning: MirrorSymmetryHelper.lean:16:31: This simp argument is unused:
+  Finset.sum_add_distrib
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵h̵_̵e̵x̵p̵a̵n̵d̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵a̵d̵d̵_̵d̵i̵s̵t̵r̵i̵b̵,̵[̲h̲_̲e̲x̲p̲a̲n̲d̲,̲ Finset.mul_sum _ _ _, Finset.sum_mul _ _ _, mul_assoc, mul_left_comm,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲m̵u̵l̵_̵c̵o̵m̵m̵ ̵]̵m̲u̲l̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: MirrorSymmetryHelper.lean:16:55: This simp argument is unused:
+  Finset.mul_sum _ _ _
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵h̵_̵e̵x̵p̵a̵n̵d̵,̵[̲h̲_̲e̲x̲p̲a̲n̲d̲,̲ Finset.sum_add_distrib, F̵i̵n̵s̵e̵t̵.̵m̵u̵l̵_̵s̵u̵m̵ ̵_̵ ̵_̵ ̵_̵,̵ ̵Finset.sum_mul _ _ _, mul_assoc,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲mul_left_comm, m̵u̵l̵_̵c̵o̵m̵m̵ ̵]̵m̲u̲l̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: MirrorSymmetryHelper.lean:16:77: This simp argument is unused:
+  Finset.sum_mul _ _ _
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵h̵_̵e̵x̵p̵a̵n̵d̵,̵[̲h̲_̲e̲x̲p̲a̲n̲d̲,̲ Finset.sum_add_distrib, Finset.mul_sum _ _ _, F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵m̵u̵l̵ ̵_̵ ̵_̵ ̵_̵,̵ ̵mul_assoc,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲mul_left_comm, m̵u̵l̵_̵c̵o̵m̵m̵ ̵]̵m̲u̲l̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: MirrorSymmetryHelper.lean:17:40: This simp argument is unused:
+  Fin.sum_univ_zero
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵s̵u̵c̵c̵,̵ ̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵z̵e̵r̵o̵,̵ ̵s̵e̵d̵B̵a̵s̵i̵s̵ ̵]̵[̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲s̲u̲c̲c̲,̲ ̲s̲e̲d̲B̲a̲s̲i̲s̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8034/8061] Built MirrorSymmetry (122s)
+⚠ [8036/8061] Built UnityConstraint (78s)
+warning: UnityConstraint.lean:39:10: This simp argument is unused:
+  norm_smul
+
+Hint: Omit it from the simp argument list.
+  simp [n̵o̵r̵m̵_̵s̵m̵u̵l̵,̵ ̵EuclideanSpace.norm_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: UnityConstraint.lean:59:26: This simp argument is unused:
+  Fin.sum_univ_succ
+
+Hint: Omit it from the simp argument list.
+  simp +decide [̵ ̵i̵n̵n̵e̵r̵,̵ ̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵s̵u̵c̵c̵ ̵]̵[̲i̲n̲n̲e̲r̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8038/8061] Built NoetherDuality (114s)
+✔ [8040/8061] Built UniversalPerimeter (97s)
+✔ [8042/8061] Built AsymptoticRigidity (66s)
+⚠ [8044/8061] Built SymmetryBridge (102s)
+warning: SymmetryBridge.lean:50:21: This simp argument is unused:
+  map_add
+
+Hint: Omit it from the simp argument list.
+  simp only [F_base, m̵a̵p̵_̵a̵d̵d̵,̵ ̵map_smul, Pi.add_apply, Pi.smul_apply, sedBasis, EuclideanSpace.single_apply,
+  ̲  ̲ ̲ ̲mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:50:30: This simp argument is unused:
+  map_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [F_base, map_add, m̵a̵p̵_̵s̵m̵u̵l̵,̵ ̵Pi.add_apply, Pi.smul_apply, sedBasis, EuclideanSpace.single_apply,
+  ̲  ̲ ̲ ̲mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:50:40: This simp argument is unused:
+  Pi.add_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [F_base, map_add, map_smul, P̵i̵.̵a̵d̵d̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.smul_apply, sedBasis, EuclideanSpace.single_apply,
+  ̲  ̲ ̲ ̲mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:50:54: This simp argument is unused:
+  Pi.smul_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [F_base, map_add, map_smul, Pi.add_apply, P̵i̵.̵s̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵sedBasis, EuclideanSpace.single_apply,
+  ̲  ̲ ̲ ̲mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:51:23: This simp argument is unused:
+  EuclideanSpace.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [F_base, map_add, map_smul, Pi.add_apply, Pi.smul_apply, sedBasis, E̵u̵c̵l̵i̵d̵e̵a̵n̵S̵p̵a̵c̵e̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:52:35: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: SymmetryBridge.lean:52:35: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: SymmetryBridge.lean:57:24: This simp argument is unused:
+  map_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, m̵a̵p̵_̵s̵m̵u̵l̵,̵ ̵map_sub, map_add, Pi.smul_apply, Pi.sub_apply, Pi.add_apply, Pi.neg_apply,
+  ̲  ̲ ̲ ̲sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:57:34: This simp argument is unused:
+  map_sub
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, map_smul, m̵a̵p̵_̵s̵u̵b̵,̵ ̵map_add, Pi.smul_apply, Pi.sub_apply, Pi.add_apply, Pi.neg_apply,
+  ̲  ̲ ̲ ̲sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:57:43: This simp argument is unused:
+  map_add
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, map_smul, map_sub, m̵a̵p̵_̵a̵d̵d̵,̵ ̵Pi.smul_apply, Pi.sub_apply, Pi.add_apply, Pi.neg_apply,
+  ̲  ̲ ̲ ̲sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:57:52: This simp argument is unused:
+  Pi.smul_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, map_smul, map_sub, map_add, P̵i̵.̵s̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.sub_apply, Pi.add_apply, Pi.neg_apply,
+  ̲  ̲ ̲ ̲sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:57:67: This simp argument is unused:
+  Pi.sub_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, map_smul, map_sub, map_add, Pi.smul_apply, P̵i̵.̵s̵u̵b̵_̵a̵p̵p̵l̵y̵,̵Pi.add_apply, Pi.neg_apply,
+  ̲  ̲ ̲ ̲sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:58:13: This simp argument is unused:
+  Pi.add_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, map_smul, map_sub, map_add, Pi.smul_apply, Pi.sub_apply, P̵i̵.̵a̵d̵d̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.neg_apply,
+  ̲  ̲ ̲ ̲sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SymmetryBridge.lean:58:27: This simp argument is unused:
+  Pi.neg_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [u_antisym, map_smul, map_sub, map_add, Pi.smul_apply, Pi.sub_apply, Pi.add_apply,
+  ̲  ̲ ̲ ̲P̵i̵.̵n̵e̵g̵_̵a̵p̵p̵l̵y̵,̵ ̵sedBasis, mirror_map]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8046/8061] Built PrimeEmbedding (89s)
+✔ [8048/8061] Built ZetaIdentification (83s)
+⚠ [8050/8061] Built SedenionicHamiltonian (121s)
+warning: SedenionicHamiltonian.lean:43:8: This simp argument is unused:
+  norm_smul
+
+Hint: Omit it from the simp argument list.
+  simp [n̵o̵r̵m̵_̵s̵m̵u̵l̵,̵ ̵EuclideanSpace.norm_eq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8052/8061] Built EulerProductBridge (125s)
+warning: EulerProductBridge.lean:184:5: unused variable `hs_zero`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EulerProductBridge.lean:347:5: unused variable `hs_strip`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ℹ [8054/8061] Built RiemannHypothesisProof (129s)
+info: RiemannHypothesisProof.lean:65:0: 'riemann_hypothesis' depends on axioms: [propext, riemann_critical_line, Classical.choice, Quot.sound]
+⚠ [8056/8061] Built SpectralIdentification (91s)
+warning: SpectralIdentification.lean:66:35: unused variable `hs`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SpectralIdentification.lean:135:8: declaration uses `sorry`
+✔ [8058/8061] Built GatewayScaling (92s)
+✔ [8060/8061] Built CriticalLineConvergence (66s)
+Build completed successfully (8061 jobs).

@@ -33,6 +33,7 @@ Design:
   - Domain: parametric (a, b]  (matches IntervalIntegrable)
 
 Key Results:
+  [!] Correction pending -- see CORRECTIONS.md C-017, C-018.
   - chavez_transform_convergence: finite value for any bounded integrable f
   - chavez_transform_stability: |C[f]| ≤ stability_constant P Q α * L1_norm f a b
   - Both theorems unconditional on P*Q=0 (zero divisor property not required)
@@ -275,7 +276,9 @@ lemma K_bound (P Q : Sed) (α d x : ℝ) (hα : 0 < α) (hd : 0 < d) :
 -- ============================================================
 
 /-- **Theorem 1: Convergence.**
-    The Chavez Transform of any bounded integrable function is finite. -/
+    The Chavez Transform of any bounded integrable function is finite.
+
+    ⚠ Correction pending -- see CORRECTIONS.md C-017. -/
 theorem chavez_transform_convergence
     (f : ℝ → ℝ) (P Q : Sed) (α d a b : ℝ)
     (h_bounded    : ∃ M, ∀ x ∈ Set.Ioc a b, |f x| ≤ M)

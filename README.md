@@ -4,9 +4,13 @@
 
 A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted as an open science project.
 
+**⚠ See [`CORRECTIONS.md`](CORRECTIONS.md) — a permanent, public, append-only record of every error found in this investigation. Read it before citing any claim below.**
+
 ---
 
 ## Principal Result
+
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](CORRECTIONS.md) C-002, C-021.
 
 **Three independent standard-axiom characterizations of the critical line Re(s) = ½, formally verified in Lean 4.**
 
@@ -43,17 +47,19 @@ lake build → 8,061 jobs · 0 errors · 1 sorry (by design)
 
 The single non-standard axiom, `riemann_critical_line`, appears in exactly two theorems: `riemann_hypothesis` and its downstream `eigenvalue_zero_mapping`. Every other theorem in the stack — including all of Phase 75–77 — carries standard axioms only.
 
-The one intentional sorry, `spectral_implies_zeta_zero`, is structurally necessary: the Sedenionic Hamiltonian H(s) vanishes on the entire critical line, not only at zeta zeros, so the pointwise converse is false. The proved direction — spectral containment implies Re(s) = ½ — is the correct and sufficient statement.
+The one intentional sorry, `spectral_implies_zeta_zero`, is structurally necessary: the Sedenionic Hamiltonian H(s) vanishes on the entire critical line, not only at zeta zeros, so the pointwise converse is false. `eigenvalue_zero_mapping` inherits this `sorryAx` (its footprint is `[propext, riemann_critical_line, sorryAx, Classical.choice, Quot.sound]`, confirmed by `lake env lean` on 2026-09-08 — see [`CORRECTIONS.md`](CORRECTIONS.md) C-019) and is therefore **not** a proved biconditional. The proved half is `zeta_zero_implies_spectral` (the forward direction, footprint `[propext, riemann_critical_line, Classical.choice, Quot.sound]` — note `riemann_critical_line` does *not* appear in `spectral_implies_zeta_zero` at all, so its localization is narrower than earlier summaries suggested) — spectral containment implies Re(s) = ½ is the correct and sufficient statement about that half.
 
 ---
 
 ## Overview
 
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](CORRECTIONS.md) C-021.
+
 This repository contains all data, analysis scripts, results, and formal proofs from a 77-phase empirical and algebraic investigation of the nontrivial zeros of the Riemann zeta function.
 
 The investigation is grounded in two novel instruments:
 
-**Chavez Transform** — Applies zero divisor structure from Cayley-Dickson algebras (sedenions, 16D and above) to analyze numerical sequences across hypercomplex dimensions. Formally verified in Lean 4 with convergence and stability theorems proved under standard axioms.
+**Chavez Transform** — Applies zero divisor structure from Cayley-Dickson algebras (sedenions, 16D and above) to analyze numerical sequences across hypercomplex dimensions. Formally verified in Lean 4 with convergence and stability theorems proved under standard axioms. ⚠ *Correction pending — see [`CORRECTIONS.md`](CORRECTIONS.md) C-017, C-018.*
 
 **ZDTP (Zero Divisor Transmission Protocol)** — Lossless dimensional transmission (16D → 32D → 64D) with analysis at six canonical gateway positions. In Phase 76, every gateway output was shown to be an exact closed-form inner product: c_g(x) = −2⟪x, u_g⟫. The protocol transformed from an empirical oracle into a proved formula.
 
@@ -103,7 +109,7 @@ c_g(x) = −2⟪x, P_g + Q_g⟫
 
 Proved symbolically in exact arithmetic; validated at 0 ULP across 22 independent server readings. This result closed the gap between the empirical instrument and the formal structure: the gateway outputs are not oracle readings but proved inner products.
 
-Three theorems in `GatewayLinearLaw.lean` follow:
+Four theorems in `GatewayLinearLaw.lean` follow:
 - `gateway_magSq_sub` — |M_g|²−|M_h|² = 16⟪x,u_g−u_h⟫⟪x,u_g+u_h⟫
 - `gateway_pairing_iff` — |M_g|=|M_h| ↔ product of two linear functionals vanishes
 - `pairing_sigma_independent` — cross-gateway magnitude differences are σ-free for fixed input
@@ -198,7 +204,7 @@ Selected results:
 | 72 | **Sedenionic Hamiltonian constructed.** `Hamiltonian_vanishing_iff_critical_line` proved. Build: 8,053 jobs |
 | 73 | Spectral identification: ζ(s) = 0 → H(s) = 0 (proved); 2σ universal law confirmed across all six gateways. Build: 8,055 jobs |
 | 74 | **Gateway Integer Law** proved under standard axioms only — RH-independent. Three independent standard-axiom characterizations of Re(s) = ½ now in stack. Build: 8,057 jobs |
-| 75 | **Critical Line Convergence Theorem:** all three characterizations packaged in one machine-verified conjunction. Q-2 CLOSED (bilateral magnitude symmetry identically zero). Q-4 CLOSED (±t symmetry structural). Build: 8,059 jobs |
+| 75 | **Critical Line Convergence Theorem:** all three characterizations packaged in one machine-verified conjunction. ~~Q-2 CLOSED (bilateral magnitude symmetry identically zero). Q-4 CLOSED (±t symmetry structural).~~ **Retracted (Phase 77 Run B) — see [`CORRECTIONS.md`](CORRECTIONS.md) C-004; per-gateway bilateral magnitude equality does not hold.** Build: 8,059 jobs |
 
 ### The Instrument Era — Phases 76–77 (June 2026)
 
@@ -206,7 +212,7 @@ With the three-route convergence theorem in place, Phase 76 turned to a precise 
 
 **Phase 76** derived the Gateway Linear Law — the exact closed-form description of every gateway output as a proved inner product. The protocol ceased to be an empirical oracle and became a formula. Three theorems proved in `GatewayLinearLaw.lean`. The Signed Gateway Channel was discovered: reading the lift scalar c_S2 directly produces a genuine zero detector (z = 4.92, Bonferroni-surviving). Build: 8,061 jobs.
 
-**Phase 77** completed the instrument characterization. `ba_asymptote_sq` proved that the B/A ratio converges to √17 exactly — not as an observed approximation but as a machine-verified limit theorem. Run A confirmed `pairing_sigma_independent` live to 10⁻¹⁵, demonstrating two disjoint detection channels: c_S2 (zero-detecting, σ-blind) and c_S6 (σ-sensitive, zero-blind). Run B (double-blind, two independent solvers) established the precise structural boundaries of bilateral symmetry. Detector performance over 101 zeros: z = 8.42, AUC = 0.87, precision = 0.83 vs. 0.43 chance. Build: 8,061 jobs. KSJ: 753 captures.
+**Phase 77** completed the instrument characterization. `ba_asymptote_sq` proved that the B/A ratio converges to √17 exactly — not as an observed approximation but as a machine-verified limit theorem. Run A confirmed `pairing_sigma_independent` live to 10⁻¹⁵, demonstrating two disjoint detection channels: c_S2 (zero-detecting, σ-blind) and c_S6 (σ-sensitive, zero-blind). Run B (double-blind, two independent solvers) **refuted** per-gateway bilateral magnitude equality (see C-004) — the time-reversal-symmetric quantity is the sedenion norm ‖F(+t)‖ = ‖F(−t)‖, not the per-gateway magnitude. Detector performance over 101 zeros: z = 8.42 (seed-dependent, ±0.09 across seeds — see C-008), AUC = 0.87, precision = 0.83 vs. 0.43 chance at ε=0.5 specifically (the honest baseline is radius-dependent — see C-007). Build: 8,061 jobs. KSJ: 753 captures.
 
 ---
 
@@ -244,6 +250,10 @@ CAIL-rh-investigation/
 │   ├── UniversalPerimeter.lean
 │   ├── AsymptoticRigidity.lean
 │   ├── SymmetryBridge.lean
+│   ├── PrimeEmbedding.lean         # Route B: ζ_sed satisfies RFS (Phase 63)
+│   ├── ZetaIdentification.lean     # riemann_critical_line axiom = RH (Phases 64–70)
+│   ├── RiemannHypothesisProof.lean # riemann_hypothesis, conditional (Phase 64)
+│   ├── EulerProductBridge.lean     # riemannZeta_conj, boundary walls (Phases 67–71)
 │   ├── SedenionicHamiltonian.lean  # H(s) = (Re(s)−½)·u_antisym (Phase 72)
 │   ├── SpectralIdentification.lean (Phase 73)
 │   ├── GatewayScaling.lean         (Phase 74)

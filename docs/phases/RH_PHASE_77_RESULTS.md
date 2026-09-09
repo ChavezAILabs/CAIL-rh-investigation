@@ -150,7 +150,9 @@ Q-17 (proposed in §2.5) was executed same-day. Three results:
 
 ### 2A.1 Scale test (γ₁–γ₁₀₁)
 
-Extending the sweep to t ∈ [10, 240] (46,001 points, 101 zeros): the c_S2 signature **strengthens with sample size** — z = 3.62 at 31 zeros → **z = 4.92 at 101 zeros** (p < 0.0002). Growth is sub-√N (√N prediction 6.53), consistent with a fixed 6-prime resolution against rising zero density — the expected behavior of a genuine but truncation-limited signal, not an artifact.
+Extending the sweep to t ∈ [10, 240] (46,001 points, 101 zeros): z = 3.62 at 31 zeros → z = 4.92 at 101 zeros (p < 0.0002), sub-√N relative to the naive √N prediction of 6.53.
+
+**Correction (2026-09-08, C-001) — the interpretation above the numbers changes; the numbers do not.** This was originally read as "the signature strengthens with sample size... the expected behavior of a genuine but truncation-limited signal, not an artifact." That reading is backwards. Decomposed into observed statistic and null standard deviation: observed 1.8464 at 31 zeros → 1.3735 at 101 (74% of its value — the *per-zero* signal is declining), while null_std falls from 0.5075 → 0.2783 (ratio 0.548, matching √(31/101) = 0.554 almost exactly). All of the z growth is the null tightening as 1/√N; none of it is the numerator getting stronger. The same structure reappears at larger N in Phase 78 (see `RH_PHASE_78_RESULTS_v2.md` and `CORRECTIONS.md` C-001), where it is characterized more fully, including a candidate (conjectural, untested) mechanism for the per-zero decay.
 
 ### 2A.2 The Detector Encoding — exact realization of the explicit-formula detector
 
