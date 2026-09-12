@@ -408,6 +408,45 @@ def run_arm(T, zin, freqs, p_max, width, step, n_boot=2000, n_grid=60):
     }
 
 
+# ---------------------------------------------------------------------------
+# Model-free reach measure: first sustained crossing of a FIXED AUC threshold
+# (same absolute threshold for every arm), vs. the segmented-regression
+# breakpoint above (which is a fitted, model-dependent quantity). Requested
+# as a referee-facing cross-check that doesn't depend on the two-segment
+# model at all: sort windows by height, find the first run of `min_run`
+# consecutive windows all below `threshold`, report that run's first gamma.
+# Right-censoring (an arm's AUC never sustains a drop below threshold within
+# the observed range) is a valid, reportable outcome, not a fit failure.
+# ---------------------------------------------------------------------------
+
+def threshold_crossing(gamma_arr, y_arr, threshold, min_run=3):
+    order = np.argsort(gamma_arr)
+    g, y = gamma_arr[order], y_arr[order]
+    below = y < threshold
+    for i in range(len(g) - min_run + 1):
+        if below[i:i + min_run].all():
+            return float(g[i])
+    return None
+
+
+def bootstrap_threshold_crossing(gamma_arr, y_arr, threshold, n_boot=2000, min_run=3, seed=SEED):
+    rng = np.random.default_rng(seed)
+    n = len(gamma_arr)
+    crossings = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, n)
+        c = threshold_crossing(gamma_arr[idx], y_arr[idx], threshold, min_run)
+        if c is not None:
+            crossings.append(c)
+    arr = np.array(crossings)
+    out = {"n_boot": n_boot, "n_success": int(len(arr)), "threshold": threshold, "min_run": min_run}
+    if len(arr) >= 20:
+        out["median"] = float(np.median(arr))
+        out["ci95"] = [float(np.percentile(arr, 2.5)), float(np.percentile(arr, 97.5))]
+        out["bootstrap_crossings"] = arr.tolist()
+    return out
+
+
 def arm_usable_for_slope(arm_result):
     seg = arm_result["segmented_fit"]
     boot = arm_result["bootstrap"]
@@ -606,6 +645,47 @@ if __name__ == "__main__":
     for name, c in controls_report.items():
         print(f"    {name}: predicted={c['predicted_knee']:.2f} fitted={c['fitted_breakpoint']} "
               f"CI95={c['boot_ci95']}")
+
+    # ---- 5. Model-free reach: first sustained crossing of a fixed AUC ------
+    # threshold, vs. p_max. Does not depend on the segmented-regression model
+    # rejected in step 4 -- a direct, referee-facing cross-check. Run as a
+    # SWEEP over threshold, not a single choice: the first pass at a single
+    # threshold (0.85) showed a real, high-R^2 positive slope, but a second
+    # threshold (0.90) gave a materially different slope -- so the honest
+    # report is the full sensitivity curve, not one number.
+    print("\n=== 5. MODEL-FREE REACH: threshold-crossing sensitivity sweep ===")
+    MIN_RUN = 3
+    THRESHOLDS = [0.78, 0.80, 0.82, 0.84, 0.85, 0.86, 0.88, 0.90, 0.92, 0.94]
+    reach = {"min_run": MIN_RUN, "thresholds": THRESHOLDS, "n_boot": 2000, "by_threshold": {}}
+    print(f"  {'thresh':>7s} {'n_censored':>10s} {'slope':>8s} {'ci_lo':>8s} {'ci_hi':>8s} "
+          f"{'R2':>6s} {'contains_2pi':>12s}")
+    for thresh in THRESHOLDS:
+        by_arm = {}
+        pts = []
+        for name in ARMS:
+            r = results["arms"][name]
+            gamma_arr = np.array([w["gamma_center"] for w in r["windows"]])
+            auc_arr = np.array([w["auc_delta0.5"] for w in r["windows"]])
+            point = threshold_crossing(gamma_arr, auc_arr, thresh, MIN_RUN)
+            boot = bootstrap_threshold_crossing(gamma_arr, auc_arr, thresh, n_boot=2000, min_run=MIN_RUN)
+            by_arm[name] = {"p_max": r["p_max"], "crossing_point": point, "bootstrap": boot}
+            if point is not None and boot.get("n_success", 0) >= 20:
+                pts.append({"arm": name, "p_max": r["p_max"], "breakpoint_point": point,
+                            "bootstrap_breakpoints": boot["bootstrap_crossings"]})
+        censored = [name for name in ARMS if name not in [p["arm"] for p in pts]]
+        entry = {"by_arm": by_arm, "arms_used": [p["arm"] for p in pts], "arms_censored": censored}
+        if len(pts) >= 4:
+            fit = nested_slope_fit(pts, n_draws=2000, seed=SEED)
+            entry["slope_fit"] = fit
+            print(f"  {thresh:7.2f} {len(censored):10d} {fit['slope']:8.2f} "
+                  f"{fit['slope_ci95'][0]:8.2f} {fit['slope_ci95'][1]:8.2f} {fit['r2']:6.3f} "
+                  f"{str(fit['slope_ci_contains_2pi']):>12s}")
+        else:
+            entry["slope_fit"] = {"status": "insufficient_usable_arms", "n_usable": len(pts)}
+            print(f"  {thresh:7.2f} {len(censored):10d}   too few usable arms ({len(pts)})")
+        reach["by_threshold"][str(thresh)] = entry
+
+    slope_fit["reach_threshold_crossing"] = reach
 
     with open("../results/phase79_runD_slope_fit.json", "w") as fh:
         json.dump(slope_fit, fh, indent=2, default=float)
