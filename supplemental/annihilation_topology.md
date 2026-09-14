@@ -31,7 +31,7 @@ Mathematical Framework
 Sedenion Zero Divisors: What We Know
 The sedenion algebra S is 16-dimensional, non-associative, and non-commutative. Unlike the octonions, it is not a division algebra because it contains zero divisors: non-zero elements A and B such that A×B = 0. There are 84 known zero divisor sets {ea, eb, ec, ed} where (ea + eb)(ec + ed) = 0. The space of norm-one zero divisor pairs is homeomorphic to the exceptional Lie group G₂.
 
-The Canonical Six are the six framework-independent bilateral zero divisor patterns that appear identically across Cayley-Dickson and Clifford algebras from 16D through 256D. The Lean 4 formal verification pipeline (v1.3) confirmed these as the minimal generating set of a 24-element zero divisor family, with six parent patterns generating 18 children via cross-products of P-vectors and Q-vectors.
+The Canonical Six are six zero divisor patterns whose annihilation (P·Q = 0) appears identically across Cayley-Dickson and Clifford algebras from 16D through 256D; full bilaterality (P·Q = 0 and Q·P = 0) holds in Cayley-Dickson for all six but in Clifford only for pattern 59/S2 — see `CORRECTIONS.md` C-022. The Lean 4 formal verification pipeline (v1.3) confirmed these as the minimal generating set of a 24-element zero divisor family, with six parent patterns generating 18 children via cross-products of P-vectors and Q-vectors.
 
 The Proposed Classification: Annihilation Topology
 The central research question is: across the 84 zero divisor sets, does annihilation occur at the first multiplication step (instant) or does it require the completion of the full distributed product (delayed)? This is a question about the internal multiplication sequence, not just the endpoint.

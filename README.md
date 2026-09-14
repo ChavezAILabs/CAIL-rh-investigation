@@ -69,7 +69,7 @@ The investigation is grounded in two novel instruments:
 
 **ZDTP (Zero Divisor Transmission Protocol)** — Lossless dimensional transmission (16D → 32D → 64D) with analysis at six canonical gateway positions. In Phase 76, every gateway output was shown to be an exact closed-form inner product: c_g(x) = −2⟪x, u_g⟫. The protocol transformed from an empirical oracle into a proved formula.
 
-The algebraic foundation is the **Canonical Six** — six framework-independent bilateral zero divisor patterns in 16D sedenion space, verified across both Cayley-Dickson and Clifford algebras from 16D through 256D, published on Zenodo (DOI [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)).
+The algebraic foundation is the **Canonical Six** — six framework-independent zero divisor patterns in 16D sedenion space (P·Q = 0 verified across both Cayley-Dickson and Clifford algebras from 16D through 256D), published on Zenodo (DOI [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)). All six are bilateral (P·Q = 0 **and** Q·P = 0) in Cayley-Dickson; in Clifford, only pattern 59 (S2) is — see [`CORRECTIONS.md`](CORRECTIONS.md) C-022.
 
 ---
 
@@ -77,8 +77,8 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 ### The Canonical Six
 
-Six bilateral zero divisor patterns in 16D sedenion space that are:
-- **Framework-independent:** verified under both Cayley-Dickson and Clifford algebra conventions
+Six bilateral zero divisor patterns in 16D sedenion space (bilateral in Cayley-Dickson; in Clifford, bilaterality holds only for pattern 59/S2 — see C-022) that are:
+- **Framework-independent:** the P·Q = 0 annihilation property is verified under both Cayley-Dickson and Clifford algebra conventions
 - **Dimension-stable:** persist under all doublings 16D → 32D → 64D → 128D → 256D (Block Replication Theorem)
 - **Geometrically grounded:** all 48 bilateral pairs embed as E8 first-shell roots (Phase 18D); their span is a 6-dimensional subspace that is a single Weyl orbit
 

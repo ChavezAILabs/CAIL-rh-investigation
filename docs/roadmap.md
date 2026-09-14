@@ -14,7 +14,7 @@ This roadmap documents the systematic application of the Chavez Transform and ZD
 
 The long-range objective is a contribution at the level of the Riemann Hypothesis itself: not merely empirical confirmation of GUE statistics, but a proposed algebraic mechanism — grounded in the Canonical Six bilateral zero divisors of sedenion space — that may explain *why* the zeros are constrained to the critical line Re(s) = ½.
 
-**Foundational algebraic asset**: The Canonical Six and their 24-element bilateral zero divisor family (Lean 4 verified, zero sorry stubs). The Canonical Six are framework-independent across Cayley-Dickson and Clifford algebras. Their P-vector images lie on the E8 lattice first shell and form a single Weyl orbit — formally proven.
+**Foundational algebraic asset**: The Canonical Six and their 24-element bilateral zero divisor family (Lean 4 verified, zero sorry stubs, Cayley-Dickson framework). The Canonical Six's P·Q = 0 annihilation is framework-independent across Cayley-Dickson and Clifford algebras; full bilaterality (P·Q = 0 and Q·P = 0) holds in Clifford only for pattern 59/S2 — see `CORRECTIONS.md` C-022. Their P-vector images lie on the E8 lattice first shell and form a single Weyl orbit — formally proven.
 
 ---
 
@@ -284,7 +284,7 @@ The AIEX-001 conjecture (March 3, 2026) runs parallel to the empirical phases. I
 **Critical gap:** No mechanism yet connecting sedenion annihilation events to spectral theory. Experiment 7B is the first attempt to close this gap empirically.
 
 **Why the Canonical Six are the right starting point:**
-The Canonical Six are framework-independent — the only bilateral zero divisors that survive both Cayley-Dickson and Clifford algebra settings. Their 5 distinct P-vector images lie on the E8 lattice first shell and form a single Weyl orbit. They are the minimal sufficient algebraic structure. If H is a universal operator, it should emerge from universal pieces. The 24-element family they generate is the natural escalation if the 6-parent projection succeeds.
+The Canonical Six are framework-independent — the only zero divisors whose annihilation (P·Q = 0) survives both Cayley-Dickson and Clifford algebra settings (full bilaterality, P·Q = 0 and Q·P = 0, holds in Clifford only for pattern 59/S2 — see `CORRECTIONS.md` C-022). Their 5 distinct P-vector images lie on the E8 lattice first shell and form a single Weyl orbit. They are the minimal sufficient algebraic structure. If H is a universal operator, it should emerge from universal pieces. The 24-element family they generate is the natural escalation if the 6-parent projection succeeds.
 
 **On the "24 values of i" intuition (March 2026):**
 A formative research dream suggested the key to RH was 24-dimensional. The 24-element bilateral zero divisor family is the algebraically natural candidate — but the Canonical Six, as the framework-independent generating set, are the more fundamental starting point. The 24-element family may still be the right space for the operator to act *on* or *through*, with the Canonical Six as the basis for constructing H. Investigation proceeds from the more privileged set first.

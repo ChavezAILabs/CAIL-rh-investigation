@@ -3,11 +3,13 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 21 entries · 5 corrected · 2 confirmed against source ·
+**Status:** ACTIVE — 22 entries · 6 corrected · 2 confirmed against source ·
 3 modified by verification · 11 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
-**Last correction applied:** September 9, 2026 (C-018, scope language in
-`README.md`, `lean/README.md`, `ChavezTransform_genuine.lean`)
+**Last correction applied:** September 14, 2026 (C-022, "bilateral in both
+frameworks" corrected to name pattern 59/S2 as the sole exception, in README.md,
+`docs/roadmap.md`, `docs/RH_Investigation_Roadmap.md`,
+`supplemental/annihilation_topology.md`, `docs/aiex_001_hilbert_polya.md`)
 
 ---
 
@@ -88,6 +90,7 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-019 | `eigenvalue_zero_mapping` axiom footprint omits `sorryAx` in both READMEs | 4 | Open — **confirmed verbatim** |
 | C-020 | Decorative hypothesis in `Fbase_nondegeneracy`; stale Path B docstring | 2 | Open — **confirmed** |
 | C-021 | Critical-line "characterizations" are definitionally engineered | 3 | Open |
+| C-022 | "Bilateral in both frameworks" overstates 5 of 6 Canonical Six patterns; known since Phase 78, never propagated | 2 | **Corrected** |
 
 ---
 
@@ -794,6 +797,91 @@ down.
 
 ---
 
+### C-022 — "Bilateral in both frameworks" overstates 5 of 6 Canonical Six patterns
+**Found:** 2026-09-14 · **By:** Claude (Desktop chat, independent Clifford derivation), verified from scratch by Claude Sonnet 5 (Claude Code) · **Severity:** 2 · **Status:** **Corrected**
+**Affects:** `README.md` (Principal Result); `docs/roadmap.md`; `docs/RH_Investigation_Roadmap.md`; `supplemental/annihilation_topology.md`; `docs/aiex_001_hilbert_polya.md`
+
+**The claim as published (README.md, and equivalently in the other affected files):**
+"The algebraic foundation is the **Canonical Six** — six framework-independent
+bilateral zero divisor patterns in 16D sedenion space, verified across both
+Cayley-Dickson and Clifford algebras from 16D through 256D."
+
+**Why it is wrong.** "Bilateral" (P·Q = 0 **and** Q·P = 0) was verified across both
+frameworks for the Canonical Six as a group only in the sense that all six satisfy
+P·Q = 0 in both — the published paper's own Table 1 states exactly this, one
+direction only, matching its own one-sided zero-divisor definition (§2.2). It never
+claims Clifford-side bilaterality, and neither does any Lean file — the sole
+bilateral-zero-divisor formalization
+(`lean/canonical_six_bilateral_zero_divisors_cd4_cd5_cd6.lean`) covers the
+Cayley-Dickson side (CD4/CD5/CD6) only. **The published Zenodo v1.3 PDF is correct
+as written and needs no correction** — every "bilateral" claim in it (Table 1's
+one-directional formulas, Addendum C's 24-element family) is explicitly CD-scoped.
+
+The overclaim is specific to the five affected repository documents, which state or
+imply bilaterality itself was cross-framework-verified. It was not, for five of the
+six patterns. Independently re-derived from scratch (Cl(4,0) geometric product,
+implemented and sanity-checked against known identities, not the chat's own
+arithmetic) and confirmed exactly: **only pattern 59 (S2: P=e₃+e₁₂, Q=e₅+e₁₀)
+satisfies Q·P = 0 in Cl(4,0); the other five (patterns 18, 84, 102, 104, 124) have
+Q·P ≠ 0 there**, with residual norm 2√2 in every case — matching a figure already on
+record in `docs/handoffs/CLAUDE_CODE_HANDOFF_PHASE78_Q18.md` line 294–295 ("S2 =
+(e₃+e₁₂, e₅+e₁₀) is proven bilateral in both frameworks — S1, S3–S6 collapse in
+Clifford (one-sided residual ‖QP‖ = 2√2)") and repeated as established fact in
+`docs/handoffs/PHASE_78_Q18_BASELINE_CONFIRMED.md` line 117. **This fact was already
+correctly recorded in the corpus, in an August 2026 Phase 78 handoff, and never
+propagated to the headline documents** — the same failure mode as C-004 (a finding
+correct in one place, stale everywhere else it's cited), not a new computational
+error.
+
+**What is true instead.** All six Canonical Six patterns are bilateral zero
+divisors in the Cayley-Dickson framework (CD4/CD5/CD6), formally proved in Lean with
+zero sorries. Under the Clifford framework Cl(4,0)/Cl(5,0), only pattern 59 (S2) is
+additionally bilateral; the other five satisfy the annihilation formula in one
+direction only (matching Table 1 exactly), with a nonzero, norm-2√2 residual in the
+reverse direction.
+
+**The mechanism, newly derived and independently confirmed.** Conjugation
+(Cayley-Dickson) and reversion (Clifford) are both anti-automorphisms:
+conj(xy) = conj(y)·conj(x). In Cayley-Dickson, P and Q (sums of two imaginary basis
+elements, no e₀ component) always satisfy conj(P) = −P, conj(Q) = −Q, so
+P·Q = 0 ⟹ conj(P·Q) = 0 ⟹ conj(Q)·conj(P) = (−Q)(−P) = Q·P = 0 unconditionally —
+bilaterality in Cayley-Dickson is forced, not observed, matching the "one-sided
+two-term zero divisors cannot exist in the sedenions" result. In Clifford, reversion's
+sign depends on grade, (−1)^(g(g−1)/2) — +1 at grade 1, −1 at grade 2, −1 at grade 3,
++1 at grade 4 — so reverse(P) = −P only when P's two blade components share a single
+grade. Under the "identity" index-to-blade map (sedenion basis index i ↔ Clifford
+blade with bitmask i over 4 generators, all squaring to +1 — confirmed to reproduce
+the published Table 1/Table 2 classification exactly), pattern 59's P = e₃+e₁₂ and
+Q = e₅+e₁₀ are the only pair built entirely from grade-2 blades ({3,5,6,9,10,12} are
+exactly the grade-2 indices); every other pattern's P-vector mixes grades 1 and 3
+(e.g. index 1 is grade 1, index 14 is grade 3), breaking the forcing argument. This
+also explains why, in the 24-element framework-independent census, exactly 12 of the
+24 ordered pairs are bilateral in Clifford: grade-homogeneity and bilaterality
+coincide exactly on that set.
+
+**Corrected:** 2026-09-14, in `README.md`, `docs/roadmap.md`,
+`docs/RH_Investigation_Roadmap.md`, `supplemental/annihilation_topology.md`, and
+`docs/aiex_001_hilbert_polya.md` — each now names pattern 59/S2 as the sole
+Clifford-bilateral exception rather than describing all six as bilateral in both
+frameworks. Historical dated phase/lab-notebook documents that carry the older
+language (e.g. `lab-notebook/RH_Phase7_Handoff.md`, `RH_Phase19_Handoff.md`,
+`RH_Phase23_Handoff.md`) are left as-is, consistent with how this register treats
+history elsewhere (see C-002). The published Zenodo v1.3 PDF is unaffected and not
+corrected — it never made the overstated claim.
+
+**Not done here, and worth doing:** the grade-homogeneity ⟺ bilaterality theorem
+above is new (not previously in the corpus, as distinct from the already-known
+S2-uniqueness fact), Lean-formalizable, and a stronger Addendum candidate than
+anything in v1.3 — but formalizing it and writing it into a paper revision is
+separate, larger work, not undertaken as part of this correction.
+
+**Reproducibility record:** `verification/2026-09-14/` — independent, from-scratch
+Cl(4,0) geometric-product implementation, sanity-checked against known identities
+before use, confirming all six patterns' P·Q = 0 (matching the published Table 1)
+and exactly one (pattern 59) additionally satisfying Q·P = 0.
+
+---
+
 ## Recurring Failure Mode: Vacuity
 
 Four entries in this register — C-002, C-016, C-017, C-021 — are the same class of
@@ -921,6 +1009,7 @@ held up.
 | 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-018, C-021 remain Open at this point — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
 | 2026-09-09 | C-017 closed as **Corrected**, on Paul's explicit request — `chavez_transform_convergence` replaced by `chavez_transform_integrable` in `lean/ChavezTransform_genuine.lean`, proving the entry's own named target. Standard axioms, no sorryAx; three hypotheses confirmed load-bearing by deletion, `h_bounded` dropped as confirmed unnecessary (see this entry's own Corrected block for the nuance — the register's original prediction about which hypotheses would do the work was half right). This is a technical correctness fix, not a framing decision, so it did not need the same hold C-018/C-021 are under. Reproducibility record in `verification/2026-09-09/`. |
 | 2026-09-09 | C-018 closed as **Corrected (documentation only)**, on Paul's explicit choice of that path over extending the proof. `README.md` Overview, `lean/README.md` §Chavez Transform, and `ChavezTransform_genuine.lean`'s header now state directly that only the scalar-channel restriction is verified and the zero-divisor structure is not exercised. The Follow-on (a genuine multi-dimensional formalization) remains open and unattempted — this correction fixes the claim/proof mismatch, not the underlying gap. Only C-021 remains Open among the four original framing entries. |
+| 2026-09-14 | C-022 opened and closed same day as **Corrected**: "bilateral in both Cayley-Dickson and Clifford frameworks" overstates the Canonical Six — only pattern 59/S2 is Clifford-bilateral, the other five are one-sided there (residual norm 2√2). Independently re-derived and verified from scratch in Cl(4,0) (Claude Code), following a Claude Desktop chat's derivation of the grade-homogeneity mechanism; the underlying fact was already on record in an August 2026 Phase 78 handoff and never propagated to README.md or the roadmap/supplemental docs — a C-004-style propagation gap, not a new computational error. Published Zenodo v1.3 PDF confirmed unaffected (its own "bilateral" language is correctly CD-scoped throughout). Five headline documents corrected; historical dated phase docs left as-is per the C-002 convention. |
 
 ---
 
