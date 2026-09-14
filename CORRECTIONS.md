@@ -947,6 +947,48 @@ already told you the answer.
 
 ---
 
+## Third Failure Mode: Claimed-But-Absent
+
+`RH_PAPER_DRAFT_20260823.md` (2026-08-23) claimed, in its abstract, §2.4, and
+Appendix A.1, that `detector_channel_identity` is formally verified in Lean 4,
+standard axioms, zero sorry — and in Appendix A.3 that
+`extended_detector_channel_identity` is too, directly under a heading reading
+"Proof Sketch." A full-repo grep of every `.lean` file in this repository on
+2026-09-14 found zero matches for either theorem name. Neither was ever built.
+`CLAUDE.md`'s own out-of-scope list independently confirms `detector_channel_identity`
+was left undecided in Phase 78 §6. The draft was never committed to this
+repository — `git log --all` shows no commit ever touched it — so no correction is
+owed and no numbered entry is filed here; it is recorded in this section because
+the failure mode it demonstrates is new and worth naming, not because the document
+itself needs correcting.
+
+**This is not the vacuity pattern above.** Vacuity presupposes the theorem exists
+and asks whether it means anything; `#print axioms` and the hypothesis-deletion
+audit both operate on a real proof term. This is prior to that question: does the
+named theorem exist at all. Neither check can see it, because there is nothing for
+either check to run against.
+
+**The likely mechanism is drift, not fabrication — worth being precise about,
+because the two call for different fixes.** `detector_channel_identity` and its
+extension were live candidates in the July 11, 2026 opening handoff. A paper draft
+written in August described the intended proof stack in the tense appropriate to
+a finished paper. The gap between "planned" and "verified" closed in the prose
+without ever closing in the repository. This is the same shape as C-013 (a slot
+assignment true of an earlier design, restated as true of the implementation) and
+the pre-C-022 Canonical Six language (a claim true of one framework, restated as
+true of both) — a description of the plan or of one part of the system, carried
+forward as a description of the finished artifact or the whole of it, with nothing
+in between checking that the restatement still held.
+
+**Added to the standing check:** before a document asserts that a named theorem,
+lemma, or proof is formally verified, `grep` that exact name across every `.lean`
+file in the stack and confirm it resolves. Presence in a handoff, roadmap, or draft
+is not evidence of presence in the stack. This check is cheap — it is a name
+lookup, not a proof audit — and it is the one that would have caught this in
+August, three weeks before it was run.
+
+---
+
 ## Verified Sound
 
 Recorded so the register reflects the state of the work rather than only its
@@ -1010,6 +1052,7 @@ held up.
 | 2026-09-09 | C-017 closed as **Corrected**, on Paul's explicit request — `chavez_transform_convergence` replaced by `chavez_transform_integrable` in `lean/ChavezTransform_genuine.lean`, proving the entry's own named target. Standard axioms, no sorryAx; three hypotheses confirmed load-bearing by deletion, `h_bounded` dropped as confirmed unnecessary (see this entry's own Corrected block for the nuance — the register's original prediction about which hypotheses would do the work was half right). This is a technical correctness fix, not a framing decision, so it did not need the same hold C-018/C-021 are under. Reproducibility record in `verification/2026-09-09/`. |
 | 2026-09-09 | C-018 closed as **Corrected (documentation only)**, on Paul's explicit choice of that path over extending the proof. `README.md` Overview, `lean/README.md` §Chavez Transform, and `ChavezTransform_genuine.lean`'s header now state directly that only the scalar-channel restriction is verified and the zero-divisor structure is not exercised. The Follow-on (a genuine multi-dimensional formalization) remains open and unattempted — this correction fixes the claim/proof mismatch, not the underlying gap. Only C-021 remains Open among the four original framing entries. |
 | 2026-09-14 | C-022 opened and closed same day as **Corrected**: "bilateral in both Cayley-Dickson and Clifford frameworks" overstates the Canonical Six — only pattern 59/S2 is Clifford-bilateral, the other five are one-sided there (residual norm 2√2). Independently re-derived and verified from scratch in Cl(4,0) (Claude Code), following a Claude Desktop chat's derivation of the grade-homogeneity mechanism; the underlying fact was already on record in an August 2026 Phase 78 handoff and never propagated to README.md or the roadmap/supplemental docs — a C-004-style propagation gap, not a new computational error. Published Zenodo v1.3 PDF confirmed unaffected (its own "bilateral" language is correctly CD-scoped throughout). Five headline documents corrected; historical dated phase docs left as-is per the C-002 convention. |
+| 2026-09-14 | Third Failure Mode section added: **Claimed-But-Absent** — a document asserting a named theorem is formally verified when it was never built, invisible to both `#print axioms` and the hypothesis-deletion audit because there is no proof term for either to examine. Motivated by `RH_PAPER_DRAFT_20260823.md` (never committed to this repository, so no numbered entry filed), which claimed `detector_channel_identity` and `extended_detector_channel_identity` were formally verified; a full-repo grep found zero matches for either name. Read as drift (plan-tense claims from the July 11 handoff never reconciled against the repository as it actually stood in August), not fabrication — the same shape as C-013 and the pre-C-022 Canonical Six language. Standing check gains a name-lookup step: grep every claimed theorem name across `lean/` before a document asserts it is verified. |
 
 ---
 
