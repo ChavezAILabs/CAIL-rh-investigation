@@ -1,6 +1,6 @@
 # RH Investigation — Phase 79 Run D Results: Commensurability Knee Sweep
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
-**Date:** 2026-09-11 (v2, revised same day per Claude Desktop review — see §0)
+**Date:** 2026-09-11 (v2 same day; v3 2026-09-14 adds §7.1–§7.2 — see §0)
 **Phase:** 79 (Run D)
 **Tag:** #phase-79-rund-knee-sweep
 **Execution:** Claude Sonnet 5 (Claude Code, in-shell)
@@ -26,6 +26,14 @@ full, including the threshold-sensitivity analysis that determines how much weig
 the second channel's result can bear. **The three requested additions changed the
 substantive conclusion, not just its presentation** — recorded here rather than
 silently folded into a rewritten Executive Summary.
+
+**v3 (2026-09-14)** closes the two items v2 flagged as not yet done: §7.1 runs
+both control arms through Channel 2 (they behave like the primary arms, no new
+qualitative finding); §7.2 checks whether the `nonprime` control's "no movement"
+result is specific to its substitute frequency (q=15) or part of the broader
+shared-low-order-core insensitivity §3 identified — it is the latter (q=16 lands on
+the identical breakpoint as q=15 and arm C itself). Neither follow-up changes the
+Executive Summary's verdict; both extend and reinforce it.
 
 ---
 
@@ -401,9 +409,50 @@ Both controls contradict the commensurability mechanism, in opposite directions:
 This is consistent with §3's explanation: the statistic is sensitive to which
 (mostly low-order) terms are present in the sum, not to the specific value of the
 maximum log-frequency. Both results point the same direction as §4 — away from the
-commensurability mechanism as the driver of what Channel 1 measures. (The controls
-were not re-run through Channel 2's threshold-crossing sweep; that is a natural
-extension for Phase 80, not done here.)
+commensurability mechanism as the driver of what Channel 1 measures.
+
+### 7.1 Controls through Channel 2 (follow-up)
+
+Flagged in v1/v2 of this document as not yet done; run here
+(`scripts/phase79_runD_followups.py`, reusing every Channel-2 function verbatim).
+Both controls show the same threshold-sensitive pattern as the seven arms in §5 —
+crossing height falls as the threshold rises through the same 0.78–0.94 sweep, with
+`term_count` and `nonprime` tracking values close to the p_max-neighboring arms at
+every threshold (e.g. at threshold 0.85 both cross at 78.13, matching arm A's own
+0.85 crossing exactly — see §5's per-arm table). No qualitatively new behavior
+appears: the controls' Channel-2 reach depends on threshold the same way, and to a
+similar degree, as the primary arms. This does not change §5's verdict; it extends
+its coverage. Full per-threshold table in `results/phase79_runD_followups.json`
+(`controls_channel2`).
+
+### 7.2 Frequency-swap robustness on the `nonprime` control (follow-up)
+
+The `nonprime` result above (§7: no movement from arm C's 148.27) invites an
+obvious question: is that specific to q=15, or does the whole last-slot frequency
+barely matter? Swept q ∈ {12, 13(=arm C), 14, 15, 16, 18, 20} in arm C's sixth slot,
+Channel 1 only (the segmented breakpoint), same width/step/n_boot as the main run:
+
+| q | prime? | predicted knee (2π·q) | fitted breakpoint | 95% CI | boundary_hit |
+|---|---|---|---|---|---|
+| 12 | no | 75.40 | 109.68 | [97.9, 528.1] | **True** |
+| 13 (arm C) | yes | 81.68 | 148.27 | [86.3, 497.1] | False |
+| 14 | no | 87.96 | 125.12 | [113.1, 556.2] | False |
+| **15 (`nonprime`)** | no | 94.25 | **148.27** | [90.4, 564.3] | False |
+| **16** | no | 100.53 | **148.27** | [141.0, 564.3] | False |
+| 18 | no | 113.10 | 534.13 | [154.1, 540.8] | False |
+| 20 | no | 125.66 | 171.42 | [153.7, 569.9] | False |
+
+**q=15 is not a special case.** q=16 lands on the *exact same* breakpoint as arm C
+and q=15 (148.27); q=12, 14, 18, 20 each land somewhere else, with no visible
+relationship to their own predicted knee (q=18's predicted knee, 113.10, is nowhere
+near its fitted 534.13). Three of seven swap values (13, 15, 16) share one fitted
+breakpoint exactly — the same shared-candidate clustering §3 already identified as
+the shared-low-order-core artifact, now shown to extend across substitute
+frequencies as well as across p_max arms. The frequency-swap check confirms §3's
+mechanism more broadly than the single q=15 result alone did: **Channel 1's
+breakpoint is largely insensitive to which specific frequency occupies the last
+slot**, not narrowly insensitive to 15 specifically. Full table in
+`results/phase79_runD_followups.json` (`frequency_swap_robustness`).
 
 ---
 
@@ -531,8 +580,10 @@ a preview of its answer.
 | Artifact | Path |
 |---|---|
 | Sweep script | `scripts/phase79_runD_knee_sweep.py` |
+| Follow-up script (§7.1–§7.2) | `scripts/phase79_runD_followups.py` |
 | Per-arm/per-window results | `results/phase79_runD_results.json` |
 | Slope fit, controls, and threshold-sensitivity sweep | `results/phase79_runD_slope_fit.json` |
+| Follow-up results (controls via Channel 2; frequency-swap robustness) | `results/phase79_runD_followups.json` |
 | Corrections register (C-001, C-006 background; new entry, see §14) | `CORRECTIONS.md` |
 | Handoff | `../rh-phase79-runD-claude-code-handoff.md` |
 
@@ -550,6 +601,8 @@ underlying AUC computation, and `threshold_crossing`/`bootstrap_threshold_crossi
 - **A `CORRECTIONS.md` entry recording this result**, including the C-006
   weight-structure point from §3, and a cross-reference added to C-001 itself — done
   as part of this revision; see the register for the entry number and text.
+- **Controls through Channel 2, and the frequency-swap robustness check** — both
+  done in v3 (§7.1–§7.2); neither changed the verdict.
 - **§6's vertical-shift explanation and §11 item 2** — untested quantitative
   reconciliation, natural Phase 80 work.
 - **§12's standing question** — Phase 80's mandate, not previewed here.
@@ -565,4 +618,4 @@ underlying AUC computation, and `threshold_crossing`/`bootstrap_threshold_crossi
 ---
 
 *Chavez AI Labs LLC — Applied Pathological Mathematics — Better math, less suffering*
-*Phase 79 Run D · September 11, 2026*
+*Phase 79 Run D · September 11, 2026 (v3: September 14, 2026)*
