@@ -30,10 +30,14 @@ One-sided (P*Q=0 only) in Cl(4,0): [18, 84, 102, 104, 124]
 ```
 
 All six patterns satisfy P·Q = 0 (matching the published paper's Table 1
-`Clifford✓` exactly — a check that this script's index-to-blade map is the right
-one, since it reproduces a result the paper already independently verified by a
-different implementation). Only pattern 59 additionally satisfies Q·P = 0. The
-other five have Q·P with residual coefficients ±2 on two grade-1 blades each — norm
+`Clifford✓` exactly — this is consistent with the "identity" index-to-blade map
+being the one the paper's own Clifford verification used, since it reproduces
+that verification's result under a fully independent implementation; it does not
+rule out some other map also reproducing Table 1, and the map is not stated
+explicitly anywhere in the paper — see the caveat in C-022's own text). Only
+pattern 59 additionally satisfies Q·P = 0. The other five have Q·P with residual
+coefficients ±2 on one grade-1 blade and one grade-3 blade each (e.g. pattern 18:
+`{2: -2, 13: 2}` — index 2 is grade 1, index 13 is grade 3) — norm
 `sqrt(2²+2²) = 2√2` — matching a figure already on record in
 `docs/handoffs/CLAUDE_CODE_HANDOFF_PHASE78_Q18.md` (August 2026): "S1, S3–S6
 collapse in Clifford (one-sided residual ‖QP‖ = 2√2)". That prior record is why
