@@ -1,6 +1,6 @@
 # RH Investigation — Phase 79 Run D Results: Commensurability Knee Sweep
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
-**Date:** 2026-09-11 (v2 same day; v3 2026-09-14 adds §7.1–§7.2 — see §0)
+**Date:** 2026-09-11 (v2 same day; v3 2026-09-14 adds §7.1–§7.2; v4 2026-09-14 corrects §7.1's reading of its own data — see §0)
 **Phase:** 79 (Run D)
 **Tag:** #phase-79-rund-knee-sweep
 **Execution:** Claude Sonnet 5 (Claude Code, in-shell)
@@ -34,6 +34,23 @@ result is specific to its substitute frequency (q=15) or part of the broader
 shared-low-order-core insensitivity §3 identified — it is the latter (q=16 lands on
 the identical breakpoint as q=15 and arm C itself). Neither follow-up changes the
 Executive Summary's verdict; both extend and reinforce it.
+
+**v4 (2026-09-14)** corrects v3's own §7.1, caught on review: it reported the
+controls' Channel-2 crossing (78.13 at threshold 0.85) as "matching arm A's own
+0.85 crossing exactly" and concluded "no qualitatively new behavior appears." Both
+claims were wrong on the data already in front of it. `nonprime`'s own p_max is 15,
+so its p_max-neighbors are arm C (144.35) and arm D (366.88) — not arm A
+(p_max = 7). Both controls' reach nearly halved from arm C's 144.35 down to 78.13
+under a single light-slot frequency change, moving in the *opposite* direction from
+the commensurability prediction (which calls for `nonprime`'s reach to move *up*,
+81.68 → 94.25) and in the *same* channel §5 reported as showing the clearest
+positive p_max-relationship in the document. This is a stronger piece of evidence
+against the commensurability mechanism than §7's Channel-1 result, and it is
+evidence that Channel 2's reach statistic is considerably more fragile under small
+perturbations than §5's cross-threshold R² = 0.68–0.92 alone would suggest. §7.1 is
+rewritten; caveats added to §5, the Executive Summary, and §10. No numbers were
+wrong — every crossing value cited in v3 was correct — only what they were compared
+against and what was concluded from them.
 
 ---
 
@@ -70,8 +87,10 @@ its *heaviest* terms, and past p=7 those are different things. Neither the
 conjecture nor the experiment design drew that connection in advance.
 
 **Channel 2 — model-free reach: first sustained crossing of a fixed AUC threshold
-(§5): a real, robust, positive relationship exists, at a rate that is
-threshold-dependent and does not settle the prediction either way.** This measure
+(§5): a real, positive relationship exists across the seven-arm sweep, at a rate
+that is threshold-dependent and does not settle the prediction either way — and
+that is fragile under small perturbations in a way the cross-threshold R² alone
+does not show (§7.1).** This measure
 does not depend on the segmented model at all (requested specifically as a
 referee-facing check, per §0). Swept over ten fixed AUC thresholds (0.78–0.94), it
 shows R² = 0.68–0.92 throughout the usable range — a real, non-trivial relationship
@@ -102,10 +121,17 @@ level later, by an amount set by the shift size and the local decay slope. This 
 offered as an interpretive frame for a qualitative fact (a relationship exists),
 not a mechanistic account of its specific, threshold-sensitive rate.
 
-**Controls point the same direction as Channel 1.** The term-count control (arm C
-minus p=3, same max frequency) was predicted to leave the knee unmoved — instead it
-moved by 46.3. The non-prime control (p=13→q=15, predicted knee ≈94.2) landed on the
-exact same breakpoint as arm C — no movement at all. See §7.
+**Controls point the same direction as Channel 1 — and, more sharply, undercut
+Channel 2 (§7, §7.1).** Under Channel 1, the term-count control (arm C minus p=3,
+same max frequency) was predicted to leave the knee unmoved — instead it moved by
+46.3. The non-prime control (p=13→q=15, predicted knee ≈94.2) landed on the exact
+same breakpoint as arm C — no movement at all. Under Channel 2, both controls do
+something more striking: reach nearly halves under the same substitutions (arm C's
+144.35 → 78.13 at threshold 0.85, matching arm A four p_max-steps below where
+either control's own frequency content implies it should sit) — a bigger move than
+the p_max sweep itself produces between several adjacent arms, in the wrong
+direction from the prediction, in the exact channel that showed the strongest
+positive p_max-relationship in this document. See §7.1.
 
 **What this does and does not settle.** Neither channel supports the literal
 γ_knee ≈ 2π·p_max claim with confidence. It does not reopen C-001's separate,
@@ -357,7 +383,14 @@ degeneracy of §3 — a different, benign cause of the same surface symptom.
 
 **Net reading of Channel 2:** confirms a real reach-vs-p_max relationship Channel 1
 missed; does not confirm or cleanly refute the specific predicted rate, because that
-rate is not stable to an essentially arbitrary choice of absolute threshold.
+rate is not stable to an essentially arbitrary choice of absolute threshold. **Read
+this alongside §7.1: both control arms move Channel-2 reach by more than the gap
+between adjacent primary arms under a single light-slot frequency change — one of
+them (`term_count`) without any change to p_max at all — while the identical
+substitution leaves Channel 1 unchanged. The R² above describes the primary
+seven-arm sweep accurately; it should not be read as evidence that Channel 2 reach
+is stable to small perturbations generally, because §7.1 shows directly that it is
+not.**
 
 ---
 
@@ -411,19 +444,52 @@ This is consistent with §3's explanation: the statistic is sensitive to which
 maximum log-frequency. Both results point the same direction as §4 — away from the
 commensurability mechanism as the driver of what Channel 1 measures.
 
-### 7.1 Controls through Channel 2 (follow-up)
+### 7.1 Controls through Channel 2 (follow-up) — corrected in v4, see §0
 
-Flagged in v1/v2 of this document as not yet done; run here
-(`scripts/phase79_runD_followups.py`, reusing every Channel-2 function verbatim).
-Both controls show the same threshold-sensitive pattern as the seven arms in §5 —
-crossing height falls as the threshold rises through the same 0.78–0.94 sweep, with
-`term_count` and `nonprime` tracking values close to the p_max-neighboring arms at
-every threshold (e.g. at threshold 0.85 both cross at 78.13, matching arm A's own
-0.85 crossing exactly — see §5's per-arm table). No qualitatively new behavior
-appears: the controls' Channel-2 reach depends on threshold the same way, and to a
-similar degree, as the primary arms. This does not change §5's verdict; it extends
-its coverage. Full per-threshold table in `results/phase79_runD_followups.json`
-(`controls_channel2`).
+v3's text here compared the controls' crossing to arm A and called the result
+unremarkable. Both claims were wrong: arm A is not either control's p_max-neighbor,
+and the actual result is one of the stronger findings in this document.
+
+| Threshold | Arm A (p=7) | Arm C (p=13) | Arm D (p=17) | `term_count` (p=13) | `nonprime` (p=15) |
+|---|---|---|---|---|---|
+| 0.82 | 90.36 | 522.02 | 536.16 | 279.16 | 123.78 |
+| 0.84 | 90.36 | 366.88 | 522.02 | 78.13 | 78.13 |
+| **0.85** | **78.13** | **144.35** | **366.88** | **78.13** | **78.13** |
+| 0.86 | 64.95 | 144.35 | 351.40 | 78.13 | 49.97 |
+| 0.88 | 49.97 | 101.96 | 173.64 | 64.95 | 49.97 |
+
+`term_count`'s own p_max is 13, unchanged from arm C (it only drops one term).
+`nonprime`'s p_max is 15, between arm C (13) and arm D (17). **If Channel 2 reach
+tracks p_max the way §5's R² = 0.68–0.92 says it does, both controls belong in the
+144–536 range at every threshold shown.** Instead, both sit at or near arm A's
+value (p_max = 7) throughout 0.84–0.88, and `term_count` — whose p_max did not
+change at all — is *already* off the p_max-implied range at 0.82 (279.16 vs. arm
+C's 522.02). At threshold 0.85, the representative row used throughout this
+document: arm C reads 144.35; dropping one term (`term_count`) or swapping one
+light term for a non-prime (`nonprime`) drops that to 78.13 — a fall of 66.2,
+larger than the gap between any two adjacent primary arms at that threshold. (Above
+0.88, every series — controls and primary arms alike — compresses toward the same
+low values; that convergence is a property of high thresholds generally, per §5,
+not something specific to the controls, so it is not further evidence either way.)
+
+**This is a stronger refutation of the commensurability prediction than §7's
+Channel-1 result, in the channel that was supposed to be the more informative
+one.** The prediction calls for `nonprime`'s reach to move *up* (81.68 → 94.25, per
+its own predicted knee). It moves *down*, by a wide margin, using the exact
+statistic that produced the clearest positive p_max-relationship anywhere in this
+document.
+
+**It also complicates §5 on its own terms.** A single light-slot substitution — not
+a change to p_max, in `term_count`'s case — moves Channel-2 reach further than the
+p_max sweep itself moves it between several adjacent arms, while the identical
+substitution left Channel 1 (§7) completely unchanged at 148.27. A statistic that
+swings this much under a small, targeted perturbation is more fragile than §5's
+cross-threshold R² alone communicates. This does not overturn §5's finding — the
+primary sweep's R² is still real, computed the same way, on data not touched here —
+but it is a caveat on how much weight that R² should carry, added to §5 and §10.
+
+Full per-threshold table (all ten thresholds, both controls):
+`results/phase79_runD_followups.json` (`controls_channel2`).
 
 ### 7.2 Frequency-swap robustness on the `nonprime` control (follow-up)
 
@@ -495,9 +561,13 @@ threshold is least meaningful.
 
 **Not settled, and flagged rather than papered over:** whether "reach" depends on
 p_max at all. The two channels disagree on this more basic question, not just on
-rate. §12 names this as the standing question for Phase 80, alongside the separate
-question of what actually drives the underlying per-zero decay C-001 first
-identified.
+rate. The control-arm follow-up (§7.1) adds weight to the "no" side of that
+disagreement: Channel 2's reach moves more under a small perturbation that leaves
+p_max unchanged (`term_count`) than it does across several steps of the primary
+p_max sweep, which is difficult to reconcile with reach being driven by p_max in
+any simple way. §12 names the underlying question as the standing question for
+Phase 80, alongside the separate question of what actually drives the underlying
+per-zero decay C-001 first identified.
 
 ---
 
@@ -513,6 +583,13 @@ identified.
   is reported as a finding, not hidden behind a single headline number. A single
   threshold, chosen without the sensitivity sweep, would have supported whatever
   conclusion the choice happened to favor.
+- **Channel 2's reach is also not robust to small perturbations of the detector
+  itself** (§7.1) — a single light-slot frequency substitution moves it by more
+  than the gap between several adjacent primary arms, in one case (`term_count`)
+  with no change to p_max at all. This is a different, additional fragility from
+  the threshold-sensitivity above, discovered only because the controls were run
+  through Channel 2 as a follow-up; the primary seven-arm sweep's R² = 0.68–0.92
+  is unaffected (computed on different data) but should be read with this in mind.
 - **Arms F and G's Channel-2 crossings sit close to the t≤600 domain's upper edge**
   at the representative threshold (0.85), with bootstrap success rates of 57% and
   77% (vs. ~100% for A–D) — their weight in the slope fit is the least reliable of
@@ -551,6 +628,12 @@ Not executed here (out of scope for this run; recorded for a future follow-on):
 4. **A finer or adaptive breakpoint search** for Channel 1 would remove the
    Davies-problem caveat from the p-values, though it would not by itself fix the
    power problem in §3–§4.
+5. **Characterize Channel 2's perturbation sensitivity directly** (§7.1): sweep a
+   wider family of single-term substitutions (not just the two controls run here)
+   across arm C, and check whether reach's sensitivity to a given substitution
+   scales with that term's weight `w_p`, or is closer to uniform regardless of
+   which term changes — the latter would suggest Channel 2 reach is measuring
+   something closer to detector noise floor than to p_max-driven resolution.
 
 ---
 
@@ -602,9 +685,12 @@ underlying AUC computation, and `threshold_crossing`/`bootstrap_threshold_crossi
   weight-structure point from §3, and a cross-reference added to C-001 itself — done
   as part of this revision; see the register for the entry number and text.
 - **Controls through Channel 2, and the frequency-swap robustness check** — both
-  done in v3 (§7.1–§7.2); neither changed the verdict.
-- **§6's vertical-shift explanation and §11 item 2** — untested quantitative
-  reconciliation, natural Phase 80 work.
+  done in v3 (§7.1–§7.2). §7.2 (Channel 1) didn't change the verdict; §7.1
+  (Channel 2), corrected in v4, did — it's now one of this document's stronger
+  pieces of evidence, not a footnote.
+- **§6's vertical-shift explanation and §11 items 2 and 5** — untested quantitative
+  reconciliation and perturbation-sensitivity characterization, natural Phase 80
+  work.
 - **§12's standing question** — Phase 80's mandate, not previewed here.
 - **Lean, `detector_channel_identity`, and k=3 slot saturation** — untouched, per the
   handoff's explicit out-of-scope list.
@@ -618,4 +704,4 @@ underlying AUC computation, and `threshold_crossing`/`bootstrap_threshold_crossi
 ---
 
 *Chavez AI Labs LLC — Applied Pathological Mathematics — Better math, less suffering*
-*Phase 79 Run D · September 11, 2026 (v3: September 14, 2026)*
+*Phase 79 Run D · September 11, 2026 (v3: September 14, 2026; v4: September 14, 2026)*
