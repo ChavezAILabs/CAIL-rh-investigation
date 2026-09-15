@@ -47,7 +47,7 @@ defensible response is to find them, publish them, and keep the count visible.
 
 ```
 ### C-NNN — [short title]
-**Found:** YYYY-MM-DD · **By:** [who/what] · **Severity:** [1–4] · **Status:** [Open | Corrected | Withdrawn | Disputed]
+**Found:** YYYY-MM-DD · **By:** [who/what] · **Severity:** [1–4] · **Status:** [Open | Corrected | Modified | Withdrawn | Disputed]
 **Affects:** [documents, files, phases, DOIs]
 
 **The claim as published:** [verbatim or close paraphrase]
@@ -55,6 +55,17 @@ defensible response is to find them, publish them, and keep the count visible.
 **What is true instead:** [the corrected statement, or "under investigation"]
 **Corrected:** [date, where, how — added when resolved]
 ```
+
+**Status values:** `Open` (found, not yet resolved) · `Corrected` (the underlying
+document or artifact was fixed) · `Modified` (the entry itself was re-examined —
+typically by a later verification pass — and its own text revised as a result,
+without the affected document necessarily being edited; the finding may end up
+confirmed, partially revised, or refuted by that re-examination, in any
+direction) · `Withdrawn` (the entry was itself found to be wrong on filing) ·
+`Disputed` (Paul disagrees with the finding; recorded, not deleted). `Modified`
+has been in use since the register's first verification batch (2026-09-08,
+commit `acaaf3e1` — C-008, C-011, C-012) but was missing from this template
+until 2026-09-15, found on a pre-push review.
 
 ### Severity scale
 
