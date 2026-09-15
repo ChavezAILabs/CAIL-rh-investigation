@@ -41,7 +41,7 @@ this entry is a propagation-gap correction (the fact was already known, just not
 in the headline docs), not a new computational discovery — see C-022's full text
 for the provenance.
 
-## The mechanism (grade-homogeneity ⟺ bilaterality)
+## The mechanism on the six patterns (grade-homogeneity ⟹ bilaterality)
 
 Not re-derived independently here (the algebraic argument, not just its numeric
 consequence, is taken from the Claude Desktop chat and recorded in C-022) but
@@ -57,11 +57,52 @@ Cayley-Dickson unconditionally (there, conjugation of a pure-imaginary sum is
 always `-1` regardless of index, with no grade dependence — see C-022's Cayley-
 Dickson argument).
 
+## Generalization test: does the criterion extend beyond these six pairs?
+
+The six patterns are one specific census (the Cayley-Dickson zero-divisor
+discovery), not an exhaustive search of Cl(4,0). The script's final section tests
+the same construction (`e_i ± e_{15-i}`, the "mirror pair" form all six patterns
+already use) completed to all 8 index-mirror-pairs `(0,15)` through `(7,8)` instead
+of just the 6 that happen to appear in the Canonical Six — 16 candidate vectors,
+240 ordered pairs, 112 of which annihilate (`P·Q=0`) in Cl(4,0).
+
+**Result: the criterion does not generalize to a clean if-and-only-if.**
+
+- **Sufficiency holds with zero exceptions.** Every one of the 12 grade-homogeneous
+  annihilating pairs is bilateral. This direction is the one the reversion
+  argument actually proves, and it generalizes cleanly — this is a real,
+  Lean-formalizable theorem: *grade-homogeneous annihilating pairs in Cl(4,0) are
+  always bilateral*, not just the six.
+- **Necessity fails.** 48 of the 112 annihilating pairs are bilateral — four times
+  the 12 that are grade-homogeneous. 36 pairs are bilateral *without* being
+  grade-homogeneous. The six-pattern census never surfaced this because none of
+  the six uses index 0 (scalar) or 15 (pseudoscalar), and it happened to be exactly
+  narrow enough that "same grade" and "same reversion sign" looked identical.
+- **A refinement closes 12 of the 36.** Reversion's sign, `(-1)^(g(g-1)/2)`, is
+  `+1` at grades {0,1,4} and `-1` at grades {2,3} — a coarser equivalence than raw
+  grade. Testing *reversion-sign*-homogeneity instead of grade-homogeneity
+  correctly resolves every mismatch involving index 0/15 (scalar+pseudoscalar
+  vectors, which mix grade 0 and grade 4 but share reversion sign `+1`) — down to
+  24 unexplained mismatches.
+- **24 remain unexplained.** Pairs like `(e1+e14)·(e2−e13) = 0` are bilateral
+  despite neither vector being homogeneous by grade *or* by reversion sign. Some
+  other mechanism, not identified here, produces bilaterality in these cases.
+  Not chased further — recording the open question rather than forcing a
+  narrative.
+
+**What this means for a paper Addendum:** the provable, general claim is
+*grade-homogeneity ⟹ bilaterality* in Cl(4,0) (or the slightly stronger
+*reversion-sign-homogeneity ⟹ bilaterality*), not the ⟺ the six-pattern census
+suggested. That six-case ⟺ was real but coincidental to a census that never
+touched the scalar/pseudoscalar case and apparently never touched whatever
+produces the remaining 24. An Addendum built on the ⟹ direction is solid; one
+claiming a full classification is not yet supported.
+
 ## Files in this directory
 
 | File | Purpose |
 |---|---|
-| `verify_clifford_bilateral.py` | Independent Cl(4,0) implementation + the six-pattern bilaterality check above |
+| `verify_clifford_bilateral.py` | Independent Cl(4,0) implementation, the six-pattern check, and the generalization test above |
 
 This script is a standalone scratch verification, not part of the canonical Lean
 stack or the CAILculator MCP server. No canonical file was modified to produce

@@ -919,11 +919,28 @@ language (e.g. `lab-notebook/RH_Phase7_Handoff.md`, `RH_Phase19_Handoff.md`,
 history elsewhere (see C-002). The published Zenodo v1.3 PDF is unaffected and not
 corrected — it never made the overstated claim.
 
-**Not done here, and worth doing:** the grade-homogeneity ⟺ bilaterality theorem
-above is new (not previously in the corpus, as distinct from the already-known
-S2-uniqueness fact), Lean-formalizable, and a stronger Addendum candidate than
-anything in v1.3 — but formalizing it and writing it into a paper revision is
-separate, larger work, not undertaken as part of this correction.
+**Tested and narrowed, 2026-09-14 (same day, on request).** The grade-homogeneity
+mechanism above was checked against more than the six patterns: the same
+construction (`e_i ± e_{15-i}`), completed to all 8 index-mirror-pairs instead of
+the 6 the Canonical Six happen to use, gives 16 candidate vectors and 112
+Cl(4,0)-annihilating ordered pairs. **Grade-homogeneity ⟹ bilaterality holds with
+zero exceptions across all 112** — a real, general, Lean-formalizable theorem, not
+an artifact of the six-pattern census. **Grade-homogeneity ⟺ bilaterality does
+not hold**: 48 of the 112 annihilating pairs are bilateral, but only 12 are
+grade-homogeneous — 36 are bilateral without being grade-homogeneous. A refinement
+(testing *reversion-sign* homogeneity — `(-1)^(g(g-1)/2)` groups grades {0,1,4}
+together and {2,3} together, coarser than raw grade) explains 12 of those 36 (the
+cases touching the scalar/pseudoscalar indices 0 and 15, which the six-pattern
+census never used); 24 remain unexplained. Full breakdown and the extended script
+in `verification/2026-09-14/`.
+
+**What this means for a paper Addendum:** the provable general claim is the ⟹
+direction (grade-homogeneous ⟹ bilateral), not the ⟺ the six-pattern census
+suggested — that ⟺ was real on that census but not a general fact. An Addendum
+built on ⟹ is solid; one claiming a full classification of Cl(4,0) bilateral pairs
+is not yet supported and would need the remaining 24-pair mechanism identified
+first. Formalizing the ⟹ direction in Lean, and identifying the missing mechanism,
+are both separate, larger work, not undertaken as part of this correction.
 
 **Reproducibility record:** `verification/2026-09-14/` — independent, from-scratch
 Cl(4,0) geometric-product implementation, sanity-checked against known identities

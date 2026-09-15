@@ -134,3 +134,68 @@ bilateral_patterns = [pid for pid, r in results.items() if r["bilateral"]]
 print(f"  Bilateral (P*Q=0 AND Q*P=0) in Cl(4,0): {bilateral_patterns}")
 print(f"  One-sided (P*Q=0 only) in Cl(4,0): "
       f"{[pid for pid, r in results.items() if r['PQ_zero'] and not r['bilateral']]}")
+
+# ---------------------------------------------------------------------------
+# Generalization: the six patterns are a special case, not the whole claim.
+# Does grade-homogeneity <=> bilaterality hold across ALL Cl(4,0)-annihilating
+# pairs built the same way the six patterns are (e_i +/- e_{15-i}), not just
+# the six specific pairs the Cayley-Dickson census happened to surface? Same
+# construction, completed to all 8 index-mirror-pairs (0,15)...(7,8) instead
+# of the 6 that appear among the Canonical Six.
+# ---------------------------------------------------------------------------
+print("\n=== GENERALIZATION: grade-homogeneity <=> bilaterality, full Cl(4,0) search ===")
+MIRROR_PAIRS = [(i, 15 - i) for i in range(8)]  # (0,15),(1,14),...,(7,8)
+vecs = {(i, j, sign): vec_from_signed_indices([i, sign * j])
+        for (i, j) in MIRROR_PAIRS for sign in (1, -1)}
+
+annihilating, mismatches = [], []
+for k1, V1 in vecs.items():
+    for k2, V2 in vecs.items():
+        if k1[:2] == k2[:2]:  # skip self-pairing and same-index-pair, opposite sign
+            continue
+        if len(mv_mult(V1, V2)) != 0:
+            continue
+        both_homog = homogeneous(V1)[0] and homogeneous(V2)[0]
+        is_bilateral = len(mv_mult(V2, V1)) == 0
+        annihilating.append((k1, k2, both_homog, is_bilateral))
+        if both_homog != is_bilateral:
+            mismatches.append((k1, k2, both_homog, is_bilateral))
+
+n_homog = sum(1 for *_, h, _ in annihilating if h)
+n_bilateral = sum(1 for *_, b in annihilating if b)
+print(f"  candidate vectors: {len(vecs)} (8 mirror-index-pairs x 2 signs)")
+print(f"  annihilating ordered pairs found: {len(annihilating)}")
+print(f"  of those: {n_homog} homogeneous, {n_bilateral} bilateral")
+print(f"  homogeneity <=> bilaterality holds on EVERY annihilating pair found: "
+      f"{len(mismatches) == 0}")
+if mismatches:
+    print(f"  MISMATCHES ({len(mismatches)}) -- literal grade-homogeneity does NOT "
+          f"generalize as stated:")
+    for k1, k2, h, b in mismatches:
+        print(f"    {k1} , {k2}: homogeneous={h} bilateral={b}")
+
+    # Every mismatch above is the same shape: mixed-grade but still bilateral.
+    # Reversion's sign is (-1)^(g(g-1)/2): +1 at grades {0,1,4}, -1 at {2,3} --
+    # a coarser equivalence than raw grade. The six original patterns never
+    # touch index 0 (scalar) or 15 (pseudoscalar), so grade-homogeneity and
+    # sign-homogeneity were indistinguishable on that census. Test whether
+    # SIGN-homogeneity (not grade-homogeneity) is the criterion that actually
+    # generalizes with zero mismatches.
+    REV_SIGN = {g: (-1) ** (g * (g - 1) // 2) for g in range(5)}
+
+    def sign_homogeneous(mv):
+        return len({REV_SIGN[grade(b)] for b in mv}) == 1
+
+    sign_mismatches = []
+    for k1, k2, both_homog, is_bilateral in annihilating:
+        both_sign_homog = sign_homogeneous(vecs[k1]) and sign_homogeneous(vecs[k2])
+        if both_sign_homog != is_bilateral:
+            sign_mismatches.append((k1, k2, both_sign_homog, is_bilateral))
+
+    print(f"\n  REFINED criterion (reversion-SIGN-homogeneity, not raw grade):")
+    print(f"  mismatches under sign-homogeneity: {len(sign_mismatches)}")
+    print(f"  sign-homogeneity <=> bilaterality holds on EVERY annihilating pair: "
+          f"{len(sign_mismatches) == 0}")
+    if sign_mismatches:
+        for k1, k2, h, b in sign_mismatches:
+            print(f"    {k1} , {k2}: sign_homogeneous={h} bilateral={b}")
