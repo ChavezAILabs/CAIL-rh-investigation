@@ -50,7 +50,12 @@ evidence that Channel 2's reach statistic is considerably more fragile under sma
 perturbations than §5's cross-threshold R² = 0.68–0.92 alone would suggest. §7.1 is
 rewritten; caveats added to §5, the Executive Summary, and §10. No numbers were
 wrong — every crossing value cited in v3 was correct — only what they were compared
-against and what was concluded from them.
+against and what was concluded from them. **Same-day follow-up to v4:** Claude
+Desktop's review of v4 noted that `term_count` and `nonprime` land on the identical
+78.13 crossing at thresholds 0.84–0.85 despite varying different things — the same
+shared-candidate-clustering signature §3 identified in Channel 1, now shown to
+appear in Channel 2 too. Added to §7.1 as a strengthening of the same point, not a
+new one: both channels share a version of this degeneracy, not just Channel 1.
 
 ---
 
@@ -487,6 +492,24 @@ swings this much under a small, targeted perturbation is more fragile than §5's
 cross-threshold R² alone communicates. This does not overturn §5's finding — the
 primary sweep's R² is still real, computed the same way, on data not touched here —
 but it is a caveat on how much weight that R² should carry, added to §5 and §10.
+
+**A second thing follows from the table above: at thresholds 0.84 and 0.85,
+`term_count` and `nonprime` don't just both move — they land on the *identical*
+crossing (78.13), despite varying different things (dropping a term vs. swapping a
+frequency).** Two controls with different perturbations converging on the same
+value is the same shared-candidate-clustering signature §3 identified in Channel 1
+— there, many different arms and substitute frequencies kept landing on one of a
+small number of shared attractor breakpoints (148.27, 101.96, ...), traced to the
+65-window grid's discreteness compounding the shared-low-order-core curve shape.
+The same mechanism plausibly explains Channel 2's crossing values here: the
+discrete window grid restricts each series to one of a small number of possible
+crossing heights, and series with similar overall shape (all seven arms and both
+controls, per §3) tend to land on the same one. (At 0.82, 0.86, and 0.88 the two
+controls diverge, so this is not a threshold-independent tie — the clustering, like
+the reach values themselves, is threshold-dependent.) Read this way, the finding
+sharpens rather than complicates the picture: it is evidence that **both channels**
+share a version of the degeneracy §3 first identified, not that Channel 1 has one
+and Channel 2 is simply noisy in an unrelated way.
 
 Full per-threshold table (all ten thresholds, both controls):
 `results/phase79_runD_followups.json` (`controls_channel2`).
