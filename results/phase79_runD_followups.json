@@ -1,0 +1,318 @@
+{
+  "grid": {
+    "t_lo": 10.0,
+    "t_hi": 600.0,
+    "dt": 0.005
+  },
+  "width": 20,
+  "step": 5,
+  "controls_channel2": {
+    "term_count": {
+      "p_max": 13,
+      "predicted_knee": 81.68140899333463,
+      "by_threshold": {
+        "0.78": {
+          "crossing_point": null,
+          "boot_n_success": 1603,
+          "boot_ci95": [
+            382.2653732475933,
+            585.1669111004197
+          ]
+        },
+        "0.8": {
+          "crossing_point": 366.884307887951,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            154.3095617166949,
+            427.5226783822565
+          ]
+        },
+        "0.82": {
+          "crossing_point": 279.15769327163525,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            101.96400814171818,
+            287.36268574235294
+          ]
+        },
+        "0.84": {
+          "crossing_point": 78.13156969360207,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            78.13156969360207,
+            144.34946645605402
+          ]
+        },
+        "0.85": {
+          "crossing_point": 78.13156969360207,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            78.13156969360207,
+            113.10000802632901
+          ]
+        },
+        "0.86": {
+          "crossing_point": 78.13156969360207,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            78.13156969360207,
+            113.10000802632901
+          ]
+        },
+        "0.88": {
+          "crossing_point": 64.953971245976,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            64.953971245976,
+            101.96400814171818
+          ]
+        },
+        "0.9": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        },
+        "0.92": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        },
+        "0.94": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        }
+      }
+    },
+    "nonprime": {
+      "p_max": 15,
+      "predicted_knee": 94.24777960769379,
+      "by_threshold": {
+        "0.78": {
+          "crossing_point": 144.34946645605402,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            144.34946645605402,
+            311.71906804236113
+          ]
+        },
+        "0.8": {
+          "crossing_point": 144.34946645605402,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            90.35842125596064,
+            219.2866779210864
+          ]
+        },
+        "0.82": {
+          "crossing_point": 123.78407758675007,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            90.35842125596064,
+            154.3095617166949
+          ]
+        },
+        "0.84": {
+          "crossing_point": 78.13156969360207,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            78.13156969360207,
+            113.10000802632901
+          ]
+        },
+        "0.85": {
+          "crossing_point": 78.13156969360207,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            78.13156969360207,
+            113.10000802632901
+          ]
+        },
+        "0.86": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        },
+        "0.88": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        },
+        "0.9": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        },
+        "0.92": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        },
+        "0.94": {
+          "crossing_point": 49.96946751590794,
+          "boot_n_success": 2000,
+          "boot_ci95": [
+            49.96946751590794,
+            90.35842125596064
+          ]
+        }
+      }
+    }
+  },
+  "frequency_swap_robustness": {
+    "12": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        12
+      ],
+      "is_prime": false,
+      "predicted_knee": 75.39822368615503,
+      "fitted_breakpoint": 109.68125404573317,
+      "boot_ci95": [
+        97.9143809258685,
+        528.0706657962608
+      ],
+      "boundary_hit": true,
+      "knee_detected": false
+    },
+    "13": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13
+      ],
+      "is_prime": true,
+      "predicted_knee": 81.68140899333463,
+      "fitted_breakpoint": 148.26748356580813,
+      "boot_ci95": [
+        86.2527552323309,
+        497.0689374506726
+      ],
+      "boundary_hit": false,
+      "knee_detected": true
+    },
+    "14": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        14
+      ],
+      "is_prime": false,
+      "predicted_knee": 87.96459430051421,
+      "fitted_breakpoint": 125.11574585376316,
+      "boot_ci95": [
+        113.10000802632901,
+        556.2327896967174
+      ],
+      "boundary_hit": false,
+      "knee_detected": true
+    },
+    "15": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        15
+      ],
+      "is_prime": false,
+      "predicted_knee": 94.24777960769379,
+      "fitted_breakpoint": 148.26748356580813,
+      "boot_ci95": [
+        90.35842125596064,
+        564.2602122261786
+      ],
+      "boundary_hit": false,
+      "knee_detected": true
+    },
+    "16": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        16
+      ],
+      "is_prime": false,
+      "predicted_knee": 100.53096491487338,
+      "fitted_breakpoint": 148.26748356580813,
+      "boot_ci95": [
+        141.00161960085808,
+        564.2602122261786
+      ],
+      "boundary_hit": false,
+      "knee_detected": false
+    },
+    "18": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        18
+      ],
+      "is_prime": false,
+      "predicted_knee": 113.09733552923255,
+      "fitted_breakpoint": 534.1297787665577,
+      "boot_ci95": [
+        154.12644639532644,
+        540.7536255778163
+      ],
+      "boundary_hit": false,
+      "knee_detected": false
+    },
+    "20": {
+      "freqs": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        20
+      ],
+      "is_prime": false,
+      "predicted_knee": 125.66370614359172,
+      "fitted_breakpoint": 171.41922127785313,
+      "boot_ci95": [
+        153.66944836254478,
+        569.9423058004903
+      ],
+      "boundary_hit": false,
+      "knee_detected": false
+    }
+  }
+}

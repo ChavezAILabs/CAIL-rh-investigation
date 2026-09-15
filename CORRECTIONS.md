@@ -3,11 +3,11 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 21 entries · 5 corrected · 2 confirmed against source ·
+**Status:** ACTIVE — 22 entries · 6 corrected · 2 confirmed against source ·
 3 modified by verification · 11 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
-**Last correction applied:** September 9, 2026 (C-018, scope language in
-`README.md`, `lean/README.md`, `ChavezTransform_genuine.lean`)
+**Last correction applied:** September 11, 2026 (C-022, Phase 79 Run D tests and
+refutes the C-001 commensurability-knee conjecture; cross-reference added to C-001)
 
 ---
 
@@ -88,6 +88,7 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-019 | `eigenvalue_zero_mapping` axiom footprint omits `sorryAx` in both READMEs | 4 | Open — **confirmed verbatim** |
 | C-020 | Decorative hypothesis in `Fbase_nondegeneracy`; stale Path B docstring | 2 | Open — **confirmed** |
 | C-021 | Critical-line "characterizations" are definitionally engineered | 3 | Open |
+| C-022 | C-001's commensurability-knee conjecture tested (Phase 79 Run D) and not supported | 2 | **Corrected** |
 
 ---
 
@@ -131,6 +132,21 @@ hypothesized in the July 11 opening handoff.
 **Note:** this correction strengthens rather than weakens the research programme.
 A measured decay law with a candidate mechanism is a better result than an
 unexplained growth claim.
+
+**Tested and not supported, 2026-09-11 (Phase 79 Run D, see C-022).** The
+commensurability mechanism above was tested directly across seven prime
+truncations (p_max = 7..29) plus two control arms. A curve-shape-based measure
+(segmented regression on local AUC) found no p_max-dependence in breakpoint
+location at all — fitted breakpoints cluster within a narrow band regardless of
+p_max, and a flat no-dependence model fits 92× better than the literal prediction.
+A second, model-free measure (first crossing of a fixed AUC threshold) found a
+real p_max-dependence Channel 1 missed, but at a rate 3–4× the prediction across
+its least arbitrary threshold range. See C-022 for the full account, including a
+weight-structure point (C-006 — `w_p = log p/√p` peaks at p=7 and decreases for
+larger p) that was already in this register and made the mechanism's insensitivity
+to p_max past p=7 predictable in advance. The decay itself (this entry's core
+finding) is unaffected; only the candidate mechanism offered to explain it did not
+hold up.
 
 ---
 
@@ -794,6 +810,69 @@ down.
 
 ---
 
+### C-022 — C-001's commensurability-knee conjecture tested (Phase 79 Run D) and not supported
+**Found:** 2026-09-11 · **By:** Claude Sonnet 5 (Claude Code), Phase 79 Run D; reviewed by Claude Desktop · **Severity:** 2 · **Status:** **Corrected**
+**Affects:** C-001 (candidate mechanism); `docs/phases/RH_PHASE_79_RUND_RESULTS.md`; any future citation of the commensurability mechanism as more than untested conjecture
+
+**The claim as published (C-001):** "Candidate mechanism, offered as conjecture and
+not yet tested: the six-prime detector's finest oscillation has period
+2π/log 13 ≈ 2.45 ... zeros pack tighter than the truncation can resolve." Setting the
+detector's finest period equal to the mean zero-gap period gives a specific,
+testable prediction: a detector truncated at prime p_max should lose resolution at
+height γ ≈ 2π·p_max.
+
+**Why it is not supported.** Phase 79 Run D tested this directly across seven prime
+truncations (p_max = 7, 11, 13, 17, 19, 23, 29) and two control arms, two
+independent ways:
+
+1. **Curve-shape-based (segmented regression on local ROC AUC):** fitted
+   breakpoints cluster within 132.8–156.0 regardless of p_max, against a predicted
+   range of 43.98–182.21 (4×). A flat, no-p_max-dependence model fits the seven
+   points 92× better (RSS 289 vs. 26,697) than the literal prediction; the
+   freely-fit slope is small and negative (−0.41), not the predicted +6.28 (2π).
+   Both control arms move in ways inconsistent with the mechanism (a term-count
+   control predicted not to move, moved by 46.3; a non-prime-frequency control
+   predicted to move, did not move at all).
+2. **Model-free (first sustained crossing of a fixed AUC threshold, independent of
+   any curve-fitting model):** a real, high-R² (0.68–0.92) positive relationship
+   between reach and p_max, contradicting measurement 1 — but at a rate that is
+   not stable to the choice of fixed threshold, ranging over a 15× span (3.3 to
+   50.1) across ten thresholds tested, and 3–4× the predicted rate across the
+   range where all seven arms are measurable without censoring.
+
+Neither measurement supports the literal, one-parameter prediction. The two
+measurements additionally disagree with each other on the more basic question of
+whether reach depends on p_max at all — recorded as an open question for Phase 80,
+not resolved here.
+
+**A weight-structure tension was already recorded in this same register before the
+test was designed.** C-006 (filed 2026-09-08, three entries before C-001) established
+that `w_p = log(p)/√p` peaks at p = 7 and *decreases* monotonically for larger p.
+Commensurability reasons from a detector's *highest* frequency; C-006 already showed
+the detector's aggregate *behavior* is dominated by its *heaviest* terms, and past
+p=7 those are different quantities. Every arm past the six-prime baseline adds a
+term smaller than the {2,3,5,7} core already present, so the seven arms' AUC curves
+were always going to be strongly correlated (measured r = 0.56–0.96) rather than
+separable by curve shape — a fact derivable from C-006 alone, before any data was
+collected for this run. Neither C-001 (which proposed the mechanism) nor the Run D
+design (which built the test) drew that connection in advance.
+
+**What is true instead:** the per-zero detector decay C-001 identified is unaffected
+by this entry — it remains a real, confirmed, independently-reconfirmed finding. Only
+the specific commensurability mechanism offered to explain it is not supported by
+either of the two ways Run D tested it. A vertical-shift explanation for the
+model-free channel's positive (if rate-unstable) finding is offered as a plausible,
+untested interpretation in the Run D writeup, tying it to C-011's finding that added
+primes lift AUC by a roughly constant amount across scale — not yet verified
+quantitatively.
+
+**Corrected:** 2026-09-11, by adding a cross-reference from C-001 to this entry (see
+C-001's own text above) and by this entry's existence. Full account, including the
+threshold-sensitivity sweep, per-arm data, and the two control arms' results, in
+`docs/phases/RH_PHASE_79_RUND_RESULTS.md`.
+
+---
+
 ## Recurring Failure Mode: Vacuity
 
 Four entries in this register — C-002, C-016, C-017, C-021 — are the same class of
@@ -921,6 +1000,7 @@ held up.
 | 2026-09-09 | C-002 closed as **Corrected** — the recommended restatement applied to `README.md` (Principal Result, Phase 74 milestone row) and `lean/README.md` (Phase 75 section), with Route 2 identified explicitly as Route 1's forward projection rather than a third mechanism. C-018, C-021 remain Open at this point — pending Paul's decision on framing, per standing instruction not to reframe them unilaterally. |
 | 2026-09-09 | C-017 closed as **Corrected**, on Paul's explicit request — `chavez_transform_convergence` replaced by `chavez_transform_integrable` in `lean/ChavezTransform_genuine.lean`, proving the entry's own named target. Standard axioms, no sorryAx; three hypotheses confirmed load-bearing by deletion, `h_bounded` dropped as confirmed unnecessary (see this entry's own Corrected block for the nuance — the register's original prediction about which hypotheses would do the work was half right). This is a technical correctness fix, not a framing decision, so it did not need the same hold C-018/C-021 are under. Reproducibility record in `verification/2026-09-09/`. |
 | 2026-09-09 | C-018 closed as **Corrected (documentation only)**, on Paul's explicit choice of that path over extending the proof. `README.md` Overview, `lean/README.md` §Chavez Transform, and `ChavezTransform_genuine.lean`'s header now state directly that only the scalar-channel restriction is verified and the zero-divisor structure is not exercised. The Follow-on (a genuine multi-dimensional formalization) remains open and unattempted — this correction fixes the claim/proof mismatch, not the underlying gap. Only C-021 remains Open among the four original framing entries. |
+| 2026-09-11 | C-022 opened and closed same day as **Corrected**: Phase 79 Run D tested C-001's commensurability-knee conjecture across seven prime truncations plus two controls; not supported by either a curve-shape-based measure (no p_max-dependence) or a model-free threshold-crossing measure (real p_max-dependence, but at 3–4× the predicted rate, not stable to threshold choice). Includes a weight-structure point: C-006 already implied the mechanism's insensitivity to p_max past p=7, before the test was designed. Cross-reference added to C-001. Prompted by Claude Desktop's review of the Run D writeup, which also requested the model-free measure (§5 of the results doc) and the explicit tie to C-011 — both of which changed the substantive conclusion, not just its presentation. |
 
 ---
 
