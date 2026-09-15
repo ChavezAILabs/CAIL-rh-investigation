@@ -38,11 +38,12 @@ Their formal co-extensiveness — that all three describe the same set — is th
 
 ## Build Status — Phase 77 (June 17, 2026; re-verified from a cold build September 8, 2026)
 
-Phase 78 was an empirical-only phase (§Phase History below) — no `.lean` file in the
-canonical stack was modified, so this build status is unchanged since Phase 77.
-It was independently reproduced from a fresh Mathlib cache on 2026-09-08 as part
-of that phase's verification batch, after the local build environment behind the
-June figures had been lost from the machine (see `verification/2026-09-08/`).
+Phases 78 and 79 were both empirical/documentation-only (§Phase History below) —
+no `.lean` file in the canonical stack was modified in either, so this build
+status is unchanged since Phase 77. It was independently reproduced from a fresh
+Mathlib cache on 2026-09-08 as part of Phase 78's verification batch, after the
+local build environment behind the June figures had been lost from the machine
+(see `verification/2026-09-08/`).
 
 ```
 lake build → 8,061 jobs · 0 errors · 1 sorry (by design)
