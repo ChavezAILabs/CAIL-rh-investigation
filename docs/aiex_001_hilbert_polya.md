@@ -26,7 +26,7 @@ A free-ranging night session on prime numbers, the Montgomery-Dyson coincidence,
 
 **The undiscovered Hilbert-Pólya operator may have a natural representation in sedenion space.**
 
-The bilateral annihilation structure of the Canonical Six — formally verified in Lean 4, E8-connected, framework-independent across Cayley-Dickson and Clifford algebras — may be the algebraic skeleton of the quantum system whose eigenvalues are the Riemann zeros.
+The bilateral annihilation structure of the Canonical Six — formally verified in Lean 4 (Cayley-Dickson framework), E8-connected, with the P·Q = 0 annihilation framework-independent across Cayley-Dickson and Clifford algebras (full bilaterality holds in Clifford only for pattern 59/S2 — see `CORRECTIONS_CANONICALSIX.md` C-001) — may be the algebraic skeleton of the quantum system whose eigenvalues are the Riemann zeros.
 
 ---
 

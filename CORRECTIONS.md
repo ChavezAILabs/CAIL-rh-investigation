@@ -3,11 +3,22 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 22 entries · 6 corrected · 2 confirmed against source ·
-3 modified by verification · 11 open
+**Status:** ACTIVE — 22 entries · 11 corrected · 1 confirmed against source ·
+3 modified by verification · 7 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
-**Last correction applied:** September 11, 2026 (C-022, Phase 79 Run D tests and
-refutes the C-001 commensurability-knee conjecture; cross-reference added to C-001)
+**Last correction applied:** September 14, 2026 (status bookkeeping fix: C-003,
+C-004, C-005, C-015, C-019 were propagated into README.md/`lean/README.md` the
+same day they were found, September 8, but their Status fields were never
+updated to reflect it — found during a README/`lean/README.md` accuracy review
+and corrected to **Corrected**). Substantive correction before that: September
+11, 2026 (C-022, Phase 79 Run D tests and refutes the C-001
+commensurability-knee conjecture; cross-reference added to C-001).
+**Scope note (2026-09-15):** a separate correction to the Canonical Six paper's
+"bilateral in both frameworks" claim, found the same week, now lives in its own
+register — [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001 —
+because that claim belongs to the Canonical Six companion paper (Zenodo DOI
+10.5281/zenodo.17402495), not to this RH investigation. It does not appear as an
+entry here.
 
 ---
 
@@ -69,9 +80,9 @@ appears; a provenance chain that cannot be traced to an artifact.
 |---|---|---|---|
 | C-001 | Sub-√N growth misread as signal strengthening | 3 | Open |
 | C-002 | "Three independent characterizations" — routes 1 and 2 are not independent | 4 | **Corrected** |
-| C-003 | `riemann_critical_line` axiom count stated as one; it is two | 2 | Open |
-| C-004 | Retracted Q-2 / Q-4 results still published as CLOSED | 4 | Open |
-| C-005 | B/A → 4.0 hypothesis superseded by √17, not withdrawn | 2 | Open |
+| C-003 | `riemann_critical_line` axiom count stated as one; it is two | 2 | **Corrected** |
+| C-004 | Retracted Q-2 / Q-4 results still published as CLOSED | 4 | **Corrected** |
+| C-005 | B/A → 4.0 hypothesis superseded by √17, not withdrawn | 2 | **Corrected** |
 | C-006 | Explicit-formula weight table wrong for p = 5, 7, 11, 13 | 2 | Open |
 | C-007 | Monte-Carlo p-value floor reported as significance | 4 | Open — **partly verified** |
 | C-008 | z = 8.42 quoted as a fixed constant | 3 | **Modified** |
@@ -81,11 +92,11 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-012 | Phase 77 baseline artifact provenance broken | 3 | **Modified — central claim refuted** |
 | C-013 | Handoff slot assignment {4,7} — index 7 is in no gateway support | 2 | **Corrected** |
 | C-014 | `(z_g/Σz)²` weighting formula discards sign and does not normalize | 2 | Open |
-| C-015 | Repository tree omits four `.lean` files, including axiom-bearing ones | 1 | Open |
+| C-015 | Repository tree omits four `.lean` files, including axiom-bearing ones | 1 | **Corrected** |
 | C-016 | `CD4_mul` defined as the zero function — all Chavez Transform theorems vacuous | 4 | **Corrected** |
 | C-017 | `chavez_transform_convergence` is vacuous in the replacement file | 4 | **Corrected** |
 | C-018 | Chavez Transform verification scope overstated — 1D scalar channel only | 4 | **Corrected (docs only)** |
-| C-019 | `eigenvalue_zero_mapping` axiom footprint omits `sorryAx` in both READMEs | 4 | Open — **confirmed verbatim** |
+| C-019 | `eigenvalue_zero_mapping` axiom footprint omits `sorryAx` in both READMEs | 4 | **Corrected** |
 | C-020 | Decorative hypothesis in `Fbase_nondegeneracy`; stale Path B docstring | 2 | Open — **confirmed** |
 | C-021 | Critical-line "characterizations" are definitionally engineered | 3 | Open |
 | C-022 | C-001's commensurability-knee conjecture tested (Phase 79 Run D) and not supported | 2 | **Corrected** |
@@ -205,7 +216,7 @@ consistent with how this register treats history elsewhere (see C-016).
 ---
 
 ### C-003 — `riemann_critical_line` axiom count stated as one; it is two
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 2 · **Status:** Open
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 2 · **Status:** **Corrected**
 **Affects:** `lean/README.md`, Phase 75 section and Conditional Proof Structure section
 
 **The claim as published:** "`riemann_critical_line` appears in exactly **one**
@@ -223,10 +234,18 @@ own Conditional Proof Structure section then says "one named theorem
 strongest structural property of the stack; the count was simply stated wrong in
 one of two places.
 
+**Corrected:** 2026-09-08, in `lean/README.md`'s Phase 75 section ("Axiom
+localization: `riemann_critical_line` appears in exactly **two** theorems...
+corrected from a previous 'exactly one' claim, see C-003") and Conditional Proof
+Structure section (same count, same cross-reference), both in commit `acaaf3e1`.
+**Status correction (2026-09-14):** the propagation was already applied same-day
+as the finding; this entry's own Status field was simply never updated to reflect
+it — found and fixed during a README/`lean/README.md` accuracy review.
+
 ---
 
 ### C-004 — Retracted Q-2 / Q-4 results still published as CLOSED
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** Open
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** **Corrected**
 **Affects:** `README.md` Phase 75 row; `lean/README.md` Phase 75 section
 
 **The claim as published:** "CAILculator Q-2 CLOSED: |M(σ)|² − |M(1−σ)|² = 0
@@ -250,10 +269,19 @@ The time-reversal-symmetric quantity is the sedenion norm ‖F(+t)‖ = ‖F(−
 bilateral difference is driven by c_g time-reversal asymmetry:
 |M(+t)|² − |M(−t)|² = 16·a_g·b_g.
 
+**Corrected:** 2026-09-08, commit `acaaf3e1`. Both `README.md` and
+`lean/README.md`'s Phase 75 sections now strike through the retracted Q-2/Q-4
+"CLOSED" claims and replace them with "Retracted (Phase 77 Run B): per-gateway
+bilateral magnitude equality does not hold... See `CORRECTIONS.md` C-004." The
+"established the precise structural boundaries of bilateral symmetry" consolidation
+phrasing this entry flagged no longer appears anywhere in the corpus (checked
+2026-09-14). **Status correction (2026-09-14):** same-day propagation, Status field
+never updated — same pattern as C-003.
+
 ---
 
 ### C-005 — B/A → 4.0 hypothesis superseded by √17, not withdrawn
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 2 · **Status:** Open
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 2 · **Status:** **Corrected**
 **Affects:** `lean/README.md` Phase 74 section
 
 **The claim as published:** "Q-8 DEVELOPING: B/A magnitude ratio local minima
@@ -266,6 +294,14 @@ The 4.0 hypothesis is superseded.
 **What is true instead:** √17 is the exact architectural constant. The observed
 values were approaching it from below and were misread as approaching 4.0.
 `README.md` carries this correctly; `lean/README.md` does not.
+
+**Corrected:** 2026-09-08, commit `acaaf3e1`. `lean/README.md`'s Phase 74 section
+now strikes through the "tightening toward 4.0" line and replaces it with
+"Superseded (Phase 77): `ba_asymptote_sq` proves B/A² → 17, so B/A → √17 =
+4.1231…... not the 4.0 the observed values appeared to be approaching. See
+`CORRECTIONS.md` C-005." **Status correction (2026-09-14):** the "does not" in
+this entry's own "What is true instead" line was accurate when filed and stale by
+the time it was read — same-day propagation, Status field never updated.
 
 ---
 
@@ -535,7 +571,7 @@ cited. The handoff document must be corrected before it is reused.
 ---
 
 ### C-015 — Repository tree omits four `.lean` files, including axiom-bearing ones
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 1 · **Status:** Open
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 1 · **Status:** **Corrected**
 **Affects:** `README.md` Repository Structure; `README.md` Gateway Linear Law section
 
 **The claim as published:** The Repository Structure tree lists 13 `.lean` files
@@ -549,6 +585,15 @@ from the tree concludes the axiom-bearing files do not exist.
 Also in the same document: "Three theorems in `GatewayLinearLaw.lean` follow:" is
 immediately followed by four bullets. The prose count was not updated when
 `ba_asymptote_sq` was added in Phase 77.
+
+**Corrected:** 2026-09-08, commit `acaaf3e1`. `README.md`'s Repository Structure
+tree now lists all four files, and the Gateway Linear Law section reads "Four
+theorems in `GatewayLinearLaw.lean` follow:" above four bullets. The same fix was
+also applied to `lean/README.md`'s File Directory table (`GatewayLinearLaw.lean`
+row, annotated "Previously absent from this table, see C-015") even though that
+file wasn't named in this entry's own Affects field — thorough propagation, not
+partial. **Status correction (2026-09-14):** same-day propagation, Status field
+never updated.
 
 ---
 
@@ -712,7 +757,7 @@ documentation pass.
 ---
 
 ### C-019 — `eigenvalue_zero_mapping` axiom footprint omits `sorryAx`
-**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** Open — **confirmed verbatim 2026-09-08**
+**Found:** 2026-09-08 · **By:** Claude (Opus 5) · **Severity:** 4 · **Status:** **Corrected**
 **Affects:** `lean/README.md` Complete Axiom Footprint Table; `README.md` Build Status and Formal Proof Stack table
 
 **The claim as published:** Both READMEs give `eigenvalue_zero_mapping` the
@@ -738,6 +783,17 @@ downstream theorems inherit it — `eigenvalue_zero_mapping` at minimum.
 **Note:** `riemann_critical_line` localization is *narrower* than published, not
 wider — it does not appear in `spectral_implies_zeta_zero` at all. The axiom
 discipline holds; the sorry propagation is what went unrecorded.
+
+**Corrected:** 2026-09-08, commit `acaaf3e1`. `README.md`'s Build Status section
+now states the `sorryAx`-inclusive footprint explicitly and names
+`eigenvalue_zero_mapping` as not a proved biconditional. `lean/README.md`'s
+Complete Axiom Footprint Table row for `eigenvalue_zero_mapping` carries the full
+footprint with a "carries `sorryAx`, see C-019" annotation, and the section gained
+a full "Sorry inheritance" block reproducing the `axiom_check_c019.lean` output
+verbatim with the same explanation. **Status correction (2026-09-14):** "confirmed
+verbatim" described the finding being verified, not the fix being applied — the
+fix was in fact applied the same day; the Status field described only half of
+what had happened.
 
 ---
 
@@ -871,6 +927,13 @@ C-001's own text above) and by this entry's existence. Full account, including t
 threshold-sensitivity sweep, per-arm data, and the two control arms' results, in
 `docs/phases/RH_PHASE_79_RUND_RESULTS.md`.
 
+**A separate correction found the same week — the Canonical Six paper's "bilateral
+in both frameworks" claim — was drafted against this slot before Run D's own C-022
+existed on a divergent branch. On merge, it moved to its own register,
+[`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001, since that
+claim belongs to the Canonical Six companion paper (a different DOI), not to this
+RH investigation. See that file for the full entry.**
+
 ---
 
 ## Recurring Failure Mode: Vacuity
@@ -938,6 +1001,50 @@ already told you the answer.
 
 ---
 
+## Third Failure Mode: Claimed-But-Absent
+
+`RH_PAPER_DRAFT_20260823.md` (2026-08-23) claimed, in its abstract, §2.4, and
+Appendix A.1, that `detector_channel_identity` is formally verified in Lean 4,
+standard axioms, zero sorry — and in Appendix A.3 that
+`extended_detector_channel_identity` is too, directly under a heading reading
+"Proof Sketch." A full-repo grep of every `.lean` file in this repository on
+2026-09-14 found zero matches for either theorem name. Neither was ever built.
+`CLAUDE.md`'s own out-of-scope list independently confirms `detector_channel_identity`
+was left undecided in Phase 78 §6. The draft was never committed to this
+repository — `git log --all` shows no commit ever touched it — so no correction is
+owed and no numbered entry is filed here; it is recorded in this section because
+the failure mode it demonstrates is new and worth naming, not because the document
+itself needs correcting.
+
+**This is not the vacuity pattern above.** Vacuity presupposes the theorem exists
+and asks whether it means anything; `#print axioms` and the hypothesis-deletion
+audit both operate on a real proof term. This is prior to that question: does the
+named theorem exist at all. Neither check can see it, because there is nothing for
+either check to run against.
+
+**The likely mechanism is drift, not fabrication — worth being precise about,
+because the two call for different fixes.** `detector_channel_identity` and its
+extension were live candidates in the July 11, 2026 opening handoff. A paper draft
+written in August described the intended proof stack in the tense appropriate to
+a finished paper. The gap between "planned" and "verified" closed in the prose
+without ever closing in the repository. This is the same shape as C-013 (a slot
+assignment true of an earlier design, restated as true of the implementation) and
+the pre-correction Canonical Six bilateral language
+([`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001 — a claim
+true of one framework, restated as true of both) — a description of the plan or
+of one part of the system, carried forward as a description of the finished
+artifact or the whole of it, with nothing in between checking that the
+restatement still held.
+
+**Added to the standing check:** before a document asserts that a named theorem,
+lemma, or proof is formally verified, `grep` that exact name across every `.lean`
+file in the stack and confirm it resolves. Presence in a handoff, roadmap, or draft
+is not evidence of presence in the stack. This check is cheap — it is a name
+lookup, not a proof audit — and it is the one that would have caught this in
+August, three weeks before it was run.
+
+---
+
 ## Verified Sound
 
 Recorded so the register reflects the state of the work rather than only its
@@ -1001,6 +1108,10 @@ held up.
 | 2026-09-09 | C-017 closed as **Corrected**, on Paul's explicit request — `chavez_transform_convergence` replaced by `chavez_transform_integrable` in `lean/ChavezTransform_genuine.lean`, proving the entry's own named target. Standard axioms, no sorryAx; three hypotheses confirmed load-bearing by deletion, `h_bounded` dropped as confirmed unnecessary (see this entry's own Corrected block for the nuance — the register's original prediction about which hypotheses would do the work was half right). This is a technical correctness fix, not a framing decision, so it did not need the same hold C-018/C-021 are under. Reproducibility record in `verification/2026-09-09/`. |
 | 2026-09-09 | C-018 closed as **Corrected (documentation only)**, on Paul's explicit choice of that path over extending the proof. `README.md` Overview, `lean/README.md` §Chavez Transform, and `ChavezTransform_genuine.lean`'s header now state directly that only the scalar-channel restriction is verified and the zero-divisor structure is not exercised. The Follow-on (a genuine multi-dimensional formalization) remains open and unattempted — this correction fixes the claim/proof mismatch, not the underlying gap. Only C-021 remains Open among the four original framing entries. |
 | 2026-09-11 | C-022 opened and closed same day as **Corrected**: Phase 79 Run D tested C-001's commensurability-knee conjecture across seven prime truncations plus two controls; not supported by either a curve-shape-based measure (no p_max-dependence) or a model-free threshold-crossing measure (real p_max-dependence, but at 3–4× the predicted rate, not stable to threshold choice). Includes a weight-structure point: C-006 already implied the mechanism's insensitivity to p_max past p=7, before the test was designed. Cross-reference added to C-001. Prompted by Claude Desktop's review of the Run D writeup, which also requested the model-free measure (§5 of the results doc) and the explicit tie to C-011 — both of which changed the substantive conclusion, not just its presentation. |
+| 2026-09-14 | A Canonical Six correction ("bilateral in both Cayley-Dickson and Clifford frameworks" overstates the six patterns — only pattern 59/S2 is Clifford-bilateral) was drafted against this register's next open slot, then moved to its own register, [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001, on 2026-09-15 — the claim belongs to the Canonical Six companion paper (a different DOI), not to this RH investigation, and Phase 79 Run D had already taken the C-022 slot here independently the same week. Full entry, including the same-day generalization test (grade-homogeneity ⟹ bilaterality, tested and confirmed beyond the six-pattern census), now lives there. |
+| 2026-09-14 | Third Failure Mode section added: **Claimed-But-Absent** — a document asserting a named theorem is formally verified when it was never built, invisible to both `#print axioms` and the hypothesis-deletion audit because there is no proof term for either to examine. Motivated by `RH_PAPER_DRAFT_20260823.md` (never committed to this repository, so no numbered entry filed), which claimed `detector_channel_identity` and `extended_detector_channel_identity` were formally verified; a full-repo grep found zero matches for either name. Read as drift (plan-tense claims from the July 11 handoff never reconciled against the repository as it actually stood in August), not fabrication — the same shape as C-013 and the Canonical Six bilateral correction above. Standing check gains a name-lookup step: grep every claimed theorem name across `lean/` before a document asserts it is verified. |
+| 2026-09-14 | **Status bookkeeping fix, five entries.** A `README.md`/`lean/README.md` accuracy review found that commit `acaaf3e1` (2026-09-08, same day as the six-task verification batch) had already propagated C-003, C-004, C-005, C-015, and C-019 into both README files — but each entry's own Status field still read Open (or "confirmed verbatim" for C-019) months — actually hours — after the fix landed. All five closed as **Corrected**, each with a `Corrected:` block naming the commit and the exact text now in place. This is the register auditing itself the way it asks the corpus to be audited — the fixes were real and complete; only the record of them was stale. |
+| 2026-09-15 | Merged `phase-79-runD` and `corrections-c023-canonical-six-bilateral` into `main`. The Canonical Six bilateral correction moved out to `CORRECTIONS_CANONICALSIX.md` C-001 as part of the merge (see the 2026-09-14 log line above and that file's own Log), resolving what would otherwise have been a C-022 numbering collision between the two branches without renumbering anything in either register. Header counts recomputed for the final merged state: 11 corrected, 1 confirmed against source, 3 modified, 7 open, 22 entries. |
 
 ---
 

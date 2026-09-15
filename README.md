@@ -4,7 +4,7 @@
 
 A formal Lean 4 investigation of the Riemann Hypothesis using 16-dimensional sedenion algebra, the Chavez Transform, and the Zero Divisor Transmission Protocol (ZDTP). Conducted as an open science project.
 
-**⚠ See [`CORRECTIONS.md`](CORRECTIONS.md) — a permanent, public, append-only record of every error found in this investigation. Read it before citing any claim below.**
+**⚠ See [`CORRECTIONS.md`](CORRECTIONS.md) — a permanent, public, append-only record of every error found in this investigation. Read it before citing any claim below.** The Canonical Six companion paper has its own register, [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md), since it is a separately published work with its own DOI.
 
 ---
 
@@ -61,7 +61,7 @@ The one intentional sorry, `spectral_implies_zeta_zero`, is structurally necessa
 
 > ⚠ **Correction pending** — see [`CORRECTIONS.md`](CORRECTIONS.md) C-021.
 
-This repository contains all data, analysis scripts, results, and formal proofs from a 77-phase empirical and algebraic investigation of the nontrivial zeros of the Riemann zeta function.
+This repository contains all data, analysis scripts, results, and formal proofs from a 79-phase empirical and algebraic investigation of the nontrivial zeros of the Riemann zeta function.
 
 The investigation is grounded in two novel instruments:
 
@@ -69,7 +69,7 @@ The investigation is grounded in two novel instruments:
 
 **ZDTP (Zero Divisor Transmission Protocol)** — Lossless dimensional transmission (16D → 32D → 64D) with analysis at six canonical gateway positions. In Phase 76, every gateway output was shown to be an exact closed-form inner product: c_g(x) = −2⟪x, u_g⟫. The protocol transformed from an empirical oracle into a proved formula.
 
-The algebraic foundation is the **Canonical Six** — six framework-independent bilateral zero divisor patterns in 16D sedenion space, verified across both Cayley-Dickson and Clifford algebras from 16D through 256D, published on Zenodo (DOI [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)).
+The algebraic foundation is the **Canonical Six** — six framework-independent zero divisor patterns in 16D sedenion space (P·Q = 0 verified across both Cayley-Dickson and Clifford algebras from 16D through 256D), published on Zenodo (DOI [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)). All six are bilateral (P·Q = 0 **and** Q·P = 0) in Cayley-Dickson; in Clifford, only pattern 59 (S2) is — see [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001.
 
 ---
 
@@ -77,8 +77,8 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 ### The Canonical Six
 
-Six bilateral zero divisor patterns in 16D sedenion space that are:
-- **Framework-independent:** verified under both Cayley-Dickson and Clifford algebra conventions
+Six bilateral zero divisor patterns in 16D sedenion space (bilateral in Cayley-Dickson; in Clifford, bilaterality holds only for pattern 59/S2 — see `CORRECTIONS_CANONICALSIX.md` C-001) that are:
+- **Framework-independent:** the P·Q = 0 annihilation property is verified under both Cayley-Dickson and Clifford algebra conventions
 - **Dimension-stable:** persist under all doublings 16D → 32D → 64D → 128D → 256D (Block Replication Theorem)
 - **Geometrically grounded:** all 48 bilateral pairs embed as E8 first-shell roots (Phase 18D); their span is a 6-dimensional subspace that is a single Weyl orbit
 
@@ -230,6 +230,14 @@ Phase 78 was empirical-only — no Lean file was touched — and split into two 
 
 Branch `phase-78-q18`, commits `4af1fa7`, `acaaf3e`, `44b3aca`, fast-forward merged to `main` September 8–9, 2026.
 
+### Phase 79 — Run D: Commensurability Knee Sweep (September 2026)
+
+Phase 79 tested the C-001 candidate mechanism directly: a detector truncated at prime p_max should lose resolution at height γ ≈ 2π·p_max. Two independent measurements, both reported in full: a curve-shape-based measure (segmented regression on local AUC) found no p_max-dependence at all — fitted breakpoints cluster within a narrow band regardless of p_max, and a flat no-dependence model fits the data 92× better than the literal prediction. A model-free measure (first sustained crossing of a fixed AUC threshold) found a real, positive reach-vs-p_max relationship the first measure missed entirely (R² = 0.68–0.92) — but at a rate not stable to the choice of threshold, and 3–4× the predicted rate across the least arbitrary part of that range. **Neither measurement supports the literal prediction.** A control-arm follow-up caught on review found the model-free measure is also fragile: a single light-slot frequency substitution nearly halves its reach value, in the wrong direction from the prediction, in the exact channel that showed the clearest positive relationship — a stronger piece of counter-evidence than the first measurement alone, and evidence both measures share a version of the same shared-candidate-clustering degeneracy. Full account: [`docs/phases/RH_PHASE_79_RUND_RESULTS.md`](docs/phases/RH_PHASE_79_RUND_RESULTS.md); register entry [`CORRECTIONS.md`](CORRECTIONS.md) C-022.
+
+**A separate correction, the same week:** the Canonical Six companion paper's "bilateral in both frameworks" claim was found to overstate five of the six patterns — only pattern 59 (S2) is a genuine two-sided zero divisor under the Clifford framework; the published Zenodo v1.3 PDF itself made no such overclaim and needs no correction. Independently re-derived from scratch and extended to a general (sufficiency-only) theorem beyond the six-pattern census. This correction belongs to the Canonical Six paper, not to this RH investigation, and now has its own register: [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001.
+
+Branches `phase-79-runD` and `corrections-c023-canonical-six-bilateral`, merged to `main` September 15, 2026; not yet pushed to GitHub pending Paul's review (see [`CORRECTIONS.md`](CORRECTIONS.md) Third Failure Mode section for a related standing-check addition made the same week).
+
 ---
 
 ## Milestones
@@ -248,6 +256,7 @@ Branch `phase-78-q18`, commits `4af1fa7`, `acaaf3e`, `44b3aca`, fast-forward mer
 | Gateway Linear Law — oracle becomes proved formula | 76 | Jun 10, 2026 |
 | `ba_asymptote_sq` proved; two disjoint channels confirmed live to 10⁻¹⁵ | 77 | Jun 17, 2026 |
 | k=1→k=2 detector extension (z 8.42→9.84, rank-confirmed); Corrections Register opened | 78 | Sep 8, 2026 |
+| Commensurability prediction tested and not supported by either measure; Canonical Six bilateral overclaim corrected, own register opened | 79 | Sep 15, 2026 |
 
 ---
 
@@ -312,4 +321,4 @@ Lean 4 files co-authored with Aristotle ([Harmonic Math](https://harmonic.fun/))
 
 *Zenodo: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)*  
 *GitHub: [ChavezAILabs](https://github.com/ChavezAILabs)*  
-*Last updated: September 9, 2026 — Phase 78 complete; Corrections Register opened.*
+*Last updated: September 15, 2026 — Phase 79 complete; Canonical Six corrections register opened.*
