@@ -5,6 +5,39 @@ This directory contains the formal proof stack for the **Riemann Hypothesis Inve
 
 ---
 
+## ⚙️ The Phase 76–77 "Gateway Linear Law" Milestone (June 10–17, 2026)
+
+Phase 76 derived the exact closed-form description of every ZDTP gateway output as a proved sedenion inner product — the protocol stopped being an empirical oracle and became a formula. Phase 77 closed the instrument characterization, proving the B/A magnitude ratio converges to √17 exactly as a machine-verified limit theorem, superseding an earlier "tightening toward 4.0" reading (see [`CORRECTIONS.md`](../CORRECTIONS.md) C-005).
+
+```
+lake build → 8,061 jobs · 0 errors · 1 sorry (by design)  (Phase 76: verified 2026-06-11, commit e1f170e; Phase 77: commit d1af3a3)
+
+#print axioms gateway_pairing_iff
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+
+#print axioms gateway_magSq_sub
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+
+#print axioms pairing_sigma_independent
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+
+#print axioms ba_asymptote_sq
+→ [propext, Classical.choice, Quot.sound]                    ✅ Standard axioms only
+```
+
+**`GatewayLinearLaw.lean` (17th file) is standalone over Mathlib** — it imports nothing from the rest of the stack and is not in the main import chain. Its local `Sed` alias is `private` specifically to avoid a root-level name collision with `RHForcingArgument.lean`'s own `Sed` when both are imported together, e.g. in `axiom_check.lean` (joint-import-only failure — compiling the module alone does not catch it).
+
+### Key Technical Achievements — Phase 76–77
+- **The Gateway Linear Law:** `c_g(x) = −2⟪x, P_g+Q_g⟫`, `|M_g|² = ‖x‖² + 4(c_g² + 4(2σ)²)` — proved symbolically in exact arithmetic, validated at 0 ULP across 22 independent live CAILculator v2.1.4 readings (including holdout).
+- **`gateway_pairing_iff`:** `|M_g| = |M_h| ↔` a product of two linear functionals vanishes. Q-5 CLOSED (negative): pairing is an encoding-architecture condition, not a Re(s) = ½ characterization.
+- **`gateway_magSq_sub`:** `|M_g|² − |M_h|² = 16⟪x, u_g−u_h⟫⟪x, u_g+u_h⟫`, the exact magnitude-difference identity underlying the pairing criterion.
+- **`pairing_sigma_independent`:** cross-gateway magnitude differences at fixed input are σ-free — proved, then live-confirmed to 10⁻¹⁵ (Phase 77 Run A). This governs *cross-gateway* differences at one input; it does not govern ±t pairs at a single gateway (the theorem misapplication corrected in [`CORRECTIONS.md`](../CORRECTIONS.md) C-004).
+- **`ba_asymptote_sq`:** `Tendsto (fun t => (17t²+K)/(t²+K)) atTop (nhds 17)` for `K ≥ 0` — the B/A → √17 asymptote is a proved limit, not an observed approximation. `hK` (`0 ≤ K`) is load-bearing: deleting it breaks the proof (positivity cannot discharge `t² + K ≠ 0` without it) — confirmed by the hypothesis-deletion audit, no decorative hypotheses in this file's four theorems (see [`CORRECTIONS.md`](../CORRECTIONS.md) C-020).
+- **Signed Gateway Channel (Phase 77):** the lift scalar `c_S2` read directly, without the magnitude law's squaring, is itself a genuine zero detector (z = 4.92, Bonferroni-surviving) — the even-in-`c` magnitude law was erasing a real signal. Detector Encoding (`c_S2 + c_S6`) over the first 101 zeros: z = 8.42 (seed-dependent, ±0.09 — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-008), the honest baseline is radius-dependent (see C-007).
+- **Run B (double-blind, two independent solvers):** refuted per-gateway bilateral magnitude equality (Q-2/Q-4, see C-004) — the time-reversal-symmetric quantity is the sedenion norm `‖F(+t)‖ = ‖F(−t)‖`, not the per-gateway magnitude.
+
+---
+
 ## 🏆 The Phase 75 "Critical Line Convergence" Milestone (May 11, 2026)
 
 Phase 75 formally assembles two independent standard-axiom characterizations of Re(s) = ½, plus a third equivalent formulation, into a single convergence theorem (corrected 2026-09-09 from an earlier "three independent characterizations" claim — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-002). `critical_line_convergence` is the first machine-verified theorem in the CAIL-RH stack joining all three routes — sedenion algebra, spectral theory, and discrete geometry — into one conjunction, all from standard Lean/Mathlib axioms. Route 2 (spectral theory) is not independent of Route 1 (sedenion algebra): `isSpectralPoint s` is *defined* as `sedenion_Hamiltonian s = 0`, so Route 2's theorem is the direct forward projection of Route 1's, one `.mp` away.
@@ -148,12 +181,12 @@ $$|\mathcal{C}[f]| \leq M \cdot \|f\|_1 \qquad M(P, Q, \alpha) = \frac{2(\|P\|^2
 | Metric | Status |
 |---|---|
 | **Lean Version** | v4.28.0 |
-| **Lake Build** | 8,059 jobs · 0 errors · 1 sorry (boundary condition, by design) |
+| **Lake Build** | 8,061 jobs · 0 errors · 1 sorry (boundary condition, by design) — Phase 77, re-verified from a cold build 2026-09-08 |
 | **Non-Standard Axioms** | **1** (`riemann_critical_line`) |
 | **Standard Axioms** | `[propext, Classical.choice, Quot.sound]` |
 | **Verification Platform** | Aristotle (Harmonic Math) + Claude Code |
 
-### Complete Axiom Footprint Table (Phase 75)
+### Complete Axiom Footprint Table
 
 | Theorem | File | Footprint | Status |
 |---|---|---|---|
@@ -174,6 +207,11 @@ $$|\mathcal{C}[f]| \leq M \cdot \|f\|_1 \qquad M(P, Q, \alpha) = \frac{2(\|P\|^2
 | `completedRiemannZeta_real_on_critical_line` | `EulerProductBridge.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
 | `energy_minimum_characterization` | `UnityConstraint.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
 | `chavez_transform_stability` | `ChavezTransform_genuine.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only |
+| `chavez_transform_integrable` | `ChavezTransform_genuine.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · replaces the vacuous `chavez_transform_convergence`, see C-017 |
+| `gateway_pairing_iff` | `GatewayLinearLaw.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · Phase 76 |
+| `gateway_magSq_sub` | `GatewayLinearLaw.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · Phase 76 |
+| `pairing_sigma_independent` | `GatewayLinearLaw.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · Phase 76 |
+| `ba_asymptote_sq` | `GatewayLinearLaw.lean` | `[propext, Classical.choice, Quot.sound]` | ✅ Standard only · Phase 77 |
 
 **Sorry inheritance (C-019, confirmed 2026-09-08 by `lake env lean axiom_check_c019.lean` against a clean 8,061-job build):**
 
@@ -189,6 +227,8 @@ $$|\mathcal{C}[f]| \leq M \cdot \|f\|_1 \qquad M(P, Q, \alpha) = \frac{2(\|P\|^2
 ---
 
 ## 🧬 Core Proof Architecture
+
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](../CORRECTIONS.md) C-021.
 
 The investigation proceeds via **Sedenion Forcing** across four structural pillars:
 
@@ -233,7 +273,7 @@ All proofs are grounded in the **Bilateral Collapse Theorem** (`BilateralCollaps
 | `CriticalLineConvergence.lean` | 75 | `critical_line_convergence` (three-way ∧-assembly); `hamiltonian_gateway_equiv` (cross-route); `spectral_gateway_equiv` |
 | `GatewayLinearLaw.lean` | 76/77 | The Gateway Linear Law; `gateway_pairing_iff`, `gateway_magSq_sub`, `pairing_sigma_independent`, `ba_asymptote_sq`. Standalone over Mathlib — not in the main import chain. Previously absent from this table, see C-015. |
 | `BilateralCollapse.lean` | 18–29 | Bilateral Collapse Theorem; Canonical Six verification |
-| `ChavezTransform_genuine.lean` | pre-phase | Chavez Transform stability constant $M$ |
+| `ChavezTransform_genuine.lean` | pre-phase | `chavez_transform_stability` (sharp constant $M$); `chavez_transform_integrable` (integrability, replaces vacuous `chavez_transform_convergence`, see C-017). Scalar-channel restriction only, see C-018 |
 | `Path4_Isomorphism.lean` | 71 | de Bruijn-Newman / Sedenion Energy isomorphism |
 
 ---
@@ -355,4 +395,4 @@ zeros          Phase 71 ✅    riemann_critical   Mathlib       Mathlib
 *Applied Pathological Mathematics — "Better math, less suffering"*
 *GitHub: [ChavezAILabs](https://github.com/ChavezAILabs)*
 *Zenodo: [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495)*
-*KSJ: 658 captures through AIEX-656 (May 11, 2026)*
+*KSJ: 753 captures through Phase 77 (Phase 78 extraction not yet run; `extract_insights` goes through Claude Desktop, not Claude Code)*
