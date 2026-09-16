@@ -35,7 +35,7 @@ through and cross-referenced here rather than silently rewritten.
 The register exists because this investigation is conducted by a single
 independent researcher working with AI assistance across multiple models and
 sessions, at a volume no one person can re-verify by hand. That method produces
-results faster than traditional review and it produces errors faster too. The only
+results faster than traditional review and it produces errors faster, too. The only
 defensible response is to find them, publish them, and keep the count visible.
 
 **Placement:** repository root, `CORRECTIONS.md`, linked from the top of
