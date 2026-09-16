@@ -39,7 +39,7 @@ results faster than traditional review and it produces errors faster too. The on
 defensible response is to find them, publish them, and keep the count visible.
 
 **Placement:** repository root, `CORRECTIONS.md`, linked from the top of
-`README.md` and from every Zenodo record's description.
+`README.md`.
 
 ---
 
