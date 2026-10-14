@@ -80,7 +80,7 @@ The algebraic foundation is the **Canonical Six** — six framework-independent 
 
 Six bilateral zero divisor patterns in 16D sedenion space (bilateral in Cayley-Dickson; in Clifford, bilaterality holds only for pattern 59/S2 — see `CORRECTIONS_CANONICALSIX.md` C-001) that are:
 - **Framework-independent:** the P·Q = 0 annihilation property is verified under both Cayley-Dickson and Clifford algebra conventions
-- **Dimension-stable:** persist under all doublings 16D → 32D → 64D → 128D → 256D (Block Replication Theorem)
+- **Dimension-stable:** persist under all doublings 16D → 32D → 64D → 128D → 256D (Block Replication Theorem) — correction pending: persistence under doubling holds for every sedenion zero divisor, see [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-002
 - **Geometrically grounded:** all 48 bilateral pairs embed as E8 first-shell roots (Phase 18D); their span is a 6-dimensional subspace that is a single Weyl orbit
 
 The Bilateral Collapse Theorem (Phase 18B), proved in Lean 4 with zero sorry stubs, characterizes the algebraic identity underlying bilateral annihilation:
@@ -125,6 +125,8 @@ Four theorems in `GatewayLinearLaw.lean` follow:
 ---
 
 ## Formal Proof Stack
+
+> ⚠ **Correction pending** — see [`CORRECTIONS.md`](CORRECTIONS.md) C-024: `RHForcingArgument.lean` and `BilateralCollapse.lean` contain `native_decide` theorems, so "Standard only" doesn't hold for every theorem in them.
 
 17 Lean 4 files. `lake build` at Phase 77: **8,061 jobs · 0 errors · 1 intentional sorry.**
 

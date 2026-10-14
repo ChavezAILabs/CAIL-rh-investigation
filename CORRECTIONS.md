@@ -3,8 +3,8 @@
 **Chavez AI Labs LLC — Applied Pathological Mathematics**
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 22 entries · 11 corrected · 1 confirmed against source ·
-3 modified by verification · 7 open
+**Status:** ACTIVE — 25 entries · 11 corrected · 1 confirmed against source ·
+3 modified by verification · 10 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
 **Last correction applied:** September 14, 2026 (status bookkeeping fix: C-003,
 C-004, C-005, C-015, C-019 were propagated into README.md/`lean/README.md` the
@@ -19,6 +19,9 @@ register — [`CORRECTIONS_CANONICALSIX.md`](CORRECTIONS_CANONICALSIX.md) C-001 
 because that claim belongs to the Canonical Six companion paper (Zenodo DOI
 10.5281/zenodo.17402495), not to this RH investigation. It does not appear as an
 entry here.
+**Entries added 2026-10-13:** C-023 (EXP-08 modeled data), C-024 (`native_decide`
+footprint labels), C-025 (S3B = S4 pairing); all Open. Fourth Failure Mode section
+added (Modeled-as-Measured).
 
 ---
 
@@ -111,6 +114,9 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-020 | Decorative hypothesis in `Fbase_nondegeneracy`; stale Path B docstring | 2 | Open — **confirmed** |
 | C-021 | Critical-line "characterizations" are definitionally engineered | 3 | Open |
 | C-022 | C-001's commensurability-knee conjecture tested (Phase 79 Run D) and not supported | 2 | **Corrected** |
+| C-023 | EXP-08's 600 "transmissions" are 2 measurements and 598 model outputs; its correlation is built in | 4 | Open |
+| C-024 | "Standard axioms only" labels on files that contain `native_decide` theorems | 2 | Open |
+| C-025 | The "S3B = S4 universal pairing" is a property of the encoding; earlier documents never annotated | 2 | Open |
 
 ---
 
@@ -947,6 +953,156 @@ RH investigation. See that file for the full entry.**
 
 ---
 
+### C-023 — EXP-08's 600 "transmissions" are 2 measurements and 598 model outputs; its correlation is built in
+**Found:** 2026-10-13 · **By:** Claude Code (Study 4 source check), reviewed by Claude Desktop · **Severity:** 4 · **Status:** Open
+**Affects:** `docs/phases/PHASE_70_RESULTS.md` (line 15 summary; line 242 table row; §"EXP-08 Detail — 100-Zero 6-Pattern Bilateral Invariance"); `docs/phases/PHASE_70_HANDOFF.md` line 173; `results/EXP-08_open_science.json`; `results/EXP-08_report.html`; `docs/phases/RH_Phase72_Surgical_Bridge_Results_2026-04-24.md` and `docs/phases/RH_PHASE_72_RESULTS.md` (cite it as AIEX-410, "a prior v1.x run"); `docs/handoffs/Handoff_surgical_bridge.md`; KSJ AIEX-410 and probably AIEX-418 (originals lost in the October 2026 journal loss; cited by number)
+
+**The claim as published:** "Experiment 8 (100-zero 6-pattern bilateral invariance)
+delivers three universals: product_norm = 0.0 across all 600 transmissions,
+bilateral invariance = 1.000 for all 100 zeros, and a near-perfect anti-correlation
+(r = −0.9998) between sin²(t·log2) + sin²(t·log3) and gateway convergence —
+connecting the empirical convergence driver directly to the irrationality argument
+in `sed_comm_u_Fbase_nonzero`" (`PHASE_70_RESULTS.md` line 15), and "**Universal 3 —
+Convergence Driver:** … = **−0.9998** (r² = 0.9996)" (line 254).
+
+**Why it is wrong:** Only γ₁ and γ₂ were real CAILculator transmissions. The JSON's
+own `calibration` block names a "Two-point fit from confirmed CAILculator ZDTP
+transmissions", per gateway and scaled by the input norm:
+magnitude_k(t) = (α_k + β_k·(sin²(t·log2) + sin²(t·log3)))·‖F_base(t)‖, with
+(α_k, β_k) = S1 (2.8816, −0.3526), S2 (2.9762, 0.6394), S3A (3.0291, −0.4285),
+S3B (3.2443, 0.4914), S4 (3.2443, 0.4914), S5 (2.9424, −0.9907). All 600 recorded
+magnitudes equal that model to within 5×10⁻⁷ (rounding), and the recorded
+convergence is 1 − std/mean of them to within 5.8×10⁻⁷. The correlation between
+convergence and the sin² sum is therefore a property of how the data were generated:
+a model built from a quantity correlates with that quantity by construction. The HTML
+report marks only γ₁ as "CAILculator-confirmed" and does not say the other rows are
+modeled; neither the README nor any results document says so.
+
+The accompanying claim of universal bilateral annihilation (product_norm = 0.0 in all
+600 cases) is true but carries no information about the zeros: P·Q = 0 is a property
+of each gateway pair, independent of the input — as this repository's own Phase 72
+document states (§5.3: "P × Q = 0 regardless of what we multiply from the outside").
+
+The two measured points don't reproduce either. They came from a v1.x run, and the
+current protocol gives γ₁ = 0.971 (recorded 0.929) and γ₂ = 0.698 (recorded 0.645).
+The recorded files don't state which tool version produced them.
+
+**What is true instead (exploratory re-run, 2026-10-13):** The shipped ZDTP 2.0
+protocol (cailculator-mcp 2.2.0 branch, unreleased; `ZDTPTransmission.full_cascade`)
+on all 100 zeros with EXP-08's exact encoding gives convergence from 0.355 to 0.999
+(recorded: 0.575 to 0.952) and a correlation with sin²(t·log2) + sin²(t·log3) of
+**−0.656**, not −0.9998. The largest single-zero difference from the recorded values
+is 0.39.
+
+The ZDTP closed form (magnitude = √(‖x‖² + 64x₀² + 16s_k²), s_k = ⟨P_k + Q_k, x⟩)
+reproduces every magnitude and convergence score to about 10⁻¹⁵. Under EXP-08's
+encoding the six gateway sums reduce exactly to 2·sin(t·log2) (S1, S2),
+2·sin(t·log3) (S3A, S5) and 0 (S3B, S4), so each zero yields only three distinct
+magnitudes, with u = sin²(t·log3) and v = sin²(t·log2):
+
+- S1 = S2: magnitude² = 66 + 2u
+- S3A = S5: magnitude² = 66 + 66u − 64v
+- S3B = S4: magnitude² = 66 + 2u − 64v
+
+(checked against the closed form to 3×10⁻¹⁴). Convergence depends on u and v
+separately, which is why the correlation with their sum is −0.66 rather than −1.
+
+Substitution (gateway sets fixed before the run): sets containing no zero divisors
+gave −0.906 (the four non-zero-divisor control pairs plus two rule pairs) and −0.731
+(six rule pairs); index-shifted copies of the Canonical Six gave −0.514, −0.554 and
+−0.766. The Canonical Six (−0.656) fall inside that range.
+
+**Classification.** Under the decision rule registered before the run: *inconclusive*.
+The Canonical Six differ from every substitute set by more than 0.05, but not in the
+same direction, so neither the "encoding property" branch nor the "zero-divisor
+dependent" branch applies. Under the exact derivation (added after the run): an
+**encoding property** — every value is the closed form applied to the encoded zeros,
+and no step uses the zero-divisor property. Limitation: the registered rule for
+choosing substitute pairs proved weak (all eight pairs it selected share P = e₁+e₂);
+the index-shifted copies and the control pairs cover that gap.
+
+**Recommended:** a dated correction note at the top of the EXP-08 section in
+`PHASE_70_RESULTS.md` and in `EXP-08_report.html`, stating that 598 rows are modeled,
+that the real correlation is −0.66 and is an encoding property, and pointing here;
+the historical text otherwise left as-is, consistent with C-002. Record per row in
+the JSON whether a value was measured or modeled.
+
+---
+
+### C-024 — "Standard axioms only" labels on files that contain `native_decide` theorems
+**Found:** 2026-10-13 · **By:** Claude Code (source read) · **Severity:** 2 · **Status:** Open
+**Affects:** `README.md` Formal Proof Stack table (rows `RHForcingArgument.lean` and companion `BilateralCollapse.lean`). (`lean/README.md`'s file table carries no axiom labels and is unaffected.)
+
+**The claim as published:** Both files are labeled "Standard only" in the Formal
+Proof Stack table — a per-file axiom footprint.
+
+**Why it is wrong:** `RHForcingArgument.lean` contains 18 theorems proved with
+`native_decide` (`Pattern1_CD4` … `Pattern6_CD6`: patterns 1–6 at CD4, CD5 and CD6;
+36 calls). `BilateralCollapse.lean` uses it in `Pattern1_CD4` and `p1_sq`.
+`native_decide` trusts the compiled evaluator rather than the kernel and adds the
+axiom `Lean.ofReduceBool` to the footprint of every theorem that uses it (exact
+axiom names under this stack's Lean version to be confirmed with `#print axioms`;
+some Lean versions also report `Lean.trustCompiler`). None of these theorems
+appears in the repository's recorded `#print axioms` outputs (`verification/`),
+which cover the RH, spectral and Chavez Transform theorems only. The other files in
+`lean/` that use `native_decide` (`canonical_six_parents_of_24_phase4.lean`, `g2_family_24_investigation.lean`,
+`master_theorem_scaffold_phase5.lean`, `dc08bbac-primary.lean`,
+`e8_weyl_orbit_unification.lean`) are not rows in that table; their claims belong to
+the Canonical Six paper (see `CORRECTIONS_CANONICALSIX.md` C-003).
+
+**What is true instead:** These files contain theorems whose footprint goes beyond
+the standard three axioms. Whether the headline theorems in them (the commutator
+identity and non-vanishing results; the Bilateral Collapse Theorem) depend on the
+`native_decide` theorems is not yet known; settling it requires `#print axioms` on
+each, on a build of this stack.
+
+**Recommended:** table rows reading "Standard axioms for [named headline theorems,
+once checked]; contains `native_decide` theorems (Pattern1–6, CD4–CD6), which add
+`Lean.ofReduceBool`. Per-theorem footprints pending; see C-024." Then run
+`#print axioms` on every theorem in both files and record the output in
+`verification/`.
+
+---
+
+### C-025 — The "S3B = S4 universal pairing" is a property of the encoding; earlier documents never annotated
+**Found:** 2026-10-13 · **By:** Claude Code (Study 4 case 4.1 derivation), reviewed by Claude Desktop · **Severity:** 2 · **Status:** Open
+**Affects:** `docs/CAILCULATOR_NUMERICAL_RECORD.md` lines 116–122 and 217 ("Run 6 — S3B=S4 Universal Invariant (AIEX-188)"); `docs/CAILCULATOR_PHASE_43_47_OUTPUTS.md` lines 69–75; `docs/phase48_cailculator_open_science.md` (per-zero "S3B = S4: ✅ Exact" lines and line 276, "S3B = S4 Universal Pairing"); `lab-notebook/RH_Phase42_Results.md` line 165; `lab-notebook/RH_Phase45_Handoff_ClaudeCode.md` lines 56, 131–134, 194; `lab-notebook/Phase43_SedenionicSpinor_Definition.md` line 24; `docs/findings_summary.md` line 28; KSJ AIEX-188 (cited by number)
+
+**The claim as published:** Gateways S3B and S4 give exactly equal magnitudes at every
+tested zero and σ, reported from Phase 42–43 on as a universal structural pairing of
+the Canonical Six ("S3B=S4 always (symmetric pair)"; "S3B = S4 Universal Pairing:
+Holds exactly at all 12 zeros"), including a Phase 45 hypothesis that it is "the
+mechanism that *allows* a zero to exist".
+
+**Why it is wrong:** The explanation is already in this repository:
+`docs/phases/RH_PHASE_76_PART_A_RESULTS.md` derives that "Pair equality is the
+vanishing of a product of two linear functionals of the encoding vector — a property
+of the encoding, not of σ", and notes that the S3B=S4 precedent (AIEX-188/229/246)
+"reflects shared encoding constants". The earlier documents above were never
+annotated, so they still present the equality as structure. Two further checks
+(2026-10-13):
+
+- **EXP-08 encoding (E1): forced, confirmed.** Under F_base(t) = cos(t·log2)(e₀+e₁₅) +
+  sin(t·log2)(e₃+e₁₂) + sin(t·log3)(e₆+e₉), the S3B and S4 signed sums are both
+  identically 0 (C-023), so the two magnitudes are equal by the closed form for every t.
+- **Phase 43–52 product encoding (E2, `F_16d`): not forced by the current protocol.**
+  With the ZDTP 2.0 closed form, max |s_S3B − s_S4| over the first 1,000 zeros is 1.46
+  (σ = 0.5), 1.53 (σ = 0.4) and 1.53 (σ = 0.6). The exact equality recorded under E2 in
+  Phases 43–48 came from the v1.x tool, whose gateway definitions differ (its records
+  label S3B = e₆, S4 = e₉); that protocol can't be inspected, so the E2 equality is not
+  explained here.
+
+**What is true instead:** Under E1, S3B = S4 is a consequence of which coordinates the
+encoding fills. Under E2 it is a v1.x-protocol observation that the current protocol
+does not reproduce. In neither case is it evidence of structure in the Canonical Six.
+Related: Verified Sound's "S3 ≡ S6 under the k=1 encoding" is the same kind of
+result and is already correctly framed as a property of that encoding.
+
+**Recommended:** a one-line dated note in each affected document pointing here and to
+`RH_PHASE_76_PART_A_RESULTS.md`; historical text otherwise left as-is.
+
+---
+
 ## Recurring Failure Mode: Vacuity
 
 Four entries in this register — C-002, C-016, C-017, C-021 — are the same class of
@@ -1056,6 +1212,29 @@ August, three weeks before it was run.
 
 ---
 
+## Fourth Failure Mode: Modeled-as-Measured
+
+C-023 is a different defect from the three above. The theorem-level failure modes
+concern proofs; this one concerns data. Rows produced by a fitted model were stored,
+reported and summarized alongside real measurements without a marker distinguishing
+them, and an analysis was then run that the model guaranteed would succeed. Nothing
+in the result files or the report would have told a reader which rows were measured.
+
+**The likely mechanism is a sound working shortcut, later misread.** Fitting a model
+to a few real transmissions to plan further runs is reasonable; the failure is that
+its output was later read as the runs themselves. Same drift shape as the
+Claimed-But-Absent section: an intermediate artifact restated as the finished one.
+
+**Added to the standing check:** every result file records, per row, how each value
+was produced (measured by a named tool and version, or modeled by a named formula).
+Any analysis whose inputs include modeled rows says so in the same sentence as the
+result. Correlating a model's output with the quantity it was fitted to is never
+reported as a finding. Recording the tool version matters on its own: EXP-08's two
+genuinely measured points came from a v1.x run and don't reproduce under the current
+tool, and nothing in the files said which version produced them.
+
+---
+
 ## Verified Sound
 
 Recorded so the register reflects the state of the work rather than only its
@@ -1123,6 +1302,7 @@ held up.
 | 2026-09-14 | Third Failure Mode section added: **Claimed-But-Absent** — a document asserting a named theorem is formally verified when it was never built, invisible to both `#print axioms` and the hypothesis-deletion audit because there is no proof term for either to examine. Motivated by `RH_PAPER_DRAFT_20260823.md` (never committed to this repository, so no numbered entry filed), which claimed `detector_channel_identity` and `extended_detector_channel_identity` were formally verified; a full-repo grep found zero matches for either name. Read as drift (plan-tense claims from the July 11 handoff never reconciled against the repository as it actually stood in August), not fabrication — the same shape as C-013 and the Canonical Six bilateral correction above. Standing check gains a name-lookup step: grep every claimed theorem name across `lean/` before a document asserts it is verified. |
 | 2026-09-14 | **Status bookkeeping fix, five entries.** A `README.md`/`lean/README.md` accuracy review found that commit `acaaf3e1` (2026-09-08, same day as the six-task verification batch) had already propagated C-003, C-004, C-005, C-015, and C-019 into both README files — but each entry's own Status field still read Open (or "confirmed verbatim" for C-019) months — actually hours — after the fix landed. All five closed as **Corrected**, each with a `Corrected:` block naming the commit and the exact text now in place. This is the register auditing itself the way it asks the corpus to be audited — the fixes were real and complete; only the record of them was stale. |
 | 2026-09-15 | Merged `phase-79-runD` and `corrections-c023-canonical-six-bilateral` into `main`. The Canonical Six bilateral correction moved out to `CORRECTIONS_CANONICALSIX.md` C-001 as part of the merge (see the 2026-09-14 log line above and that file's own Log), resolving what would otherwise have been a C-022 numbering collision between the two branches without renumbering anything in either register. Header counts recomputed for the final merged state: 11 corrected, 1 confirmed against source, 3 modified, 7 open, 22 entries. |
+| 2026-10-13 | C-023, C-024, C-025 opened, from the CT2 survey's Study 4 source check (Claude Code) and drafts reviewed by Claude Desktop. C-023: EXP-08's per-zero values are a two-point model's output, so its r = −0.9998 is built in; an exploratory re-run with the shipped protocol gives −0.656, an encoding property. C-024: per-file "Standard only" labels on two files containing `native_decide` theorems. C-025: the S3B = S4 pairing, already explained as encoding-conditional in Phase 76 Part A but never annotated in the Phase 42–48 documents; confirmed forced under EXP-08's encoding, not reproduced under the Phase 43–52 encoding by the current protocol. Fourth Failure Mode section added: **Modeled-as-Measured**. A fourth draft (AIEX-187 cited as support for critical-line convergence) was dropped before filing: no public document makes that citation; the error was in an internal KSJ draft and is corrected there. Counts: 25 entries, 10 open. |
 
 ---
 

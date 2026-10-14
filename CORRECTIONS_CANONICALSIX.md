@@ -5,7 +5,7 @@
 [10.5281/zenodo.17402495](https://doi.org/10.5281/zenodo.17402495))
 **Opened:** September 15, 2026
 **Maintainer:** Paul Chavez
-**Status:** ACTIVE — 1 entry · 1 corrected · 0 open
+**Status:** ACTIVE — 3 entries · 1 corrected · 2 open
 
 ---
 
@@ -69,7 +69,9 @@ the claim appears; a provenance chain that cannot be traced to an artifact.
 
 | ID | Title | Sev | Status |
 |---|---|---|---|
-| C-001 | "Bilateral in both frameworks" overstates 5 of 6 Canonical Six patterns | 2 | **Corrected** |
+| C-001 | "Bilateral in both frameworks" overstates 5 of 6 Canonical Six patterns | 2 | **Corrected** (paper repository README: applied 2026-10-13, see addendum) |
+| C-002 | "Dimensional persistence" is guaranteed by subalgebra embedding | 3 | Open |
+| C-003 | "100% formal verification" headline omits that key theorems use `native_decide` | 2 | Open |
 
 ---
 
@@ -179,6 +181,109 @@ before use, confirming all six patterns' P·Q = 0 (matching the published Table 
 and exactly one (pattern 59) additionally satisfying Q·P = 0, plus the 112-pair
 generalization test above.
 
+**Addendum, 2026-10-13: propagation to the paper repository's README, and the Lean
+coverage of the Clifford side.** The paper's own repository
+(`pchavez2029/framework-independent-zero-divisors`) was not among the five documents
+corrected on 2026-09-14. Its README marks all six patterns "CD ✓ Clifford ✓" in the
+Canonical Six table, says in Key Findings that the six "work identically in both
+Cayley-Dickson and Clifford algebras" and that they persist through "Both associative
+(Clifford) and non-associative (Cayley-Dickson) frameworks", without stating that the
+Clifford-side result is P·Q = 0 in one direction only, with pattern 59 (S2) the sole
+Clifford-bilateral pattern.
+
+That one-directional Clifford result *is* formally verified in Lean, contrary to how
+this entry's account above could be read. `dc08bbac-primary.lean`, a v1.2 file in the
+paper repository (Lean v4.24.0, listed there under "v1.2 Files (Preserved for
+Reproducibility)"), defines Cl(4,0) and Cl(5,0) over ℚ with Mathlib's `CliffordAlgebra`
+and proves P·Q = 0 in Cl(4,0) for all six patterns
+(`pattern_{18,59,84,102,104,124}_cl4_verified`), P·Q = 0 in Cl(5,0) for patterns 18,
+59 and 84, and P·Q ≠ 0 in Cl(4,0) for four non-Canonical patterns
+(`pattern_{58,101,103,19}_cl4_fails`), with zero sorries (two of its declarations,
+`pattern_18_cl5` and `e_cl5_1`, use `native_decide`; see C-003). The statement above
+that no Lean file claims Clifford-side *bilaterality* stands: none proves Q·P = 0 in
+Clifford. The README's coverage bullet "Framework independence (Clifford vs.
+Cayley-Dickson) mathematically verified" is therefore supported in the paper's own
+one-directional sense, but it doesn't say "one direction" and doesn't name the file,
+which is not in the v1.3 list.
+
+**Paper repository README, 2026-10-13 (applied locally, not yet pushed, pending
+Paul's review):** the table's Clifford column and the Key Findings lines annotated
+with the one-direction scope and the pattern 59 exception; the coverage bullet
+reworded to "P·Q = 0 in Cl(4,0) for all six patterns (one direction; Q·P = 0 only for
+pattern 59), in `dc08bbac-primary.lean`"; and a link to this register added near the
+top.
+
+---
+
+### C-002 — "Dimensional persistence" is guaranteed by subalgebra embedding
+**Found:** 2026-10-13 · **By:** Claude Desktop (structural argument), checked against the paper's methodology by Claude Code · **Severity:** 3 · **Status:** Open
+**Affects:** v1.0–v1.3 abstract and §§ on dimensional persistence ("exact preservation of zero divisor properties through successive dimensional doublings"; "superlinear dimensional stability … suggesting they occupy mathematically distinguished positions"); paper repository README (Key Findings: "12 patterns with dimensional persistence (16D → 256D)"; "256-fold complexity increase with perfect structural preservation"; coverage bullet "Dimensional persistence through CD6 (256D)"); RH repository `README.md` (Canonical Six "Dimension-stable … (Block Replication Theorem)")
+
+**The claim as published:** The patterns persist exactly from 16D through 256D in
+Cayley-Dickson and from 16D to 32D in Clifford, and this persistence, "maintaining
+exact structure through 256-fold complexity increase," indicates distinguished
+structure.
+
+**Why it is wrong:** Each Cayley-Dickson doubling contains the previous algebra as a
+subalgebra: with (a, b)(c, d) = (ac − d̄b, da + bc̄), the map a ↦ (a, 0) gives
+(a, 0)(c, 0) = (ac, 0). Likewise Cl(4,0) is a subalgebra of Cl(5,0). The paper's
+method is exactly this embedding: `main_v1.0.tex` (line 164) describes testing
+"whether patterns discovered at lower dimensions maintained zero divisor properties
+when embedded in higher-dimensional algebras, preserving their index structure", and
+the Lean files do the same (`lift`, then `e5 1 + e5 14` and so on in
+`dc08bbac-primary.lean`). Under that embedding, every sedenion zero divisor pair
+remains a zero divisor pair in every higher Cayley-Dickson algebra, necessarily, not
+only these six. The paper's table (12/12 at every Cayley-Dickson dimension) records
+that guarantee, not a property that distinguishes the patterns. The original Python
+verification scripts are not in the repository, so the check rests on the paper's own
+description of its method.
+
+**What is true instead:** Persistence under doubling holds for every sedenion zero
+divisor and follows from the Cayley-Dickson construction. The evidence that the six
+are distinguished rests on the framework comparison (C-001) and the E₈ results, not
+on persistence.
+
+**Recommended:** state the subalgebra argument wherever persistence is cited, and
+drop "persistence" from the list of properties that distinguish the six.
+
+---
+
+### C-003 — "100% formal verification" headline omits that key theorems use `native_decide`
+**Found:** 2026-10-13 · **By:** Claude Desktop (README read), Claude Code (source read) · **Severity:** 2 · **Status:** Open
+**Affects:** paper repository README ("100% formal verification in Lean 4, zero sorry stubs"; "Full formal verification in Lean 4 (zero sorry stubs)"; Verification Coverage list); Zenodo v1.3 record description ("Full formal verification in Lean 4 confirms all core structural claims with zero sorry stubs"); v1.3 abstract's equivalent sentence
+
+**The claim as published:** "100% formal verification in Lean 4, zero sorry stubs."
+
+**Why it is misleading:** The sorry count is right (zero in code in every file), but
+several headline results are proved with `native_decide`, which trusts the compiled
+evaluator rather than the kernel and adds the axiom `Lean.ofReduceBool` to each
+theorem's footprint. The README reports no axiom footprint. Per file (theorems using
+`native_decide`):
+
+- `e8_weyl_orbit_unification.lean`: `Theorem_1a`, `Theorem_1b` — the E₈ first-shell
+  and Weyl-orbit results themselves.
+- `canonical_six_parents_of_24_phase4.lean`: 7, including `All_ZDs_Generated` and
+  `Count_Unique_ZDs_Is_24` — the 24-family results.
+- `g2_family_24_investigation.lean`: 37.
+- `master_theorem_scaffold_phase5.lean`: `Theorem_1a`, `Theorem_1b`,
+  `CanonicalSix_G2Invariant_Combinatorial`.
+- `dc08bbac-primary.lean`: `pattern_18_cl5`, `e_cl5_1`.
+- `canonical_six_bilateral_zero_divisors_cd4_cd5_cd6.lean` and
+  `c038a2e4-alternative.lean`: none. **The CD4–CD6 bilateral zero-divisor proofs are
+  fully kernel-checked.**
+
+The paper's own `LEAN_README.md` names `native_decide` as a proof tactic, so the
+omission is in the summary, not hidden. Already flagged internally as F-10 in the
+v1.4 organizing document.
+
+**What is true instead:** The bilateral zero-divisor results are formally verified
+with kernel-checked proofs; the E₈ and 24-family headline results are verified with
+`native_decide`, i.e. relying on the compiler as well as the kernel.
+
+**Recommended:** state per file: sorry count, whether `native_decide` is used, and the
+`#print axioms` footprint of each headline theorem (to be run on a v4.24.0 build).
+README now; paper text in v1.4.
+
 ---
 
 ## Log
@@ -187,6 +292,7 @@ generalization test above.
 |---|---|
 | 2026-09-14 | C-001 found and corrected same day, on the RH investigation's `CORRECTIONS.md` (as a draft C-022) — see that register's 2026-09-14 log entries for the same-day history, including the same-day generalization test and two small factual fixes (residual blade grade, map-assumption overclaim) to the verification README caught on a follow-up review. |
 | 2026-09-15 | This register opened. C-001 moved here from `CORRECTIONS.md`, where it had been drafted against that register's next open slot before this file existed — it collided with an independently-numbered entry (Phase 79 Run D) assigned the same slot on a divergent branch, and moving it here rather than renumbering either entry keeps each register tracking its own paper. Content, severity, and status carried over unchanged; only the entry number changed (C-022 → C-001) and cross-references in the five affected repository documents were updated to point here. |
+| 2026-10-13 | C-001 addendum: the paper repository's own README (not among the five documents corrected on 2026-09-14) still described all six patterns as working identically in both frameworks; annotated there with the one-direction scope and the pattern 59 exception, and linked to this register (applied locally, pending push). The addendum also records that the one-directional Clifford result is formally verified in Lean, in the v1.2 file `dc08bbac-primary.lean`. C-002 (persistence under doubling is guaranteed by subalgebra embedding) and C-003 (verification headline omits `native_decide` in the E₈ and 24-family theorems; the CD4–CD6 bilateral proofs are fully kernel-checked) opened. A further draft entry, "framework independence listed as Lean-verified", was withdrawn before filing: `dc08bbac-primary.lean` does verify it in the one-directional sense; the remaining wording issue was folded into the C-001 addendum. Drafts by Claude Desktop, checked against the sources by Claude Code. |
 
 ---
 
