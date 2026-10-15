@@ -4,7 +4,7 @@
 **Opened:** September 8, 2026
 **Maintainer:** Paul Chavez
 **Status:** ACTIVE — 25 entries · 11 corrected · 1 confirmed against source ·
-3 modified by verification · 10 open
+4 modified by verification · 9 open
 **Last verification batch:** September 8, 2026 (six tasks, Claude Code)
 **Last correction applied:** September 14, 2026 (status bookkeeping fix: C-003,
 C-004, C-005, C-015, C-019 were propagated into README.md/`lean/README.md` the
@@ -22,6 +22,9 @@ entry here.
 **Entries added 2026-10-13:** C-023 (EXP-08 modeled data), C-024 (`native_decide`
 footprint labels), C-025 (S3B = S4 pairing); all Open. Fourth Failure Mode section
 added (Modeled-as-Measured).
+**Entry modified 2026-10-14:** C-024 narrowed. `BilateralCollapse.lean` has no
+`native_decide` in any proof; all 15 text matches in it are comments. The
+`RHForcingArgument.lean` finding stands.
 
 ---
 
@@ -115,7 +118,7 @@ appears; a provenance chain that cannot be traced to an artifact.
 | C-021 | Critical-line "characterizations" are definitionally engineered | 3 | Open |
 | C-022 | C-001's commensurability-knee conjecture tested (Phase 79 Run D) and not supported | 2 | **Corrected** |
 | C-023 | EXP-08's 600 "transmissions" are 2 measurements and 598 model outputs; its correlation is built in | 4 | Open |
-| C-024 | "Standard axioms only" labels on files that contain `native_decide` theorems | 2 | Open |
+| C-024 | "Standard axioms only" labels on files that contain `native_decide` theorems | 2 | **Modified — narrowed to `RHForcingArgument.lean`** |
 | C-025 | The "S3B = S4 universal pairing" is a property of the encoding; earlier documents never annotated | 2 | Open |
 
 ---
@@ -1030,8 +1033,8 @@ the JSON whether a value was measured or modeled.
 ---
 
 ### C-024 — "Standard axioms only" labels on files that contain `native_decide` theorems
-**Found:** 2026-10-13 · **By:** Claude Code (source read) · **Severity:** 2 · **Status:** Open
-**Affects:** `README.md` Formal Proof Stack table (rows `RHForcingArgument.lean` and companion `BilateralCollapse.lean`). (`lean/README.md`'s file table carries no axiom labels and is unaffected.)
+**Found:** 2026-10-13 · **By:** Claude Code (source read) · **Severity:** 2 · **Status:** **Modified** — narrowed 2026-10-14; the `RHForcingArgument.lean` row remains open
+**Affects:** `README.md` Formal Proof Stack table (rows `RHForcingArgument.lean` and companion `BilateralCollapse.lean`; the second row is withdrawn, see the Modified block below). (`lean/README.md`'s file table carries no axiom labels and is unaffected.)
 
 **The claim as published:** Both files are labeled "Standard only" in the Formal
 Proof Stack table — a per-file axiom footprint.
@@ -1061,6 +1064,24 @@ once checked]; contains `native_decide` theorems (Pattern1–6, CD4–CD6), whic
 `Lean.ofReduceBool`. Per-theorem footprints pending; see C-024." Then run
 `#print axioms` on every theorem in both files and record the output in
 `verification/`.
+
+**Modified (2026-10-14, Claude Code; found during a CAILculator corrections
+audit):** `BilateralCollapse.lean` has no `native_decide` in any proof. All 15
+matches in the file are inside `/- PROVIDED SOLUTION … -/` comment blocks (proving
+instructions written for the Aristotle prover, which say "Do NOT use decide or
+native_decide"). The proofs of `Pattern1_CD4` (line 183), `p1_sq` (line 219) and
+`q1_sq` (line 242) use `simp only`, `Prod.ext` and `norm_num`, and the file imports
+only `Mathlib`. **Both the drafter and the verifier of this entry counted text
+matches without excluding comments.** With comments stripped, the counts are:
+`RHForcingArgument.lean` 36 (unchanged; all in code); `BilateralCollapse.lean` 0.
+
+**What is retracted from this entry's original text:** "`BilateralCollapse.lean`
+uses it in `Pattern1_CD4` and `p1_sq`", and that file's inclusion in the
+Recommended table wording. Its "Standard only" label is consistent with the source;
+confirming it still needs `#print axioms` on a build, like every footprint label.
+The finding for `RHForcingArgument.lean` stands unchanged, as do the
+recommendations for it. The standing check gains a comment-exclusion step (Third
+Failure Mode section).
 
 ---
 
@@ -1210,6 +1231,14 @@ is not evidence of presence in the stack. This check is cheap — it is a name
 lookup, not a proof audit — and it is the one that would have caught this in
 August, three weeks before it was run.
 
+**Added to the standing check (2026-10-14, from C-024):** when locating or counting
+uses of a theorem name, tactic or axiom (`native_decide`, `sorry`, `axiom`, a claimed
+lemma), count uses in code, excluding comments (`/- … -/` blocks and `--` lines). A
+plain `grep` reads comments as uses. That error ran in both directions in C-024:
+proving instructions saying "Do NOT use native_decide" were counted as uses of it.
+The name lookup above has the same exposure, since a theorem named only in a
+comment would appear to resolve.
+
 ---
 
 ## Fourth Failure Mode: Modeled-as-Measured
@@ -1303,6 +1332,7 @@ held up.
 | 2026-09-14 | **Status bookkeeping fix, five entries.** A `README.md`/`lean/README.md` accuracy review found that commit `acaaf3e1` (2026-09-08, same day as the six-task verification batch) had already propagated C-003, C-004, C-005, C-015, and C-019 into both README files — but each entry's own Status field still read Open (or "confirmed verbatim" for C-019) months — actually hours — after the fix landed. All five closed as **Corrected**, each with a `Corrected:` block naming the commit and the exact text now in place. This is the register auditing itself the way it asks the corpus to be audited — the fixes were real and complete; only the record of them was stale. |
 | 2026-09-15 | Merged `phase-79-runD` and `corrections-c023-canonical-six-bilateral` into `main`. The Canonical Six bilateral correction moved out to `CORRECTIONS_CANONICALSIX.md` C-001 as part of the merge (see the 2026-09-14 log line above and that file's own Log), resolving what would otherwise have been a C-022 numbering collision between the two branches without renumbering anything in either register. Header counts recomputed for the final merged state: 11 corrected, 1 confirmed against source, 3 modified, 7 open, 22 entries. |
 | 2026-10-13 | C-023, C-024, C-025 opened, from the CT2 survey's Study 4 source check (Claude Code) and drafts reviewed by Claude Desktop. C-023: EXP-08's per-zero values are a two-point model's output, so its r = −0.9998 is built in; an exploratory re-run with the shipped protocol gives −0.656, an encoding property. C-024: per-file "Standard only" labels on two files containing `native_decide` theorems. C-025: the S3B = S4 pairing, already explained as encoding-conditional in Phase 76 Part A but never annotated in the Phase 42–48 documents; confirmed forced under EXP-08's encoding, not reproduced under the Phase 43–52 encoding by the current protocol. Fourth Failure Mode section added: **Modeled-as-Measured**. A fourth draft (AIEX-187 cited as support for critical-line convergence) was dropped before filing: no public document makes that citation; the error was in an internal KSJ draft and is corrected there. Counts: 25 entries, 10 open. |
+| 2026-10-14 | C-024 **Modified** (narrowed): `BilateralCollapse.lean` has no `native_decide` in any proof. The 15 matches are comments, proving instructions for the Aristotle prover. Both drafter and verifier had counted text matches without excluding comments. The `RHForcingArgument.lean` finding (36 calls, all in code) stands. Found by Claude Code during a CAILculator corrections audit. The standing check gains a step: count uses in code, excluding comments. Counts: 25 entries, 4 modified, 9 open. |
 
 ---
 
